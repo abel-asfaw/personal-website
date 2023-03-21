@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'Cubano';
+        src: url('/fonts/Cubano/Cubano.ttf');
+    }
+
+    @font-face {
+        font-family: 'Bonobo';
+        src: url('/fonts/Bonobo/Bonobo-Regular.ttf');
+    }
+
+    @font-face {
+        font-family: 'IBMPlexSerif';
+        src: url('/fonts/IBM_Plex_Serif/IBMPlexSerif-Regular.ttf');
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+    section {
+        scroll-margin-top: 4rem;
+    }
+}
