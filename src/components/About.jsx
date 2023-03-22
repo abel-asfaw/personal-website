@@ -4,7 +4,7 @@ export default function About() {
             <div className="container mx-auto flex flex-col items-center px-5 py-10 md:flex-row">
                 <div className="mb-16 flex flex-col items-center text-center md:mb-0 md:w-1/2 md:items-start md:pr-16 md:text-left lg:flex-grow lg:pr-24">
                     <h1 className="title-font mb-4 font-cubano text-3xl font-medium text-white sm:text-4xl">
-                        Hi, I'm Abel.
+                        Hi, I'm Abel. I love building things.
                     </h1>
                     <p className="mb-8 leading-relaxed">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -30,7 +30,12 @@ export default function About() {
                 </div>
                 <div className="w-5/6 md:w-1/2 lg:w-full lg:max-w-lg">
                     <picture>
-                        <img src="/images/me.png" alt="Portrait of Abel" />
+                        <img
+                            width="100%"
+                            height="100%"
+                            src="/images/me.png"
+                            alt="Portrait of Abel"
+                        />
                     </picture>
                 </div>
             </div>

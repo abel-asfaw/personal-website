@@ -10,6 +10,8 @@ import {
 } from 'react-icons/di';
 import { SiGraphql, SiCplusplus } from 'react-icons/si';
 
+const ICON_CLASSES = 'text-green-400 w-6 h-6 flex-shrink-0 mr-4';
+
 export const projects = [
     {
         title: 'Project 1',
@@ -45,16 +47,15 @@ export const projects = [
     },
 ];
 
-const iconClasses = 'text-green-400 w-6 h-6 flex-shrink-0 mr-4';
 export const skills = {
-    Python: <DiPython className={iconClasses} />,
-    Java: <DiJava className={iconClasses} />,
-    'C++': <SiCplusplus className={iconClasses} />,
-    JavaScript: <DiJavascript className={iconClasses} />,
-    React: <DiReact className={iconClasses} />,
-    HTML: <DiHtml5 className={iconClasses} />,
-    CSS: <DiCss3 className={iconClasses} />,
-    Postgres: <DiPostgresql className={iconClasses} />,
-    GraphQL: <SiGraphql className={iconClasses} />,
-    Git: <DiGit className={iconClasses} />,
+    Python: <DiPython className={ICON_CLASSES} />,
+    Java: <DiJava className={ICON_CLASSES} />,
+    'C++': <SiCplusplus className={ICON_CLASSES} />,
+    JavaScript: <DiJavascript className={ICON_CLASSES} />,
+    React: <DiReact className={ICON_CLASSES} />,
+    HTML: <DiHtml5 className={ICON_CLASSES} />,
+    CSS: <DiCss3 className={ICON_CLASSES} />,
+    Postgres: <DiPostgresql className={ICON_CLASSES} />,
+    GraphQL: <SiGraphql className={ICON_CLASSES} />,
+    Git: <DiGit className={ICON_CLASSES} />,
 };
