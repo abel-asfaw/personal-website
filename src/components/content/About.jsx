@@ -1,3 +1,5 @@
+import CallToActionButton from '../common/CallToActionButton';
+
 export default function About() {
     return (
         <section id="about">
@@ -13,19 +15,19 @@ export default function About() {
                         explicabo nisi, ad non, voluptatum natus dolorem aliquid
                         aperiam suscipit!
                     </p>
-                    <div className="flex justify-center font-cubano lg:whitespace-nowrap">
-                        <a
+                    <div className="flex justify-center gap-4 font-cubano lg:whitespace-nowrap">
+                        <CallToActionButton
                             href="#contact"
-                            className="inline-flex rounded border-0 bg-green-600 py-2 px-6 text-lg text-white duration-200 ease-in hover:bg-green-500 focus:outline-none"
+                            className="bg-green-600 text-white hover:bg-green-500"
                         >
                             Hire Me
-                        </a>
-                        <a
+                        </CallToActionButton>
+                        <CallToActionButton
                             href="#projects"
-                            className="ml-4 inline-flex rounded border-0 bg-gray-800 py-2 px-6 text-lg text-gray-400 duration-200 ease-in hover:bg-gray-700 hover:text-white focus:outline-none"
+                            className="bg-gray-800 text-gray-400 hover:bg-gray-700"
                         >
                             See My Projects
-                        </a>
+                        </CallToActionButton>
                     </div>
                 </div>
                 <div className="w-5/6 md:w-1/2 lg:w-full lg:max-w-lg">

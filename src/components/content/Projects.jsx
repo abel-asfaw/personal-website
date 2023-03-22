@@ -1,5 +1,5 @@
 import { HiCode } from 'react-icons/hi';
-import { projects } from '../data';
+import { projects } from '../../data';
 
 export default function Projects() {
     return (
@@ -16,7 +16,7 @@ export default function Projects() {
                         vero aliquid obcaecati quisquam fuga dolore.
                     </p>
                 </div>
-                <div className="-m-4 flex flex-wrap">
+                <div className="-m-2 flex flex-wrap">
                     {projects.map(project => (
                         <a
                             href={project.link}
