@@ -1,5 +1,5 @@
 import { HiCpuChip } from 'react-icons/hi2';
-import { skills } from '../data';
+import { skills } from '../../data';
 
 export default function Skills() {
     return (
