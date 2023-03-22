@@ -1,39 +1,29 @@
 import { HiArrowLongRight } from 'react-icons/hi2';
+import NavButton from './NavButton';
 
 export default function Navbar() {
     return (
-        <header className="top-0 z-10 bg-gray-800 drop-shadow-xl sm:sticky">
-            <div className="container mx-auto flex flex-col flex-wrap items-center justify-between p-5 font-cubano sm:flex-row">
-                <nav className="mb-4 text-white sm:mb-0">
-                    <a
-                        href="#about"
-                        className="ml-0 text-xl duration-200 ease-in sm:ml-3"
-                    >
-                        Abel Asfaw
-                    </a>
+        <header className="top-0 z-10 bg-gray-800 p-3 drop-shadow-xl sm:sticky sm:p-5">
+            <div className="container mx-auto flex flex-col items-center justify-between font-cubano sm:flex-row">
+                <nav className="p-1 text-2xl text-white">
+                    <a href="#about">Abel Asfaw</a>
                 </nav>
-                <nav className="flex flex-wrap items-center justify-center text-base sm:mr-auto sm:ml-4 sm:border-l sm:border-gray-700 sm:py-1 sm:pl-4">
-                    <a
-                        href="#projects"
-                        className="mr-2 duration-200 ease-in hover:text-white"
-                    >
+                <nav className="flex sm:mr-auto sm:ml-4 sm:border-l sm:border-gray-700 sm:p-0 sm:pl-4">
+                    <NavButton className="mr-2" href="#projects">
                         Projects
-                    </a>
-                    <a
-                        href="#skills"
-                        className="ml-2 duration-200 ease-in hover:text-white"
-                    >
+                    </NavButton>
+                    <NavButton className="ml-2" href="#skills">
                         Skills
-                    </a>
+                    </NavButton>
                 </nav>
                 <nav>
-                    <a
+                    <NavButton
+                        className="flex items-center rounded border-0 focus:outline-none sm:px-2 sm:hover:bg-gray-700"
                         href="#contact"
-                        className="mt-2.5 inline-flex items-center rounded border-0 bg-gray-800 py-1 px-3 text-base duration-200 ease-in hover:bg-gray-700 focus:outline-none sm:mt-0"
                     >
                         Reach Out
-                        <HiArrowLongRight className="ml-1 hidden h-4 w-4 sm:block" />
-                    </a>
+                        <HiArrowLongRight className="ml-1 hidden sm:block" />
+                    </NavButton>
                 </nav>
             </div>
         </header>

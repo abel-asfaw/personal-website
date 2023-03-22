@@ -1,5 +1,4 @@
-import React from 'react';
-import { DiCode } from 'react-icons/di';
+import { HiCode } from 'react-icons/hi';
 import { projects } from '../data';
 
 export default function Projects() {
@@ -7,7 +6,7 @@ export default function Projects() {
         <section id="projects">
             <div className="container mx-auto px-5 py-10 text-center lg:px-40">
                 <div className="mb-20 flex w-full flex-col">
-                    <DiCode className="mx-auto mb-4 inline-block h-10 w-10" />
+                    <HiCode className="mx-auto mb-4 inline-block h-10 w-10" />
                     <h1 className="mb-4 font-cubano text-3xl text-white sm:text-4xl">
                         Apps I've Built
                     </h1>
@@ -24,7 +23,6 @@ export default function Projects() {
                             key={project.image}
                             className="w-100 p-4 sm:w-1/2"
                             target="_blank"
-                            rel="noreferrer noopener"
                         >
                             <div className="relative flex">
                                 <img

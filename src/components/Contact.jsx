@@ -17,7 +17,7 @@ export default function Contact() {
     }
 
     function handleSubmit(e) {
-        // e.preventDefault();
+        e.preventDefault();
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -25,7 +25,6 @@ export default function Contact() {
         })
             .then(() => {
                 alert('Message sent!');
-                // reset fields
                 setName('');
                 setEmail('');
                 setMessage('');

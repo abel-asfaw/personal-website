@@ -9,11 +9,6 @@ module.exports = {
             fontFamily: {
                 cubano: ['Cubano', 'sans-serif'],
             },
-            textShadow: {
-                sm: '0 0 4px var(--tw-shadow-color)',
-                DEFAULT: '0 0 8px var(--tw-shadow-color)',
-                lg: '0 0px 16px var(--tw-shadow-color)',
-            },
         },
     },
 };
