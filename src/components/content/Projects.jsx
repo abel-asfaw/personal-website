@@ -1,5 +1,5 @@
 import { HiCode } from 'react-icons/hi';
-import { projects } from '../../data';
+import { projects } from '../../data/data';
 
 export default function Projects() {
     return (

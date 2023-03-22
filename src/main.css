@@ -5,17 +5,7 @@
 @layer base {
     @font-face {
         font-family: 'Cubano';
-        src: url('/fonts/Cubano/Cubano.ttf');
-    }
-
-    @font-face {
-        font-family: 'Bonobo';
-        src: url('/fonts/Bonobo/Bonobo-Regular.ttf');
-    }
-
-    @font-face {
-        font-family: 'IBMPlexSerif';
-        src: url('/fonts/IBM_Plex_Serif/IBMPlexSerif-Regular.ttf');
+        src: url('/assets/fonts/Cubano.ttf');
     }
 }
 
