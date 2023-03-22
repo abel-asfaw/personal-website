@@ -43,7 +43,7 @@ export default function Contact() {
                         <img
                             width="100%"
                             height="100%"
-                            src="/images/mail.jpeg"
+                            src="/assets/images/mail.jpeg"
                             alt="Drop me a line"
                             className="rounded"
                         />

@@ -18,7 +18,7 @@ export const projects = [
         subtitle: 'Stack 1',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?',
-        image: '/images/project-1.avif',
+        image: '/assets/images/project-1.avif',
         link: 'https://github.com/abel-asfaw/',
     },
     {
@@ -26,7 +26,7 @@ export const projects = [
         subtitle: 'Stack 2',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?',
-        image: '/images/project-2.avif',
+        image: '/assets/images/project-2.avif',
         link: 'https://github.com/abel-asfaw/',
     },
     {
@@ -34,7 +34,7 @@ export const projects = [
         subtitle: 'Stack 3',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?',
-        image: '/images/project-3.avif',
+        image: '/assets/images/project-3.avif',
         link: 'https://github.com/abel-asfaw/',
     },
     {
@@ -42,7 +42,7 @@ export const projects = [
         subtitle: 'Stack 4',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?',
-        image: '/images/project-4.avif',
+        image: '/assets/images/project-4.avif',
         link: 'https://github.com/abel-asfaw/',
     },
 ];
