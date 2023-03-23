@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-export default function CallToActionButton({ children, className, href }) {
+export default function CallToActionButton({ children, className, ...rest }) {
     const classes = classNames(
         className,
         'inline-flex rounded border-0 py-2 px-6 text-lg duration-200 ease-in hover:text-white focus:outline-none'
@@ -8,7 +8,7 @@ export default function CallToActionButton({ children, className, href }) {
 
     return (
         <>
-            <a href={href} className={classes}>
+            <a {...rest} className={classes}>
                 {children}
             </a>
         </>
