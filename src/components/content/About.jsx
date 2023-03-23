@@ -35,7 +35,7 @@ export default function About() {
                         <img
                             width="100%"
                             height="100%"
-                            src="./assets/images/me.png"
+                            src="/assets/images/me.png"
                             alt="Portrait of Abel"
                         />
                     </picture>

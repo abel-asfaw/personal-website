@@ -9,6 +9,11 @@ module.exports = {
             fontFamily: {
                 cubano: ['Cubano', 'sans-serif'],
             },
+            colors: {
+                gray: {
+                    950: '#0e131f',
+                },
+            },
         },
     },
 };
