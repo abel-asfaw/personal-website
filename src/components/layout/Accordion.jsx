@@ -13,7 +13,7 @@ export default function Accordion({ items }) {
     const renderedItems = items.map((item, index) => {
         const isExpanded = index === expandedIndex;
         const icon = (
-            <span className="[&>*]:h-5 [&>*]:w-5">
+            <span className="[&>*]:h-6 [&>*]:w-6">
                 {isExpanded ? <AiFillMinusCircle /> : <AiFillPlusCircle />}
             </span>
         );
