@@ -1,11 +1,11 @@
 import { HiCode } from 'react-icons/hi';
-import { projects } from '../../data/data';
+import { projects } from '../../data/portfolioData';
 
 export default function Projects() {
     return (
         <section id="projects">
             <div className="container mx-auto px-5 py-10 text-center lg:px-40">
-                <div className="mb-20 flex w-full flex-col">
+                <div className="mb-10 flex w-full flex-col">
                     <HiCode className="mx-auto mb-4 inline-block h-10 w-10" />
                     <h1 className="mb-4 font-cubano text-3xl text-white sm:text-4xl">
                         Apps I've Built
