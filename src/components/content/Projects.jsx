@@ -12,10 +12,10 @@ export default function Projects() {
                     </h1>
                     <p className="mx-auto text-base leading-relaxed lg:w-2/3">
                         Dive into a selection of projects that highlight my
-                        creativity, technical expertise, and problem-solving
-                        abilities. These projects demonstrate my passion for
-                        innovation and my dedication to developing solutions
-                        that make a difference.
+                        creativity and problem-solving skills. These projects
+                        show my commitment to learning, growing, and
+                        making an impact in my field, even outside of a
+                        professional context.
                     </p>
                 </div>
                 <div className="-m-2 flex flex-wrap">
