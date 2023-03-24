@@ -9,11 +9,12 @@ export default function About() {
                         Hi, I'm Abel. I love building things.
                     </h1>
                     <p className="mb-8 leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Debitis ex beatae architecto delectus assumenda,
-                        necessitatibus fuga ratione! Illo ab architecto
-                        explicabo nisi, ad non, voluptatum natus dolorem aliquid
-                        aperiam suscipit!
+                        My background in Computer Science and work experience at
+                        Redfin has enabled me to develop software solutions that
+                        make a real difference in people's lives. Whether it be
+                        optimizing user interfaces or automating complex
+                        systems, I thrive on the challenge of turning a vision
+                        into a working product.
                     </p>
                     <div className="flex justify-center gap-4 font-cubano lg:whitespace-nowrap">
                         <CallToActionButton

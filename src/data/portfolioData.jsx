@@ -4,13 +4,12 @@ import {
     DiPython,
     DiHtml5,
     DiCss3,
-    DiPostgresql,
     DiReact,
-    DiGit,
 } from 'react-icons/di';
-import { SiGraphql, SiCplusplus } from 'react-icons/si';
+import { SiGraphql, SiCplusplus, SiPostgresql } from 'react-icons/si';
+import { FaGitAlt } from 'react-icons/fa';
 
-const ICON_CLASSES = 'text-green-400 w-6 h-6 flex-shrink-0 mr-4';
+const ICON_CLASSES = 'text-green-400 w-6 h-6 flex-shrink-0';
 
 export const projects = [
     {
@@ -55,7 +54,40 @@ export const skills = {
     React: <DiReact className={ICON_CLASSES} />,
     HTML: <DiHtml5 className={ICON_CLASSES} />,
     CSS: <DiCss3 className={ICON_CLASSES} />,
-    Postgres: <DiPostgresql className={ICON_CLASSES} />,
+    Postgres: <SiPostgresql className={ICON_CLASSES} />,
     GraphQL: <SiGraphql className={ICON_CLASSES} />,
-    Git: <DiGit className={ICON_CLASSES} />,
+    Git: <FaGitAlt className={ICON_CLASSES} />,
 };
+
+export const experience = [
+    {
+        title: 'Software Engineer @ Lockheed Martin',
+        date: 'Apr. 2023 - Present',
+        desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. \
+        Nisi sit ipsa delectus eum quo voluptas aspernatur accusantium distinctio possimus est.',
+    },
+    {
+        title: 'Software Developer @ Redfin',
+        date: 'Jan. 2022 - Nov. 2022',
+        desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. \
+        Nisi sit ipsa delectus eum quo voluptas aspernatur accusantium distinctio possimus est.',
+    },
+    {
+        title: 'Teaching Assistant @ UMBC',
+        date: 'Aug. 2020 - Jan. 2022',
+        desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. \
+        Nisi sit ipsa delectus eum quo voluptas aspernatur accusantium distinctio possimus est.',
+    },
+    {
+        title: 'Computer Science Tutor @ UMBC',
+        date: 'Mar. 2021 - Dec. 2021',
+        desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. \
+        Nisi sit ipsa delectus eum quo voluptas aspernatur accusantium distinctio possimus est.',
+    },
+    {
+        title: 'DevOps Engineer Intern @ Northrop Grumman',
+        date: 'May 2021 - Aug. 2021',
+        desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. \
+        Nisi sit ipsa delectus eum quo voluptas aspernatur accusantium distinctio possimus est.',
+    },
+];
