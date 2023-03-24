@@ -10,8 +10,11 @@ export default function Skills() {
                         Reach Out
                     </h1>
                     <p className="mx-auto text-base leading-relaxed lg:w-3/4 xl:w-2/4">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit.
+                        Think my skills and experience might be a good fit for
+                        your company? I'd love to chat! Feel free to reach out
+                        with any inquiries, questions, or job opportunities you
+                        want to discuss. I'm always on the lookout for new ways
+                        to grow professionally and make a positive impact.
                     </p>
                 </div>
                 <div className="mx-auto flex w-1/2 items-center justify-center sm:mb-2">
@@ -21,7 +24,7 @@ export default function Skills() {
                             height="100%"
                             src="/assets/images/mail.jpeg"
                             alt="Drop me a line"
-                            className="hover:scale-110 cursor-pointer rounded transition-all duration-500"
+                            className="cursor-pointer rounded transition-all duration-500 hover:scale-110"
                         />
                     </a>
                 </div>

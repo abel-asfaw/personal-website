@@ -12,9 +12,11 @@ export default function Skills() {
                         Experience
                     </h1>
                     <p className="mx-auto text-base leading-relaxed lg:w-3/4 xl:w-2/4">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Nisi sit ipsa delectus eum quo voluptas aspernatur
-                        accusantium distinctio possimus est.
+                        Explore my professional journey and discover the
+                        positions I've held, companies I've worked with, and the
+                        value I've brought to various teams. My work experience
+                        showcases my adaptability and commitment to delivering
+                        impactful results.
                     </p>
                 </div>
                 <div className="-mx-2 flex flex-wrap sm:mx-auto sm:mb-2 lg:w-4/5">
