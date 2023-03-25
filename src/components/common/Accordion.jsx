@@ -18,7 +18,7 @@ export default function Accordion({ items }) {
             </span>
         );
         const classes =
-            'flex h-full rounded bg-gray-800 p-4 gap-4 items-center cursor-pointer mb-4';
+            'mb-4 flex h-full cursor-pointer items-center gap-3 rounded bg-gray-800 p-4';
 
         return (
             <div key={index}>
@@ -32,7 +32,7 @@ export default function Accordion({ items }) {
                     </div>
                 </div>
                 {isExpanded && (
-                    <div className="mb-4 flex h-full items-center rounded border-2 border-gray-800 bg-gray-900 p-4">
+                    <div className="mb-4 flex h-full rounded border-2 border-gray-800 bg-gray-900 p-4">
                         {item.desc}
                     </div>
                 )}
