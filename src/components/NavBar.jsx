@@ -1,5 +1,4 @@
-import { HiArrowLongRight } from 'react-icons/hi2';
-import NavButton from '../common/NavButton';
+import NavButton from './common/NavButton';
 
 export default function Navbar() {
     return (

@@ -1,37 +1,37 @@
-import CallToActionButton from '../common/CallToActionButton';
+import PromptButton from './common/PromptButton';
 
 export default function About() {
     return (
         <section id="about">
-            <div className="container mx-auto flex flex-col items-center px-5 py-10 md:flex-row">
-                <div className="mb-16 flex flex-col items-center text-center md:mb-0 md:w-1/2 md:items-start md:pr-16 md:text-left lg:flex-grow lg:pr-24">
-                    <h1 className="title-font mb-4 font-cubano text-3xl font-medium text-white sm:text-4xl">
+            <div className="container mx-auto flex flex-col items-center px-5 py-10 md:flex-row md:p-10">
+                <div className="mb-10 flex flex-col items-center gap-4 text-center md:mb-0 md:w-1/2 md:items-start md:pr-16 md:text-left lg:flex-grow lg:pr-24">
+                    <h1 className="title-font font-cubano text-3xl font-medium text-white sm:text-4xl">
                         Hi, I'm Abel. I love building things.
                     </h1>
-                    <p className="mb-8 leading-relaxed">
+                    <p className="leading-relaxed">
                         My background in Computer Science and work experience at
-                        Redfin has enabled me to develop software solutions that
-                        make a real difference in people's lives. Whether it be
+                        Redfin has enabled me to develop software that makes a
+                        real difference in people's lives. Whether it's
                         optimizing user interfaces or automating complex
-                        systems, I thrive on the challenge of turning a vision
-                        into a working product.
+                        systems, I'm motivated by the challenge of transforming
+                        ideas into functional products 🚀
                     </p>
-                    <div className="flex justify-center gap-4 font-cubano lg:whitespace-nowrap">
-                        <CallToActionButton
+                    <div className="flex gap-4 text-center font-cubano">
+                        <PromptButton
                             href="#contact"
                             className="bg-green-600 text-white hover:bg-green-500"
                         >
                             Hire Me
-                        </CallToActionButton>
-                        <CallToActionButton
+                        </PromptButton>
+                        <PromptButton
                             href="#projects"
                             className="bg-gray-800 text-gray-400 hover:bg-gray-700"
                         >
                             See My Projects
-                        </CallToActionButton>
+                        </PromptButton>
                     </div>
                 </div>
-                <div className="w-5/6 md:w-1/2 lg:w-full lg:max-w-lg">
+                <div className="w-2/3 lg:w-full lg:max-w-sm">
                     <picture>
                         <img
                             width="100%"

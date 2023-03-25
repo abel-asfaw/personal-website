@@ -9,7 +9,7 @@ import {
 import { SiGraphql, SiCplusplus, SiPostgresql } from 'react-icons/si';
 import { FaGitAlt } from 'react-icons/fa';
 
-const ICON_CLASSES = 'text-green-400 w-6 h-6 flex-shrink-0';
+const ICON_CLASSES = 'text-green-400 w-6 h-6';
 
 export const projects = [
     {
