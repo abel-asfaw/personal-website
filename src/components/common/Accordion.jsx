@@ -18,7 +18,7 @@ export default function Accordion({ items }) {
             </span>
         );
         const classes =
-            'mb-4 flex h-full cursor-pointer items-center gap-3 rounded bg-gray-800 p-4';
+            'mb-4 flex h-full cursor-pointer items-center gap-3 rounded bg-gray-800 p-4 duration-200 hover:bg-gray-700';
 
         return (
             <div key={index}>
