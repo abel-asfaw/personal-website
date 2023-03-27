@@ -39,17 +39,19 @@ export default function Accordion({ items }) {
                 {isExpanded && (
                     <div className="mb-4 flex h-full flex-wrap rounded border-2 border-gray-800 bg-gray-900 p-4 text-white">
                         <span>{item.description}</span>
-                        <span className="mt-2 flex flex-wrap gap-2">
-                            {item.skills.map((skill, index) => (
-                                <Button
-                                    pillButton
-                                    className="bg-indigo-600"
-                                    key={index}
-                                >
-                                    {skill}
-                                </Button>
-                            ))}
-                        </span>
+                        {item.skills.length !== 0 && (
+                            <span className="mt-2 flex flex-wrap gap-2">
+                                {item.skills.map((skill, index) => (
+                                    <Button
+                                        pillButton
+                                        className="bg-indigo-600"
+                                        key={index}
+                                    >
+                                        {skill}
+                                    </Button>
+                                ))}
+                            </span>
+                        )}
                     </div>
                 )}
             </div>
