@@ -67,7 +67,7 @@ export const experience = [
             'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi\
                 sit ipsa delectus eum quo voluptas aspernatur accusantium\
                 distinctio possimus est.',
-        skills: ['Java', 'JavaScript', 'React', 'Postgres'],
+        skills: [],
     },
     {
         title: 'Software Developer @ Redfin',
