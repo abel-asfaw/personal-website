@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
+import classNames from 'classnames';
 
 export default function Accordion({ items }) {
     const [expandedIndex, setExpandedIndex] = useState(-1);
@@ -17,8 +18,10 @@ export default function Accordion({ items }) {
                 {isExpanded ? <AiFillMinusCircle /> : <AiFillPlusCircle />}
             </span>
         );
-        const classes =
-            'mb-4 flex h-full cursor-pointer items-center gap-3 rounded bg-gray-800 p-4 duration-200 hover:bg-gray-700';
+        const classes = classNames(
+            'mb-4 flex h-full cursor-pointer items-center gap-3 rounded p-4 duration-200 sm:hover:bg-gray-700',
+            { 'bg-gray-800': !isExpanded, 'bg-gray-700': isExpanded }
+        );
 
         return (
             <div key={index}>
@@ -32,8 +35,8 @@ export default function Accordion({ items }) {
                     </div>
                 </div>
                 {isExpanded && (
-                    <div className="mb-4 flex h-full rounded border-2 border-gray-800 bg-gray-900 p-4">
-                        {item.desc}
+                    <div className="mb-4 flex h-full rounded border-2 border-gray-800 bg-gray-900 p-4 text-white">
+                        <span>{item.description}</span>
                     </div>
                 )}
             </div>
