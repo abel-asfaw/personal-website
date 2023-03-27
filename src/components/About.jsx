@@ -1,4 +1,4 @@
-import PromptButton from './common/PromptButton';
+import Button from './common/Button';
 
 export default function About() {
     return (
@@ -17,18 +17,20 @@ export default function About() {
                         ideas into functional products 🚀
                     </p>
                     <div className="flex gap-4 text-center font-cubano">
-                        <PromptButton
+                        <Button
+                            promptButton
                             href="#contact"
                             className="bg-green-600 text-white hover:bg-green-500"
                         >
                             Hire Me
-                        </PromptButton>
-                        <PromptButton
+                        </Button>
+                        <Button
+                            promptButton
                             href="#projects"
                             className="bg-gray-800 text-gray-400 hover:bg-gray-700"
                         >
                             See My Projects
-                        </PromptButton>
+                        </Button>
                     </div>
                 </div>
                 <div className="w-2/3 lg:w-full lg:max-w-sm">

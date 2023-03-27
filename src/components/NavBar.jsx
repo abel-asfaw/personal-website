@@ -1,4 +1,4 @@
-import NavButton from './common/NavButton';
+import Button from './common/Button';
 
 export default function Navbar() {
     return (
@@ -8,9 +8,15 @@ export default function Navbar() {
                     <a href="#about">Abel Asfaw</a>
                 </nav>
                 <nav className="flex gap-2 sm:mr-auto sm:ml-4 sm:border-l sm:border-gray-700 sm:p-0 sm:pl-4">
-                    <NavButton href="#experience">Experience</NavButton>
-                    <NavButton href="#projects">Projects</NavButton>
-                    <NavButton href="#skills">Skills</NavButton>
+                    <Button navButton href="#experience">
+                        Experience
+                    </Button>
+                    <Button navButton href="#projects">
+                        Projects
+                    </Button>
+                    <Button navButton href="#skills">
+                        Skills
+                    </Button>
                 </nav>
             </div>
         </header>
