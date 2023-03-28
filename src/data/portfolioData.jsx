@@ -13,16 +13,16 @@ const ICON_CLASSES = 'text-green-400 w-6 h-6';
 
 export const projects = [
     {
-        title: 'Project 1',
-        subtitle: 'Stack 1',
+        title: 'Personal Website',
+        subtitle: 'JavaScript, React, Tailwind CSS',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?',
-        image: '/assets/images/project-1.avif',
-        link: 'https://github.com/abel-asfaw/',
+        image: '/assets/svg/a-background.svg',
+        link: 'https://github.com/abel-asfaw/personal-website',
     },
     {
         title: 'Project 2',
-        subtitle: 'Stack 2',
+        subtitle: 'Node, React, Docker, Kubernetes',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?',
         image: '/assets/images/project-2.avif',
@@ -30,7 +30,7 @@ export const projects = [
     },
     {
         title: 'Project 3',
-        subtitle: 'Stack 3',
+        subtitle: 'Python, FastAPI, Postgres, Docker',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?',
         image: '/assets/images/project-3.avif',
@@ -38,7 +38,7 @@ export const projects = [
     },
     {
         title: 'Project 4',
-        subtitle: 'Stack 4',
+        subtitle: 'Python, FastAPI, S3, Postgres, React',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?',
         image: '/assets/images/project-4.avif',

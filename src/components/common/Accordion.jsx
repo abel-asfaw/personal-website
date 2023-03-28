@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 import Button from './Button';
-import { skills } from '../../data/portfolioData';
 import classNames from 'classnames';
 
 export default function Accordion({ items }) {
