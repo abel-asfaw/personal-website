@@ -1,11 +1,11 @@
-import { MdWorkHistory } from 'react-icons/md';
+import { MdOutlineWorkOutline } from 'react-icons/md';
 import { experience } from '../data/experience';
 import Accordion from './common/Accordion';
 import Section from './common/Section';
 
 export default function Skills() {
     const id = 'experience',
-        icon = <MdWorkHistory />,
+        icon = <MdOutlineWorkOutline />,
         title = 'Experience',
         blurb =
             "Explore my professional journey and discover the \
