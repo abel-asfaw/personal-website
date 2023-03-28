@@ -1,9 +1,9 @@
-import { HiUser } from 'react-icons/hi2';
+import { HiOutlineUser } from 'react-icons/hi';
 import Section from './common/Section';
 
 export default function Skills() {
     const id = 'contact',
-        icon = <HiUser />,
+        icon = <HiOutlineUser />,
         title = 'React Out',
         blurb = (
             <span>

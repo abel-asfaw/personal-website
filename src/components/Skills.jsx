@@ -1,10 +1,10 @@
-import { HiCpuChip } from 'react-icons/hi2';
+import { HiOutlineChip } from 'react-icons/hi';
 import { skills } from '../data/skills';
 import Section from './common/Section';
 
 export default function Skills() {
     const id = 'skills',
-        icon = <HiCpuChip />,
+        icon = <HiOutlineChip />,
         title = 'Skills & Technologies',
         blurb =
             'Get an overview of my technical skills, which have been \
