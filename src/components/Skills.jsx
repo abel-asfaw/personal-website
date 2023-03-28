@@ -1,5 +1,5 @@
 import { HiCpuChip } from 'react-icons/hi2';
-import { skills } from '../data/portfolioData';
+import { skills } from '../data/skills';
 import Section from './common/Section';
 
 export default function Skills() {

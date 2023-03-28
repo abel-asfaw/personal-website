@@ -1,5 +1,5 @@
 import { MdWorkHistory } from 'react-icons/md';
-import { experience } from '../data/portfolioData';
+import { experience } from '../data/experience';
 import Accordion from './common/Accordion';
 import Section from './common/Section';
 

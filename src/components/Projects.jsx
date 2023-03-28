@@ -1,5 +1,5 @@
 import { HiCode } from 'react-icons/hi';
-import { projects } from '../data/portfolioData';
+import { projects } from '../data/projects';
 import Section from './common/Section';
 
 export default function Projects() {
