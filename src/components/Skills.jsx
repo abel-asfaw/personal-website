@@ -19,7 +19,9 @@ export default function Skills() {
                 {Object.entries(skills).map(([skill, icon]) => (
                     <div key={skill} className="w-full p-2 xs:w-1/2">
                         <div className="flex h-full gap-4 rounded bg-gray-800 p-4">
-                            {icon}
+                            <span className="[&>*]:text-green-400 [&>*]:w-6 [&>*]:h-6">
+                                {icon}
+                            </span>
                             <span className="font-medium text-white">
                                 {skill}
                             </span>
