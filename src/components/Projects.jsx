@@ -21,7 +21,7 @@ export default function Projects() {
                         className="w-100 p-4 sm:w-1/2"
                         target="_blank"
                     >
-                        <div className="relative flex">
+                        <div className="relative flex h-full">
                             <img
                                 alt="gallery"
                                 className="absolute inset-0 h-full w-full object-cover object-center"

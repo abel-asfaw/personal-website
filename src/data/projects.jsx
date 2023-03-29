@@ -33,7 +33,7 @@ export const projects = [
     },
     {
         title: 'Project 4',
-        subtitle: 'Python, FastAPI, S3, Postgres, React',
+        subtitle: 'Python, React, FastAPI, S3, Postgres, Docker',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit.\
                 Praesentium aspernatur a aut earum dolore non eligendi quasi\
