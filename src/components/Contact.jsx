@@ -2,7 +2,7 @@ import Section from './common/Section';
 
 export default function Skills() {
     const id = 'contact',
-        title = 'React Out',
+        title = 'Reach Out',
         blurb = (
             <span>
                 Think my skills and experience might be a good fit for your
