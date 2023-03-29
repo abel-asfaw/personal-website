@@ -26,15 +26,6 @@ export default function Footer() {
                             <FaLinkedinIn className={classes} />
                         </a>
                     </li>
-                    <li>
-                        <a
-                            href="https://instagram.com/other.abel/"
-                            target="_blank"
-                            title="Instagram"
-                        >
-                            <FaInstagram className={classes} />
-                        </a>
-                    </li>
                 </ul>
             </div>
         </footer>
