@@ -1,6 +1,6 @@
 export const experience = [
     {
-        title: 'Software Engineer @ Lockheed Martin',
+        title: 'Software Engineer @ Lorem Ipsum',
         date: 'Apr. 2023 - Present',
         description:
             'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi\
