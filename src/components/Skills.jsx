@@ -1,10 +1,8 @@
-import { HiOutlineChip } from 'react-icons/hi';
 import { skills } from '../data/skills';
 import Section from './common/Section';
 
 export default function Skills() {
     const id = 'skills',
-        icon = <HiOutlineChip />,
         title = 'Skills & Technologies',
         blurb =
             'Get an overview of my technical skills, which have been \
@@ -14,7 +12,7 @@ export default function Skills() {
             proficient and skilled professional in my field.';
 
     return (
-        <Section id={id} icon={icon} title={title} blurb={blurb}>
+        <Section id={id} title={title} blurb={blurb}>
             <div className="-mx-2 flex flex-wrap sm:mx-auto sm:mb-2 lg:w-4/5">
                 {Object.entries(skills).map(([skill, icon]) => (
                     <div key={skill} className="w-full p-2 xs:w-1/2">
