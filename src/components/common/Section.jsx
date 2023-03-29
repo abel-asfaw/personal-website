@@ -1,10 +1,24 @@
-export default function Section({ id, icon, title, blurb, children }) {
+import {
+    HiOutlineOfficeBuilding,
+    HiCode,
+    HiOutlineChip,
+    HiOutlineUserCircle,
+} from 'react-icons/hi';
+
+export default function Section({ id, title, blurb, children }) {
+    const icons = {
+        experience: <HiOutlineOfficeBuilding />,
+        projects: <HiCode />,
+        skills: <HiOutlineChip />,
+        contact: <HiOutlineUserCircle />,
+    };
+
     return (
         <section id={id}>
             <div className="container mx-auto px-5 py-10">
                 <div className="mb-10 flex w-full flex-col gap-4 text-center">
                     <span className="[&>*]:mx-auto [&>*]:inline-block [&>*]:h-10 [&>*]:w-10">
-                        {icon}
+                        {icons[id]}
                     </span>
                     <h1 className="font-cubano text-3xl text-white sm:text-4xl">
                         {title}

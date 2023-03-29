@@ -1,10 +1,8 @@
-import { HiCode } from 'react-icons/hi';
 import { projects } from '../data/projects';
 import Section from './common/Section';
 
 export default function Projects() {
     const id = 'projects',
-        icon = <HiCode />,
         title = "Apps I've Built",
         blurb =
             'Dive into a selection of projects that highlight my \
@@ -14,7 +12,7 @@ export default function Projects() {
             context.';
 
     return (
-        <Section id={id} icon={icon} title={title} blurb={blurb}>
+        <Section id={id} title={title} blurb={blurb}>
             <div className="-mt-4 flex flex-wrap text-center lg:px-40">
                 {projects.map(project => (
                     <a

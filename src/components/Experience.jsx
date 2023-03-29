@@ -1,12 +1,10 @@
-import { MdOutlineWorkOutline } from 'react-icons/md';
 import { experience } from '../data/experience';
 import Accordion from './common/Accordion';
 import Section from './common/Section';
 
 export default function Skills() {
     const id = 'experience',
-        icon = <MdOutlineWorkOutline />,
-        title = 'Experience',
+        title = "Where I've Worked",
         blurb =
             "Explore my professional journey and discover the \
             positions I've held, companies I've worked with, and the \
@@ -15,7 +13,7 @@ export default function Skills() {
             impactful results.";
 
     return (
-        <Section id={id} icon={icon} title={title} blurb={blurb}>
+        <Section id={id} title={title} blurb={blurb}>
             <div className="mx-auto flex flex-wrap lg:w-4/5">
                 <Accordion items={experience} />
             </div>
