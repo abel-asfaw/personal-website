@@ -5,7 +5,7 @@ export const projects = [
         description:
             "Fully responsive web application showcasing my experience, skills, and projects in order to\
                 provide an online presence for potential employers. You're\
-                already looking at the demo, so click to see source code :)",
+                already looking at the demo, so click to see source code 🥳",
         image: '/assets/svg/a-background.svg',
         link: 'https://github.com/abel-asfaw/personal-website',
     },

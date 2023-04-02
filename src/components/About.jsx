@@ -9,12 +9,15 @@ export default function About() {
                         Hi, I'm Abel. I love building things.
                     </h1>
                     <p className="leading-relaxed">
-                        My background in Computer Science and work experience at
-                        Redfin has enabled me to develop software that makes a
-                        real difference in people's lives. Whether it's
-                        optimizing user interfaces or automating complex
-                        systems, I'm motivated by the challenge of transforming
-                        ideas into functional products 🚀
+                        After graduating magna cum laude with a degree in
+                        Computer Science from UMBC, I applied my skills and
+                        knowledge to my work at Redfin. My background in
+                        Computer Science and experience at Redfin has enabled me
+                        to develop software that makes a difference in people's
+                        lives. Whether it's optimizing user interfaces or
+                        automating complex systems, I'm motivated by the
+                        challenge of transforming ideas into functional products
+                        🚀
                     </p>
                     <div className="flex gap-4 text-center font-cubano">
                         <Button
