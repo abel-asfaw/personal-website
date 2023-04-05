@@ -17,7 +17,7 @@ export const projects = [
                 Praesentium aspernatur a aut earum dolore non eligendi quasi\
                 labore laudantium quae nobis tenetur quam iure nihil tempora\
                 reprehenderit, maxime ipsum.',
-        image: '/assets/images/project-2.avif',
+        image: '/assets/images/project-2.webp',
         link: 'https://github.com/abel-asfaw/',
     },
     {
@@ -28,7 +28,7 @@ export const projects = [
                 Praesentium aspernatur a aut earum dolore non eligendi quasi\
                 labore laudantium quae nobis tenetur quam iure nihil tempora\
                 reprehenderit, maxime ipsum.',
-        image: '/assets/images/project-3.avif',
+        image: '/assets/images/project-3.webp',
         link: 'https://github.com/abel-asfaw/',
     },
     {
@@ -39,7 +39,7 @@ export const projects = [
                 Praesentium aspernatur a aut earum dolore non eligendi quasi\
                 labore laudantium quae nobis tenetur quam iure nihil tempora\
                 reprehenderit, maxime ipsum.',
-        image: '/assets/images/project-4.avif',
+        image: '/assets/images/project-4.webp',
         link: 'https://github.com/abel-asfaw/',
     },
 ];
