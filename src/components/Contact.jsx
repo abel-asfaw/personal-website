@@ -8,7 +8,7 @@ export default function Skills() {
                 Feel free to reach out with any questions or job opportunities
                 you want to discuss. I'm always on the lookout for new ways to
                 grow professionally and make a positive impact.
-                <p className="font-medium text-white">
+                <p className="font-medium text-gray-300">
                     Click below to send me an email!
                 </p>
             </span>
@@ -21,7 +21,7 @@ export default function Skills() {
                     <img
                         width="100%"
                         height="100%"
-                        src="/assets/images/mail.jpeg"
+                        src="/assets/images/mail.webp"
                         alt="Drop me a line"
                         className="cursor-pointer rounded duration-500 hover:scale-110"
                     />
