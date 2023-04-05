@@ -2,14 +2,12 @@ import Section from './common/Section';
 
 export default function Skills() {
     const id = 'contact',
-        title = 'Reach Out',
+        title = 'Contact Me',
         blurb = (
             <span>
-                Think my skills and experience might be a good fit for your
-                company? I'd love to chat! Feel free to reach out with any
-                questions or job opportunities you want to discuss. I'm always
-                on the lookout for new ways to grow professionally and make a
-                positive impact.
+                Feel free to reach out with any questions or job opportunities
+                you want to discuss. I'm always on the lookout for new ways to
+                grow professionally and make a positive impact.
                 <p className="font-medium text-white">
                     Click below to send me an email!
                 </p>
