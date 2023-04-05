@@ -1,4 +1,5 @@
 import Button from './common/Button';
+import { FiExternalLink } from 'react-icons/fi';
 
 export default function About() {
     return (
@@ -16,23 +17,24 @@ export default function About() {
                         to develop software that makes a difference in people's
                         lives. Whether it's optimizing user interfaces or
                         automating complex systems, I'm motivated by the
-                        challenge of transforming ideas into functional products
-                        🚀
+                        challenge of transforming ideas into functional
+                        products&nbsp;🚀
                     </p>
                     <div className="flex gap-4 text-center font-cubano">
                         <Button
                             promptButton
-                            href="#contact"
-                            className="bg-green-600 text-white hover:bg-green-500"
+                            href="/assets/documents/resume.pdf"
+                            download="Abel-Asfaw-Resume"
+                            className="bg-green-600 text-white hover:bg-green-500 flex items-center gap-2"
                         >
-                            Hire Me
+                            Resume <FiExternalLink />
                         </Button>
                         <Button
                             promptButton
-                            href="#projects"
+                            href="#contact"
                             className="bg-gray-800 text-gray-400 hover:bg-gray-700"
                         >
-                            See My Projects
+                            Reach Out
                         </Button>
                     </div>
                 </div>
