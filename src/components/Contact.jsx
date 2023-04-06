@@ -8,7 +8,7 @@ export default function Skills() {
                 Feel free to reach out with any questions or job opportunities
                 you want to discuss. I'm always on the lookout for new ways to
                 grow professionally and make a positive impact.
-                <p className="font-medium text-gray-300">
+                <p className="font-medium text-white">
                     Click below to send me an email!
                 </p>
             </span>
