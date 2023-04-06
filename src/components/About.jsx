@@ -8,7 +8,7 @@ export default function About() {
                 <div className="mb-10 flex flex-col items-center gap-4 text-center md:mb-0 md:w-1/2 md:items-start md:pr-16 md:text-left lg:flex-grow lg:pr-24">
                     <h1 className="font-cubano text-3xl font-medium text-white sm:text-4xl">
                         Hi, I'm Abel.{' '}
-                        <span className="animate-wave bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+                        <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
                             I love building things.
                         </span>
                     </h1>
