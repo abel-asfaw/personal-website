@@ -23,7 +23,7 @@ export default function About() {
                     <div className="flex gap-4 text-center font-cubano">
                         <Button
                             promptButton
-                            href="/assets/documents/resume.pdf"
+                            href="/resume.pdf"
                             download="Abel-Asfaw-Resume"
                             className="bg-green-600 text-white hover:bg-green-500 flex items-center gap-2"
                         >
