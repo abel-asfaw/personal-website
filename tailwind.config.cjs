@@ -12,8 +12,23 @@ module.exports = {
             },
             colors: {
                 gray: {
-                    950: '#0e131f',
+                    925: '#0e131f',
                 },
+            },
+            keyframes: {
+                wave: {
+                    '0%, 100%': {
+                        'background-size': '200% 200%',
+                        'background-position': 'left center',
+                    },
+                    '100%': {
+                        'background-size': '200% 200%',
+                        'background-position': 'right center',
+                    },
+                },
+            },
+            animation: {
+                wave: 'wave 5s alternate infinite',
             },
         },
     },

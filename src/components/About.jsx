@@ -7,7 +7,10 @@ export default function About() {
             <div className="container mx-auto flex flex-col items-center px-5 py-10 md:flex-row md:p-10">
                 <div className="mb-10 flex flex-col items-center gap-4 text-center md:mb-0 md:w-1/2 md:items-start md:pr-16 md:text-left lg:flex-grow lg:pr-24">
                     <h1 className="font-cubano text-3xl font-medium text-white sm:text-4xl">
-                        Hi, I'm Abel. I love building things.
+                        Hi, I'm Abel.{' '}
+                        <span className="animate-wave bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+                            I love building things.
+                        </span>
                     </h1>
                     <p className="leading-relaxed">
                         After graduating magna cum laude with a degree in
@@ -25,7 +28,7 @@ export default function About() {
                             promptButton
                             href="/resume.pdf"
                             download="Abel-Asfaw-Resume"
-                            className="bg-green-600 text-white hover:bg-green-500 flex items-center gap-2"
+                            className="flex items-center gap-2 bg-green-600 text-white hover:bg-green-500"
                         >
                             Resume <FiExternalLink />
                         </Button>
