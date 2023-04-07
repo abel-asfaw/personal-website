@@ -3,7 +3,7 @@ import Section from './common/Section';
 
 export default function Skills() {
     const id = 'skills',
-        title = 'Skills & Technologies',
+        title = 'What I Can Do',
         blurb =
             'Get an overview of my technical skills, which have been \
             honed through years of experience and continuous \

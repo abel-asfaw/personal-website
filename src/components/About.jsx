@@ -4,8 +4,8 @@ import { FiExternalLink } from 'react-icons/fi';
 export default function About() {
     return (
         <section id="about">
-            <div className="container mx-auto flex flex-col items-center px-5 py-10 md:flex-row md:p-10">
-                <div className="mb-10 flex flex-col items-center gap-4 text-center md:mb-0 md:w-1/2 md:items-start md:pr-16 md:text-left lg:flex-grow lg:pr-24">
+            <div className="container mx-auto flex flex-col items-center gap-10 px-5 py-10 md:flex-row md:p-10 lg:gap-20">
+                <div className="flex flex-col items-center gap-4 text-center md:w-1/2 md:items-start md:text-left lg:flex-grow">
                     <h1 className="font-cubano text-3xl font-medium text-white sm:text-4xl">
                         Hi, I'm Abel.{' '}
                         <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
