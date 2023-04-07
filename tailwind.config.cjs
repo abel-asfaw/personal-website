@@ -17,13 +17,13 @@ module.exports = {
             },
             keyframes: {
                 wave: {
-                    '0%, 100%': {
-                        'background-size': '200% 200%',
-                        'background-position': 'left center',
+                    '0%': {
+                        'background-size': '400% 400%',
+                        'background-position': 'left',
                     },
                     '100%': {
-                        'background-size': '200% 200%',
-                        'background-position': 'right center',
+                        'background-size': '400% 400%',
+                        'background-position': 'right',
                     },
                 },
             },
