@@ -28,11 +28,11 @@ export default function Accordion({ items }) {
             <div key={index}>
                 <div className={classes} onClick={() => handleClick(index)}>
                     <div className="text-green-400">{icon}</div>
-                    <div className="flex flex-1 justify-between gap-1">
+                    <div className="flex flex-1 flex-col justify-center gap-1 sm:flex-row sm:justify-between">
                         <span className="font-medium text-white">
                             {item.title}
                         </span>
-                        <span className="text-right">{item.date}</span>
+                        <span className="sm:text-right">{item.date}</span>
                     </div>
                 </div>
                 {isExpanded && (
