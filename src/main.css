@@ -7,11 +7,6 @@
         font-family: 'Cubano';
         src: url('/assets/fonts/Cubano.ttf');
     }
-
-    @font-face {
-        font-family: 'Roboto';
-        src: url('/assets/fonts/RobotoMono-Light.ttf');
-    }
 }
 
 html {

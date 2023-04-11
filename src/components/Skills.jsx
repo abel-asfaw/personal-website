@@ -16,11 +16,11 @@ export default function Skills() {
             <div className="-mx-2 flex flex-wrap sm:mx-auto sm:mb-2 lg:w-4/5">
                 {Object.entries(skills).map(([skill, icon]) => (
                     <div key={skill} className="w-full p-2 xs:w-1/2">
-                        <div className="flex h-full gap-4 rounded bg-gray-800 p-4">
-                            <span className="[&>*]:text-green-400 [&>*]:w-6 [&>*]:h-6">
+                        <div className="flex h-full items-center gap-3 rounded bg-gray-800 px-3 py-4 sm:gap-4 sm:px-4">
+                            <span className="[&>*]:h-6 [&>*]:w-6 [&>*]:text-green-400">
                                 {icon}
                             </span>
-                            <span className="font-medium text-white">
+                            <span className="font-mono font-medium text-white">
                                 {skill}
                             </span>
                         </div>
