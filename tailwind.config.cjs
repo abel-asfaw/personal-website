@@ -8,7 +8,6 @@ module.exports = {
             },
             fontFamily: {
                 cubano: ['Cubano', 'sans-serif'],
-                roboto: ['Roboto', 'sans-serif'],
             },
             colors: {
                 gray: {
