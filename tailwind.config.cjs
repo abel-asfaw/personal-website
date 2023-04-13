@@ -27,7 +27,7 @@ module.exports = {
                 },
             },
             animation: {
-                wave: 'wave 5s alternate infinite',
+                wave: 'wave 5s alternate ease-in-out infinite',
             },
         },
     },

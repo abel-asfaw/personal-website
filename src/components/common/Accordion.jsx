@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
+import { HiPlus, HiMinus } from 'react-icons/hi';
 import Button from './Button';
 import classNames from 'classnames';
 
@@ -20,7 +20,7 @@ export default function Accordion({ items }) {
         );
         const icon = (
             <span className="[&>*]:h-6 [&>*]:w-6">
-                {isExpanded ? <AiFillMinusCircle /> : <AiFillPlusCircle />}
+                {isExpanded ? <HiMinus /> : <HiPlus />}
             </span>
         );
 
@@ -38,7 +38,7 @@ export default function Accordion({ items }) {
                 {isExpanded && (
                     <div className="mb-4 flex h-full flex-wrap rounded border-2 border-gray-800 bg-gray-900 p-4 text-white">
                         <span>{item.description}</span>
-                        {item.skills.length !== 0 && (
+                        {!!item.skills.length && (
                             <span className="mt-2 flex flex-wrap gap-2">
                                 {item.skills.map((skill, index) => (
                                     <Button
