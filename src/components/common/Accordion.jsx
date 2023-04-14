@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HiPlus, HiMinus } from 'react-icons/hi';
+import { HiOutlinePlusSm, HiOutlineMinusSm } from 'react-icons/hi';
 import Button from './Button';
 import classNames from 'classnames';
 
@@ -20,15 +20,15 @@ export default function Accordion({ items }) {
         );
         const icon = (
             <span className="[&>*]:h-6 [&>*]:w-6">
-                {isExpanded ? <HiMinus /> : <HiPlus />}
+                {isExpanded ? <HiOutlineMinusSm /> : <HiOutlinePlusSm />}
             </span>
         );
 
         return (
-            <div key={index}>
+            <div key={item.title}>
                 <div className={classes} onClick={() => handleClick(index)}>
                     <div className="text-green-400">{icon}</div>
-                    <div className="flex flex-1 flex-col justify-center gap-1 sm:flex-row sm:justify-between">
+                    <div className="flex flex-1 flex-col gap-1 sm:flex-row sm:justify-between">
                         <span className="font-medium text-white">
                             {item.title}
                         </span>
