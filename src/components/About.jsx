@@ -41,7 +41,7 @@ export default function About() {
                         </Button>
                     </div>
                 </div>
-                <div className="w-2/3 lg:w-full lg:max-w-sm">
+                <div className="w-2/3 max-w-xs lg:w-full">
                     <picture>
                         <img
                             width="100%"

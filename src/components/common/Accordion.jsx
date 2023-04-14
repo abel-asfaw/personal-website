@@ -18,10 +18,10 @@ export default function Accordion({ items }) {
             'mb-4 flex h-full cursor-pointer items-center gap-3 rounded p-4 duration-200 sm:hover:bg-gray-700',
             { 'bg-gray-800': !isExpanded, 'bg-gray-700': isExpanded }
         );
-        const icon = (
-            <span className="[&>*]:h-6 [&>*]:w-6">
-                {isExpanded ? <HiOutlineMinusSm /> : <HiOutlinePlusSm />}
-            </span>
+        const icon = isExpanded ? (
+            <HiOutlineMinusSm size={24} />
+        ) : (
+            <HiOutlinePlusSm size={24} />
         );
 
         return (
