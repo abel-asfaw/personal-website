@@ -16,7 +16,7 @@ export default function Skills() {
 
     return (
         <Section id={id} title={title} blurb={blurb}>
-            <div className="mx-auto flex w-1/2 items-center justify-center sm:mb-2 xl:w-1/3">
+            <div className="mx-auto flex w-1/2 items-center justify-center xl:w-1/3">
                 <a href="mailto:abelalex@live.com" target="_blank">
                     <img
                         width="100%"
