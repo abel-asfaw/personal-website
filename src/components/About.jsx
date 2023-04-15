@@ -1,5 +1,5 @@
-import Button from './common/Button';
 import { FiExternalLink } from 'react-icons/fi';
+import Button from './common/Button';
 
 export default function About() {
     return (

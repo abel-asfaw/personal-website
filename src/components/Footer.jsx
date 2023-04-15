@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 export default function Footer() {
     const classes = 'h-6 w-6 duration-200 ease-in hover:text-white';
