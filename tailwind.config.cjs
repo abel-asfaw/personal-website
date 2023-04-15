@@ -8,6 +8,7 @@ module.exports = {
             },
             fontFamily: {
                 cubano: ['Cubano', 'sans-serif'],
+                anuphan: ['Anuphan', 'sans-serif'],
             },
             colors: {
                 gray: {

@@ -7,6 +7,10 @@
         font-family: 'Cubano';
         src: url('/assets/fonts/Cubano.ttf');
     }
+    @font-face {
+        font-family: 'Anuphan';
+        src: url('/assets/fonts/Anuphan.ttf');
+    }
 }
 
 html {

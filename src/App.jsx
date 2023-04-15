@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 
 export default function App() {
     return (
-        <main className="text-gray-400">
+        <main className="font-anuphan text-gray-400">
             <Navbar />
             <About />
             <Experience />

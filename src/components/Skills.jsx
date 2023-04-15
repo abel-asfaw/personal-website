@@ -20,7 +20,7 @@ export default function Skills() {
                             <span className="[&>*]:h-6 [&>*]:w-6 [&>*]:text-green-400">
                                 {icon}
                             </span>
-                            <span className="font-mono text-sm text-white sm:text-base">
+                            <span className="text-white">
                                 {skill}
                             </span>
                         </div>
