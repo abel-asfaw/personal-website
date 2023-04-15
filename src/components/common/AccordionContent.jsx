@@ -11,11 +11,11 @@ export default function Content({ description, skills }) {
             <span>{description}</span>
             {!!skills.length && (
                 <span className="flex flex-wrap gap-2 pt-2">
-                    {skills.map((skill, index) => (
+                    {skills.map(skill => (
                         <Button
+                            key={skill}
                             pillButton
                             className="bg-indigo-600"
-                            key={index}
                         >
                             {skill}
                         </Button>
