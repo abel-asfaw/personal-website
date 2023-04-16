@@ -9,6 +9,8 @@ import {
     SiGraphql,
     SiPostgresql,
     SiGit,
+    SiDocker,
+    SiKubernetes,
 } from 'react-icons/si';
 
 export const skills = {
@@ -22,4 +24,6 @@ export const skills = {
     Postgres: <SiPostgresql />,
     GraphQL: <SiGraphql />,
     Git: <SiGit />,
+    Docker: <SiDocker />,
+    Kubernetes: <SiKubernetes />,
 };
