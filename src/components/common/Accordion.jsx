@@ -56,16 +56,17 @@ export default function Accordion({ items }) {
                         <motion.div
                             key="content"
                             initial="collapsed"
-                            animate="open"
+                            animate="expanded"
                             exit="collapsed"
                             variants={{
-                                open: { opacity: 1, height: 'auto' },
+                                expanded: { opacity: 1, height: 'auto' },
                                 collapsed: { opacity: 0, height: 0 },
                             }}
                             transition={{
                                 duration: 0.4,
                                 ease: [0, 0, 0, 1],
                             }}
+                            className="overflow-hidden"
                         >
                             <motion.div className="pt-4">
                                 <Content

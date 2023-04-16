@@ -4,7 +4,7 @@ import Button from './Button';
 export default function Content({ description, skills }) {
     return (
         <motion.div
-            variants={{ collapsed: { scale: 0.8 }, open: { scale: 1 } }}
+            variants={{ collapsed: { scale: 0.8 }, expanded: { scale: 1 } }}
             transition={{ duration: 0.4 }}
             className="flex h-full flex-wrap rounded border-2 border-gray-800 bg-gray-900 p-4 text-white"
         >
