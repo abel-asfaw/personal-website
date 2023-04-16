@@ -15,7 +15,7 @@ export default function Content({ description, skills }) {
                         <Button
                             key={skill}
                             pillButton
-                            className="bg-indigo-600"
+                            className="bg-indigo-600 font-medium"
                         >
                             {skill}
                         </Button>
