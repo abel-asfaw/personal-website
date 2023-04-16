@@ -15,8 +15,8 @@ export default function Accordion({ items }) {
     function renderIcon(isExpanded) {
         return (
             <motion.div
-                initial={{ rotate: isExpanded ? 90 : 0 }}
-                animate={{ rotate: isExpanded ? 0 : 90 }}
+                initial={{ rotate: isExpanded ? -90 : 0 }}
+                animate={{ rotate: isExpanded ? 0 : -90 }}
                 transition={{ duration: 0.2 }}
             >
                 {isExpanded ? (
