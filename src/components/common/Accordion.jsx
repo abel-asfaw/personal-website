@@ -16,7 +16,7 @@ export default function Accordion({ items }) {
         return (
             <motion.div
                 initial={{ rotate: isExpanded ? -90 : 0 }}
-                animate={{ rotate: isExpanded ? 0 : -90 }}
+                animate={{ rotate: isExpanded ? 1 : -90 }}
                 transition={{ duration: 0.2 }}
             >
                 {isExpanded ? (
