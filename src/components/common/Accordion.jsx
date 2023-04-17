@@ -7,30 +7,17 @@ export default function Accordion({ items }) {
     const [expandedIndex, setExpandedIndex] = useState(-1);
 
     function handleClick(nextIndex) {
-        setExpandedIndex(currentIndex =>
-            nextIndex === currentIndex ? -1 : nextIndex
-        );
-    }
-
-    function renderIcon(isExpanded) {
-        return (
-            <motion.div
-                initial={{ rotate: isExpanded ? -90 : 0 }}
-                animate={{ rotate: isExpanded ? 1 : -90 }}
-                transition={{ duration: 0.2 }}
-            >
-                {isExpanded ? (
-                    <HiOutlineMinusSm size={24} />
-                ) : (
-                    <HiOutlinePlusSm size={24} />
-                )}
-            </motion.div>
-        );
+        setExpandedIndex(nextIndex === expandedIndex ? -1 : nextIndex);
     }
 
     const renderedItems = items.map((item, index) => {
-        const isExpanded = index === expandedIndex;
         const { title, date, description, skills } = item;
+        const isExpanded = index === expandedIndex;
+        const icon = isExpanded ? (
+            <HiOutlineMinusSm size={24} />
+        ) : (
+            <HiOutlinePlusSm size={24} />
+        );
 
         return (
             <div key={title}>
@@ -42,9 +29,14 @@ export default function Accordion({ items }) {
                     onClick={() => handleClick(index)}
                 >
                     <AnimatePresence initial={false}>
-                        <div className="text-green-400">
-                            {renderIcon(isExpanded)}
-                        </div>
+                        <motion.div
+                            initial={{ rotate: isExpanded ? -90 : 0 }}
+                            animate={{ rotate: isExpanded ? 1 : -90 }}
+                            transition={{ duration: 0.2 }}
+                            className="text-green-400"
+                        >
+                            {icon}
+                        </motion.div>
                     </AnimatePresence>
                     <div className="flex flex-1 flex-col sm:flex-row sm:justify-between">
                         <span className="font-medium text-white">{title}</span>
