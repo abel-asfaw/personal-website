@@ -1,5 +1,5 @@
 import { FiExternalLink, FiMail } from 'react-icons/fi';
-import Button from './common/Button';
+import LinkButton from './common/LinkButton';
 
 export default function About() {
     return (
@@ -24,21 +24,21 @@ export default function About() {
                         products&nbsp;🚀
                     </p>
                     <div className="flex gap-4 text-center font-cubano">
-                        <Button
+                        <LinkButton
                             promptButton
                             href="/resume.pdf"
                             target="_blank"
                             className="bg-green-600 text-white hover:bg-green-500"
                         >
                             Resume <FiExternalLink />
-                        </Button>
-                        <Button
+                        </LinkButton>
+                        <LinkButton
                             promptButton
                             href="mailto:contact@abelasfaw.com"
                             className="bg-gray-800 text-gray-400 hover:bg-gray-700"
                         >
                             Reach Out <FiMail />
-                        </Button>
+                        </LinkButton>
                     </div>
                 </div>
                 <div className="w-2/3 max-w-xs lg:w-full">
