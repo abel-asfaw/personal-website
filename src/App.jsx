@@ -1,5 +1,4 @@
 import About from './components/About';
-import Contact from './components/Contact';
 import Experience from './components/Experience';
 import Footer from './components/Footer';
 import Navbar from './components/NavBar';
@@ -14,7 +13,6 @@ export default function App() {
             <Experience />
             <Projects />
             <Skills />
-            <Contact />
             <Footer />
         </main>
     );
