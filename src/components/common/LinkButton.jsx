@@ -9,12 +9,10 @@ export default function LinkButton({
 }) {
     const classes = classNames(
         className,
-        'duration-200 ease-in hover:text-white',
-        {
-            'group p-1 text-lg': navButton,
-            'flex items-center gap-2 rounded py-2 px-6 text-lg focus:outline-none':
-                promptButton,
-        }
+        'duration-200 ease-in hover:text-white text-lg',
+        navButton && 'group p-1',
+        promptButton &&
+            'flex items-center gap-2 rounded py-2 px-6 focus:outline-none'
     );
 
     return (
