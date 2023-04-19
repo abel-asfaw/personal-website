@@ -1,4 +1,4 @@
-import { FiExternalLink } from 'react-icons/fi';
+import { FiExternalLink, FiMail } from 'react-icons/fi';
 import Button from './common/Button';
 
 export default function About() {
@@ -27,17 +27,17 @@ export default function About() {
                         <Button
                             promptButton
                             href="/resume.pdf"
-                            download="Abel-Asfaw-Resume"
-                            className="flex items-center gap-2 bg-green-600 text-white hover:bg-green-500"
+                            target="_blank"
+                            className="bg-green-600 text-white hover:bg-green-500"
                         >
                             Resume <FiExternalLink />
                         </Button>
                         <Button
                             promptButton
-                            href="#contact"
+                            href="mailto:contact@abelasfaw.com"
                             className="bg-gray-800 text-gray-400 hover:bg-gray-700"
                         >
-                            Reach Out
+                            Reach Out <FiMail />
                         </Button>
                     </div>
                 </div>
