@@ -11,13 +11,10 @@
         font-family: 'Anuphan';
         src: url('/assets/fonts/Anuphan.ttf');
     }
-}
+    html {
+        scroll-behavior: smooth;
+    }
 
-html {
-    scroll-behavior: smooth;
-}
-
-@media (min-width: 768px) {
     section {
         scroll-margin-top: 4rem;
     }
