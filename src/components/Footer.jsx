@@ -1,10 +1,10 @@
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 export default function Footer() {
-    const classes = 'h-6 w-6 duration-200 ease-in hover:text-white';
+    const classes = 'duration-200 ease-in hover:text-white';
 
     return (
-        <footer className="bg-gray-800">
+        <footer className="mt-10 border-t border-gray-800">
             <div className="container mx-auto flex w-full flex-col items-center justify-center p-6 xs:flex-row xs:justify-between">
                 © 2023 Abel Asfaw
                 <ul className="mt-2 flex flex-wrap gap-6 xs:mt-0">
@@ -14,7 +14,7 @@ export default function Footer() {
                             target="_blank"
                             title="GitHub"
                         >
-                            <FaGithub className={classes} />
+                            <FaGithub size={24} className={classes} />
                         </a>
                     </li>
                     <li>
@@ -23,7 +23,7 @@ export default function Footer() {
                             target="_blank"
                             title="LinkedIn"
                         >
-                            <FaLinkedinIn className={classes} />
+                            <FaLinkedinIn size={24} className={classes} />
                         </a>
                     </li>
                 </ul>
