@@ -14,9 +14,9 @@ export default function Accordion({ items }) {
         const { title, date, description, skills } = item;
         const isExpanded = index === expandedIndex;
         const icon = isExpanded ? (
-            <HiOutlineMinusSm size={24} />
+            <HiOutlineMinusSm size={24} aria-label="Collapse" />
         ) : (
-            <HiOutlinePlusSm size={24} />
+            <HiOutlinePlusSm size={24} aria-label="Expand" />
         );
 
         return (
