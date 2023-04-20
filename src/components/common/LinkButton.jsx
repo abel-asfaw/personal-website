@@ -7,9 +7,10 @@ export default function LinkButton({
     className,
     ...rest
 }) {
+    const transitionClasses = 'duration-200 ease-in hover:text-white text-lg';
     const classes = classNames(
         className,
-        'duration-200 ease-in hover:text-white text-lg',
+        transitionClasses,
         navButton && 'group p-1',
         promptButton &&
             'flex items-center gap-2 rounded py-2 px-6 focus:outline-none'
@@ -22,7 +23,7 @@ export default function LinkButton({
                 <div
                     role="presentation"
                     aria-label="Underline effect on hover"
-                    className={`${classes} w-2/3 border-t border-gray-700 p-0 group-hover:border-gray-300`}
+                    className={`${transitionClasses} w-2/3 border-t border-gray-700 group-hover:border-gray-300`}
                 />
             )}
         </a>
