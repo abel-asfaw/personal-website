@@ -22,7 +22,7 @@ export default function LinkButton({
                 <div
                     role="presentation"
                     aria-label="Underline effect on hover"
-                    className={`${classes} w-2/3 border-t border-gray-700 group-hover:border-gray-300`}
+                    className={`${classes} w-2/3 border-t border-gray-700 p-0 group-hover:border-gray-300`}
                 />
             )}
         </a>
