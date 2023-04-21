@@ -25,7 +25,7 @@ export default function Accordion({ items }) {
                     animate={{
                         backgroundColor: isExpanded ? '#374151' : '#1F2937',
                     }}
-                    className="mt-4 flex h-full cursor-pointer items-center gap-3 rounded p-4"
+                    className="mt-4 flex h-full cursor-pointer items-center gap-2 rounded px-2 py-4 sm:p-4"
                     onClick={() => handleClick(index)}
                 >
                     <AnimatePresence initial={false}>
