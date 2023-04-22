@@ -22,7 +22,6 @@ export default function LinkButton({
             {navButton && (
                 <div
                     role="presentation"
-                    aria-label="Underline effect on hover"
                     className={`${transitionClasses} w-2/3 border-t border-gray-700 group-hover:border-gray-300`}
                 />
             )}
