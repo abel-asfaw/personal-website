@@ -6,15 +6,16 @@
     @font-face {
         font-family: 'Cubano';
         src: url('/assets/fonts/Cubano.ttf');
+        font-display: swap;
     }
     @font-face {
         font-family: 'Anuphan';
         src: url('/assets/fonts/Anuphan.ttf');
+        font-display: swap;
     }
     html {
         scroll-behavior: smooth;
     }
-
     section {
         scroll-margin-top: 4rem;
     }
