@@ -34,7 +34,7 @@ export default function Projects() {
                                 <h2 className="mb-3 text-sm font-medium tracking-widest text-green-400">
                                     {project.subtitle}
                                 </h2>
-                                <p className="leading-relaxed">
+                                <p className="leading-relaxed text-white">
                                     {project.description}
                                 </p>
                             </div>
