@@ -10,7 +10,7 @@ export const projects = [
         link: 'https://github.com/abel-asfaw/personal-website',
     },
     {
-        title: 'Project 2',
+        title: 'Coming soon...',
         subtitle: 'Node, React, Docker, Kubernetes',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit.\
@@ -21,7 +21,7 @@ export const projects = [
         link: 'https://github.com/abel-asfaw/',
     },
     {
-        title: 'Project 3',
+        title: 'Coming soon...',
         subtitle: 'Python, FastAPI, Postgres, Docker',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit.\
@@ -32,7 +32,7 @@ export const projects = [
         link: 'https://github.com/abel-asfaw/',
     },
     {
-        title: 'Project 4',
+        title: 'Coming soon...',
         subtitle: 'Python, React, FastAPI, S3, Postgres, Docker',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit.\
