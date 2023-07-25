@@ -4,12 +4,15 @@ import Section from './common/Section';
 export default function Skills() {
     const id = 'skills',
         title = 'What I Can Do',
-        blurb =
-            'Get an overview of my technical skills, which have been \
-            honed through years of experience and continuous \
-            learning. This comprehensive list showcases my expertise \
-            and qualifications, reflecting my commitment to being a \
-            proficient and skilled professional in my field.';
+        blurb = (
+            <p>
+                Get an overview of my technical skills, which have been honed
+                through years of experience and continuous learning. This
+                comprehensive list showcases my expertise and qualifications,
+                reflecting my commitment to being a proficient and skilled
+                professional in my field.
+            </p>
+        );
 
     return (
         <Section id={id} title={title} blurb={blurb}>

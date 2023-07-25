@@ -4,12 +4,14 @@ import Section from './common/Section';
 export default function Projects() {
     const id = 'projects',
         title = "Apps I've Built",
-        blurb =
-            'Dive into a selection of projects that highlight my \
-            creativity and problem-solving skills. These projects \
-            show my commitment to learning, growing, and making an \
-            impact in my field, even outside of a professional \
-            context.';
+        blurb = (
+            <p>
+                Dive into a selection of projects that highlight my creativity
+                and problem-solving skills. These projects show my commitment to
+                learning, growing, and making an impact in my field, even
+                outside of a professional context.
+            </p>
+        );
 
     return (
         <Section id={id} title={title} blurb={blurb}>
