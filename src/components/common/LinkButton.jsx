@@ -11,7 +11,7 @@ export default function LinkButton({
     const classes = classNames(
         className,
         transitionClasses,
-        navButton && 'group p-1',
+        navButton && 'group p-1 text-gray-400',
         promptButton &&
             'flex items-center gap-2 rounded py-2 px-6 focus:outline-none'
     );
