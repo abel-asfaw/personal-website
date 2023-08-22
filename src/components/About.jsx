@@ -14,14 +14,12 @@ export default function About() {
                     </h1>
                     <p className="leading-relaxed">
                         After graduating magna cum laude with a degree in
-                        Computer Science from UMBC, I applied my skills and
-                        knowledge to my work at Redfin. My background in
-                        Computer Science and experience at Redfin has enabled me
-                        to develop software that makes a difference in people's
-                        lives. Whether it's optimizing user interfaces or
-                        automating complex systems, I'm motivated by the
-                        challenge of transforming ideas into functional
-                        products&nbsp;🚀
+                        Computer Science from UMBC, I joined the Redfin team.
+                        Using what I learned in school and my time there, I've
+                        been crafting software that really makes a difference
+                        for people. I love taking an idea and making it work,
+                        whether that's tweaking how users interact with it or
+                        making complicated stuff run smoothly.
                     </p>
                     <div className="flex gap-4 text-center font-cubano">
                         <LinkButton
