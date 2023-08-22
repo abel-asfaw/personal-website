@@ -10,7 +10,7 @@ export const experience = [
                 aerospace defense.
             </p>
         ),
-        skills: [],
+        skills: ['Java', 'JavaScript', 'Docker', 'Kubernetes', 'Helm'],
     },
     {
         title: 'Software Developer @ Redfin',
