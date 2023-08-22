@@ -13,13 +13,13 @@ export default function About() {
                         </span>
                     </h1>
                     <p className="leading-relaxed">
-                        After graduating magna cum laude with a degree in
-                        Computer Science from UMBC, I joined the Redfin team.
-                        Using what I learned in school and my time there, I've
-                        been crafting software that really makes a difference
-                        for people. I love taking an idea and making it work,
-                        whether that's tweaking how users interact with it or
-                        making complicated stuff run smoothly.
+                        After graduating with a degree in Computer Science from
+                        UMBC, I joined the Redfin team. Using what I learned in
+                        school and my time there, I've been crafting software
+                        that really makes a difference for people. I love taking
+                        an idea and making it work, whether that's tweaking how
+                        users interact with it or making complicated stuff run
+                        smoothly.
                     </p>
                     <div className="flex gap-4 text-center font-cubano">
                         <LinkButton

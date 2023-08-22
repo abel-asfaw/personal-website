@@ -7,8 +7,7 @@ export default function Skills() {
         blurb = (
             <p>
                 Take a look at my tech skills, fine-tuned through years of
-                never-ending learning. This rundown gives you a snapshot of what
-                I bring to the table as a skilled professional in my field.
+                never-ending learning.
             </p>
         );
 

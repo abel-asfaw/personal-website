@@ -7,8 +7,7 @@ export default function Projects() {
         blurb = (
             <p>
                 Check out some projects that showcase my creativity and knack
-                for problem-solving. They reflect my dedication to growth beyond
-                just the 9 to 5 grind.
+                for problem-solving.
             </p>
         );
 

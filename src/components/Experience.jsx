@@ -8,8 +8,7 @@ export default function Skills() {
         blurb = (
             <p>
                 Dive into my career path to see the positions I've held and the
-                impact I've made. My track record speaks to my adaptability and
-                drive for solid outcomes.
+                impact I've made.
             </p>
         );
 
