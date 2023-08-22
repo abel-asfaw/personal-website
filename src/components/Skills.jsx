@@ -6,11 +6,9 @@ export default function Skills() {
         title = 'What I Can Do',
         blurb = (
             <p>
-                Get an overview of my technical skills, which have been honed
-                through years of experience and continuous learning. This
-                comprehensive list showcases my expertise and qualifications,
-                reflecting my commitment to being a proficient and skilled
-                professional in my field.
+                Take a look at my tech skills, fine-tuned through years of
+                never-ending learning. This rundown gives you a snapshot of what
+                I bring to the table as a skilled professional in my field.
             </p>
         );
 

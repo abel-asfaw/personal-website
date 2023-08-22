@@ -6,10 +6,9 @@ export default function Projects() {
         title = "Apps I've Built",
         blurb = (
             <p>
-                Dive into a selection of projects that highlight my creativity
-                and problem-solving skills. These projects show my commitment to
-                learning, growing, and making an impact in my field, even
-                outside of a professional context.
+                Check out some projects that showcase my creativity and knack
+                for problem-solving. They reflect my dedication to growth beyond
+                just the 9 to 5 grind.
             </p>
         );
 

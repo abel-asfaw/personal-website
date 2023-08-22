@@ -7,10 +7,9 @@ export default function Skills() {
         title = "Where I've Worked",
         blurb = (
             <p>
-                Explore my professional journey and discover the positions I've
-                held, companies I've worked with, and the value I've brought to
-                various teams. My work experience showcases my adaptability and
-                commitment to delivering impactful results.
+                Dive into my career path to see the positions I've held and the
+                impact I've made. My track record speaks to my adaptability and
+                drive for solid outcomes.
             </p>
         );
 
