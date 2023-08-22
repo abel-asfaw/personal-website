@@ -10,11 +10,6 @@ module.exports = {
                 cubano: ['Cubano', 'sans-serif'],
                 anuphan: ['Anuphan', 'sans-serif'],
             },
-            colors: {
-                gray: {
-                    925: '#0e131f',
-                },
-            },
             keyframes: {
                 wave: {
                     '0%': {

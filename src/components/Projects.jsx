@@ -16,7 +16,7 @@ export default function Projects() {
     return (
         <Section id={id} title={title} blurb={blurb}>
             <div className="-mt-4 flex flex-wrap text-center lg:px-40">
-                {projects.map(project => (
+                {projects.map((project) => (
                     <a
                         href={project.link}
                         key={project.image}
@@ -29,7 +29,7 @@ export default function Projects() {
                                 className="absolute inset-0 h-full w-full object-cover object-center"
                                 src={project.image}
                             />
-                            <div className="z-9 relative w-full border-4 border-gray-800 bg-gray-900 px-8 py-10 opacity-70 duration-200 ease-in hover:opacity-100">
+                            <div className="z-9 relative w-full border-4 border-zinc-800 bg-zinc-900 px-8 py-10 opacity-70 duration-200 ease-in hover:opacity-100">
                                 <h1 className="mb-1 text-lg font-medium text-white">
                                     {project.title}
                                 </h1>

@@ -7,13 +7,13 @@ export default function Content({ description, skills }) {
             aria-label="Accordion content"
             variants={{ collapsed: { scale: 0.8 }, expanded: { scale: 1 } }}
             transition={{ duration: 0.4 }}
-            className="flex h-full flex-wrap rounded border-2 border-gray-800 bg-gray-900 p-4 text-white"
+            className="flex h-full flex-wrap rounded border-2 border-zinc-900 p-4"
         >
-            <span className="leading-relaxed text-gray-200">{description}</span>
+            <span className="leading-relaxed text-zinc-200">{description}</span>
             {!!skills.length && (
                 <span className="flex flex-wrap gap-2 pt-2">
-                    {skills.map(skill => (
-                        <PillButton key={skill} className="bg-indigo-600">
+                    {skills.map((skill) => (
+                        <PillButton key={skill} className="bg-indigo-600 text-white">
                             {skill}
                         </PillButton>
                     ))}
