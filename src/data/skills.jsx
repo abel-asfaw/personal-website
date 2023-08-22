@@ -11,6 +11,7 @@ import {
     SiGit,
     SiDocker,
     SiKubernetes,
+    SiHelm
 } from 'react-icons/si';
 
 export const skills = {
@@ -26,4 +27,5 @@ export const skills = {
     Git: <SiGit />,
     Docker: <SiDocker />,
     Kubernetes: <SiKubernetes />,
+    Helm: <SiHelm />,
 };
