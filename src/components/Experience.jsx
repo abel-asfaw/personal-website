@@ -5,14 +5,14 @@ import Section from './common/Section';
 export default function Skills() {
     const id = 'experience',
         title = "Where I've Worked",
-        blurb =
+        blurb = (
             <p>
-                Explore my professional journey and discover the
-                positions I've held, companies I've worked with, and the
-                value I've brought to various teams. My work experience
-                showcases my adaptability and commitment to delivering
-                impactful results.
-            </p>;
+                Explore my professional journey and discover the positions I've
+                held, companies I've worked with, and the value I've brought to
+                various teams. My work experience showcases my adaptability and
+                commitment to delivering impactful results.
+            </p>
+        );
 
     return (
         <Section id={id} title={title} blurb={blurb}>
