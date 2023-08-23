@@ -8,7 +8,7 @@ module.exports = {
             },
             fontFamily: {
                 cubano: ['Cubano', 'sans-serif'],
-                anuphan: ['Anuphan', 'sans-serif'],
+                inter: ['Inter', 'sans-serif'],
             },
             keyframes: {
                 wave: {
