@@ -9,11 +9,11 @@ export default function Content({ description, skills }) {
             transition={{ duration: 0.4 }}
             className="flex h-full flex-wrap rounded border-2 border-zinc-900 p-4"
         >
-            <span className="leading-relaxed text-zinc-200">{description}</span>
+            <span className="leading-relaxed">{description}</span>
             {!!skills.length && (
                 <span className="flex flex-wrap gap-2 pt-2">
                     {skills.map((skill) => (
-                        <PillButton key={skill} className="bg-indigo-600 text-white">
+                        <PillButton key={skill} className="bg-indigo-600">
                             {skill}
                         </PillButton>
                     ))}

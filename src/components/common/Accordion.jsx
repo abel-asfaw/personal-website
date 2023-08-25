@@ -39,8 +39,10 @@ export default function Accordion({ items }) {
                         </motion.div>
                     </AnimatePresence>
                     <div className="flex flex-1 flex-col sm:flex-row sm:justify-between">
-                        <span className="font-medium text-white">{title}</span>
-                        <span className="sm:text-right">{date}</span>
+                        <span className="font-medium">{title}</span>
+                        <span className="text-zinc-400 sm:text-right">
+                            {date}
+                        </span>
                     </div>
                 </motion.div>
                 <AnimatePresence initial={false}>

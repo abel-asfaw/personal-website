@@ -1,7 +1,7 @@
 export const experience = [
     {
         title: 'Software Engineer @ Lockheed Martin',
-        date: 'Apr. 2023 - Present',
+        date: 'Apr. 2023 – Present',
         description: (
             <p>
                 At Lockheed Martin, I play a pivotal role in a specialized team.
@@ -14,7 +14,7 @@ export const experience = [
     },
     {
         title: 'Software Developer @ Redfin',
-        date: 'Jan. 2022 - Nov. 2022',
+        date: 'Jan. 2022 – Nov. 2022',
         description: (
             <p>
                 I initially joined the Selling and Listing Experience (SALE)
@@ -28,7 +28,7 @@ export const experience = [
     },
     {
         title: 'Teaching Assistant @ UMBC',
-        date: 'Aug. 2020 - Jan. 2022',
+        date: 'Aug. 2020 – Jan. 2022',
         description: (
             <p>
                 As a beacon of support in the UMBC Department of Computer
@@ -41,7 +41,7 @@ export const experience = [
     },
     {
         title: 'Computer Science Tutor @ UMBC',
-        date: 'Mar. 2021 - Dec. 2021',
+        date: 'Mar. 2021 – Dec. 2021',
         description: (
             <p>
                 At the UMBC Academic Success Center, I led tutoring sessions for
@@ -54,7 +54,7 @@ export const experience = [
     },
     {
         title: 'DevOps Engineer Intern @ Northrop Grumman',
-        date: 'May 2021 - Aug. 2021',
+        date: 'May 2021 – Aug. 2021',
         description: (
             <p>
                 My internship at Northrop Grumman saw me pioneering the
