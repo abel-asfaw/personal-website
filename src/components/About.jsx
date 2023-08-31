@@ -39,7 +39,7 @@ export default function About() {
                         </LinkButton>
                     </div>
                 </div>
-                <div className="hidden md:block w-2/3 max-w-xs lg:w-full">
+                <div className="hidden w-2/3 max-w-xs md:block lg:w-full">
                     <picture>
                         <img
                             width="100%"
