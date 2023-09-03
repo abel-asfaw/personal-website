@@ -15,13 +15,13 @@ export const projects = [
     },
     {
         title: 'Coming soon...',
-        subtitle: 'Node, React, Docker, Kubernetes',
+        subtitle: 'Python, FastAPI, React, Postgres, S3, Docker',
         description: (
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium aspernatur a aut earum dolore non eligendi quasi
-                labore laudantium quae nobis tenetur quam iure nihil tempora
-                reprehenderit, maxime ipsum.
+                Interactive photography portfolio designed to highlight my
+                photography over the years. Seamlessly manages and displays a
+                diverse collection of images, providing a visually engaging
+                experience.
             </p>
         ),
         image: '/assets/images/project-2.webp',
@@ -29,7 +29,7 @@ export const projects = [
     },
     {
         title: 'Coming soon...',
-        subtitle: 'Python, FastAPI, Postgres, Docker',
+        subtitle: 'Node, React, Docker, Kubernetes',
         description: (
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -43,7 +43,7 @@ export const projects = [
     },
     {
         title: 'Coming soon...',
-        subtitle: 'Python, React, FastAPI, S3, Postgres, Docker',
+        subtitle: 'Python, FastAPI, Postgres, Docker',
         description: (
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
