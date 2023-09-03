@@ -33,7 +33,7 @@ export default function About() {
                         <LinkButton
                             promptButton
                             href="mailto:contact@abelasfaw.com"
-                            className="bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+                            className="bg-zinc-900 text-zinc-400 hover:bg-zinc-800"
                         >
                             Reach Out <FiMail />
                         </LinkButton>
