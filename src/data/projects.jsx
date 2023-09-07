@@ -11,7 +11,7 @@ export const projects = [
             </p>
         ),
         image: '/assets/images/project-1.webp',
-        link: 'https://github.com/abel-asfaw/',
+        link: 'https://github.com/abel-asfaw/photography-portfolio',
     },
     {
         title: 'Personal Website',
