@@ -7,7 +7,7 @@ import Skills from './components/Skills';
 
 export default function App() {
     return (
-        <main className="font-inter text-white">
+        <main className="font-inter text-neutral-100">
             <Navbar />
             <About />
             <Experience />
