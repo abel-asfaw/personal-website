@@ -1,7 +1,7 @@
 export const projects = [
     {
         title: 'Coming soon...',
-        stack: 'Python, FastAPI, React, Postgres, S3, Docker Compose',
+        subTitle: 'Python, FastAPI, React, Postgres, S3, Docker Compose',
         description: (
             <p>
                 Interactive photography portfolio designed to highlight my
@@ -15,7 +15,7 @@ export const projects = [
     },
     {
         title: 'Personal Website',
-        stack: 'JavaScript, React, Tailwind CSS, Vite.js',
+        subTitle: 'JavaScript, React, Tailwind CSS, Vite.js',
         description: (
             <p>
                 Fully responsive web application showcasing my experience,

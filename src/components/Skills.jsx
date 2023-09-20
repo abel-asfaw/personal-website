@@ -1,6 +1,6 @@
 import { skills } from '../data/skills';
-import Section from './common/Section';
-import SkillTile from './common/SkillTile';
+import SectionHeader from './common/SectionHeader';
+import TileLayout from './common/TileLayout';
 
 export default function Skills() {
     const id = 'skills',
@@ -13,12 +13,13 @@ export default function Skills() {
         );
 
     return (
-        <Section id={id} title={title} blurb={blurb}>
-            <div className="-mx-2 -mt-2 flex flex-wrap sm:mx-auto lg:w-4/5">
-                {Object.entries(skills).map(([skill, icon]) => (
-                    <SkillTile key={skill} skill={skill} icon={icon} />
+        <div className="flex flex-col gap-6">
+            <SectionHeader id={id} title={title} blurb={blurb} />
+            <div className="mx-5 flex flex-wrap items-center justify-center gap-4 md:mx-20 xl:mx-40">
+                {Object.entries(skills).map(([label, icon]) => (
+                    <TileLayout key={label} icon={icon} label={label} />
                 ))}
             </div>
-        </Section>
+        </div>
     );
 }

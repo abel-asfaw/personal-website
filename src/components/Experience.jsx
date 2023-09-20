@@ -1,6 +1,6 @@
 import { experience } from '../data/experience';
 import Accordion from './common/Accordion';
-import Section from './common/Section';
+import SectionHeader from './common/SectionHeader';
 
 export default function Skills() {
     const id = 'experience',
@@ -13,10 +13,11 @@ export default function Skills() {
         );
 
     return (
-        <Section id={id} title={title} blurb={blurb}>
-            <div className="mx-auto flex flex-wrap lg:w-4/5">
+        <div className="flex flex-col gap-6">
+            <SectionHeader id={id} title={title} blurb={blurb} />
+            <div className="mx-5 flex flex-wrap items-center justify-center gap-4 md:mx-20 xl:mx-40">
                 <Accordion items={experience} />
             </div>
-        </Section>
+        </div>
     );
 }
