@@ -1,5 +1,6 @@
 import { experience } from '../data/experience';
 import Accordion from './common/Accordion';
+import SectionContent from './common/SectionContent';
 import SectionHeader from './common/SectionHeader';
 
 export default function Skills() {
@@ -15,9 +16,9 @@ export default function Skills() {
     return (
         <div className="flex flex-col gap-6">
             <SectionHeader id={id} title={title} blurb={blurb} />
-            <div className="mx-5 flex flex-wrap items-center justify-center gap-4 md:mx-20 xl:mx-40">
+            <SectionContent className="flex-wrap justify-center gap-4">
                 <Accordion items={experience} />
-            </div>
+            </SectionContent>
         </div>
     );
 }

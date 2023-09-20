@@ -1,6 +1,7 @@
 import { projects } from '../data/projects';
 import SectionHeader from './common/SectionHeader';
 import Card from './common/Card';
+import SectionContent from './common/SectionContent';
 
 export default function Projects() {
     const id = 'projects',
@@ -15,11 +16,11 @@ export default function Projects() {
     return (
         <div className="flex flex-col gap-6">
             <SectionHeader id={id} title={title} blurb={blurb} />
-            <div className="mx-5 flex flex-wrap items-center justify-center gap-10 md:mx-20 xl:mx-40">
+            <SectionContent className="flex-wrap justify-center gap-10">
                 {projects.map((project) => (
                     <Card key={project.link} {...project} />
                 ))}
-            </div>
+            </SectionContent>
         </div>
     );
 }
