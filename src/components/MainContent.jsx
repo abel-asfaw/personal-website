@@ -13,7 +13,7 @@ export default function MainContent() {
      * - id: A unique identifier for the section.
      * - title: The title displayed at the top of the section.
      * - blurb: A short description or introduction for the section.
-     * - render: A function that takes 'content' as an argument and returns JSX elements.
+     * - render: A function that returns JSX elements.
      */
     const sections = [
         {
