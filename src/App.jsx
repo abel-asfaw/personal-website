@@ -5,7 +5,7 @@ import Navbar from './components/NavBar';
 
 export default function App() {
     return (
-        <main className="flex flex-col gap-12 font-inter text-neutral-200">
+        <main className="font-inter text-neutral-200">
             <Navbar />
             <About />
             <MainContent />
