@@ -7,11 +7,12 @@ export default function LinkButton({
     className,
     ...rest
 }) {
-    const transitionClasses = 'duration-200 ease-in hover:text-white text-lg';
+    const transitionClasses = 'duration-300 ease-in';
+
     const classes = classNames(
         className,
         transitionClasses,
-        navButton && 'group p-1 text-zinc-400',
+        navButton && 'group p-1',
         promptButton &&
             'flex items-center gap-2 rounded py-2 px-6 focus:outline-none'
     );
@@ -21,7 +22,6 @@ export default function LinkButton({
             {children}
             {navButton && (
                 <div
-                    role="presentation"
                     className={`${transitionClasses} w-2/3 border-t border-zinc-700 group-hover:border-zinc-300`}
                 />
             )}

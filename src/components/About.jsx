@@ -45,7 +45,7 @@ export default function About() {
                         {buttons.map((button) => (
                             <LinkButton
                                 key={button.label}
-                                className={button.className}
+                                className={`${button.className} text-lg`}
                                 href={button.href}
                                 target="_blank"
                                 rel="noopener noreferrer"

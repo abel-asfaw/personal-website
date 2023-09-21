@@ -13,7 +13,7 @@ export default function Content({ description, skills }) {
             {!!skills.length && (
                 <span className="flex flex-wrap gap-2 pt-2">
                     {skills.map((skill) => (
-                        <PillButton key={skill} className="bg-indigo-600">
+                        <PillButton key={skill} className="bg-indigo-600 text-white">
                             {skill}
                         </PillButton>
                     ))}
