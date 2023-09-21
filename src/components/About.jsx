@@ -1,5 +1,4 @@
 import { LinkButton } from './common/Button';
-import { Icon } from './common/Icon';
 import { SectionContent } from './common/Section';
 import { FiExternalLink, FiMail } from 'react-icons/fi';
 
@@ -52,7 +51,7 @@ export default function About() {
                                 rel="noopener noreferrer"
                                 promptButton
                             >
-                                {button.label} <Icon icon={button.icon} />
+                                {button.label} <button.icon />
                             </LinkButton>
                         ))}
                     </div>
