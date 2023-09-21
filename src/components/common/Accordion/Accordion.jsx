@@ -40,7 +40,7 @@ export default function Accordion({ items }) {
                     </AnimatePresence>
                     <div className="flex flex-1 flex-col sm:flex-row sm:justify-between">
                         <span className="font-medium">{title}</span>
-                        <span className="text-zinc-400 sm:text-right">
+                        <span className="text-neutral-400 sm:text-right">
                             {date}
                         </span>
                     </div>

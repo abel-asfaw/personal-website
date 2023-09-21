@@ -25,7 +25,7 @@ export default function About() {
         {
             href: 'mailto:contact@abelasfaw.com',
             className:
-                'border-2 border-zinc-800 bg-zinc-900 text-zinc-400 hover:bg-zinc-800',
+                'border-2 border-zinc-800 bg-zinc-900 text-neutral-400 hover:bg-zinc-800',
             label: 'Reach Out',
             icon: FiMail,
         },
@@ -35,7 +35,7 @@ export default function About() {
         <section id="about">
             <SectionContent className="flex-col justify-between md:flex-row lg:gap-20">
                 <div className="flex flex-col items-center gap-4 text-center md:w-1/2 md:items-start md:text-left lg:flex-grow">
-                    <h1 className="font-cubano text-3xl font-medium text-white sm:text-4xl">
+                    <h1 className="text-neutral-100 font-cubano text-3xl font-medium sm:text-4xl">
                         Hi, I'm Abel.{' '}
                         <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
                             I love building things.
