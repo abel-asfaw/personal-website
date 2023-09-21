@@ -48,7 +48,7 @@ export default function MainContent() {
     return (
         <main className="flex flex-col gap-12">
             {sections.map(({ id, title, blurb, className, render }) => (
-                <div key={id} className="flex flex-col gap-6">
+                <div key={id} className="flex flex-col gap-6 mb-6">
                     <SectionHeader id={id} title={title} blurb={blurb} />
                     <SectionContent className={className}>
                         {render()}
