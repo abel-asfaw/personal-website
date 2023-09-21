@@ -7,7 +7,7 @@ export default function LinkButton({
     className,
     ...rest
 }) {
-    const transitionClasses = 'duration-300 ease-in';
+    const transitionClasses = 'duration-200 ease-in';
 
     const classes = classNames(
         className,
