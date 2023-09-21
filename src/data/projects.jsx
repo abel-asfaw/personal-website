@@ -1,4 +1,4 @@
-export const projects = [
+const projects = [
     {
         title: 'Coming soon...',
         subTitle: 'Python, FastAPI, React, Postgres, S3, Docker Compose',
@@ -28,3 +28,5 @@ export const projects = [
         link: 'https://github.com/abel-asfaw/personal-website',
     },
 ];
+
+export default projects;

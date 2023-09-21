@@ -1,4 +1,4 @@
-export const experience = [
+const experience = [
     {
         title: 'Software Engineer @ Lockheed Martin',
         date: 'Apr. 2023 – Present',
@@ -65,3 +65,5 @@ export const experience = [
         skills: ['Ansible'],
     },
 ];
+
+export default experience;

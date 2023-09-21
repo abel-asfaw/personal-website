@@ -15,7 +15,7 @@ import {
     SiFastapi,
 } from 'react-icons/si';
 
-export const skills = {
+const skills = {
     Python: SiPython,
     Java: FaJava,
     'C++': SiCplusplus,
@@ -31,3 +31,5 @@ export const skills = {
     Helm: SiHelm,
     Git: SiGit,
 };
+
+export default skills;

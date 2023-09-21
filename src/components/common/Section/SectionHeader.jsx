@@ -24,7 +24,7 @@ export default function SectionHeader({ id, title, blurb }) {
                 <IconComponent size={40} />
             </div>
             <h1 className="font-cubano text-3xl text-neutral-100">{title}</h1>
-            <span className="leading-relaxed">{blurb}</span>
+            <p className="leading-relaxed">{blurb}</p>
         </section>
     );
 }
