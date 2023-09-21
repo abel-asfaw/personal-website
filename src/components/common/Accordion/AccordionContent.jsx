@@ -1,5 +1,5 @@
+import { PillButton } from '../Button';
 import { motion } from 'framer-motion';
-import PillButton from './PillButton';
 
 export default function Content({ description, skills }) {
     return (

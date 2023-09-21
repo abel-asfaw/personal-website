@@ -1,7 +1,7 @@
+import { LinkButton } from './common/Button';
+import { Icon } from './common/Icon';
+import { SectionContent } from './common/Section';
 import { FiExternalLink, FiMail } from 'react-icons/fi';
-import LinkButton from './common/LinkButton';
-import SectionContent from './common/SectionContent';
-import Icon from './common/Icon';
 
 export default function About() {
     const blurb = (

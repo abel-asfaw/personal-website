@@ -1,7 +1,6 @@
 import { experience } from '../data/experience';
-import SectionContent from './common/SectionContent';
-import SectionHeader from './common/SectionHeader';
-import Accordion from './common/Accordion';
+import { Accordion } from './common/Accordion';
+import { SectionHeader, SectionContent } from './common/Section';
 
 export default function Skills() {
     const id = 'experience',

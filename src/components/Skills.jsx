@@ -1,7 +1,6 @@
 import { skills } from '../data/skills';
-import SectionContent from './common/SectionContent';
-import SectionHeader from './common/SectionHeader';
-import TileLayout from './common/TileLayout';
+import { SectionHeader, SectionContent } from './common/Section';
+import { TileLayout } from './common/Tile';
 
 export default function Skills() {
     const id = 'skills',

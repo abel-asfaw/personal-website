@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { HiOutlineMinusSm, HiOutlinePlusSm } from 'react-icons/hi';
 import Content from './AccordionContent';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
+import { HiOutlineMinusSm, HiOutlinePlusSm } from 'react-icons/hi';
 
 export default function Accordion({ items }) {
     const [expandedIndex, setExpandedIndex] = useState(-1);

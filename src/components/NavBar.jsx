@@ -1,4 +1,4 @@
-import LinkButton from './common/LinkButton';
+import { LinkButton } from './common/Button';
 
 export default function Navbar() {
     return (

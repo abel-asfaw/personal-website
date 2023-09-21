@@ -1,7 +1,6 @@
 import { projects } from '../data/projects';
-import SectionHeader from './common/SectionHeader';
-import SectionContent from './common/SectionContent';
-import Card from './common/Card';
+import { Card } from './common/Card';
+import { SectionHeader, SectionContent } from './common/Section';
 
 export default function Projects() {
     const id = 'projects',
