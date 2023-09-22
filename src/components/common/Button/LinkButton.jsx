@@ -7,7 +7,7 @@ export default function LinkButton({
     className,
     ...rest
 }) {
-    const transitionClasses = 'duration-200 ease-in';
+    const transitionClasses = 'duration-300 ease-in';
 
     const classes = classNames(
         className,
@@ -22,7 +22,7 @@ export default function LinkButton({
             {children}
             {navButton && (
                 <div
-                    className={`${transitionClasses} w-2/3 border-t border-zinc-700 group-hover:border-zinc-300`}
+                    className={`${transitionClasses} w-2/3 border-t border-zinc-700 group-hover:w-full group-hover:border-zinc-300 group-focus:w-full`}
                 />
             )}
         </a>
