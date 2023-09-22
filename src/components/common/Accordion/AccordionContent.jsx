@@ -1,7 +1,7 @@
 import { PillButton } from '../Button';
 import { motion } from 'framer-motion';
 
-export default function Content({ description, skills }) {
+export default function AccordionContent({ description, skills }) {
     return (
         <motion.div
             aria-label="Accordion content"
