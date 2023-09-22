@@ -44,11 +44,11 @@ export default function About() {
                     {buttons.map((button) => (
                         <LinkButton
                             key={button.label}
-                            className={`${button.className} text-lg`}
                             href={button.href}
+                            className={`${button.className} text-lg`}
+                            promptButton
                             target="_blank"
                             rel="noopener noreferrer"
-                            promptButton
                         >
                             {button.label} <button.icon />
                         </LinkButton>

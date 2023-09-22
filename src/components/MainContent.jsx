@@ -2,7 +2,7 @@ import { experience, projects, skills } from '../data';
 import About from './About';
 import { Accordion } from './common/Accordion';
 import { Card } from './common/Card';
-import { Section, SectionHeader, SectionContent } from './common/Section';
+import { Section } from './common/Section';
 import { TileLayout } from './common/Tile';
 
 export default function MainContent() {
