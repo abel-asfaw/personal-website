@@ -7,13 +7,11 @@ import { TileLayout } from './common/Tile';
 
 export default function MainContent() {
     /**
-     * MainContent Component
-     *
      * This component renders multiple sections by mapping through the 'sections' array.
      *
      * - id: A unique identifier for the section.
      * - title: The title displayed at the top of the section.
-     * - blurb: A short description or introduction for the section.
+     * - blurb: A short description for the section.
      * - render: A function that returns JSX elements.
      */
     const sections = [
