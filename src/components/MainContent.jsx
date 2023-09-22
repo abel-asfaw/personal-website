@@ -1,4 +1,5 @@
 import { experience, projects, skills } from '../data';
+import About from './About';
 import { Accordion } from './common/Accordion';
 import { Card } from './common/Card';
 import { SectionHeader, SectionContent } from './common/Section';
@@ -46,7 +47,8 @@ export default function MainContent() {
     ];
 
     return (
-        <main className="flex flex-col">
+        <main className="flex flex-col gap-16">
+            <About />
             {sections.map(({ id, title, blurb, className, render }) => (
                 <div key={id} className="flex flex-col gap-6">
                     <SectionHeader id={id} title={title} blurb={blurb} />
