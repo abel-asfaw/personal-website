@@ -28,9 +28,8 @@ export default function Accordion({ items }) {
                 <AccordionHeader
                     title={title}
                     date={date}
-                    index={index}
                     isExpanded={isExpanded}
-                    onHeaderClick={handleClick}
+                    onHeaderClick={() => handleClick(index)}
                 />
                 <AnimatePresence initial={false}>
                     {isExpanded && (

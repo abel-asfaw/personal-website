@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { HiOutlineMinusSm, HiOutlinePlusSm } from 'react-icons/hi';
 
-export default function AccordionHeader({ title, date, index, isExpanded, onHeaderClick }) {
+export default function AccordionHeader({ title, date, isExpanded, onHeaderClick }) {
     const icon = isExpanded ? (
         <HiOutlineMinusSm size={24} aria-label="Collapse" />
     ) : (
@@ -14,7 +14,7 @@ export default function AccordionHeader({ title, date, index, isExpanded, onHead
                 backgroundColor: isExpanded ? '#27272a' : '#18181b',
             }}
             className="flex cursor-pointer items-center gap-2 rounded px-2 py-4 sm:p-4"
-            onClick={() => onHeaderClick(index)}
+            onClick={onHeaderClick}
         >
             <AnimatePresence initial={false}>
                 <motion.div
