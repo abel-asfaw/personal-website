@@ -5,6 +5,7 @@ module.exports = {
         extend: {
             screens: {
                 xs: '376px',
+                sm: '800px',
             },
             fontFamily: {
                 cubano: ['Cubano', 'sans-serif'],

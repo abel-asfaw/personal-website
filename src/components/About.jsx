@@ -31,8 +31,8 @@ export default function About() {
     ];
 
     return (
-        <SectionContent className="flex-col justify-between md:flex-row lg:gap-20">
-            <div className="flex flex-col items-center gap-4 text-center md:w-1/2 md:items-start md:text-left lg:flex-grow">
+        <SectionContent className="flex-col justify-between sm:flex-row lg:gap-20">
+            <div className="flex flex-col items-center gap-4 text-center sm:w-1/2 sm:items-start sm:text-left lg:flex-grow">
                 <h1 className="font-cubano text-3xl font-medium text-neutral-100 sm:text-4xl">
                     Hi, I'm Abel.{' '}
                     <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
@@ -55,7 +55,7 @@ export default function About() {
                     ))}
                 </div>
             </div>
-            <div className="hidden w-2/3 max-w-xs md:flex lg:w-full">
+            <div className="hidden w-2/3 max-w-xs sm:flex lg:w-full">
                 <picture>
                     <img
                         width="100%"
