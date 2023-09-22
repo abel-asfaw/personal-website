@@ -13,15 +13,11 @@ export default function SectionHeader({ id, title, blurb }) {
         contact: HiOutlineUserCircle,
     };
 
-    const IconComponent = icons[id]
+    const Icon = icons[id];
 
     return (
-        <header
-            className="mx-5 flex flex-col gap-2 text-center md:mx-20 xl:mx-40 2xl:mx-80"
-        >
-            <div className="flex justify-center text-neutral-400">
-                <IconComponent size={40} />
-            </div>
+        <header className="mx-5 flex flex-col gap-2 text-center md:mx-20 xl:mx-40 2xl:mx-80">
+            <Icon size={40} className="self-center text-neutral-400" />
             <h1 className="font-cubano text-3xl text-neutral-100">{title}</h1>
             <p className="leading-relaxed">{blurb}</p>
         </header>
