@@ -4,10 +4,10 @@ import Navbar from './components/NavBar';
 
 export default function App() {
     return (
-        <main className="flex flex-col gap-12 font-inter text-neutral-200">
+        <div className="flex flex-col gap-12 font-inter text-neutral-200">
             <Navbar />
             <MainContent />
             <Footer />
-        </main>
+        </div>
     );
 }
