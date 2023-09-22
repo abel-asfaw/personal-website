@@ -17,7 +17,6 @@ export default function SectionHeader({ id, title, blurb }) {
 
     return (
         <header
-            id={id}
             className="mx-5 flex flex-col gap-2 text-center md:mx-20 xl:mx-40 2xl:mx-80"
         >
             <div className="flex justify-center text-neutral-400">
