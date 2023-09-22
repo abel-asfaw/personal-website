@@ -2,7 +2,7 @@ import { experience, projects, skills } from '../data';
 import About from './About';
 import { Accordion } from './common/Accordion';
 import { Card } from './common/Card';
-import { SectionHeader, SectionContent } from './common/Section';
+import { Section, SectionHeader, SectionContent } from './common/Section';
 import { TileLayout } from './common/Tile';
 
 export default function MainContent() {
@@ -50,12 +50,15 @@ export default function MainContent() {
                 <About />
             </section>
             {sections.map(({ id, title, blurb, className, render }) => (
-                <section id={id} key={id} className="flex flex-col gap-6">
-                    <SectionHeader id={id} title={title} blurb={blurb} />
-                    <SectionContent className={className}>
-                        {render()}
-                    </SectionContent>
-                </section>
+                <Section
+                    key={id}
+                    id={id}
+                    title={title}
+                    blurb={blurb}
+                    className={className}
+                >
+                    {render()}
+                </Section>
             ))}
         </main>
     );
