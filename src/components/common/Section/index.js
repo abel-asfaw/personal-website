@@ -1,2 +1,2 @@
-export { default as SectionHeader } from './SectionHeader.jsx';
-export { default as SectionContent } from './SectionContent.jsx';
+export { default as SectionHeader } from './SectionHeader';
+export { default as SectionContent } from './SectionContent';
