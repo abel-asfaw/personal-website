@@ -50,12 +50,12 @@ export default function MainContent() {
         <main className="flex flex-col gap-16">
             <About />
             {sections.map(({ id, title, blurb, className, render }) => (
-                <div key={id} className="flex flex-col gap-6">
+                <section key={id} className="flex flex-col gap-6">
                     <SectionHeader id={id} title={title} blurb={blurb} />
                     <SectionContent className={className}>
                         {render()}
                     </SectionContent>
-                </div>
+                </section>
             ))}
         </main>
     );
