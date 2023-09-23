@@ -1,12 +1,13 @@
 const projects = [
     {
-        title: 'Coming soon...',
-        subTitle: 'Python, FastAPI, React, Postgres, S3, Docker Compose',
+        title: 'Photography Portfolio',
+        subTitle:
+            'Python, FastAPI, Postgres, S3, Docker Compose, JavaScript, React, Tailwind CSS, Vite.js',
         description: `
-                Interactive photography portfolio designed to highlight my
-                photography over the years. Seamlessly manages and displays a
-                diverse collection of images, providing a visually engaging
-                experience.
+                Sleek web app designed to highlight my photography skills. I've
+                integrated secure and efficient image storage and management.
+                The setup ensures smooth uploads and displays, all while being
+                easily deployable and scalable.
             `,
         image: '/assets/images/project-1.webp',
         link: 'https://github.com/abel-asfaw/photography-portfolio',
