@@ -10,6 +10,7 @@ module.exports = {
             fontFamily: {
                 cubano: ['Cubano', 'sans-serif'],
                 inter: ['Inter', 'sans-serif'],
+                roboto: ['Roboto', 'sans-serif'],
             },
             keyframes: {
                 wave: {

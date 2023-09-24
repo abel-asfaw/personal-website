@@ -39,7 +39,7 @@ export default function MainContent() {
             className: 'gap-4',
             render: () =>
                 Object.entries(skills).map(([label, icon]) => (
-                    <TileLayout key={label} icon={icon} label={label} />
+                    <TileLayout key={label} icon={icon} label={label} className='font-roboto' />
                 )),
         },
     ];

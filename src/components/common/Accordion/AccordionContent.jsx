@@ -15,7 +15,7 @@ export default function AccordionContent({ description, skills }) {
                     {skills.map((skill) => (
                         <PillButton
                             key={skill}
-                            className="bg-indigo-600 text-white"
+                                className="bg-indigo-600 font-roboto text-white"
                         >
                             {skill}
                         </PillButton>
