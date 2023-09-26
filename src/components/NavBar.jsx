@@ -1,4 +1,5 @@
 import { LinkButton } from './common/Button';
+import { Underline } from './common/Decorator';
 
 export default function Navbar() {
     const navItems = [
@@ -15,10 +16,11 @@ export default function Navbar() {
                     <LinkButton
                         key={item.label}
                         href={item.href}
-                        className="text-lg text-neutral-400 hover:text-white"
+                        className="group text-lg"
                         navButton
                     >
                         {item.label}
+                        <Underline />
                     </LinkButton>
                 ))}
             </nav>
