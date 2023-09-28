@@ -39,13 +39,18 @@ export default function MainContent() {
             className: 'gap-4',
             render: () =>
                 Object.entries(skills).map(([label, icon]) => (
-                    <TileLayout key={label} icon={icon} label={label} className='font-roboto' />
+                    <TileLayout
+                        key={label}
+                        icon={icon}
+                        label={label}
+                        className="font-roboto"
+                    />
                 )),
         },
     ];
 
     return (
-        <main className="flex flex-col gap-16">
+        <main className="mx-5 flex flex-col gap-16 md:mx-20 xl:mx-40 2xl:mx-80">
             <section id="about">
                 <About />
             </section>
