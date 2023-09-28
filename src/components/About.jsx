@@ -50,7 +50,7 @@ export default function About() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            {button.label} <button.icon />
+                            {button.label} <button.icon className='shrink-0' />
                         </LinkButton>
                     ))}
                 </div>
