@@ -3,16 +3,14 @@ import { SectionContent } from './common/Section';
 import { FiExternalLink, FiMail } from 'react-icons/fi';
 
 export default function About() {
-    const blurb = (
-        <p className="leading-relaxed">
+    const blurb = `
             After graduating with a degree in Computer Science from UMBC, I
             joined the Redfin team. Using what I learned in school and my time
             there, I've been crafting software that really makes a difference
             for people. I love taking an idea and making it work, whether that's
             tweaking how users interact with it or making complicated stuff run
             smoothly.
-        </p>
-    );
+    `;
 
     const buttons = [
         {
@@ -39,7 +37,7 @@ export default function About() {
                         I love building things.
                     </span>
                 </h1>
-                {blurb}
+                <p className="leading-relaxed">{blurb}</p>
                 <div className="flex gap-4 text-center font-cubano">
                     {buttons.map((button) => (
                         <LinkButton
