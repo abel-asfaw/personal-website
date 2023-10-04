@@ -3,21 +3,18 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: 'Cubano';
-        src: url('/assets/fonts/Cubano.ttf');
-        font-display: swap;
-    }
-    @font-face {
-        font-family: 'Inter';
-        src: url('/assets/fonts/Inter.ttf');
-        font-display: swap;
-    }
-    @font-face {
-        font-family: 'Roboto';
-        src: url('/assets/fonts/RobotoMono.ttf');
-        font-display: swap;
-    }
+    @layer base {
+        @font-face {
+            font-family: 'Inter';
+            src: url('/assets/fonts/Inter.ttf');
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Roboto';
+            src: url('/assets/fonts/RobotoMono.ttf');
+            font-display: swap;
+        }
 
         @font-face {
             font-family: 'RussischSans';
@@ -47,6 +44,7 @@
             font-display: swap;
         }
     }
+
     html {
         scroll-behavior: smooth;
     }

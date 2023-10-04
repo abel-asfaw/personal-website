@@ -8,7 +8,6 @@ module.exports = {
                 sm: '800px',
             },
             fontFamily: {
-                cubano: ['Cubano', 'sans-serif'],
                 inter: ['Inter', 'sans-serif'],
                 roboto: ['Roboto', 'sans-serif'],
                 russisch: ['RussischSans', 'sans'],
