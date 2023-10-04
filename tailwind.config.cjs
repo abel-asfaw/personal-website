@@ -11,6 +11,7 @@ module.exports = {
                 cubano: ['Cubano', 'sans-serif'],
                 inter: ['Inter', 'sans-serif'],
                 roboto: ['Roboto', 'sans-serif'],
+                russisch: ['RussischSans', 'sans'],
             },
             keyframes: {
                 wave: {
