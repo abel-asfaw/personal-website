@@ -4,12 +4,13 @@ import { FiExternalLink, FiMail } from 'react-icons/fi';
 
 export default function About() {
     const blurb = `
-        After graduating with a degree in Computer Science from UMBC, I
-        joined the Redfin team. Using what I learned in school and my time
-        there, I've been crafting software that really makes a difference
-        for people. I love taking an idea and making it work, whether that's
-        tweaking how users interact with it or making complicated stuff run
-        smoothly.
+        After graduating with a Bachelor's degree in Computer Science from
+        the University of Maryland, Baltimore County (UMBC), I joined the
+        Redfin engineering team. I was able to apply what I learned in
+        school as well as learn new skills and new ways of thinking. Since
+        then, I've been making software that really makes a difference for
+        people. I love taking an idea and making it work, whether that’s
+        creating passion projects or improving existing software.
     `;
 
     const buttons = [
