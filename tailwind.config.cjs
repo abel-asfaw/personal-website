@@ -10,7 +10,7 @@ module.exports = {
             fontFamily: {
                 inter: ['Inter', 'sans-serif'],
                 roboto: ['Roboto', 'sans-serif'],
-                russisch: ['RussischSans', 'sans'],
+                russisch: ['RussischSans', 'sans-serif'],
             },
             keyframes: {
                 wave: {
