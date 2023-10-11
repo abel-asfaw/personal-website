@@ -32,7 +32,7 @@ export default function About() {
     return (
         <SectionContent className="flex-col justify-between sm:flex-row lg:gap-20">
             <div className="flex flex-col items-center gap-4 text-center sm:w-1/2 sm:items-start sm:text-left lg:flex-grow">
-                <h1 className="-mb-1 font-russisch text-3xl font-bold text-neutral-100 sm:text-4xl">
+                <h1 className="font-russisch text-3xl font-bold text-neutral-100 sm:text-4xl">
                     Hi, I'm Abel.{' '}
                     <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
                         I love building things.
