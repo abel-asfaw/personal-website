@@ -9,6 +9,7 @@ export default function Card({ link, image, title, subTitle, description }) {
             <img
                 className="absolute h-full w-full rounded-md border-4 border-zinc-800 object-cover object-center"
                 src={image}
+                alt={title}
             />
             <div className="relative flex h-full w-full flex-col justify-center overflow-scroll bg-zinc-900 p-8 text-center opacity-70 transition duration-300 ease-in hover:opacity-100">
                 <h1 className="mb-1 text-lg font-medium">{title}</h1>
