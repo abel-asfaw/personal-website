@@ -16,14 +16,14 @@ export default function About() {
     const buttons = [
         {
             href: '/resume.pdf',
-            className: 'bg-green-600 text-white hover:bg-green-500',
+            className: 'bg-green-600 text-white hover:bg-green-700',
             label: 'Resume',
             icon: FiExternalLink,
         },
         {
             href: 'mailto:contact@abelasfaw.com',
             className:
-                'border-2 border-zinc-800 bg-zinc-900 text-neutral-400 hover:bg-zinc-800 hover:text-white',
+                'border-2 border-zinc-800 bg-transparent text-neutral-400 hover:bg-zinc-800 hover:text-white',
             label: 'Reach Out',
             icon: FiMail,
         },
