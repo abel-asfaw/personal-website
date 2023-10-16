@@ -2,6 +2,7 @@ import { experience, projects, skills } from '../data';
 import About from './About';
 import { Accordion } from './common/Accordion';
 import { Card } from './common/Card';
+import { RevealOnScroll } from './common/Effects';
 import { Section } from './common/Section';
 import { TileLayout } from './common/Tile';
 
@@ -55,15 +56,17 @@ export default function MainContent() {
                 <About />
             </section>
             {sections.map(({ id, title, blurb, className, render }) => (
-                <Section
-                    key={id}
-                    id={id}
-                    title={title}
-                    blurb={blurb}
-                    className={className}
-                >
-                    {render()}
-                </Section>
+                <RevealOnScroll>
+                    <Section
+                        key={id}
+                        id={id}
+                        title={title}
+                        blurb={blurb}
+                        className={className}
+                    >
+                        {render()}
+                    </Section>
+                </RevealOnScroll>
             ))}
         </main>
     );
