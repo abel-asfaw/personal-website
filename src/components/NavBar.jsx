@@ -1,5 +1,5 @@
 import { LinkButton } from './common/Button';
-import { Underline } from './common/Decorator';
+import { Underline } from './common/Effects';
 
 export default function Navbar() {
     const navItems = [
