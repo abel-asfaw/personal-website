@@ -56,12 +56,7 @@ export default function About() {
             </div>
             <div className="hidden w-2/3 max-w-xs sm:flex lg:w-full">
                 <picture>
-                    <img
-                        width="100%"
-                        height="100%"
-                        src="/assets/images/me.png"
-                        alt="Portrait of Abel"
-                    />
+                    <img src="/assets/images/me.png" alt="Portrait of Abel" />
                 </picture>
             </div>
         </SectionContent>
