@@ -7,7 +7,7 @@ export default function Card({ link, image, title, subTitle, description }) {
             rel="noopener noreferrer"
         >
             <img
-                className="absolute h-full w-full rounded-md border-4 border-zinc-800 object-cover object-center"
+                className="absolute h-full w-full rounded-md border-2 border-zinc-800 object-cover object-center"
                 src={image}
                 alt={title}
             />
