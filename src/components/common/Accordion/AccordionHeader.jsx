@@ -7,11 +7,7 @@ export default function AccordionHeader({
     isExpanded,
     onHeaderClick,
 }) {
-    const icon = isExpanded ? (
-        <HiOutlineMinusSm size={24} aria-label="Collapse" />
-    ) : (
-        <HiOutlinePlusSm size={24} aria-label="Expand" />
-    );
+    const Icon = isExpanded ? HiOutlineMinusSm : HiOutlinePlusSm;
 
     const animationDuration = { duration: 0.4 };
 
@@ -31,7 +27,10 @@ export default function AccordionHeader({
                     transition={animationDuration}
                     className="text-green-400"
                 >
-                    {icon}
+                    <Icon
+                        size={24}
+                        aria-label={isExpanded ? 'expanded' : 'collapsed'}
+                    />
                 </motion.div>
             </AnimatePresence>
             <div className="flex flex-1 flex-col sm:flex-row sm:justify-between">

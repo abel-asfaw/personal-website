@@ -53,12 +53,13 @@ export default function MainContent() {
     return (
         <main className="mx-5 flex flex-col gap-20 md:mx-20 xl:mx-40 2xl:mx-80">
             <section id="about">
-                <About />
+                <RevealOnScroll>
+                    <About />
+                </RevealOnScroll>
             </section>
             {sections.map(({ id, title, blurb, className, render }) => (
-                <RevealOnScroll>
+                <RevealOnScroll key={id}>
                     <Section
-                        key={id}
                         id={id}
                         title={title}
                         blurb={blurb}
