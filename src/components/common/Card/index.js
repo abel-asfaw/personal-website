@@ -1,1 +1,2 @@
-export { default as Card } from './Card';
+export { default as OverlayCard } from './OverlayCard';
+export { default as TileCard } from './TileCard';

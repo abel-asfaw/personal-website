@@ -1,4 +1,4 @@
-export default function Card({ link, image, title, subTitle, description }) {
+export default function OverlayCard({ link, image, title, subTitle, description }) {
     return (
         <a
             href={link}

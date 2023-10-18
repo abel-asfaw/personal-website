@@ -1,10 +1,9 @@
 import { experience, projects, skills } from '../data';
 import About from './About';
 import { Accordion } from './common/Accordion';
-import { Card } from './common/Card';
+import { OverlayCard, TileCard } from './common/Card';
 import { RevealOnScroll } from './common/Effects';
 import { Section } from './common/Section';
-import { TileLayout } from './common/Tile';
 
 export default function MainContent() {
     /**
@@ -30,7 +29,7 @@ export default function MainContent() {
             className: 'gap-8',
             render: () =>
                 projects.map((project) => (
-                    <Card key={project.link} {...project} />
+                    <OverlayCard key={project.link} {...project} />
                 )),
         },
         {
@@ -40,7 +39,7 @@ export default function MainContent() {
             className: 'gap-4',
             render: () =>
                 Object.entries(skills).map(([label, icon]) => (
-                    <TileLayout
+                    <TileCard
                         key={label}
                         icon={icon}
                         label={label}
