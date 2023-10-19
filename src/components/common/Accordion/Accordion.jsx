@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 
 export default function Accordion({ items }) {
-    const [expandedIndex, setExpandedIndex] = useState(-1);
+    const [expandedIndex, setExpandedIndex] = useState(0);
 
     const handleClick = (nextIndex) => {
         setExpandedIndex(nextIndex === expandedIndex ? -1 : nextIndex);
