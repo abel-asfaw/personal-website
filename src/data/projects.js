@@ -12,18 +12,6 @@ const projects = [
         image: '/assets/images/project-1.webp',
         link: 'https://github.com/abel-asfaw/photography-portfolio',
     },
-    {
-        title: 'Personal Website',
-        subTitle: 'JavaScript, React, Tailwind CSS, Vite.js',
-        description: `
-                Fully responsive web application showcasing my experience,
-                skills, and projects in order to provide an online presence for
-                potential employers. You're already looking at the demo, so
-                click to see source code.
-            `,
-        image: '/assets/svg/a-background.svg',
-        link: 'https://github.com/abel-asfaw/personal-website',
-    },
 ];
 
 export default projects;
