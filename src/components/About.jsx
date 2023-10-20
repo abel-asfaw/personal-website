@@ -4,13 +4,10 @@ import { FiExternalLink, FiMail } from 'react-icons/fi';
 
 export default function About() {
     const blurb = `
-        After graduating with a Bachelor's degree in Computer Science from
-        the University of Maryland, Baltimore County (UMBC), I joined the
-        Redfin engineering team. I was able to apply what I learned in
-        school as well as learn new skills and new ways of thinking. Since
-        then, I've been making software that really makes a difference for
-        people. I love taking an idea and making it work, whether that’s
-        creating passion projects or improving existing software.
+        I'm a software engineer at Lockheed Martin working remotely from
+        Seattle. Recently, I've been developing my Photography Portfolio web
+        app. I love taking an idea and bringing it to life, whether through
+        passion projects or by adding new features to existing software.
     `;
 
     const buttons = [
