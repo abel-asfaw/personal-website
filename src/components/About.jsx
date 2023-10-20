@@ -27,34 +27,30 @@ export default function About() {
     ];
 
     return (
-        <SectionContent className="flex-col justify-between sm:flex-row lg:gap-20">
-            <div className="flex flex-col items-center gap-4 text-center sm:w-1/2 sm:items-start sm:text-left lg:flex-grow">
-                <h1 className="font-russisch text-3xl font-bold text-neutral-100 sm:text-4xl">
-                    Hi, I'm Abel.{' '}
-                    <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
-                        I love building things.
-                    </span>
-                </h1>
-                <p className="leading-relaxed">{blurb}</p>
-                <div className="flex gap-4 text-center font-russisch font-bold">
-                    {buttons.map((button) => (
-                        <LinkButton
-                            key={button.label}
-                            href={button.href}
-                            className={`${button.className}`}
-                            promptButton
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {button.label} <button.icon className="shrink-0" />
-                        </LinkButton>
-                    ))}
-                </div>
+        <SectionContent className="flex-col justify-center gap-6 text-center">
+            <div className="h-auto w-72 sm:w-80">
+                <img src="/assets/images/me.png" alt="Portrait of Abel" />
             </div>
-            <div className="hidden w-2/3 max-w-xs sm:flex lg:w-full">
-                <picture>
-                    <img src="/assets/images/me.png" alt="Portrait of Abel" />
-                </picture>
+            <h1 className="-mb-1 font-russisch  text-3xl font-bold text-neutral-100 sm:text-4xl">
+                Hi, I'm Abel.{' '}
+                <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+                    I love building things.
+                </span>
+            </h1>
+            <p className="leading-relaxed sm:w-5/6">{blurb}</p>
+            <div className="flex gap-4 text-center font-russisch font-bold">
+                {buttons.map((button) => (
+                    <LinkButton
+                        key={button.label}
+                        href={button.href}
+                        className={`${button.className}`}
+                        promptButton
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {button.label} <button.icon className="shrink-0" />
+                    </LinkButton>
+                ))}
             </div>
         </SectionContent>
     );
