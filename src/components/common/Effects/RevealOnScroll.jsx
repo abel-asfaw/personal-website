@@ -22,7 +22,7 @@ export default function RevealOnScroll({ children }) {
         };
     }, []);
 
-    const classes = classNames('transition-opacity duration-[1.5s]', {
+    const classes = classNames('transition-opacity duration-1000', {
         'opacity-0': !isVisible,
     });
 
