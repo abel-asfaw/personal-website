@@ -4,11 +4,11 @@ const projects = [
         subTitle:
             'Python, FastAPI, Postgres, S3, Docker Compose, JavaScript, React, Tailwind CSS, Vite.js',
         description: `
-                Sleek web app designed to highlight my photography skills. I've
-                integrated secure and efficient image storage and management.
-                The setup ensures smooth uploads and displays, all while being
-                easily deployable and scalable.
-            `,
+            I built a photography portolio web app where I can upload and
+            display my photos in a simple but sleek grid format. I've set up
+            an admin page where I can manage the photos and it, along with
+            the endpoints, is secured through Auth0. Check it out!
+        `,
         image: '/assets/images/project-1.webp',
         link: 'https://github.com/abel-asfaw/photography-portfolio',
     },
