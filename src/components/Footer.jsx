@@ -17,7 +17,7 @@ export default function Footer() {
 
     return (
         <footer className="border-t border-zinc-900">
-            <div className="container mx-auto flex w-full flex-col items-center justify-center p-6 text-neutral-400 xs:flex-row xs:justify-between">
+            <div className="flex flex-col items-center justify-center p-6 text-neutral-400 xs:flex-row xs:justify-between">
                 <p>© 2023 Abel Asfaw</p>
                 <div className="mt-2 flex flex-wrap gap-6 xs:mt-0">
                     {socialLinks.map(({ href, title, icon: Icon }) => (
