@@ -24,7 +24,7 @@ export default function Accordion({ items }) {
         const isExpanded = index === expandedIndex;
 
         return (
-            <div key={title} className="w-full lg:w-3/4">
+            <div key={title} className="w-full">
                 <AccordionHeader
                     title={title}
                     date={date}

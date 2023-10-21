@@ -3,52 +3,70 @@
 @tailwind utilities;
 
 @layer base {
-    @layer base {
-        @font-face {
-            font-family: 'Inter';
-            src: url('/assets/fonts/Inter.ttf');
-            font-display: swap;
-        }
+    @font-face {
+        font-family: 'Inter';
+        src: url('/assets/fonts/Inter.ttf');
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: 'Roboto';
-            src: url('/assets/fonts/RobotoMono.ttf');
-            font-display: swap;
-        }
+    @font-face {
+        font-family: 'Roboto';
+        src: url('/assets/fonts/RobotoMono.ttf');
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: 'RussischSans';
-            src: url('/assets/fonts/RussischSans-Regular.ttf');
-            font-weight: 400;
-            font-display: swap;
-        }
+    @font-face {
+        font-family: 'RussischSans';
+        src: url('/assets/fonts/RussischSans-Regular.ttf');
+        font-weight: 400;
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: 'RussischSans';
-            src: url('/assets/fonts/RussischSans-Medium.ttf');
-            font-weight: 500;
-            font-display: swap;
-        }
+    @font-face {
+        font-family: 'RussischSans';
+        src: url('/assets/fonts/RussischSans-Medium.ttf');
+        font-weight: 500;
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: 'RussischSans';
-            src: url('/assets/fonts/RussischSans-SemiBold.ttf');
-            font-weight: 600;
-            font-display: swap;
-        }
+    @font-face {
+        font-family: 'RussischSans';
+        src: url('/assets/fonts/RussischSans-SemiBold.ttf');
+        font-weight: 600;
+        font-display: swap;
+    }
 
-        @font-face {
-            font-family: 'RussischSans';
-            src: url('/assets/fonts/RussischSans-Bold.ttf');
-            font-weight: 700;
-            font-display: swap;
-        }
+    @font-face {
+        font-family: 'RussischSans';
+        src: url('/assets/fonts/RussischSans-Bold.ttf');
+        font-weight: 700;
+        font-display: swap;
     }
 
     html {
         scroll-behavior: smooth;
     }
+
     section {
-        scroll-margin-top: 7rem;
+        scroll-margin-top: 8rem;
     }
 }
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr min(100ch, calc(100% - 48px)) 1fr;
+    column-gap: 24px;
+    justify-content: center;
+}
+
+.wrapper > * {
+    grid-column: 2;
+}
+
+@media (max-width: 800px) {
+    .full-bleed {
+        width: 100%;
+        grid-column: 1 / -1;
+    }
+}
+
