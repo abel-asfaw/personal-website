@@ -28,7 +28,7 @@ export default function About() {
 
     return (
         <SectionContent className="flex-col justify-center gap-6 text-center">
-            <div className="h-auto w-72 sm:w-80">
+            <div className="relative after:content-[''] after:absolute after:-bottom-px after:inset-x-0 after:h-20 after:bg-gradient-to-t after:from-zinc-950 after:to-transparent after:pointer-events-none h-auto w-64 sm:w-72">
                 <img src="/assets/images/me.png" alt="Portrait of Abel" />
             </div>
             <h1 className="-mb-1 font-russisch  text-3xl font-bold text-neutral-100 sm:text-4xl">
