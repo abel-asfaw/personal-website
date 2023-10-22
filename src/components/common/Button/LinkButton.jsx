@@ -9,15 +9,15 @@ export default function LinkButton({
 }) {
     const transition = 'duration-300 ease-in';
 
-    const computedClasses = classNames(
-        className,
+    const classes = classNames(
         transition,
         navButton && 'p-1',
-        promptButton && 'flex items-center gap-2 rounded py-2 px-4'
+        promptButton && 'flex items-center gap-2 rounded py-2 px-4',
+        className
     );
 
     return (
-        <a {...rest} className={computedClasses}>
+        <a className={classes} {...rest}>
             {children}
         </a>
     );
