@@ -1,8 +1,7 @@
 import { LinkButton } from './common/Button';
-import { SectionContent } from './common/Section';
 import { FiChevronsDown, FiMail } from 'react-icons/fi';
 
-export default function About() {
+export default function About({ id }) {
     const blurb = `
         I'm a software engineer at Lockheed Martin working remotely from
         Seattle. Recently, I've been developing my Photography Portfolio web
@@ -11,7 +10,10 @@ export default function About() {
     `;
 
     return (
-        <SectionContent className="flex-col justify-center gap-6 text-center">
+        <section
+            id={id}
+            className="flex flex-col items-center justify-center gap-6 text-center"
+        >
             <div className="relative h-auto w-64 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-20 after:bg-gradient-to-t after:from-zinc-950 after:to-transparent after:content-[''] sm:w-72">
                 <img src="/assets/images/me.png" alt="Portrait of Abel" />
             </div>
@@ -29,7 +31,7 @@ export default function About() {
                     promptButton
                 >
                     See my work
-                    <FiChevronsDown className="animate-bouncy shrink-0 will-change-transform" />
+                    <FiChevronsDown className="shrink-0 animate-bouncy will-change-transform" />
                 </LinkButton>
                 <LinkButton
                     href="mailto:contact@abelasfaw.com"
@@ -42,6 +44,6 @@ export default function About() {
                     <FiMail className="shrink-0" />
                 </LinkButton>
             </div>
-        </SectionContent>
+        </section>
     );
 }

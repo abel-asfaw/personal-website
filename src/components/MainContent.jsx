@@ -48,9 +48,7 @@ export default function MainContent() {
     return (
         <main className="flex flex-col gap-20 sm:gap-24">
             <RevealOnScroll>
-                <section id="about">
-                    <About />
-                </section>
+                <About id="about" />
             </RevealOnScroll>
             {sections.map(({ id, title, className, render }) => (
                 <RevealOnScroll key={id}>
