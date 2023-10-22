@@ -7,14 +7,13 @@ export default function LinkButton({
     className,
     ...rest
 }) {
-    // For any hover animations
     const transition = 'duration-300 ease-in';
 
     const computedClasses = classNames(
         className,
         transition,
         navButton && 'p-1',
-        promptButton && 'flex items-center gap-2 rounded py-2 px-5'
+        promptButton && 'flex items-center gap-2 rounded py-2 px-4'
     );
 
     return (
