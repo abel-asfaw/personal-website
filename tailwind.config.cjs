@@ -23,9 +23,14 @@ module.exports = {
                         'background-position': 'right',
                     },
                 },
+                bouncy: {
+                    '0%': { transform: 'translateY(15%)' },
+                    '100%': { transform: 'translateY(-15%)' },
+                },
             },
             animation: {
                 wave: 'wave 5s alternate ease-in-out infinite',
+                bouncy: 'bouncy 800ms alternate ease-out infinite',
             },
         },
     },

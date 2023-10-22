@@ -14,7 +14,7 @@ export default function LinkButton({
         className,
         transition,
         navButton && 'p-1',
-        promptButton && 'flex items-center gap-2 rounded py-2 px-6'
+        promptButton && 'flex items-center gap-2 rounded py-2 px-5'
     );
 
     return (
