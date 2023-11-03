@@ -23,7 +23,7 @@ export default function About({ id }) {
                     I love building things.
                 </span>
             </h1>
-            <p className="leading-relaxed sm:w-5/6">{blurb}</p>
+            <p className="leading-relaxed">{blurb}</p>
             <div className="flex gap-4 text-center font-russisch font-bold transition-all">
                 <LinkButton
                     href="#projects"

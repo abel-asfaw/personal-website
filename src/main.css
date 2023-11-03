@@ -54,7 +54,7 @@
 
 .wrapper {
     display: grid;
-    grid-template-columns: 1fr min(100ch, calc(100% - 48px)) 1fr;
+    grid-template-columns: 1fr min(90ch, calc(100% - 48px)) 1fr;
     column-gap: 24px;
     justify-content: center;
 }
@@ -63,7 +63,7 @@
     grid-column: 2;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 639px) {
     .full-bleed {
         width: 100%;
         grid-column: 1 / -1;
