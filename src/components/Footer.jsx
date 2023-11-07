@@ -1,5 +1,5 @@
 import { LinkButton } from './common/Button';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Footer() {
     const socialLinks = [
@@ -11,13 +11,13 @@ export default function Footer() {
         {
             href: 'https://linkedin.com/in/abelasfaw/',
             title: 'LinkedIn',
-            icon: FaLinkedinIn,
+            icon: FaLinkedin,
         },
     ];
 
     return (
         <footer className="full-bleed border-t border-zinc-900">
-            <div className="flex flex-col items-center justify-center p-6 text-neutral-400 xs:flex-row xs:justify-between">
+            <div className="flex flex-col items-center justify-center gap-4 p-6 text-neutral-400">
                 <p>© 2023 Abel Asfaw</p>
                 <div className="mt-2 flex flex-wrap gap-6 xs:mt-0">
                     {socialLinks.map(({ href, title, icon: Icon }) => (
@@ -28,7 +28,7 @@ export default function Footer() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <Icon size={24} title={title} />
+                            <Icon size={30} title={title} />
                         </LinkButton>
                     ))}
                 </div>
