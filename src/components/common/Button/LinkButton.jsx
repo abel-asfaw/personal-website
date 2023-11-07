@@ -12,7 +12,7 @@ export default function LinkButton({
     const classes = classNames(
         transition,
         navButton && 'p-1',
-        promptButton && 'flex items-center gap-2 rounded py-2 px-4',
+        promptButton && 'flex items-center gap-2 rounded py-2.5 px-4',
         className
     );
 
