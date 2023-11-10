@@ -16,9 +16,8 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="full-bleed border-t border-zinc-900">
+        <footer className="border-t border-zinc-900">
             <div className="flex flex-col items-center justify-center gap-4 p-6 text-neutral-400">
-                <p>© 2023 Abel Asfaw</p>
                 <div className="mt-2 flex flex-wrap gap-6 xs:mt-0">
                     {socialLinks.map(({ href, title, icon: Icon }) => (
                         <LinkButton
@@ -32,6 +31,7 @@ export default function Footer() {
                         </LinkButton>
                     ))}
                 </div>
+                <p>© 2023 Abel Asfaw</p>
             </div>
         </footer>
     );
