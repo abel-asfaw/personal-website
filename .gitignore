@@ -1,0 +1,11 @@
+# Dependency directories
+node_modules/
+
+/build
+/dist
+
+npm-debug.log*
+
+.vscode/
+
+.DS_Store
