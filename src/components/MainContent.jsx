@@ -46,7 +46,7 @@ export default function MainContent() {
     ];
 
     return (
-        <main className="flex flex-col gap-20 sm:gap-24">
+        <main className="flex flex-col gap-20 sm:gap-32">
             <RevealOnScroll>
                 <About id="about" />
             </RevealOnScroll>
