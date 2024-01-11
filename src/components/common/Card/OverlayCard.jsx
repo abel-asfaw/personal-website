@@ -1,23 +1,47 @@
-export default function OverlayCard({ link, image, title, subTitle, description }) {
+import { PillButton } from '../Button';
+import { Underline } from '../Effects';
+import { FiExternalLink } from 'react-icons/fi';
+
+export default function OverlayCard({ link, image, title, description, tags }) {
     return (
-        <a
-            href={link}
-            className="relative h-96 w-96 overflow-hidden rounded-md"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <img
-                className="absolute h-full w-full rounded-md border-2 border-zinc-800 object-cover object-center"
-                src={image}
-                alt={title}
-            />
-            <div className="relative flex h-full w-full flex-col justify-start overflow-y-scroll rounded-md border-2 border-zinc-800 bg-zinc-900 p-8 text-center opacity-70 transition duration-300 ease-in hover:opacity-100">
-                <h1 className="mb-1 text-lg font-medium">{title}</h1>
-                <h2 className="mb-3 font-roboto text-sm font-medium tracking-wider text-green-400">
-                    {subTitle}
-                </h2>
-                <span className="leading-relaxed">{description}</span>
+        <div className="max-w-sm overflow-hidden rounded-lg border-2 border-zinc-900 bg-zinc-900 shadow-lg">
+            <a
+                href={link}
+                className="relative flex h-1/2 overflow-hidden"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <img className="h-auto w-full" src={image} alt={title} />
+                <div className="absolute left-0 top-0 hidden h-full w-full items-center justify-center bg-zinc-900 opacity-0 transition duration-300 ease-in hover:opacity-80 sm:flex">
+                    Learn more&nbsp;
+                    <FiExternalLink size={18} />
+                </div>
+            </a>
+            <div className="flex flex-col gap-3 px-6 py-4">
+                <div className="text-lg font-medium">{title}</div>
+                <p className="text-neutral-300">{description}</p>
+                <span className="flex flex-wrap gap-2">
+                    {tags.map(tag => (
+                        <PillButton
+                            key={tag}
+                            className="bg-indigo-600 font-roboto text-white"
+                        >
+                            {tag}
+                        </PillButton>
+                    ))}
+                </span>
+                <div className="flex justify-end sm:hidden">
+                    <a
+                        href={link}
+                        className="group w-fit font-semibold"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Learn more
+                        <Underline />
+                    </a>
+                </div>
             </div>
-        </a>
+        </div>
     );
 }

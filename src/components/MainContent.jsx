@@ -25,8 +25,12 @@ export default function MainContent() {
             title: "Apps I've Built",
             className: 'gap-8',
             render: () =>
-                projects.map((project) => (
-                    <OverlayCard key={project.link} {...project} />
+                projects.map(project => (
+                    <OverlayCard
+                        key={project.link}
+                        tags={project.skills}
+                        {...project}
+                    />
                 )),
         },
         {

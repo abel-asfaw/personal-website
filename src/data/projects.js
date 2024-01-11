@@ -1,8 +1,14 @@
 const projects = [
     {
         title: 'Photography Portfolio',
-        subTitle:
-            'Python, FastAPI, Postgres, S3, Docker Compose, JavaScript, React, Tailwind CSS, Vite.js',
+        skills: [
+            'React',
+            'Python',
+            'FastAPI',
+            'Postgres',
+            'AWS S3',
+            'Docker',
+        ],
         description: `
             I built a photography portolio web app where I can upload and
             display my photos in a simple but sleek grid format. I've set up
