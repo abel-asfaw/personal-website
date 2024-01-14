@@ -19,7 +19,9 @@ export default function OverlayCard({ link, image, title, description, tags }) {
             </a>
             <div className="flex flex-col gap-3 px-6 py-4">
                 <div className="text-lg font-medium">{title}</div>
-                <p className="text-neutral-300">{description}</p>
+                <p className="leading-relaxed text-neutral-300">
+                    {description}
+                </p>
                 <span className="flex flex-wrap gap-2">
                     {tags.map(tag => (
                         <PillButton
