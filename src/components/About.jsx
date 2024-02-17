@@ -3,7 +3,7 @@ import { FiChevronsDown, FiMail } from 'react-icons/fi';
 
 export default function About({ id }) {
     const blurb = `
-        I'm a software engineer at Lockheed Martin working remotely from
+        I'm a software engineer at Raptor Maps working remotely from
         Seattle. Recently, I've been developing my Photography Portfolio web
         app. I love taking an idea and bringing it to life, whether through
         passion projects or by adding new features to existing software.
