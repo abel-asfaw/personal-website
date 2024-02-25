@@ -1,7 +1,7 @@
 import { PillButton } from '../Button';
 import { motion } from 'framer-motion';
 
-export default function AccordionContent({ description, skills }) {
+export default function AccordionContent({ description, tags }) {
     return (
         <motion.div
             aria-label="Accordion content"
@@ -10,14 +10,14 @@ export default function AccordionContent({ description, skills }) {
             className="flex h-full flex-col flex-wrap rounded border-2 border-zinc-800 p-4"
         >
             <span className="leading-relaxed">{description}</span>
-            {!!skills.length && (
+            {!!tags.length && (
                 <span className="flex flex-wrap gap-2 pt-2">
-                    {skills.map((skill) => (
+                    {tags.map(tag => (
                         <PillButton
-                            key={skill}
+                            key={tag}
                             className="bg-indigo-600 font-roboto text-white"
                         >
-                            {skill}
+                            {tag}
                         </PillButton>
                     ))}
                 </span>

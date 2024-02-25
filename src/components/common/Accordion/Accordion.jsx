@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function Accordion({ items }) {
     const [expandedIndex, setExpandedIndex] = useState(-1);
 
-    const handleClick = (nextIndex) => {
+    const handleClick = nextIndex => {
         setExpandedIndex(nextIndex === expandedIndex ? -1 : nextIndex);
     };
 
@@ -45,7 +45,7 @@ export default function Accordion({ items }) {
                             <motion.div className="pt-4">
                                 <AccordionContent
                                     description={description}
-                                    skills={skills}
+                                    tags={skills}
                                 />
                             </motion.div>
                         </motion.div>
