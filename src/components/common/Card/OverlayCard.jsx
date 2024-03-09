@@ -21,7 +21,7 @@ export default function OverlayCard({ link, image, title, description, tags }) {
                 </div>
             </a>
             <div className="flex flex-col gap-3 px-6 py-4">
-                <div className="text-lg font-semibold">{title}</div>
+                <div className="text-lg font-medium">{title}</div>
                 <div className="flex justify-between">
                     <LinkButton
                         key={link}
