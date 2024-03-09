@@ -7,7 +7,7 @@ export default function AccordionContent({ description, tags }) {
             aria-label="Accordion content"
             variants={{ collapsed: { scale: 0.8 }, expanded: { scale: 1 } }}
             transition={{ duration: 0.4 }}
-            className="flex h-full flex-col flex-wrap rounded border-2 border-zinc-800 p-4"
+            className="flex h-full flex-col flex-wrap rounded border-[1px] border-zinc-800 p-4"
         >
             <span className="leading-relaxed">{description}</span>
             {!!tags.length && (

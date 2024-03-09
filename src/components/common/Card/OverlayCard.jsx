@@ -7,7 +7,7 @@ export default function OverlayCard({ link, image, title, description, tags }) {
     const [showMore, setShowMore] = useState(false);
 
     return (
-        <div className="max-w-sm overflow-hidden rounded-lg border-2 border-zinc-900 bg-zinc-900 shadow-lg">
+        <div className="max-w-sm overflow-hidden rounded-lg border-[1px] border-zinc-800 bg-zinc-900 shadow-lg">
             <a
                 href={link}
                 className="relative flex h-1/2 overflow-hidden"

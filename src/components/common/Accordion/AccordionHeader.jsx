@@ -17,7 +17,7 @@ export default function AccordionHeader({
                 backgroundColor: isExpanded ? '#27272a' : '#18181b',
             }}
             transition={animationDuration}
-            className="flex cursor-pointer select-none items-center gap-2 rounded px-2 py-4 sm:p-4"
+            className="flex cursor-pointer select-none items-center gap-2 rounded border-[1px] border-zinc-800 px-2 py-4 sm:p-4"
             onClick={onHeaderClick}
         >
             <AnimatePresence initial={false}>
