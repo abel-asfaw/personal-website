@@ -5,6 +5,13 @@ import { OverlayCard, TileCard } from './common/Card';
 import { RevealOnScroll } from './common/Effects';
 import { Section } from './common/Section';
 
+interface Section {
+    id: string;
+    title: string;
+    className: string;
+    render: () => JSX.Element | JSX.Element[];
+}
+
 export default function MainContent() {
     /**
      * This component renders multiple sections by mapping through the 'sections' array.
@@ -13,7 +20,7 @@ export default function MainContent() {
      * - title: The title displayed at the top of the section.
      * - render: A function that returns JSX elements.
      */
-    const sections = [
+    const sections: Section[] = [
         {
             id: 'experience',
             title: "Where I've Worked",

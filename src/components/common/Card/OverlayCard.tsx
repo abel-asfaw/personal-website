@@ -3,11 +3,25 @@ import { LinkButton, PillButton } from '../Button';
 import { FaGithub, FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 
-export default function OverlayCard({ link, image, title, description, tags }) {
+interface OverlayCardProps {
+    link: string;
+    image: string;
+    title: string;
+    description: string;
+    tags: string[];
+}
+
+export default function OverlayCard({
+    link,
+    image,
+    title,
+    description,
+    tags,
+}: OverlayCardProps) {
     const [showMore, setShowMore] = useState(false);
 
     return (
-        <div className="max-w-sm overflow-hidden rounded-lg border-[1px] border-zinc-800 bg-zinc-900 shadow-lg">
+        <div className="max-w-sm overflow-hidden rounded-lg border-[1px] border-zinc-850 bg-zinc-900 shadow-lg">
             <a
                 href={link}
                 className="relative flex h-1/2 overflow-hidden"

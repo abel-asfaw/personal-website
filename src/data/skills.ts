@@ -14,8 +14,13 @@ import {
     SiHelm,
     SiFastapi,
 } from 'react-icons/si';
+import { IconType } from 'react-icons';
 
-const skills = {
+interface Skills {
+    [key: string]: IconType;
+};
+
+const skills: Skills = {
     Python: SiPython,
     Java: FaJava,
     'C++': SiCplusplus,

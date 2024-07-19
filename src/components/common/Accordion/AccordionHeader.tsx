@@ -1,23 +1,36 @@
+import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { HiOutlineMinusSm, HiOutlinePlusSm } from 'react-icons/hi';
+
+interface AccordionHeaderProps {
+    title: string;
+    date: string;
+    isExpanded: boolean;
+    onHeaderClick: () => void;
+}
 
 export default function AccordionHeader({
     title,
     date,
     isExpanded,
     onHeaderClick,
-}) {
+}: AccordionHeaderProps) {
     const Icon = isExpanded ? HiOutlineMinusSm : HiOutlinePlusSm;
 
     const animationDuration = { duration: 0.4 };
+
+    const classes = classNames(
+        'border-zinc-850 flex cursor-pointer select-none items-center gap-2 rounded border-[1px] px-2 py-4 sm:p-4',
+    );
 
     return (
         <motion.div
             animate={{
                 backgroundColor: isExpanded ? '#27272a' : '#18181b',
+                borderColor: isExpanded ? '#27272a' : '#1f1f22',
             }}
             transition={animationDuration}
-            className="flex cursor-pointer select-none items-center gap-2 rounded border-[1px] border-zinc-800 px-2 py-4 sm:p-4"
+            className={classes}
             onClick={onHeaderClick}
         >
             <AnimatePresence initial={false}>

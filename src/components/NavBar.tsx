@@ -1,8 +1,13 @@
 import { LinkButton } from './common/Button';
 import { Underline } from './common/Effects';
 
+interface NavItems {
+    label: string;
+    href: string;
+}
+
 export default function Navbar() {
-    const navItems = [
+    const navItems: NavItems[] = [
         { label: 'About', href: '#about' },
         { label: 'Experience', href: '#experience' },
         { label: 'Projects', href: '#projects' },

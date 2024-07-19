@@ -1,11 +1,19 @@
 import classNames from 'classnames';
 import { useRef, useState, useEffect } from 'react';
 
-export default function RevealOnScroll({ children }) {
+interface RevealOnScrollProps {
+    children: React.ReactNode;
+}
+
+export default function RevealOnScroll({ children }: RevealOnScrollProps) {
     const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef(null);
+    const scrollRef = useRef(null);
 
     useEffect(() => {
+        if (!scrollRef.current) {
+            return;
+        }
+
         const scrollObserver = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setIsVisible(true);
@@ -13,11 +21,11 @@ export default function RevealOnScroll({ children }) {
             }
         });
 
-        scrollObserver.observe(ref.current);
+        scrollObserver.observe(scrollRef.current);
 
         return () => {
-            if (ref.current) {
-                scrollObserver.unobserve(ref.current);
+            if (scrollRef.current) {
+                scrollObserver.unobserve(scrollRef.current);
             }
         };
     }, []);
@@ -27,7 +35,7 @@ export default function RevealOnScroll({ children }) {
     });
 
     return (
-        <div ref={ref} className={classes}>
+        <div ref={scrollRef} className={classes}>
             {children}
         </div>
     );

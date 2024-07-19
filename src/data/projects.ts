@@ -1,4 +1,12 @@
-const projects = [
+export interface Project {
+    title: string;
+    skills: string[];
+    description: string;
+    image: string;
+    link: string;
+};
+
+const projects: Project[] = [
     {
         title: 'Photography Portfolio',
         skills: [

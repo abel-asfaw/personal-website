@@ -1,4 +1,11 @@
-const experience = [
+interface Experience {
+    title: string;
+    date: string;
+    description: string;
+    skills: string[];
+};
+
+const experience: Experience[] = [
     {
         title: 'Software Engineer @ Lockheed Martin',
         date: 'Apr. 2023 – Present',

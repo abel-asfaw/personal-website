@@ -1,13 +1,21 @@
 import { PillButton } from '../Button';
 import { motion } from 'framer-motion';
 
-export default function AccordionContent({ description, tags }) {
+interface AccordionContentProps {
+    description: string;
+    tags: string[];
+}
+
+export default function AccordionContent({
+    description,
+    tags,
+}: AccordionContentProps) {
     return (
         <motion.div
             aria-label="Accordion content"
             variants={{ collapsed: { scale: 0.8 }, expanded: { scale: 1 } }}
             transition={{ duration: 0.4 }}
-            className="flex h-full flex-col flex-wrap rounded border-[1px] border-zinc-800 p-4"
+            className="flex h-full flex-col flex-wrap rounded border-[1px] border-zinc-850 p-4 hover:border-zinc-800"
         >
             <span className="leading-relaxed">{description}</span>
             {!!tags.length && (

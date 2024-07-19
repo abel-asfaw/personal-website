@@ -3,6 +3,9 @@ module.exports = {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
+            borderColor: {
+                'zinc-850': '#1f1f22', // Custom color value for border-zinc-850
+            },
             screens: {
                 xs: '376px',
             },

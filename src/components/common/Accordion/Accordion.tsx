@@ -2,10 +2,21 @@ import { AccordionContent, AccordionHeader } from '.';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 
-export default function Accordion({ items }) {
+interface AccordionItem {
+    title: string;
+    date: string;
+    description: string;
+    skills: string[];
+}
+
+interface AccordionProps {
+    items: AccordionItem[];
+}
+
+export default function Accordion({ items }: AccordionProps) {
     const [expandedIndex, setExpandedIndex] = useState(-1);
 
-    const handleClick = nextIndex => {
+    const handleClick = (nextIndex: number) => {
         setExpandedIndex(nextIndex === expandedIndex ? -1 : nextIndex);
     };
 

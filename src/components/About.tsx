@@ -35,7 +35,7 @@ export default function About({ id }) {
                 </LinkButton>
                 <LinkButton
                     href="mailto:contact@abelasfaw.com"
-                    className="border-[1px] border-zinc-800 bg-transparent text-neutral-400 hover:bg-zinc-800 hover:text-white"
+                    className="border-zinc-850 border-[1px] bg-transparent text-neutral-400 hover:border-zinc-800 hover:bg-zinc-800 hover:text-white"
                     promptButton
                     target="_blank"
                     rel="noopener noreferrer"
