@@ -1,13 +1,13 @@
 import { LinkButton } from './common/Button';
 import { Underline } from './common/Effects';
 
-interface NavItems {
+interface NavItem {
     label: string;
     href: string;
 }
 
 export default function Navbar() {
-    const navItems: NavItems[] = [
+    const navItems: NavItem[] = [
         { label: 'About', href: '#about' },
         { label: 'Experience', href: '#experience' },
         { label: 'Projects', href: '#projects' },
@@ -21,7 +21,7 @@ export default function Navbar() {
             }
         >
             <nav className="flex flex-wrap justify-center gap-6 font-russisch font-bold sm:gap-20">
-                {navItems.map((item) => (
+                {navItems.map(item => (
                     <LinkButton
                         key={item.label}
                         href={item.href}

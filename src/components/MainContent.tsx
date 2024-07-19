@@ -5,7 +5,7 @@ import { OverlayCard, TileCard } from './common/Card';
 import { RevealOnScroll } from './common/Effects';
 import { Section } from './common/Section';
 
-interface Section {
+interface SectionItem {
     id: string;
     title: string;
     className: string;
@@ -20,7 +20,7 @@ export default function MainContent() {
      * - title: The title displayed at the top of the section.
      * - render: A function that returns JSX elements.
      */
-    const sections: Section[] = [
+    const sections: SectionItem[] = [
         {
             id: 'experience',
             title: "Where I've Worked",

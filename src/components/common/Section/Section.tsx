@@ -1,9 +1,21 @@
 import classNames from 'classnames';
 
-export default function Section({ id, title, className, children }) {
+interface SectionProps {
+    id: string;
+    title: string;
+    className?: string;
+    children: React.ReactNode;
+}
+
+export default function Section({
+    id,
+    title,
+    className,
+    children,
+}: SectionProps) {
     const classes = classNames(
         'flex flex-wrap justify-center items-center',
-        className
+        className,
     );
 
     return (
