@@ -1,7 +1,11 @@
 import { LinkButton } from './common/Button';
 import { FiChevronsDown, FiMail } from 'react-icons/fi';
 
-export default function About({ id }) {
+interface AboutProps {
+    id: string;
+}
+
+export default function About({ id }: AboutProps) {
     const blurb = `
         I'm a software engineer at Raptor Maps working remotely from
         Seattle. Recently, I've been developing my Photography Portfolio web
@@ -35,7 +39,7 @@ export default function About({ id }) {
                 </LinkButton>
                 <LinkButton
                     href="mailto:contact@abelasfaw.com"
-                    className="border-zinc-850 border-[1px] bg-transparent text-neutral-400 hover:border-zinc-800 hover:bg-zinc-800 hover:text-white"
+                    className="border-[1px] border-zinc-850 bg-transparent text-neutral-400 hover:border-zinc-800 hover:bg-zinc-800 hover:text-white"
                     promptButton
                     target="_blank"
                     rel="noopener noreferrer"

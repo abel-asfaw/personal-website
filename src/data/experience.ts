@@ -3,12 +3,26 @@ interface Experience {
     date: string;
     description: string;
     skills: string[];
-};
+}
 
 const experience: Experience[] = [
     {
+        title: 'Software Engineer @ Raptor Maps',
+        date: 'Jan. 2024 – Present',
+        description: 'Building stuff. Solving problems. You know the drill.',
+        skills: [
+            'Python',
+            'TypeScript',
+            'React',
+            'React Native',
+            'Postgres',
+            'Docker',
+            'AWS',
+        ],
+    },
+    {
         title: 'Software Engineer @ Lockheed Martin',
-        date: 'Apr. 2023 – Present',
+        date: 'Apr. 2023 – Jan. 2024',
         description: `
                 At Lockheed Martin, I play a pivotal role in a specialized team.
                 Our focus is on driving the modernization and enhancement of
