@@ -6,8 +6,8 @@ interface RevealOnScrollProps {
 }
 
 export default function RevealOnScroll({ children }: RevealOnScrollProps) {
-    const [isVisible, setIsVisible] = useState(false);
-    const scrollRef = useRef(null);
+    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const scrollRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!scrollRef.current) {
