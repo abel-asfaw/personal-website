@@ -8,9 +8,7 @@ interface AboutProps {
 export default function About({ id }: AboutProps) {
     const blurb = `
         I'm a software engineer at Raptor Maps working remotely from
-        Seattle. Recently, I've been developing my Photography Portfolio web
-        app. I love taking an idea and bringing it to life, whether through
-        passion projects or by adding new features to existing software.
+        Seattle. I love taking an idea and bringing it to life through software.
     `;
 
     return (
@@ -39,7 +37,7 @@ export default function About({ id }: AboutProps) {
                 </LinkButton>
                 <LinkButton
                     href="mailto:contact@abelasfaw.com"
-                    className="border-[1px] border-zinc-850 bg-transparent text-neutral-400 hover:border-zinc-800 hover:bg-zinc-800 hover:text-white"
+                    className="border-[1px] border-zinc-700 bg-transparent text-neutral-400 hover:bg-zinc-700 hover:text-white"
                     promptButton
                     target="_blank"
                     rel="noopener noreferrer"
