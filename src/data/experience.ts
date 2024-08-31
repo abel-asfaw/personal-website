@@ -36,9 +36,9 @@ const experience: Experience[] = [
         description: `
                 I initially joined the Selling and Listing Experience (SALE)
                 team at Redfin as a full-stack developer. Later, I
-                transitioned to the Concierge team, where my primary focus was
-                to develop tools and processes to assist agents in streamlining
-                home renovation processes.
+                transitioned to the Concierge team where my primary focus was
+                to develop tools and processes to assist agents in streamlining the
+                home renovation process.
             `,
         skills: ['Java', 'JavaScript', 'React', 'LESS', 'Postgres', 'GraphQL'],
     },
@@ -58,7 +58,7 @@ const experience: Experience[] = [
         description: `
                 At the UMBC Academic Success Center, I led tutoring sessions for
                 two fundamental computer science courses—Python
-                basics and the OOP principles of C++.
+                basics and OOP principles of C++.
             `,
         skills: ['Python', 'C++'],
     },
