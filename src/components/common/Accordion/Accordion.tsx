@@ -3,68 +3,65 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 
 interface AccordionItem {
-    title: string;
-    date: string;
-    description: string;
-    skills: string[];
+  title: string;
+  date: string;
+  description: string;
+  skills: string[];
 }
 
 interface AccordionProps {
-    items: AccordionItem[];
+  items: AccordionItem[];
 }
 
 export default function Accordion({ items }: AccordionProps) {
-    const [expandedIndex, setExpandedIndex] = useState(-1);
+  const [expandedIndex, setExpandedIndex] = useState(-1);
 
-    const handleClick = (nextIndex: number) => {
-        setExpandedIndex(nextIndex === expandedIndex ? -1 : nextIndex);
-    };
+  const handleClick = (nextIndex: number) => {
+    setExpandedIndex(nextIndex === expandedIndex ? -1 : nextIndex);
+  };
 
-    const accordionVariants = {
-        expanded: { opacity: 1, height: 'auto' },
-        collapsed: { opacity: 0, height: 0 },
-    };
+  const accordionVariants = {
+    expanded: { opacity: 1, height: 'auto' },
+    collapsed: { opacity: 0, height: 0 },
+  };
 
-    const accordionTransition = {
-        duration: 0.4,
-        ease: [0, 0, 0, 1],
-    };
+  const accordionTransition = {
+    duration: 0.4,
+    ease: [0, 0, 0, 1],
+  };
 
-    const renderedItems = items.map((item, index) => {
-        const { title, date, description, skills } = item;
-        const isExpanded = index === expandedIndex;
+  const renderedItems = items.map((item, index) => {
+    const { title, date, description, skills } = item;
+    const isExpanded = index === expandedIndex;
 
-        return (
-            <div key={title} className="w-full">
-                <AccordionHeader
-                    title={title}
-                    date={date}
-                    isExpanded={isExpanded}
-                    onHeaderClick={() => handleClick(index)}
-                />
-                <AnimatePresence initial={false}>
-                    {isExpanded && (
-                        <motion.div
-                            key="content"
-                            initial="collapsed"
-                            animate="expanded"
-                            exit="collapsed"
-                            variants={accordionVariants}
-                            transition={accordionTransition}
-                            className="overflow-hidden"
-                        >
-                            <motion.div className="pt-4">
-                                <AccordionContent
-                                    description={description}
-                                    tags={skills}
-                                />
-                            </motion.div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-        );
-    });
+    return (
+      <div key={title} className="w-full">
+        <AccordionHeader
+          title={title}
+          date={date}
+          isExpanded={isExpanded}
+          onHeaderClick={() => handleClick(index)}
+        />
+        <AnimatePresence initial={false}>
+          {isExpanded && (
+            <motion.div
+              key="content"
+              initial="collapsed"
+              animate="expanded"
+              exit="collapsed"
+              variants={accordionVariants}
+              transition={accordionTransition}
+              className="overflow-hidden"
+            >
+              <motion.div className="pt-4">
+                <AccordionContent description={description} tags={skills} />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  });
 
-    return <>{renderedItems}</>;
+  return <>{renderedItems}</>;
 }
