@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { client } from '../api/api';
+import { client } from '../contentful/contentfulClient';
 import { Accordion } from './common/Accordion';
 import { PillButton } from './common/Button';
 import { Section } from './common/Section';
