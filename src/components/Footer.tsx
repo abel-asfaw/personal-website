@@ -1,6 +1,7 @@
 import { IconType } from 'react-icons';
-import { LinkButton } from './common/Button';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+
+import { LinkButton } from './common/Button';
 
 interface SocialLinks {
   href: string;
@@ -8,7 +9,7 @@ interface SocialLinks {
   icon: IconType;
 }
 
-export default function Footer() {
+export function Footer() {
   const socialLinks: SocialLinks[] = [
     {
       href: 'https://github.com/abel-asfaw/',

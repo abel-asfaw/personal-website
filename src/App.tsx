@@ -1,6 +1,6 @@
-import Footer from './components/Footer';
-import MainContent from './components/MainContent';
-import Navbar from './components/NavBar';
+import { Footer } from './components/Footer';
+import { MainContent } from './components/MainContent';
+import { Navbar } from './components/NavBar';
 
 export default function App() {
   return (

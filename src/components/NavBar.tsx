@@ -6,7 +6,7 @@ interface NavItem {
   href: string;
 }
 
-export default function Navbar() {
+export function Navbar() {
   const navItems: NavItem[] = [
     { label: 'About', href: '#about' },
     { label: 'Experience', href: '#experience' },

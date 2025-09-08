@@ -1,11 +1,11 @@
 import { projects, skills } from '../data';
-import About from './About';
+import { About } from './About';
 import { OverlayCard, TileCard } from './common/Card';
 import { RevealOnScroll } from './common/Effects';
 import { Section } from './common/Section';
 import { Experience } from './Experience';
 
-export default function MainContent() {
+export function MainContent() {
   return (
     <main className="flex flex-col gap-20 sm:gap-32">
       <RevealOnScroll>

@@ -1,11 +1,12 @@
-import { LinkButton } from './common/Button';
 import { FiChevronsDown, FiMail } from 'react-icons/fi';
+
+import { LinkButton } from './common/Button';
 
 interface AboutProps {
   id: string;
 }
 
-export default function About({ id }: AboutProps) {
+export function About({ id }: AboutProps) {
   const blurb = `
         I'm a software engineer at Raptor Maps working remotely from
         Seattle. I love taking an idea and bringing it to life through software.
