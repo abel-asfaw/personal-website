@@ -1,20 +1,21 @@
-import { AccordionContent, AccordionHeader } from '.';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 
-interface AccordionItem {
-  title: string;
-  date: string;
-  description: string;
-  skills: string[];
-}
+import { AccordionContent, AccordionHeader } from './';
 
 interface AccordionProps {
-  items: AccordionItem[];
+  index: number;
+  headerContent: React.ReactNode;
+  bodyContent: React.ReactNode;
 }
 
-export default function Accordion({ items }: AccordionProps) {
+export default function Accordion({
+  index,
+  headerContent,
+  bodyContent,
+}: AccordionProps) {
   const [expandedIndex, setExpandedIndex] = useState(-1);
+  const isExpanded = index === expandedIndex;
 
   const handleClick = (nextIndex: number) => {
     setExpandedIndex(nextIndex === expandedIndex ? -1 : nextIndex);
@@ -30,38 +31,31 @@ export default function Accordion({ items }: AccordionProps) {
     ease: [0, 0, 0, 1],
   };
 
-  const renderedItems = items.map((item, index) => {
-    const { title, date, description, skills } = item;
-    const isExpanded = index === expandedIndex;
-
-    return (
-      <div key={title} className="w-full">
-        <AccordionHeader
-          title={title}
-          date={date}
-          isExpanded={isExpanded}
-          onHeaderClick={() => handleClick(index)}
-        />
-        <AnimatePresence initial={false}>
-          {isExpanded && (
-            <motion.div
-              key="content"
-              initial="collapsed"
-              animate="expanded"
-              exit="collapsed"
-              variants={accordionVariants}
-              transition={accordionTransition}
-              className="overflow-hidden"
-            >
-              <motion.div className="pt-4">
-                <AccordionContent description={description} tags={skills} />
-              </motion.div>
+  return (
+    <div className="w-full">
+      <AccordionHeader
+        isExpanded={isExpanded}
+        onHeaderClick={() => handleClick(index)}
+      >
+        {headerContent}
+      </AccordionHeader>
+      <AnimatePresence initial={false}>
+        {isExpanded && (
+          <motion.div
+            key="content"
+            initial="collapsed"
+            animate="expanded"
+            exit="collapsed"
+            variants={accordionVariants}
+            transition={accordionTransition}
+            className="overflow-hidden"
+          >
+            <motion.div className="pt-4">
+              <AccordionContent>{bodyContent}</AccordionContent>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    );
-  });
-
-  return <>{renderedItems}</>;
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }

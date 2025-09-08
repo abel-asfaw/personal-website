@@ -1,19 +1,17 @@
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
+import { PropsWithChildren } from 'react';
 import { HiOutlineMinusSm, HiOutlinePlusSm } from 'react-icons/hi';
 
-interface AccordionHeaderProps {
-  title: string;
-  date: string;
+interface AccordionHeaderProps extends PropsWithChildren {
   isExpanded: boolean;
   onHeaderClick: () => void;
 }
 
 export default function AccordionHeader({
-  title,
-  date,
   isExpanded,
   onHeaderClick,
+  children,
 }: AccordionHeaderProps) {
   const Icon = isExpanded ? HiOutlineMinusSm : HiOutlinePlusSm;
 
@@ -43,10 +41,7 @@ export default function AccordionHeader({
           <Icon size={24} aria-label={isExpanded ? 'expanded' : 'collapsed'} />
         </motion.div>
       </AnimatePresence>
-      <div className="flex flex-1 flex-col sm:flex-row sm:justify-between">
-        <span className="font-medium">{title}</span>
-        <span className="text-neutral-400 sm:text-right">{date}</span>
-      </div>
+      {children}
     </motion.div>
   );
 }
