@@ -20,9 +20,20 @@ export function Experience() {
     queryFn: () =>
       client.getEntries({
         content_type: 'experience',
-        order: ['-fields.sortDate'],
+        order: ['-fields.endDate'],
       }),
   });
+
+  function formatDate(date: string) {
+    const castDate = new Date(date);
+
+    const formattedDate = new Intl.DateTimeFormat('en-US', {
+      month: 'short',
+      year: 'numeric',
+    }).format(castDate);
+
+    return formattedDate;
+  }
 
   return (
     <Section id={'experience'} title={"Where I've Worked"} className={'gap-4'}>
@@ -30,11 +41,14 @@ export function Experience() {
         const { company, jobTitle, startDate, endDate, description, skills } =
           exp.fields as WorkExperienceFields;
 
+        const formattedStartDate = formatDate(startDate);
+        const formattedEndDate = endDate ? formatDate(endDate) : 'Present';
+
         const headerContent = (
           <div className="flex flex-1 flex-col sm:flex-row sm:justify-between">
             <span className="font-medium">{`${jobTitle} @ ${company}`}</span>
             <span className="text-neutral-400 sm:text-right">
-              {startDate} – {endDate}
+              {formattedStartDate} – {formattedEndDate}
             </span>
           </div>
         );
