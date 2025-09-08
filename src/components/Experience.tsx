@@ -20,7 +20,7 @@ export function Experience() {
     queryFn: () =>
       client.getEntries({
         content_type: 'experience',
-        order: ['-fields.endDate'],
+        order: ['-fields.isCurrent', '-fields.endDate'],
       }),
   });
 
