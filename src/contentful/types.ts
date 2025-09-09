@@ -43,3 +43,17 @@ export type TypeProjects = EntryCollection<
   undefined, // ChainModifiers
   'en-US' // Locale
 >;
+
+export interface TypeAboutMeFields {
+  bio: EntryFieldTypes.Text;
+}
+
+export type TypeAboutMeSkeleton = EntrySkeletonType<
+  TypeAboutMeFields,
+  'aboutMe'
+>;
+export type TypeAboutMe = EntryCollection<
+  TypeAboutMeSkeleton,
+  undefined, // ChainModifiers
+  'en-US' // Locale
+>;

@@ -1,5 +1,9 @@
 import { FiChevronsDown, FiMail } from 'react-icons/fi';
 
+import { useQuery } from '@tanstack/react-query';
+
+import { client } from '../contentful/contentfulClient';
+import { TypeAboutMe } from '../contentful/types';
 import { LinkButton } from './common/Button';
 
 interface AboutProps {
@@ -7,10 +11,16 @@ interface AboutProps {
 }
 
 export function About({ id }: AboutProps) {
-  const blurb = `
-        I'm a software engineer at Raptor Maps working remotely from
-        Seattle. I love taking an idea and bringing it to life through software.
-    `;
+  const { data: aboutMe } = useQuery<TypeAboutMe>({
+    queryKey: ['about-me'],
+    queryFn: () =>
+      client.getEntries({
+        content_type: 'aboutMe',
+        locale: 'en-US',
+      }),
+  });
+
+  const bio = aboutMe?.items[0].fields.bio;
 
   return (
     <section
@@ -26,7 +36,7 @@ export function About({ id }: AboutProps) {
           I love building things.
         </span>
       </h1>
-      <p className="leading-relaxed">{blurb}</p>
+      <p className="leading-relaxed">{bio}</p>
       <div className="flex gap-4 text-center font-russisch font-bold transition-all">
         <LinkButton
           href="#projects"
