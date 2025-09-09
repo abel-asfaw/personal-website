@@ -4,6 +4,7 @@ import { OverlayCard, TileCard } from './common/Card';
 import { RevealOnScroll } from './common/Effects';
 import { Section } from './common/Section';
 import { Experience } from './Experience';
+import { Projects } from './Projects';
 
 export function MainContent() {
   return (
@@ -15,15 +16,7 @@ export function MainContent() {
         <Experience />
       </RevealOnScroll>
       <RevealOnScroll key={'projects'}>
-        <Section id={'projects'} title={"Apps I've Built"} className={'gap-4'}>
-          {projects.map(project => (
-            <OverlayCard
-              key={project.link}
-              tags={project.skills}
-              {...project}
-            />
-          ))}
-        </Section>
+        <Projects />
       </RevealOnScroll>
       <RevealOnScroll key={'skills'}>
         <Section id={'skills'} title={'What I Can Do'} className={'gap-4'}>

@@ -1,19 +1,20 @@
 import { useState } from 'react';
-import { LinkButton, PillButton } from '../Button';
-import { FaGithub, FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { FaAngleDown, FaAngleUp, FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
+
+import { LinkButton, PillButton } from '../Button';
 
 interface OverlayCardProps {
   link: string;
-  image: string;
+  imageUrl: string;
   title: string;
   description: string;
-  tags: string[];
+  tags: string[] | undefined;
 }
 
 export default function OverlayCard({
   link,
-  image,
+  imageUrl,
   title,
   description,
   tags,
@@ -28,7 +29,7 @@ export default function OverlayCard({
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img className="h-auto w-full" src={image} alt={title} />
+        <img className="h-auto w-full" src={imageUrl} alt={title} />
         <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-zinc-900 opacity-0 transition duration-300 ease-in hover:opacity-80">
           Learn more&nbsp;
           <FiExternalLink size={18} />
@@ -53,7 +54,7 @@ export default function OverlayCard({
         <p className="classes leading-relaxed">
           {showMore ? description : description.substring(0, 100) + '...'}
         </p>
-        {showMore && (
+        {showMore && tags && (
           <span className="flex flex-wrap gap-2">
             {tags.map(tag => (
               <PillButton

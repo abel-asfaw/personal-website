@@ -1,25 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful/contentfulClient';
+import { TypeExperience } from '../contentful/types';
 import { Accordion } from './common/Accordion';
 import { PillButton } from './common/Button';
 import { Section } from './common/Section';
 
-export type WorkExperienceFields = {
-  company: string;
-  jobTitle: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-  skills: string[];
-};
-
 export function Experience() {
-  const { data: experience } = useQuery({
+  const { data: experience } = useQuery<TypeExperience>({
     queryKey: ['experience'],
     queryFn: () =>
       client.getEntries({
         content_type: 'experience',
+        locale: 'en-US',
         order: ['-fields.isCurrent', '-fields.endDate'],
       }),
   });
@@ -39,7 +32,7 @@ export function Experience() {
     <Section id={'experience'} title={"Where I've Worked"} className={'gap-4'}>
       {experience?.items.map((exp, index) => {
         const { company, jobTitle, startDate, endDate, description, skills } =
-          exp.fields as WorkExperienceFields;
+          exp.fields;
 
         const formattedStartDate = formatDate(startDate);
         const formattedEndDate = endDate ? formatDate(endDate) : 'Present';
