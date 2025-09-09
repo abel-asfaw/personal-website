@@ -20,7 +20,7 @@ export function About({ id }: AboutProps) {
       }),
   });
 
-  const bio = aboutMe?.items[0].fields.bio;
+  const aboutMeFields = aboutMe?.items[0].fields;
 
   return (
     <section
@@ -31,12 +31,12 @@ export function About({ id }: AboutProps) {
         <img src="/assets/images/me.png" alt="Portrait of Abel" />
       </div>
       <h1 className="-mb-1 font-russisch  text-3xl font-bold text-neutral-100 sm:text-4xl">
-        Hi, I'm Abel.{' '}
+        {aboutMeFields?.intro}{' '}
         <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
-          I love building things.
+          {aboutMeFields?.tagLine}
         </span>
       </h1>
-      <p className="leading-relaxed">{bio}</p>
+      <p className="leading-relaxed">{aboutMeFields?.bio}</p>
       <div className="flex gap-4 text-center font-russisch font-bold transition-all">
         <LinkButton
           href="#projects"

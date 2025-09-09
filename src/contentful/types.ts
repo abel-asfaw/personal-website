@@ -18,7 +18,6 @@ export type TypeExperienceSkeleton = EntrySkeletonType<
   TypeExperienceFields,
   'experience'
 >;
-
 export type TypeExperience = EntryCollection<
   TypeExperienceSkeleton,
   undefined, // ChainModifiers
@@ -37,7 +36,6 @@ export type TypeProjectsSkeleton = EntrySkeletonType<
   TypeProjectsFields,
   'projects'
 >;
-
 export type TypeProjects = EntryCollection<
   TypeProjectsSkeleton,
   undefined, // ChainModifiers
@@ -45,6 +43,8 @@ export type TypeProjects = EntryCollection<
 >;
 
 export interface TypeAboutMeFields {
+  intro?: EntryFieldTypes.Symbol;
+  tagLine?: EntryFieldTypes.Text;
   bio: EntryFieldTypes.Text;
 }
 
