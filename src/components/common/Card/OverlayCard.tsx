@@ -22,7 +22,7 @@ export default function OverlayCard({
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="max-w-sm overflow-hidden rounded-lg border-[1px] border-zinc-850 bg-zinc-900 shadow-lg">
+    <div className="max-w-sm overflow-hidden rounded-lg border-[1px] border-zinc-800 bg-zinc-900 shadow-lg">
       <a
         href={link}
         className="relative flex h-1/2 overflow-hidden"
@@ -59,7 +59,7 @@ export default function OverlayCard({
             {tags.map(tag => (
               <PillButton
                 key={tag}
-                className="bg-indigo-600 font-roboto text-white"
+                className="font-roboto bg-indigo-600 text-white"
               >
                 {tag}
               </PillButton>
