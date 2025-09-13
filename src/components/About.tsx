@@ -30,21 +30,21 @@ export function About({ id }: AboutProps) {
       <div className="relative h-auto w-64 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-20 after:bg-gradient-to-t after:from-zinc-950 after:to-transparent after:content-[''] sm:w-72">
         <img src="/assets/images/me.png" alt="Portrait of Abel" />
       </div>
-      <h1 className="-mb-1 font-russisch  text-3xl font-bold text-neutral-100 sm:text-4xl">
+      <h1 className="font-russisch -mb-1  text-3xl font-bold text-neutral-100 sm:text-4xl">
         {aboutMeFields?.intro}{' '}
         <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
           {aboutMeFields?.tagLine}
         </span>
       </h1>
       <p className="leading-relaxed">{aboutMeFields?.bio}</p>
-      <div className="flex gap-4 text-center font-russisch font-bold transition-all">
+      <div className="font-russisch flex gap-4 text-center font-bold transition-all">
         <LinkButton
           href="#projects"
           className="bg-green-600 text-white hover:bg-green-700"
           promptButton
         >
           See my work
-          <FiChevronsDown className="shrink-0 animate-bouncy will-change-transform" />
+          <FiChevronsDown className="animate-bouncy shrink-0 will-change-transform" />
         </LinkButton>
         <LinkButton
           href="mailto:contact@abelasfaw.com"
