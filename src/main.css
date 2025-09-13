@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant hover (&:hover);
+
 @theme {
   --breakpoint-xs: 376px;
 
@@ -78,6 +80,17 @@
   section {
     scroll-margin-top: 8rem;
   }
+}
+
+body {
+  background-image: radial-gradient(
+    circle,
+    #000000,
+    #040204,
+    #06050a,
+    #05090f,
+    #020d11
+  );
 }
 
 .wrapper {
