@@ -12,13 +12,13 @@ export function MainContent() {
       <RevealOnScroll>
         <About id="about" />
       </RevealOnScroll>
-      <RevealOnScroll key={'experience'}>
+      <RevealOnScroll>
         <Experience />
       </RevealOnScroll>
-      <RevealOnScroll key={'projects'}>
+      <RevealOnScroll>
         <Projects />
       </RevealOnScroll>
-      <RevealOnScroll key={'skills'}>
+      <RevealOnScroll>
         <Section id={'skills'} title={'What I Can Do'} className={'gap-4'}>
           {Object.entries(skills).map(([label, icon]) => (
             <TileCard
