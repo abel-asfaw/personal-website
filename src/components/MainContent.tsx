@@ -8,7 +8,7 @@ import { Projects } from './Projects';
 
 export function MainContent() {
   return (
-    <main className="flex flex-col gap-20 sm:gap-32">
+    <main className="wrapper flex flex-col gap-20 sm:gap-32">
       <RevealOnScroll>
         <About id="about" />
       </RevealOnScroll>
