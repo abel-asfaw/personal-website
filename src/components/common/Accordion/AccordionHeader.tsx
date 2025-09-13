@@ -18,7 +18,7 @@ export default function AccordionHeader({
   const animationDuration = { duration: 0.4 };
 
   const classes = classNames(
-    'border-zinc-800 flex cursor-pointer select-none items-center gap-2 rounded border-[1px] px-2 py-4 sm:p-4',
+    'border-zinc-800 flex cursor-pointer select-none items-center gap-2 rounded border-[.5px] px-2 py-4 sm:p-4',
   );
 
   return (
