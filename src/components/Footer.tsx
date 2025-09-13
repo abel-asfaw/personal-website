@@ -11,7 +11,7 @@ interface SocialLinks {
 
 export function Footer() {
   return (
-    <footer className="border-t border-zinc-900">
+    <footer>
       <div className="flex flex-col items-center justify-center gap-4 p-6 text-neutral-400">
         <div className="xs:mt-0 mt-2 flex flex-wrap gap-6">
           <LinkButton
@@ -33,7 +33,7 @@ export function Footer() {
             <FaLinkedin size={30} title="LinkedIn" />
           </LinkButton>
         </div>
-        <p>© 2023 Abel Asfaw</p>
+        <p>© 2025 Abel Asfaw</p>
       </div>
     </footer>
   );
