@@ -1,6 +1,6 @@
-import { projects, skills } from '../data';
+import { skills } from '../data';
 import { About } from './About';
-import { OverlayCard, TileCard } from './common/Card';
+import { TileCard } from './common/Card';
 import { RevealOnScroll } from './common/Effects';
 import { Section } from './common/Section';
 import { Experience } from './Experience';
