@@ -19,7 +19,7 @@ export function MainContent() {
         <Projects />
       </RevealOnScroll>
       <RevealOnScroll>
-        <Section id={'skills'} title={'What I Can Do'} className={'gap-4'}>
+        <Section id="skills" title="What I Can Do" className="gap-4">
           {Object.entries(skills).map(([label, icon]) => (
             <TileCard
               key={label}

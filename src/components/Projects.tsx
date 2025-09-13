@@ -16,7 +16,7 @@ export function Projects() {
   });
 
   return (
-    <Section id={'projects'} title={"Apps I've Built"} className={'gap-4'}>
+    <Section id="projects" title="Apps I've Built" className="gap-4">
       {projects?.items.map(project => {
         const { title, projectLink, skills, description, image } =
           project.fields;

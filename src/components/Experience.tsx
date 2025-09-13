@@ -29,7 +29,7 @@ export function Experience() {
   }
 
   return (
-    <Section id={'experience'} title={"Where I've Worked"} className={'gap-4'}>
+    <Section id="experience" title="Where I've Worked" className="gap-4">
       {experience?.items.map((exp, index) => {
         const { company, jobTitle, startDate, endDate, description, skills } =
           exp.fields;
