@@ -47,7 +47,10 @@ export default function OverlayCard({
           >
             <FaGithub size={24} />
           </LinkButton>
-          <button className="text-right" onClick={() => setShowMore(!showMore)}>
+          <button
+            className="text-right hover:cursor-pointer"
+            onClick={() => setShowMore(!showMore)}
+          >
             {showMore ? <FaAngleUp size={24} /> : <FaAngleDown size={24} />}
           </button>
         </div>
