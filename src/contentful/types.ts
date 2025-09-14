@@ -57,3 +57,15 @@ export type TypeAboutMe = EntryCollection<
   undefined, // ChainModifiers
   'en-US' // Locale
 >;
+
+export interface TypeSkillsFields {
+  label: EntryFieldTypes.Symbol;
+  iconClass: EntryFieldTypes.Symbol;
+}
+
+export type TypeSkillsSkeleton = EntrySkeletonType<TypeSkillsFields, 'skills'>;
+export type TypeSkills = EntryCollection<
+  TypeSkillsSkeleton,
+  undefined, // ChainModifiers
+  'en-US' // Locale
+>;

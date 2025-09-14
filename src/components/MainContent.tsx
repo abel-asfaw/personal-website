@@ -1,10 +1,8 @@
-import { skills } from '../data';
 import { About } from './About';
-import { TileCard } from './common/Card';
 import { RevealOnScroll } from './common/Effects';
-import { Section } from './common/Section';
 import { Experience } from './Experience';
 import { Projects } from './Projects';
+import { Skills } from './Skills';
 
 export function MainContent() {
   return (
@@ -19,16 +17,7 @@ export function MainContent() {
         <Projects />
       </RevealOnScroll>
       <RevealOnScroll>
-        <Section id="skills" title="What I Can Do" className="gap-4">
-          {Object.entries(skills).map(([label, icon]) => (
-            <TileCard
-              key={label}
-              icon={icon}
-              label={label}
-              className="font-roboto"
-            />
-          ))}
-        </Section>
+        <Skills />
       </RevealOnScroll>
     </main>
   );
