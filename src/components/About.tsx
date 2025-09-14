@@ -48,7 +48,7 @@ export function About({ id }: AboutProps) {
         </LinkButton>
         <LinkButton
           href="mailto:contact@abelasfaw.com"
-          className="drop-shadow-md/25 border-[.5px] border-zinc-700 bg-zinc-900 hover:bg-zinc-700 hover:text-white"
+          className="drop-shadow-md/25 border-[.5px] border-zinc-800 bg-zinc-900 hover:bg-zinc-800 hover:text-white"
           promptButton
           target="_blank"
           rel="noopener noreferrer"
