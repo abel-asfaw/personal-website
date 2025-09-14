@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { PropsWithChildren } from 'react';
-import { HiOutlineMinusSm, HiOutlinePlusSm } from 'react-icons/hi';
+import { Minus, Plus } from 'react-feather';
 
 interface AccordionHeaderProps extends PropsWithChildren {
   isExpanded: boolean;
@@ -13,7 +13,7 @@ export default function AccordionHeader({
   onHeaderClick,
   children,
 }: AccordionHeaderProps) {
-  const Icon = isExpanded ? HiOutlineMinusSm : HiOutlinePlusSm;
+  const Icon = isExpanded ? Minus : Plus;
 
   const animationDuration = { duration: 0.4 };
 
@@ -38,7 +38,7 @@ export default function AccordionHeader({
           transition={animationDuration}
           className="text-green-400"
         >
-          <Icon size={24} aria-label={isExpanded ? 'expanded' : 'collapsed'} />
+          <Icon size={20} aria-label={isExpanded ? 'expanded' : 'collapsed'} />
         </motion.div>
       </AnimatePresence>
       {children}

@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
-import { IconType } from 'react-icons';
 
 interface TileCardProps extends PropsWithChildren {
   className?: string;

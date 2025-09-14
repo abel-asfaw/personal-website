@@ -1,13 +1,6 @@
-import { IconType } from 'react-icons';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { GitHub, Linkedin } from 'react-feather';
 
 import { LinkButton } from './common/Button';
-
-interface SocialLinks {
-  href: string;
-  title: string;
-  icon: IconType;
-}
 
 export function Footer() {
   return (
@@ -21,7 +14,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGithub size={30} title="GitHub" />
+            <GitHub size={28} />
           </LinkButton>
           <LinkButton
             key="LinkedIn"
@@ -30,7 +23,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaLinkedin size={30} title="LinkedIn" />
+            <Linkedin size={28} />
           </LinkButton>
         </div>
         <p>© 2025 Abel Asfaw</p>

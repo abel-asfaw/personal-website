@@ -1,4 +1,4 @@
-import { FiChevronsDown, FiMail } from 'react-icons/fi';
+import { ChevronsDown, Mail } from 'react-feather';
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -44,7 +44,10 @@ export function About({ id }: AboutProps) {
           promptButton
         >
           See my work
-          <FiChevronsDown className="animate-bouncy shrink-0 will-change-transform" />
+          <ChevronsDown
+            className="animate-bouncy shrink-0 will-change-transform"
+            size={16}
+          />
         </LinkButton>
         <LinkButton
           href="mailto:contact@abelasfaw.com"
@@ -54,7 +57,7 @@ export function About({ id }: AboutProps) {
           rel="noopener noreferrer"
         >
           Reach out
-          <FiMail className="shrink-0" />
+          <Mail className="shrink-0" size={16} />
         </LinkButton>
       </div>
     </section>
