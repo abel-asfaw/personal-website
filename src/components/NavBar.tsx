@@ -17,7 +17,7 @@ export function Navbar() {
   return (
     <header
       className={
-        'full-bleed drop-shadow-md/35 sticky top-0 z-10 bg-gray-950/50 py-4 shadow-sm backdrop-blur'
+        'full-bleed drop-shadow-md/50 sticky top-0 z-10 bg-gray-900/30 py-4 shadow-sm backdrop-blur'
       }
     >
       <nav className="font-russisch flex flex-wrap justify-center gap-6 font-bold sm:gap-20">

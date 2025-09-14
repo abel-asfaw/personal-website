@@ -22,7 +22,7 @@ export default function OverlayCard({
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="max-w-sm overflow-hidden rounded-lg border-[.5px] border-zinc-800 bg-zinc-900 shadow-lg">
+    <div className="drop-shadow-md/25 max-w-sm overflow-hidden rounded-lg border-[.5px] border-zinc-800 bg-zinc-900">
       <a
         href={link}
         className="relative flex h-1/2 overflow-hidden"
