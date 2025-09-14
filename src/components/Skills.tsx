@@ -14,6 +14,7 @@ export function Skills() {
       client.getEntries({
         content_type: 'skills',
         locale: 'en-US',
+        order: ['sys.createdAt'],
       }),
   });
 
