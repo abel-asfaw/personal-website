@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { client } from '../contentful/contentfulClient';
+import { client } from '../contentful';
 import { TypeExperience } from '../contentful/types';
 import { Accordion } from './common/Accordion';
 import { PillButton } from './common/Button';

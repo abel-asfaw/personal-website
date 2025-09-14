@@ -2,7 +2,7 @@ import { FiChevronsDown, FiMail } from 'react-icons/fi';
 
 import { useQuery } from '@tanstack/react-query';
 
-import { client } from '../contentful/contentfulClient';
+import { client } from '../contentful';
 import { TypeAboutMe } from '../contentful/types';
 import { LinkButton } from './common/Button';
 

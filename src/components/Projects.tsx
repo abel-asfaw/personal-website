@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { client } from '../contentful/contentfulClient';
+import { client } from '../contentful';
 import { TypeProjects, TypeProjectsSkeleton } from '../contentful/types';
 import { OverlayCard } from './common/Card';
 import { Section } from './common/Section';

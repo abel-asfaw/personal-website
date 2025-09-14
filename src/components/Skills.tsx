@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 import { useQuery } from '@tanstack/react-query';
 
-import { client } from '../contentful/contentfulClient';
+import { client } from '../contentful';
 import { TypeSkills } from '../contentful/types';
 import { TileCard } from './common/Card';
 import { Section } from './common/Section';
