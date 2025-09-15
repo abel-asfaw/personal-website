@@ -4,21 +4,18 @@ import { useState } from 'react';
 import { AccordionContent, AccordionHeader } from './';
 
 interface AccordionProps {
-  index: number;
   headerContent: React.ReactNode;
   bodyContent: React.ReactNode;
 }
 
 export default function Accordion({
-  index,
   headerContent,
   bodyContent,
 }: AccordionProps) {
-  const [expandedIndex, setExpandedIndex] = useState(-1);
-  const isExpanded = index === expandedIndex;
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleClick = (nextIndex: number) => {
-    setExpandedIndex(nextIndex === expandedIndex ? -1 : nextIndex);
+  const handleClick = () => {
+    setIsExpanded(!isExpanded);
   };
 
   const accordionVariants = {
@@ -33,10 +30,7 @@ export default function Accordion({
 
   return (
     <div className="w-full">
-      <AccordionHeader
-        isExpanded={isExpanded}
-        onHeaderClick={() => handleClick(index)}
-      >
+      <AccordionHeader isExpanded={isExpanded} onHeaderClick={handleClick}>
         {headerContent}
       </AccordionHeader>
       <AnimatePresence initial={false}>

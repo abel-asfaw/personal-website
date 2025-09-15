@@ -67,7 +67,6 @@ export function Experience() {
         return (
           <Accordion
             key={`${jobTitle} @ ${company}`}
-            index={index}
             headerContent={headerContent}
             bodyContent={bodyContent}
           />
