@@ -54,7 +54,7 @@ export function Experience() {
                 {skills.map(skill => (
                   <PillButton
                     key={skill}
-                    className="font-roboto bg-indigo-600 text-white"
+                    className="font-roboto bg-indigo-600 text-white duration-300 hover:scale-105"
                   >
                     {skill}
                   </PillButton>

@@ -61,7 +61,7 @@ export default function OverlayCard({
             {tags.map(tag => (
               <PillButton
                 key={tag}
-                className="font-roboto bg-indigo-600 text-white"
+                className="font-roboto bg-indigo-600 text-white duration-300 hover:scale-105"
               >
                 {tag}
               </PillButton>

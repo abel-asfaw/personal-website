@@ -11,13 +11,7 @@ export default function PillButton({
   className,
   ...props
 }: PillButtonProps) {
-  const transition = 'duration-300 ease-in';
-
-  const classes = classNames(
-    transition,
-    'rounded-full px-3 py-1.5 text-sm',
-    className,
-  );
+  const classes = classNames('rounded-full px-3 py-1.5 text-sm', className);
 
   return (
     <button {...props} role="button" className={classes}>
