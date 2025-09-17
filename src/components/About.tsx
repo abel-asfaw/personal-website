@@ -40,7 +40,7 @@ export function About({ id }: AboutProps) {
       <div className="font-russisch flex gap-4 text-center font-bold transition-all">
         <LinkButton
           href="#projects"
-          className="drop-shadow-md/25 bg-green-600 text-white hover:bg-green-700"
+          className="drop-shadow-md/25 bg-green-650 text-white hover:bg-green-700"
           promptButton
         >
           See my work

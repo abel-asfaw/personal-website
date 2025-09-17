@@ -9,6 +9,11 @@
   --font-roboto: 'Roboto', 'sans-serif';
   --font-russisch: 'RussischSans', 'sans-serif';
 
+  --color-green-650: oklch(0.597 0.194 149.214);
+
+  --animate-wave: wave 5s alternate ease-in-out infinite;
+  --animate-bouncy: bouncy 800ms alternate ease-out infinite;
+
   @keyframes wave {
     0% {
       background-size: 400% 400%;
@@ -19,7 +24,6 @@
       background-position: right;
     }
   }
-  --animate-wave: wave 5s alternate ease-in-out infinite;
 
   @keyframes bouncy {
     0% {
@@ -29,7 +33,6 @@
       transform: translateY(-15%);
     }
   }
-  --animate-bouncy: bouncy 800ms alternate ease-out infinite;
 }
 
 @layer base {
