@@ -53,7 +53,7 @@ export default function OverlayCard({
             {showMore ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
           </button>
         </div>
-        <p className="classes leading-relaxed">
+        <p className="leading-relaxed">
           {showMore ? description : description.substring(0, 100) + '...'}
         </p>
         {showMore && tags && (
@@ -61,7 +61,7 @@ export default function OverlayCard({
             {tags.map(tag => (
               <PillButton
                 key={tag}
-                className="font-roboto bg-indigo-600 text-white duration-300 hover:scale-105"
+                className="font-roboto hover:scale-107 bg-indigo-600 text-white duration-400 ease-in-out"
               >
                 {tag}
               </PillButton>
