@@ -1,10 +1,10 @@
 import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
 
-interface SectionProps {
+interface SectionProps extends PropsWithChildren {
   id: string;
   title: string;
   className?: string;
-  children: React.ReactNode;
 }
 
 export default function Section({

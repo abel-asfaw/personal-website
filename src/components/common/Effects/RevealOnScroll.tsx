@@ -1,11 +1,7 @@
 import classNames from 'classnames';
-import { useRef, useState, useEffect } from 'react';
+import { PropsWithChildren, useEffect, useRef, useState } from 'react';
 
-interface RevealOnScrollProps {
-  children: React.ReactNode;
-}
-
-export default function RevealOnScroll({ children }: RevealOnScrollProps) {
+export default function RevealOnScroll({ children }: PropsWithChildren) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 

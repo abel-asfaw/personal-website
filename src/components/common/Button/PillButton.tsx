@@ -1,8 +1,9 @@
 import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
 
 interface PillButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    PropsWithChildren {
   className?: string;
 }
 

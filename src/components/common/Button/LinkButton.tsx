@@ -1,8 +1,9 @@
 import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
 
 interface LinkButtonProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  children: React.ReactNode;
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    PropsWithChildren {
   navButton?: boolean;
   promptButton?: boolean;
   className?: string;

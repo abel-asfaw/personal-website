@@ -1,7 +1,9 @@
 import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
 
-interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  children: React.ReactNode;
+interface LinkProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    PropsWithChildren {
   size?: 'sm' | 'md' | 'lg';
   variant?: 'plain' | 'outlined' | 'solid';
   underline?: 'always' | 'hover' | 'none';
