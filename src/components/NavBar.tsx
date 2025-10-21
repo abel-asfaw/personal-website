@@ -20,7 +20,7 @@ export function Navbar() {
         'full-bleed drop-shadow-md/30 sticky top-0 z-10 bg-gray-900/25 py-4 shadow-sm backdrop-blur'
       }
     >
-      <nav className="font-russisch flex flex-wrap justify-center gap-6 font-bold sm:gap-20">
+      <nav className="flex flex-wrap justify-center gap-6 font-semibold sm:gap-20">
         {navItems.map(item => (
           <LinkButton
             key={item.label}

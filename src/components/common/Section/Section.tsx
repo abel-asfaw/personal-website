@@ -20,7 +20,7 @@ export default function Section({
 
   return (
     <section id={id} className="flex flex-col gap-6">
-      <h1 className="font-russisch text-center text-3xl font-bold text-neutral-100">
+      <h1 className="text-center text-3xl font-semibold text-neutral-100">
         {title}
       </h1>
       <div className={classes}>{children}</div>

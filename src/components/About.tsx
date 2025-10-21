@@ -30,14 +30,14 @@ export function About({ id }: AboutProps) {
       <div className="relative h-auto w-64 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-20 after:bg-gradient-to-t after:to-transparent after:content-[''] sm:w-72 sm:after:from-[#09080F]">
         <img src="/assets/images/me.png" alt="Portrait of Abel" />
       </div>
-      <h1 className="font-russisch -mb-1 text-3xl font-bold text-neutral-100 sm:text-4xl">
+      <h1 className="-mb-1 text-3xl font-semibold text-neutral-100 sm:text-4xl">
         {aboutMeFields?.intro}{' '}
         <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
           {aboutMeFields?.tagLine}
         </span>
       </h1>
       <p className="w-full leading-relaxed sm:w-10/12">{aboutMeFields?.bio}</p>
-      <div className="font-russisch flex gap-4 text-center font-bold transition-all">
+      <div className="flex gap-4 text-center font-semibold transition-all">
         <LinkButton
           href="#projects"
           className="drop-shadow-md/25 bg-green-650 text-white hover:bg-green-700"

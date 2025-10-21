@@ -5,9 +5,8 @@
 @theme {
   --breakpoint-xs: 376px;
 
-  --font-inter: 'Inter', 'sans-serif';
+  --font-dmsans: 'DMSans-VariableFont', 'sans-serif';
   --font-roboto: 'Roboto', 'sans-serif';
-  --font-russisch: 'RussischSans', 'sans-serif';
 
   --color-green-650: oklch(0.597 0.194 149.214);
 
@@ -43,36 +42,14 @@
   }
 
   @font-face {
+    font-family: 'DMSans-VariableFont';
+    src: url('/assets/fonts/DMSans-VariableFont.ttf');
+    font-display: swap;
+  }
+
+  @font-face {
     font-family: 'Roboto';
     src: url('/assets/fonts/RobotoMono.ttf');
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'RussischSans';
-    src: url('/assets/fonts/RussischSans-Regular.ttf');
-    font-weight: 400;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'RussischSans';
-    src: url('/assets/fonts/RussischSans-Medium.ttf');
-    font-weight: 500;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'RussischSans';
-    src: url('/assets/fonts/RussischSans-SemiBold.ttf');
-    font-weight: 600;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'RussischSans';
-    src: url('/assets/fonts/RussischSans-Bold.ttf');
-    font-weight: 700;
     font-display: swap;
   }
 
