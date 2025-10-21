@@ -8,7 +8,7 @@
   --font-dmsans: 'DMSans-VariableFont', 'sans-serif';
   --font-roboto: 'Roboto', 'sans-serif';
 
-  --color-green-650: oklch(0.597 0.194 149.214);
+  --color-green-650: oklch(57.465% 0.17274 146.599);
 
   --animate-wave: wave 5s alternate ease-in-out infinite;
   --animate-bouncy: bouncy 800ms alternate ease-out infinite;
@@ -35,12 +35,6 @@
 }
 
 @layer base {
-  @font-face {
-    font-family: 'Inter';
-    src: url('/assets/fonts/Inter.ttf');
-    font-display: swap;
-  }
-
   @font-face {
     font-family: 'DMSans-VariableFont';
     src: url('/assets/fonts/DMSans-VariableFont.ttf');
