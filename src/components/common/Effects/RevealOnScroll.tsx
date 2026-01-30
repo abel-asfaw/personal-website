@@ -10,12 +10,17 @@ export default function RevealOnScroll({ children }: PropsWithChildren) {
       return;
     }
 
-    const scrollObserver = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        scrollObserver.unobserve(entry.target);
-      }
-    });
+    const scrollObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          scrollObserver.unobserve(entry.target);
+        }
+      },
+      {
+        rootMargin: '-50px',
+      },
+    );
 
     scrollObserver.observe(scrollRef.current);
 
