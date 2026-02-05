@@ -3,6 +3,8 @@ import { GitHub, Linkedin } from 'react-feather';
 import { LinkButton } from './common/Button';
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer>
       <div className="flex flex-col items-center justify-center gap-4 p-6 text-neutral-400">
@@ -26,7 +28,7 @@ export function Footer() {
             <Linkedin size={28} />
           </LinkButton>
         </div>
-        <p>© 2025 Abel Asfaw</p>
+        <p>© {currentYear} Abel Asfaw</p>
       </div>
     </footer>
   );
