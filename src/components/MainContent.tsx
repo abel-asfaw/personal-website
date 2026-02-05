@@ -7,18 +7,10 @@ import { Skills } from './Skills';
 export function MainContent() {
   return (
     <main className="wrapper flex flex-col gap-20 sm:gap-32">
-      <RevealOnScroll>
-        <About id="about" />
-      </RevealOnScroll>
-      <RevealOnScroll>
-        <Experience />
-      </RevealOnScroll>
-      <RevealOnScroll>
-        <Projects />
-      </RevealOnScroll>
-      <RevealOnScroll>
-        <Skills />
-      </RevealOnScroll>
+      <About id="about" />
+      <Experience />
+      <Projects />
+      <Skills />
     </main>
   );
 }
