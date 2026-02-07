@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, ExternalLink, GitHub } from 'react-feather';
+import { ChevronDown, ExternalLink, GitHub } from 'react-feather';
 
 import { LinkButton, PillButton } from '../Button';
+import { motion } from 'framer-motion';
 
 interface OverlayCardProps {
   link: string;
@@ -10,6 +11,10 @@ interface OverlayCardProps {
   description: string;
   tags: string[] | undefined;
 }
+
+const animationDuration = {
+  duration: 0.4,
+};
 
 export default function OverlayCard({
   link,
@@ -50,24 +55,34 @@ export default function OverlayCard({
             className="text-right hover:cursor-pointer"
             onClick={() => setShowMore(!showMore)}
           >
-            {showMore ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+            <motion.div
+              animate={{ rotate: showMore ? 180 : 0 }}
+              transition={animationDuration}
+            >
+              <ChevronDown size={24} />
+            </motion.div>
           </button>
         </div>
-        <p className={`leading-relaxed ${showMore ? '' : 'line-clamp-3'}`}>
-          {description}
-        </p>
-        {showMore && tags && (
-          <span className="flex flex-wrap gap-2">
-            {tags.map(tag => (
-              <PillButton
-                key={tag}
-                className="font-roboto hover:scale-107 duration-400 bg-indigo-600 text-white ease-in-out"
-              >
-                {tag}
-              </PillButton>
-            ))}
-          </span>
-        )}
+        <motion.div
+          initial={false}
+          animate={{ height: showMore ? 'auto' : 0 }}
+          className={showMore ? '' : 'overflow-hidden'}
+          transition={animationDuration}
+        >
+          <p className="leading-relaxed">{description}</p>
+          {tags && (
+            <span className="flex flex-wrap gap-2 pt-3">
+              {tags.map(tag => (
+                <PillButton
+                  key={tag}
+                  className="font-roboto hover:scale-107 duration-400 bg-indigo-600 text-white ease-in-out"
+                >
+                  {tag}
+                </PillButton>
+              ))}
+            </span>
+          )}
+        </motion.div>
       </div>
     </div>
   );

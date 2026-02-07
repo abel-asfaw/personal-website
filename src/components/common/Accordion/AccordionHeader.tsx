@@ -8,14 +8,14 @@ interface AccordionHeaderProps extends PropsWithChildren {
   onHeaderClick: () => void;
 }
 
+const animationDuration = { duration: 0.4 };
+
 export default function AccordionHeader({
   isExpanded,
   onHeaderClick,
   children,
 }: AccordionHeaderProps) {
   const Icon = isExpanded ? Minus : Plus;
-
-  const animationDuration = { duration: 0.4 };
 
   const classes = classNames(
     'border-zinc-800 flex cursor-pointer select-none items-center gap-2 rounded border-[.5px] px-2 py-4 sm:p-4 drop-shadow-md/25',
@@ -31,16 +31,14 @@ export default function AccordionHeader({
       className={classes}
       onClick={onHeaderClick}
     >
-      <AnimatePresence initial={false}>
-        <motion.div
-          initial={{ rotate: isExpanded ? -90 : 0 }}
-          animate={{ rotate: isExpanded ? 1 : -90 }}
-          transition={animationDuration}
-          className="text-green-400"
-        >
-          <Icon size={20} aria-label={isExpanded ? 'expanded' : 'collapsed'} />
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        initial={{ rotate: isExpanded ? -90 : 0 }}
+        animate={{ rotate: isExpanded ? 1 : -90 }}
+        transition={animationDuration}
+        className="text-green-400"
+      >
+        <Icon size={20} aria-label={isExpanded ? 'expanded' : 'collapsed'} />
+      </motion.div>
       {children}
     </motion.div>
   );
