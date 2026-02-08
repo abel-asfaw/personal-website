@@ -65,7 +65,7 @@ export default function OverlayCard({
         </div>
         <motion.div
           initial={false}
-          animate={{ height: showMore ? 'auto' : 0 }}
+          animate={{ height: showMore ? 'auto' : '3.5rem' }}
           className={showMore ? '' : 'overflow-hidden'}
           transition={animationDuration}
         >
