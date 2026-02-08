@@ -13,7 +13,6 @@ export function Skills() {
     queryFn: () =>
       client.withoutUnresolvableLinks.getEntries<TypeSkillsSkeleton>({
         content_type: 'skills',
-        locale: 'en-US',
       }),
   });
 

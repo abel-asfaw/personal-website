@@ -11,7 +11,6 @@ export function Projects() {
     queryFn: () =>
       client.getEntries<TypeProjectsSkeleton>({
         content_type: 'projects',
-        locale: 'en-US',
       }),
   });
 

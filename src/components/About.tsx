@@ -16,7 +16,6 @@ export function About({ id }: AboutProps) {
     queryFn: () =>
       client.getEntries<TypeAboutMeSkeleton>({
         content_type: 'aboutMe',
-        locale: 'en-US',
       }),
   });
 

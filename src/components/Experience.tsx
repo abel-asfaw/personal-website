@@ -12,7 +12,6 @@ export function Experience() {
     queryFn: () =>
       client.getEntries<TypeExperienceSkeleton>({
         content_type: 'experience',
-        locale: 'en-US',
         order: ['-fields.isCurrent', '-fields.endDate'],
       }),
   });
