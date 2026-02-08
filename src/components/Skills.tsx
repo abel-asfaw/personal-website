@@ -11,7 +11,7 @@ export function Skills() {
   const { data: skills } = useQuery({
     queryKey: ['skills'],
     queryFn: () =>
-      client.withoutUnresolvableLinks.getEntries<TypeSkillsSkeleton>({
+      client.getEntries<TypeSkillsSkeleton>({
         content_type: 'skills',
       }),
   });
@@ -19,8 +19,8 @@ export function Skills() {
   return (
     <Section id="skills" title="What I Can Do" className="gap-4">
       {skills?.items?.[0].fields.skillsCards.map(skill => {
-        if (!skill) {
-          return;
+        if (!('fields' in skill)) {
+          return null;
         }
 
         const { label, iconClass } = skill.fields;
