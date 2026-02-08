@@ -3,7 +3,7 @@ import { ChevronsDown, Mail } from 'react-feather';
 import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful';
-import { TypeAboutMe } from '../contentful/types';
+import { TypeAboutMeSkeleton } from '../contentful/types';
 import { LinkButton } from './common/Button';
 
 interface AboutProps {
@@ -11,10 +11,10 @@ interface AboutProps {
 }
 
 export function About({ id }: AboutProps) {
-  const { data: aboutMe } = useQuery<TypeAboutMe>({
+  const { data: aboutMe } = useQuery({
     queryKey: ['about-me'],
     queryFn: () =>
-      client.getEntries({
+      client.getEntries<TypeAboutMeSkeleton>({
         content_type: 'aboutMe',
         locale: 'en-US',
       }),

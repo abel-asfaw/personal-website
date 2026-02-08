@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful';
-import { TypeExperience } from '../contentful/types';
+import { TypeExperienceSkeleton } from '../contentful/types';
 import { Accordion } from './common/Accordion';
 import { PillButton } from './common/Button';
 import { Section } from './common/Section';
 
 export function Experience() {
-  const { data: experience } = useQuery<TypeExperience>({
+  const { data: experience } = useQuery({
     queryKey: ['experience'],
     queryFn: () =>
-      client.getEntries({
+      client.getEntries<TypeExperienceSkeleton>({
         content_type: 'experience',
         locale: 'en-US',
         order: ['-fields.isCurrent', '-fields.endDate'],

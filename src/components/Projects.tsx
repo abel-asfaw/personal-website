@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful';
-import { TypeProjects, TypeProjectsSkeleton } from '../contentful/types';
+import { TypeProjectsSkeleton } from '../contentful/types';
 import { OverlayCard } from './common/Card';
 import { Section } from './common/Section';
 
 export function Projects() {
-  const { data: projects } = useQuery<TypeProjects>({
+  const { data: projects } = useQuery({
     queryKey: ['projects'],
     queryFn: () =>
       client.getEntries<TypeProjectsSkeleton>({

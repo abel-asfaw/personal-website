@@ -1,4 +1,5 @@
 import type {
+  Entry,
   EntryCollection,
   EntryFieldTypes,
   EntrySkeletonType,
@@ -58,13 +59,24 @@ export type TypeAboutMe = EntryCollection<
   'en-US' // Locale
 >;
 
+export interface TypeSkillCardFields {
+  label?: EntryFieldTypes.Symbol;
+  iconClass?: EntryFieldTypes.Symbol;
+}
+
+export type TypeSkillCardSkeleton = EntrySkeletonType<
+  TypeSkillCardFields,
+  'skillCard'
+>;
+
 export interface TypeSkillsFields {
-  label: EntryFieldTypes.Symbol;
-  iconClass: EntryFieldTypes.Symbol;
+  skillsCards: EntryFieldTypes.Array<
+    EntryFieldTypes.EntryLink<TypeSkillCardSkeleton>
+  >;
 }
 
 export type TypeSkillsSkeleton = EntrySkeletonType<TypeSkillsFields, 'skills'>;
-export type TypeSkills = EntryCollection<
+export type TypeSkills = Entry<
   TypeSkillsSkeleton,
   undefined, // ChainModifiers
   'en-US' // Locale
