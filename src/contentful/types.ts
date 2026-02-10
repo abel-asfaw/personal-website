@@ -25,20 +25,40 @@ export type TypeExperience = EntryCollection<
   'en-US' // Locale
 >;
 
-export interface TypeProjectsFields {
+export interface TypeProjectFields {
   title: EntryFieldTypes.Symbol;
   projectLink: EntryFieldTypes.Symbol;
+  githubLink?: EntryFieldTypes.Symbol;
   skills?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
   description: EntryFieldTypes.Text;
   image: EntryFieldTypes.AssetLink;
 }
 
-export type TypeProjectsSkeleton = EntrySkeletonType<
-  TypeProjectsFields,
-  'projects'
+export type TypeProjectSkeleton = EntrySkeletonType<
+  TypeProjectFields,
+  'project'
 >;
+
 export type TypeProjects = EntryCollection<
-  TypeProjectsSkeleton,
+  TypeProjectSkeleton,
+  undefined, // ChainModifiers
+  'en-US' // Locale
+>;
+
+export interface TypeProjectsSectionFields {
+  title: EntryFieldTypes.Symbol;
+  projects?: EntryFieldTypes.Array<
+    EntryFieldTypes.EntryLink<TypeProjectSkeleton>
+  >;
+}
+
+export type TypeProjectsSectionSkeleton = EntrySkeletonType<
+  TypeProjectsSectionFields,
+  'projectsSection'
+>;
+
+export type TypeProjectsSection = Entry<
+  TypeProjectsSectionSkeleton,
   undefined, // ChainModifiers
   'en-US' // Locale
 >;

@@ -1,26 +1,37 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful';
-import { TypeProjectsSkeleton } from '../contentful/types';
+import { TypeProjectsSectionSkeleton } from '../contentful/types';
 import { OverlayCard } from './common/Card';
 import { Section } from './common/Section';
 
 export function Projects() {
-  const { data: projects } = useQuery({
-    queryKey: ['projects'],
+  const { data } = useQuery({
+    queryKey: ['projectsSection'],
     queryFn: () =>
-      client.getEntries<TypeProjectsSkeleton>({
-        content_type: 'projects',
+      client.getEntries<TypeProjectsSectionSkeleton>({
+        content_type: 'projectsSection',
       }),
   });
 
+  const projectsSection = data?.items[0]?.fields;
+
+  if (!projectsSection) {
+    return null;
+  }
+
   return (
-    <Section id="projects" title="Apps I've Built" className="gap-4">
-      {projects?.items.map(project => {
+    <Section id="projects" title={projectsSection.title} className="gap-4">
+      {projectsSection.projects?.map(project => {
+        if (!('fields' in project)) {
+          return null;
+        }
+
         const { title, projectLink, skills, description, image } =
           project.fields;
 
-        const imageUrl = 'fields' in image ? image.fields.file?.url : undefined;
+        const imageUrl =
+          image && 'fields' in image ? image.fields.file?.url : undefined;
 
         return (
           <OverlayCard
