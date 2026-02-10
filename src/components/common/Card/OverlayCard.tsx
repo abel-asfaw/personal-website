@@ -42,8 +42,7 @@ export default function OverlayCard({
       >
         <img className="h-auto w-full" src={imageUrl} alt={title} />
         <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-zinc-900 opacity-0 transition duration-300 ease-in hover:opacity-80">
-          Learn more&nbsp;
-          <ExternalLink size={16} />
+          <ExternalLink />
         </div>
       </a>
       <div className="flex flex-col gap-3 px-6 py-4">
