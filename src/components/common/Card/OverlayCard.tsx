@@ -1,15 +1,21 @@
-import { useState } from 'react';
-import { ChevronDown, ExternalLink, GitHub } from 'react-feather';
+import { ReactNode, useState } from 'react';
+import { ChevronDown, ExternalLink } from 'react-feather';
 
 import { LinkButton, PillButton } from '../Button';
 import { motion } from 'framer-motion';
+
+interface CardLink {
+  href: string;
+  icon: ReactNode;
+}
 
 interface OverlayCardProps {
   link: string;
   imageUrl: string;
   title: string;
   description: string;
-  tags: string[] | undefined;
+  tags?: string[];
+  links?: CardLink[];
 }
 
 const animationDuration = {
@@ -22,6 +28,7 @@ export default function OverlayCard({
   title,
   description,
   tags,
+  links,
 }: OverlayCardProps) {
   const [showMore, setShowMore] = useState(false);
 
@@ -42,15 +49,19 @@ export default function OverlayCard({
       <div className="flex flex-col gap-3 px-6 py-4">
         <div className="text-lg font-medium">{title}</div>
         <div className="flex justify-between">
-          <LinkButton
-            key={link}
-            className="inline-flex text-left text-neutral-400 hover:text-white"
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GitHub size={24} />
-          </LinkButton>
+          <div className="flex gap-3">
+            {links?.map(({ href, icon }) => (
+              <LinkButton
+                key={href}
+                className="inline-flex text-left text-neutral-400 hover:text-white"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {icon}
+              </LinkButton>
+            ))}
+          </div>
           <button
             className="text-right hover:cursor-pointer"
             onClick={() => setShowMore(!showMore)}

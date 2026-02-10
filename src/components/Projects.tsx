@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { GitHub } from 'react-feather';
 
 import { client } from '../contentful';
 import { TypeProjectsSectionSkeleton } from '../contentful/types';
@@ -27,7 +28,7 @@ export function Projects() {
           return null;
         }
 
-        const { title, projectLink, skills, description, image } =
+        const { title, projectLink, githubLink, skills, description, image } =
           project.fields;
 
         const imageUrl =
@@ -41,6 +42,11 @@ export function Projects() {
             link={projectLink}
             imageUrl={imageUrl!}
             description={description}
+            links={[
+              ...(githubLink
+                ? [{ href: githubLink, icon: <GitHub size={24} /> }]
+                : []),
+            ]}
           />
         );
       })}
