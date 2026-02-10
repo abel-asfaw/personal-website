@@ -8,15 +8,15 @@ import { TileCard } from './common/Card';
 import { Section } from './common/Section';
 
 export function Skills() {
-  const { data: skills } = useQuery({
-    queryKey: ['skills'],
+  const { data } = useQuery({
+    queryKey: ['skillsSection'],
     queryFn: () =>
       client.getEntries<TypeSkillsSkeleton>({
-        content_type: 'skills',
+        content_type: 'skillsSection',
       }),
   });
 
-  const skillsSection = skills?.items[0].fields;
+  const skillsSection = data?.items[0].fields;
 
   if (!skillsSection) {
     return null;

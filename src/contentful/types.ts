@@ -96,7 +96,11 @@ export interface TypeSkillsFields {
   >;
 }
 
-export type TypeSkillsSkeleton = EntrySkeletonType<TypeSkillsFields, 'skills'>;
+export type TypeSkillsSkeleton = EntrySkeletonType<
+  TypeSkillsFields,
+  'skillsSection'
+>;
+
 export type TypeSkills = Entry<
   TypeSkillsSkeleton,
   undefined, // ChainModifiers
