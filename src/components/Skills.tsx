@@ -16,9 +16,15 @@ export function Skills() {
       }),
   });
 
+  const skillsSection = skills?.items[0].fields;
+
+  if (!skillsSection) {
+    return null;
+  }
+
   return (
-    <Section id="skills" title="What I Can Do" className="gap-4">
-      {skills?.items?.[0].fields.skillsCards.map(skill => {
+    <Section id="skills" title={skillsSection.title} className="gap-4">
+      {skillsSection.skillsCards.map(skill => {
         if (!('fields' in skill)) {
           return null;
         }

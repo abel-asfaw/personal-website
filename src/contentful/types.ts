@@ -70,6 +70,7 @@ export type TypeSkillCardSkeleton = EntrySkeletonType<
 >;
 
 export interface TypeSkillsFields {
+  title: EntryFieldTypes.Symbol;
   skillsCards: EntryFieldTypes.Array<
     EntryFieldTypes.EntryLink<TypeSkillCardSkeleton>
   >;
