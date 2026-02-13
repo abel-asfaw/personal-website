@@ -16,7 +16,7 @@ export function Skills() {
       }),
   });
 
-  const skillsSection = data?.items[0].fields;
+  const skillsSection = data?.items[0]?.fields;
 
   if (!skillsSection) {
     return null;
