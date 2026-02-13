@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful';
 import { TypeAboutMeSkeleton } from '../contentful/types';
-import { LinkButton } from './common/Button';
+import { LinkButton } from './ui/Button';
 
 interface AboutProps {
   id: string;

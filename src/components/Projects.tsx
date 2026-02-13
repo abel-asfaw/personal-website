@@ -3,8 +3,8 @@ import { GitHub } from 'react-feather';
 
 import { client } from '../contentful';
 import { TypeProjectsSectionSkeleton } from '../contentful/types';
-import { OverlayCard } from './common/Card';
-import { Section } from './common/Section';
+import { OverlayCard } from './ui/Card';
+import { Section } from './ui/Section';
 
 export function Projects() {
   const { data } = useQuery({

@@ -4,8 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful';
 import { TypeSkillsSkeleton } from '../contentful/types';
-import { TileCard } from './common/Card';
-import { Section } from './common/Section';
+import { TileCard } from './ui/Card';
+import { Section } from './ui/Section';
 
 export function Skills() {
   const { data } = useQuery({

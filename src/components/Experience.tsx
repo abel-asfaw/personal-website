@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful';
 import { TypeExperienceSkeleton } from '../contentful/types';
-import { Accordion } from './common/Accordion';
-import { PillButton } from './common/Button';
-import { Section } from './common/Section';
+import { Accordion } from './ui/Accordion';
+import { PillButton } from './ui/Button';
+import { Section } from './ui/Section';
 
 export function Experience() {
   const { data: experience } = useQuery({
