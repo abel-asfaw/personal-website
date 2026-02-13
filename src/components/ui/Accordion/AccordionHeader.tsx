@@ -18,11 +18,13 @@ export default function AccordionHeader({
   const Icon = isExpanded ? Minus : Plus;
 
   const classes = classNames(
-    'border-zinc-800 flex cursor-pointer select-none items-center gap-2 rounded border-[.5px] px-2 py-4 sm:p-4 drop-shadow-md/25',
+    'border-zinc-800 flex cursor-pointer w-full select-none items-center gap-2 rounded border-[.5px] px-2 py-4 sm:p-4 drop-shadow-md/25',
   );
 
   return (
-    <motion.div
+    <motion.button
+      role="button"
+      aria-expanded={isExpanded}
       animate={{
         backgroundColor: isExpanded ? '#27272a' : '#18181b',
         borderColor: isExpanded ? '#27272a' : '#1f1f22',
@@ -40,6 +42,6 @@ export default function AccordionHeader({
         <Icon size={20} aria-label={isExpanded ? 'expanded' : 'collapsed'} />
       </motion.div>
       {children}
-    </motion.div>
+    </motion.button>
   );
 }
