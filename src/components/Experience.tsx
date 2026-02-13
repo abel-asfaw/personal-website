@@ -37,7 +37,7 @@ export function Experience() {
         const formattedEndDate = endDate ? formatDate(endDate) : 'Present';
 
         const headerContent = (
-          <div className="flex flex-1 flex-col sm:flex-row sm:justify-between">
+          <div className="flex flex-1 flex-col items-start sm:flex-row sm:justify-between">
             <span className="font-medium">{`${jobTitle} @ ${company}`}</span>
             <span className="text-neutral-400 sm:text-right">
               {formattedStartDate} – {formattedEndDate}
