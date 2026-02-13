@@ -1,5 +1,5 @@
-import { LinkButton } from './ui/Button';
-import { Underline } from './ui/Effects';
+import { LinkButton } from '../ui/Button';
+import { Underline } from '../ui/Effects';
 
 interface NavItem {
   label: string;

@@ -1,6 +1,6 @@
 import { GitHub, Linkedin } from 'react-feather';
 
-import { LinkButton } from './ui/Button';
+import { LinkButton } from '../ui/Button';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
