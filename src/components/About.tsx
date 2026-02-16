@@ -21,13 +21,22 @@ export function About({ id }: AboutProps) {
 
   const aboutMeFields = aboutMe?.items[0].fields;
 
+  if (!aboutMeFields) {
+    return null;
+  }
+
+  const imageUrl =
+    'fields' in aboutMeFields.photo
+      ? aboutMeFields.photo.fields.file?.url
+      : undefined;
+
   return (
     <section
       id={id}
       className="flex flex-col items-center justify-center gap-6 text-center"
     >
-      <div className="relative h-auto w-64 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-20 after:bg-gradient-to-t after:to-transparent after:content-[''] sm:w-72 sm:after:from-[#09080F]">
-        <img src="/assets/images/me.png" alt="Portrait of Abel" />
+      <div className="relative h-auto w-64 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-20 after:bg-gradient-to-t after:to-transparent after:content-[''] sm:w-72">
+        <img src={imageUrl} alt="Portrait of Abel" />
       </div>
       <h1 className="-mb-1 text-3xl font-semibold text-neutral-100 sm:text-4xl">
         {aboutMeFields?.intro}{' '}

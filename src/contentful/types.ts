@@ -67,6 +67,7 @@ export interface TypeAboutMeFields {
   intro?: EntryFieldTypes.Symbol;
   tagLine?: EntryFieldTypes.Text;
   bio: EntryFieldTypes.Text;
+  photo: EntryFieldTypes.AssetLink;
 }
 
 export type TypeAboutMeSkeleton = EntrySkeletonType<

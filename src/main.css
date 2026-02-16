@@ -37,13 +37,13 @@
 @layer base {
   @font-face {
     font-family: 'DMSans-VariableFont';
-    src: url('/assets/fonts/DMSans-VariableFont.ttf');
+    src: url('./assets/fonts/DMSans-VariableFont.ttf');
     font-display: swap;
   }
 
   @font-face {
     font-family: 'Roboto';
-    src: url('/assets/fonts/RobotoMono.ttf');
+    src: url('./assets/fonts/RobotoMono.ttf');
     font-display: swap;
   }
 
