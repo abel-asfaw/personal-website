@@ -25,10 +25,11 @@ export function About({ id }: AboutProps) {
     return null;
   }
 
-  const imageUrl =
+  const rawImageUrl =
     'fields' in aboutMeFields.photo
       ? aboutMeFields.photo.fields.file?.url
       : undefined;
+  const imageUrl = rawImageUrl ? `${rawImageUrl}?fm=webp` : undefined;
 
   return (
     <section
