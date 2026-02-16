@@ -42,10 +42,10 @@ export default function OverlayCard({
       >
         <img
           className="h-auto w-full"
-          src={`${imageUrl}?fm=webp`}
+          src={`${imageUrl}?w=800&q=80`}
           alt={title}
-          width={384}
-          height={216}
+          width={800}
+          height={500}
           loading="lazy"
         />
         <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-zinc-900 opacity-0 transition duration-300 ease-in hover:opacity-80">
