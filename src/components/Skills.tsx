@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful';
-import { TypeSkillsSkeleton } from '../contentful/types';
+import { TypeSkillsSkeleton } from '../contentful';
 import { TileCard } from './ui/Card';
 import { Section } from './ui/Section';
 
@@ -25,7 +25,7 @@ export function Skills() {
   return (
     <Section id="skills" title={skillsSection.title} className="gap-4">
       {skillsSection.skillsCards.map(skill => {
-        if (!('fields' in skill)) {
+        if (!skill) {
           return null;
         }
 

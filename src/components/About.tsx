@@ -3,7 +3,7 @@ import { ChevronsDown, Mail } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 
 import { client } from '../contentful';
-import { TypeAboutMeSkeleton } from '../contentful/types';
+import { TypeAboutMeSkeleton } from '../contentful';
 import { LinkButton } from './ui/Button';
 
 interface AboutProps {
@@ -25,10 +25,7 @@ export function About({ id }: AboutProps) {
     return null;
   }
 
-  const rawImageUrl =
-    'fields' in aboutMeFields.photo
-      ? aboutMeFields.photo.fields.file?.url
-      : undefined;
+  const rawImageUrl = aboutMeFields.photo?.fields.file?.url;
   const imageUrl = rawImageUrl ? `${rawImageUrl}?fm=webp` : undefined;
 
   return (

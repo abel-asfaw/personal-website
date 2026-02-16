@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Github } from 'lucide-react';
 
 import { client } from '../contentful';
-import { TypeProjectsSectionSkeleton } from '../contentful/types';
+import { TypeProjectsSectionSkeleton } from '../contentful';
 import { OverlayCard } from './ui/Card';
 import { Section } from './ui/Section';
 
@@ -24,15 +24,14 @@ export function Projects() {
   return (
     <Section id="projects" title={projectsSection.title} className="gap-4">
       {projectsSection.projects?.map(project => {
-        if (!('fields' in project)) {
+        if (!project) {
           return null;
         }
 
         const { title, projectLink, githubLink, skills, description, image } =
           project.fields;
 
-        const imageUrl =
-          image && 'fields' in image ? image.fields.file?.url : undefined;
+        const imageUrl = image?.fields.file?.url;
 
         return (
           <OverlayCard
