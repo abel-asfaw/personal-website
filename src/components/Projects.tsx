@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { GitHub } from 'react-feather';
+import { Github } from 'lucide-react';
 
 import { client } from '../contentful';
 import { TypeProjectsSectionSkeleton } from '../contentful/types';
@@ -44,7 +44,7 @@ export function Projects() {
             description={description}
             links={[
               ...(githubLink
-                ? [{ href: githubLink, icon: <GitHub size={24} /> }]
+                ? [{ href: githubLink, icon: <Github size={24} /> }]
                 : []),
             ]}
           />

@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
 
 import { AccordionContent, AccordionHeader } from './';
@@ -25,7 +25,7 @@ export default function Accordion({
 
   const accordionTransition = {
     duration: 0.4,
-    ease: [0, 0, 0, 1],
+    ease: [0, 0, 0, 1] as [number, number, number, number],
   };
 
   return (

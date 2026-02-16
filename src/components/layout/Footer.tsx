@@ -1,4 +1,4 @@
-import { GitHub, Linkedin } from 'react-feather';
+import { Github, Linkedin } from 'lucide-react';
 
 import { LinkButton } from '../ui/Button';
 
@@ -17,7 +17,7 @@ export function Footer() {
             rel="noopener noreferrer"
             aria-label="GitHub"
           >
-            <GitHub size={28} />
+            <Github size={28} />
           </LinkButton>
           <LinkButton
             key="LinkedIn"

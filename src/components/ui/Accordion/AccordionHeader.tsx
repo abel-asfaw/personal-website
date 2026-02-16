@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { PropsWithChildren } from 'react';
-import { Minus, Plus } from 'react-feather';
+import { Minus, Plus } from 'lucide-react';
 
 interface AccordionHeaderProps extends PropsWithChildren {
   isExpanded: boolean;

@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react';
-import { ChevronDown, ExternalLink } from 'react-feather';
+import { ChevronDown, ExternalLink } from 'lucide-react';
 
 import { LinkButton, PillButton } from '../Button';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 interface CardLink {
   href: string;
