@@ -40,7 +40,14 @@ export default function OverlayCard({
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img className="h-auto w-full" src={imageUrl} alt={title} />
+        <img
+          className="h-auto w-full"
+          src={`${imageUrl}?fm=webp`}
+          alt={title}
+          width={384}
+          height={216}
+          loading="lazy"
+        />
         <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-zinc-900 opacity-0 transition duration-300 ease-in hover:opacity-80">
           <ExternalLink />
         </div>
@@ -56,6 +63,11 @@ export default function OverlayCard({
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={
+                  href.includes('github')
+                    ? 'GitHub repository'
+                    : 'External link'
+                }
               >
                 {icon}
               </LinkButton>
@@ -64,6 +76,7 @@ export default function OverlayCard({
           <button
             className="text-right hover:cursor-pointer"
             onClick={() => setShowMore(!showMore)}
+            aria-label={showMore ? 'Show less' : 'Show more'}
           >
             <motion.div
               animate={{ rotate: showMore ? 180 : 0 }}

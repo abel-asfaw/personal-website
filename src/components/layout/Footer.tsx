@@ -15,6 +15,7 @@ export function Footer() {
             href="https://github.com/abel-asfaw/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
           >
             <GitHub size={28} />
           </LinkButton>
@@ -24,6 +25,7 @@ export function Footer() {
             href="https://linkedin.com/in/abelasfaw/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
           >
             <Linkedin size={28} />
           </LinkButton>

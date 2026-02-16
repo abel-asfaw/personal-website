@@ -25,10 +25,11 @@ export function About({ id }: AboutProps) {
     return null;
   }
 
-  const imageUrl =
+  const rawImageUrl =
     'fields' in aboutMeFields.photo
       ? aboutMeFields.photo.fields.file?.url
       : undefined;
+  const imageUrl = rawImageUrl ? `${rawImageUrl}?fm=webp` : undefined;
 
   return (
     <section
@@ -36,7 +37,13 @@ export function About({ id }: AboutProps) {
       className="flex flex-col items-center justify-center gap-6 text-center"
     >
       <div className="relative h-auto w-64 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-20 after:bg-gradient-to-t after:to-transparent after:content-[''] sm:w-72">
-        <img src={imageUrl} alt="Portrait of Abel" />
+        <img
+          src={imageUrl}
+          alt="Portrait of Abel"
+          width={288}
+          height={288}
+          fetchPriority="high"
+        />
       </div>
       <h1 className="-mb-1 text-3xl font-semibold text-neutral-100 sm:text-4xl">
         {aboutMeFields?.intro}{' '}

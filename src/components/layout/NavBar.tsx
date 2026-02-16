@@ -25,7 +25,7 @@ export function Navbar() {
           <LinkButton
             key={item.label}
             href={item.href}
-            className="group"
+            className="group text-neutral-100"
             navButton
           >
             {item.label}
