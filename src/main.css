@@ -98,23 +98,10 @@
   );
   top: -10%;
   left: -10%;
-  animation: float-1 12s ease-in-out infinite alternate;
+  animation: float-1 10s ease-in-out infinite alternate;
 }
 
 .sphere-2 {
-  width: 45vw;
-  height: 45vw;
-  background: linear-gradient(
-    240deg,
-    rgba(55, 0, 193, 0.8),
-    rgba(0, 146, 204, 0.4)
-  );
-  bottom: -20%;
-  right: -10%;
-  animation: float-2 16s ease-in-out infinite alternate;
-}
-
-.sphere-3 {
   width: 30vw;
   height: 30vw;
   background: linear-gradient(
@@ -124,7 +111,20 @@
   );
   top: 60%;
   left: 20%;
-  animation: float-3 20s ease-in-out infinite alternate;
+  animation: float-3 12s ease-in-out infinite alternate;
+}
+
+.sphere-3 {
+  width: 45vw;
+  height: 45vw;
+  background: linear-gradient(
+    240deg,
+    rgba(55, 0, 193, 0.8),
+    rgba(0, 146, 204, 0.4)
+  );
+  bottom: -20%;
+  right: -10%;
+  animation: float-2 8s ease-in-out infinite alternate;
 }
 
 @keyframes float-1 {
