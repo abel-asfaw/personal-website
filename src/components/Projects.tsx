@@ -1,22 +1,14 @@
-import { useQuery } from '@tanstack/react-query';
 import { Github } from 'lucide-react';
 
-import { client } from '../contentful';
-import { TypeProjectsSectionSkeleton } from '../contentful';
+import type { ContentfulData } from '../contentful';
 import { OverlayCard } from './ui/Card';
 import { Section } from './ui/Section';
 
-export function Projects() {
-  const { data } = useQuery({
-    queryKey: ['projectsSection'],
-    queryFn: () =>
-      client.getEntries<TypeProjectsSectionSkeleton>({
-        content_type: 'projectsSection',
-      }),
-  });
+interface ProjectsProps {
+  projectsSection: ContentfulData['projectsSection'];
+}
 
-  const projectsSection = data?.items[0]?.fields;
-
+export function Projects({ projectsSection }: ProjectsProps) {
   if (!projectsSection) {
     return null;
   }

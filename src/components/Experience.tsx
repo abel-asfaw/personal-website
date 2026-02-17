@@ -1,21 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
-
-import { client } from '../contentful';
-import { TypeExperienceSkeleton } from '../contentful';
+import type { ContentfulData } from '../contentful';
 import { Accordion } from './ui/Accordion';
 import { PillButton } from './ui/Button';
 import { Section } from './ui/Section';
 
-export function Experience() {
-  const { data: experience } = useQuery({
-    queryKey: ['experience'],
-    queryFn: () =>
-      client.getEntries<TypeExperienceSkeleton>({
-        content_type: 'experience',
-        order: ['-fields.isCurrent', '-fields.endDate'],
-      }),
-  });
+interface ExperienceProps {
+  experienceSection: ContentfulData['experienceSection'];
+}
 
+export function Experience({ experienceSection }: ExperienceProps) {
   function formatDate(date: string) {
     const castDate = new Date(date);
 
@@ -27,9 +19,17 @@ export function Experience() {
     return formattedDate;
   }
 
+  if (!experienceSection) {
+    return null;
+  }
+
   return (
-    <Section id="experience" title="Where I've Worked" className="gap-4">
-      {experience?.items.map((exp, index) => {
+    <Section id="experience" title={experienceSection.title} className="gap-4">
+      {experienceSection?.experiences.map(exp => {
+        if (!exp) {
+          return null;
+        }
+
         const { company, jobTitle, startDate, endDate, description, skills } =
           exp.fields;
 

@@ -13,6 +13,16 @@ export type TypeExperienceSkeleton = EntrySkeletonType<
   'experience'
 >;
 
+export type TypeExperienceSectionSkeleton = EntrySkeletonType<
+  {
+    title: EntryFieldTypes.Symbol;
+    experiences: EntryFieldTypes.Array<
+      EntryFieldTypes.EntryLink<TypeExperienceSkeleton>
+    >;
+  },
+  'experienceSection'
+>;
+
 export type TypeProjectSkeleton = EntrySkeletonType<
   {
     title: EntryFieldTypes.Symbol;

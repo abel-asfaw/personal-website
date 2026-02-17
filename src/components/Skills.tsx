@@ -1,23 +1,14 @@
 import classNames from 'classnames';
 
-import { useQuery } from '@tanstack/react-query';
-
-import { client } from '../contentful';
-import { TypeSkillsSkeleton } from '../contentful';
+import type { ContentfulData } from '../contentful';
 import { TileCard } from './ui/Card';
 import { Section } from './ui/Section';
 
-export function Skills() {
-  const { data } = useQuery({
-    queryKey: ['skillsSection'],
-    queryFn: () =>
-      client.getEntries<TypeSkillsSkeleton>({
-        content_type: 'skillsSection',
-      }),
-  });
+interface SkillsProps {
+  skillsSection: ContentfulData['skillsSection'];
+}
 
-  const skillsSection = data?.items[0]?.fields;
-
+export function Skills({ skillsSection }: SkillsProps) {
   if (!skillsSection) {
     return null;
   }
