@@ -37,28 +37,26 @@ export type TypeProjectsSectionSkeleton = EntrySkeletonType<
 
 export type TypeAboutMeSkeleton = EntrySkeletonType<
   {
-    intro?: EntryFieldTypes.Symbol;
-    tagLine?: EntryFieldTypes.Text;
+    intro: EntryFieldTypes.Symbol;
+    tagLine: EntryFieldTypes.Text;
     bio: EntryFieldTypes.Text;
     photo: EntryFieldTypes.AssetLink;
   },
   'aboutMe'
 >;
 
-export type TypeSkillCardSkeleton = EntrySkeletonType<
+export type TypeSkillSkeleton = EntrySkeletonType<
   {
-    label?: EntryFieldTypes.Symbol;
-    iconClass?: EntryFieldTypes.Symbol;
+    label: EntryFieldTypes.Symbol;
+    iconClass: EntryFieldTypes.Symbol;
   },
-  'skillCard'
+  'skill'
 >;
 
 export type TypeSkillsSkeleton = EntrySkeletonType<
   {
     title: EntryFieldTypes.Symbol;
-    skillsCards: EntryFieldTypes.Array<
-      EntryFieldTypes.EntryLink<TypeSkillCardSkeleton>
-    >;
+    skills: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeSkillSkeleton>>;
   },
   'skillsSection'
 >;

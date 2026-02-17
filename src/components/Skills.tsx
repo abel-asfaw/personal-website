@@ -24,7 +24,7 @@ export function Skills() {
 
   return (
     <Section id="skills" title={skillsSection.title} className="gap-4">
-      {skillsSection.skillsCards.map(skill => {
+      {skillsSection.skills.map(skill => {
         if (!skill) {
           return null;
         }
