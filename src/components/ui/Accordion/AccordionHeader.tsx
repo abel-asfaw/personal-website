@@ -26,27 +26,29 @@ export default function AccordionHeader({
   );
 
   return (
-    <motion.button
-      id={id}
-      aria-expanded={isExpanded}
-      aria-controls={ariaControls}
-      animate={{
-        backgroundColor: isExpanded ? '#27272a' : '#18181b',
-        borderColor: isExpanded ? '#27272a' : '#1f1f22',
-      }}
-      transition={animationDuration}
-      className={classes}
-      onClick={onHeaderClick}
-    >
-      <motion.div
-        initial={{ rotate: isExpanded ? -90 : 0 }}
-        animate={{ rotate: isExpanded ? 1 : -90 }}
+    <h3>
+      <motion.button
+        id={id}
+        aria-expanded={isExpanded}
+        aria-controls={ariaControls}
+        animate={{
+          backgroundColor: isExpanded ? '#27272a' : '#18181b',
+          borderColor: isExpanded ? '#27272a' : '#1f1f22',
+        }}
         transition={animationDuration}
-        className="text-green-400"
+        className={classes}
+        onClick={onHeaderClick}
       >
-        <Icon size={20} aria-label={isExpanded ? 'expanded' : 'collapsed'} />
-      </motion.div>
-      {children}
-    </motion.button>
+        <motion.div
+          initial={{ rotate: isExpanded ? -90 : 0 }}
+          animate={{ rotate: isExpanded ? 1 : -90 }}
+          transition={animationDuration}
+          className="text-green-400"
+        >
+          <Icon size={20} aria-label={isExpanded ? 'expanded' : 'collapsed'} />
+        </motion.div>
+        {children}
+      </motion.button>
+    </h3>
   );
 }
