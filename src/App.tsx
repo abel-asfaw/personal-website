@@ -13,7 +13,7 @@ export default function App() {
   } = useContentfulData();
 
   return (
-    <div className="font-dmsans grid min-h-screen grid-rows-[auto_1fr_auto] gap-12 text-neutral-200 sm:gap-16">
+    <div className="font-google-sans grid min-h-screen grid-rows-[auto_1fr_auto] gap-12 text-neutral-200 sm:gap-16">
       <Navbar />
       <main className="wrapper gap-20 sm:gap-32">
         {isPending ? (

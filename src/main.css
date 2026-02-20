@@ -5,7 +5,7 @@
 @theme {
   --breakpoint-xs: 376px;
 
-  --font-dmsans: 'DMSans-VariableFont', 'sans-serif';
+  --font-google-sans: 'GoogleSans', 'sans-serif';
   --font-roboto: 'Roboto', 'sans-serif';
 
   --color-green-650: oklch(57.465% 0.17274 146.599);
@@ -36,8 +36,8 @@
 
 @layer base {
   @font-face {
-    font-family: 'DMSans-VariableFont';
-    src: url('./assets/fonts/DMSans-VariableFont.ttf');
+    font-family: 'GoogleSans';
+    src: url('./assets/fonts/GoogleSans.ttf');
     font-display: swap;
   }
 
