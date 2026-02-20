@@ -14,7 +14,12 @@ export function Projects({ projectsSection }: ProjectsProps) {
   }
 
   return (
-    <Section id="projects" title={projectsSection.title} className="gap-4">
+    <Section
+      id="projects"
+      title={projectsSection.title}
+      className="gap-4"
+      as="ul"
+    >
       {projectsSection.projects?.map(project => {
         if (!project) {
           return null;
@@ -26,19 +31,20 @@ export function Projects({ projectsSection }: ProjectsProps) {
         const imageUrl = image?.fields.file?.url;
 
         return (
-          <OverlayCard
-            key={projectLink}
-            tags={skills}
-            title={title}
-            link={projectLink}
-            imageUrl={imageUrl!}
-            description={description}
-            links={[
-              ...(githubLink
-                ? [{ href: githubLink, icon: <Github size={24} /> }]
-                : []),
-            ]}
-          />
+          <li key={projectLink} className="list-none">
+            <OverlayCard
+              tags={skills}
+              title={title}
+              link={projectLink}
+              imageUrl={imageUrl!}
+              description={description}
+              links={[
+                ...(githubLink
+                  ? [{ href: githubLink, icon: <Github size={24} /> }]
+                  : []),
+              ]}
+            />
+          </li>
         );
       })}
     </Section>

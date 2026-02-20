@@ -14,7 +14,7 @@ export function Skills({ skillsSection }: SkillsProps) {
   }
 
   return (
-    <Section id="skills" title={skillsSection.title} className="gap-4">
+    <Section id="skills" title={skillsSection.title} className="gap-4" as="ul">
       {skillsSection.skills.map(skill => {
         if (!skill) {
           return null;
@@ -23,15 +23,17 @@ export function Skills({ skillsSection }: SkillsProps) {
         const { label, iconClass } = skill.fields;
 
         return (
-          <TileCard key={label} className="font-roboto">
-            <i
-              className={classNames('text-green-400', iconClass)}
-              style={{
-                fontSize: 24,
-              }}
-            />
-            <span>{label}</span>
-          </TileCard>
+          <li key={label} className="list-none">
+            <TileCard className="font-roboto">
+              <i
+                className={classNames('text-green-400', iconClass)}
+                style={{
+                  fontSize: 24,
+                }}
+              />
+              <span>{label}</span>
+            </TileCard>
+          </li>
         );
       })}
     </Section>

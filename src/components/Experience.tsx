@@ -24,7 +24,12 @@ export function Experience({ experienceSection }: ExperienceProps) {
   }
 
   return (
-    <Section id="experience" title={experienceSection.title} className="gap-4">
+    <Section
+      id="experience"
+      title={experienceSection.title}
+      className="gap-4"
+      as="ul"
+    >
       {experienceSection?.experiences.map(exp => {
         if (!exp) {
           return null;
@@ -47,28 +52,28 @@ export function Experience({ experienceSection }: ExperienceProps) {
 
         const bodyContent = (
           <>
-            <span className="leading-relaxed">{description}</span>
+            <p className="leading-relaxed">{description}</p>
             {skills.length > 0 ? (
-              <span className="flex flex-wrap gap-2 pt-2">
+              <ul className="flex list-none flex-wrap gap-2 pt-2">
                 {skills.map(skill => (
-                  <PillButton
-                    key={skill}
-                    className="font-roboto hover:scale-107 duration-400 bg-indigo-600 text-white ease-in-out"
-                  >
-                    {skill}
-                  </PillButton>
+                  <li key={skill}>
+                    <PillButton className="font-roboto hover:scale-107 duration-400 bg-indigo-600 text-white ease-in-out">
+                      {skill}
+                    </PillButton>
+                  </li>
                 ))}
-              </span>
+              </ul>
             ) : null}
           </>
         );
 
         return (
-          <Accordion
-            key={`${jobTitle} @ ${company}`}
-            headerContent={headerContent}
-            bodyContent={bodyContent}
-          />
+          <li key={`${jobTitle} @ ${company}`} className="w-full list-none">
+            <Accordion
+              headerContent={headerContent}
+              bodyContent={bodyContent}
+            />
+          </li>
         );
       })}
     </Section>

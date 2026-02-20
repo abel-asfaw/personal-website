@@ -53,7 +53,7 @@ export default function OverlayCard({
         </div>
       </a>
       <div className="flex flex-col gap-3 px-6 py-4">
-        <div className="text-lg font-medium">{title}</div>
+        <h3 className="text-lg font-medium">{title}</h3>
         <div className="flex justify-between">
           <div className="flex gap-3">
             {links?.map(({ href, icon }) => (
@@ -94,16 +94,15 @@ export default function OverlayCard({
         >
           <p className="leading-relaxed">{description}</p>
           {tags && (
-            <span className="flex flex-wrap gap-2 pt-3">
+            <ul className="flex list-none flex-wrap gap-2 pt-3">
               {tags.map(tag => (
-                <PillButton
-                  key={tag}
-                  className="font-roboto hover:scale-107 duration-400 bg-indigo-600 text-white ease-in-out"
-                >
-                  {tag}
-                </PillButton>
+                <li key={tag}>
+                  <PillButton className="font-roboto hover:scale-107 duration-400 bg-indigo-600 text-white ease-in-out">
+                    {tag}
+                  </PillButton>
+                </li>
               ))}
-            </span>
+            </ul>
           )}
         </motion.div>
       </div>

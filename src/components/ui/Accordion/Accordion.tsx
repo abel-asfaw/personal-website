@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 import { AccordionContent, AccordionHeader } from './';
 
@@ -13,6 +13,9 @@ export default function Accordion({
   bodyContent,
 }: AccordionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const id = useId();
+  const headerId = `${id}-header`;
+  const contentId = `${id}-content`;
 
   const handleClick = () => {
     setIsExpanded(!isExpanded);
@@ -29,8 +32,13 @@ export default function Accordion({
   };
 
   return (
-    <div className="w-full">
-      <AccordionHeader isExpanded={isExpanded} onHeaderClick={handleClick}>
+    <>
+      <AccordionHeader
+        id={headerId}
+        aria-controls={contentId}
+        isExpanded={isExpanded}
+        onHeaderClick={handleClick}
+      >
         {headerContent}
       </AccordionHeader>
       <AnimatePresence initial={false}>
@@ -45,11 +53,13 @@ export default function Accordion({
             className="overflow-hidden"
           >
             <motion.div className="pt-4">
-              <AccordionContent>{bodyContent}</AccordionContent>
+              <AccordionContent id={contentId} aria-labelledby={headerId}>
+                {bodyContent}
+              </AccordionContent>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }

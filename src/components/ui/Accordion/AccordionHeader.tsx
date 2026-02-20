@@ -4,6 +4,8 @@ import { PropsWithChildren } from 'react';
 import { Minus, Plus } from 'lucide-react';
 
 interface AccordionHeaderProps extends PropsWithChildren {
+  id: string;
+  'aria-controls': string;
   isExpanded: boolean;
   onHeaderClick: () => void;
 }
@@ -11,6 +13,8 @@ interface AccordionHeaderProps extends PropsWithChildren {
 const animationDuration = { duration: 0.4 };
 
 export default function AccordionHeader({
+  id,
+  'aria-controls': ariaControls,
   isExpanded,
   onHeaderClick,
   children,
@@ -23,8 +27,9 @@ export default function AccordionHeader({
 
   return (
     <motion.button
-      role="button"
+      id={id}
       aria-expanded={isExpanded}
+      aria-controls={ariaControls}
       animate={{
         backgroundColor: isExpanded ? '#27272a' : '#18181b',
         borderColor: isExpanded ? '#27272a' : '#1f1f22',
