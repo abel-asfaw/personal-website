@@ -9,7 +9,7 @@ import type {
 } from './contentful.types';
 
 export function useContentfulData() {
-  const queriesResult = useQueries({
+  return useQueries({
     queries: [
       {
         queryKey: ['aboutMe'],
@@ -40,20 +40,16 @@ export function useContentfulData() {
           }),
       },
     ],
+    combine: result => ({
+      data: {
+        aboutMe: result[0].data?.items[0]?.fields,
+        experienceSection: result[1].data?.items[0]?.fields,
+        projectsSection: result[2].data?.items[0]?.fields,
+        skillsSection: result[3].data?.items[0]?.fields,
+      },
+      isPending: result.some(query => query.isPending),
+    }),
   });
-
-  const [aboutMe, experienceSection, projectsSection, skillsSection] =
-    queriesResult;
-
-  return {
-    data: {
-      aboutMe: aboutMe.data?.items[0]?.fields,
-      experienceSection: experienceSection.data?.items[0]?.fields,
-      projectsSection: projectsSection.data?.items[0]?.fields,
-      skillsSection: skillsSection.data?.items[0]?.fields,
-    },
-    isPending: queriesResult.some(query => query.isPending),
-  };
 }
 
 export type ContentfulData = ReturnType<typeof useContentfulData>['data'];
