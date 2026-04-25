@@ -20,12 +20,12 @@ export function About({ aboutMe }: AboutProps) {
       id="about"
       className="flex flex-col items-center justify-center gap-6 text-center"
     >
-      <div className="relative h-auto w-64 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-20 after:bg-gradient-to-t after:to-transparent after:content-[''] sm:w-72">
+      <div className="relative h-auto w-72 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-20 after:bg-gradient-to-t after:to-transparent after:content-[''] sm:w-96">
         <img
           src={imageUrl}
           alt="Portrait of Abel"
-          width={400}
-          height={400}
+          width={800}
+          height={800}
           fetchPriority="high"
         />
       </div>
