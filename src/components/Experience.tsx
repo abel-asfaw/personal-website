@@ -52,7 +52,7 @@ export function Experience({ experienceSection }: ExperienceProps) {
 
         const bodyContent = (
           <>
-            <p className="leading-relaxed">{description}</p>
+            <p className="leading-relaxed text-neutral-300">{description}</p>
             {skills.length > 0 ? (
               <ul className="flex list-none flex-wrap gap-2 pt-2">
                 {skills.map(skill => (
