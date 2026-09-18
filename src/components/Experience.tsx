@@ -10,18 +10,18 @@ interface ExperienceProps {
   experienceSection: ContentfulData['experienceSection'];
 }
 
+function formatDate(date: string) {
+  const castDate = new Date(date);
+
+  const formattedDate = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    year: 'numeric',
+  }).format(castDate);
+
+  return formattedDate;
+}
+
 export function Experience({ experienceSection }: ExperienceProps) {
-  function formatDate(date: string) {
-    const castDate = new Date(date);
-
-    const formattedDate = new Intl.DateTimeFormat('en-US', {
-      month: 'short',
-      year: 'numeric',
-    }).format(castDate);
-
-    return formattedDate;
-  }
-
   if (!experienceSection) {
     return null;
   }

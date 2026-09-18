@@ -14,15 +14,14 @@ export default function AccordionContent({
   children,
 }: AccordionContentProps) {
   return (
-    <motion.div
+    <motion.section
       id={id}
-      role="region"
       aria-labelledby={ariaLabelledby}
       variants={{ collapsed: { scale: 0.8 }, expanded: { scale: 1 } }}
       transition={{ duration: 0.4 }}
       {...stylex.props(accordionContent.root)}
     >
       {children}
-    </motion.div>
+    </motion.section>
   );
 }

@@ -4,10 +4,8 @@ import { PropsWithChildren } from 'react';
 import { linkButton } from './LinkButton.styles';
 
 interface LinkButtonProps
-  extends Omit<
-      React.AnchorHTMLAttributes<HTMLAnchorElement>,
-      'className' | 'style'
-    >,
+  extends
+    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | 'style'>,
     PropsWithChildren {
   navButton?: boolean;
   promptButton?: boolean;

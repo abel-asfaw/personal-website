@@ -1,4 +1,3 @@
-import * as stylex from '@stylexjs/stylex';
 import { Github } from 'lucide-react';
 
 import type { ContentfulData } from '../contentful';
@@ -40,11 +39,11 @@ export function Projects({ projectsSection }: ProjectsProps) {
               link={projectLink}
               imageUrl={imageUrl!}
               description={description}
-              links={[
-                ...(githubLink
+              links={
+                githubLink
                   ? [{ href: githubLink, icon: <Github size={24} /> }]
-                  : []),
-              ]}
+                  : []
+              }
             />
           </li>
         );
