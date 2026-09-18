@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { PropsWithChildren } from 'react';
 import { Minus, Plus } from 'lucide-react';
 import { accordionHeader } from './Accordion.styles';
+import { colors } from '../../../styles/tokens.stylex';
 
 interface AccordionHeaderProps extends PropsWithChildren {
   id: string;
@@ -28,11 +29,9 @@ export default function AccordionHeader({
         id={id}
         aria-expanded={isExpanded}
         aria-controls={ariaControls}
-        // Motion tweens these itself; hex equivalents of zinc-800 / zinc-900
-        // (see styles/tokens.stylex.ts). Motion can't interpolate oklch.
         animate={{
-          backgroundColor: isExpanded ? '#27272a' : '#18181b',
-          borderColor: isExpanded ? '#27272a' : '#1f1f22',
+          backgroundColor: isExpanded ? colors.surfaceHover : colors.surface,
+          borderColor: isExpanded ? colors.border : colors.borderSubtle,
         }}
         transition={animationDuration}
         onClick={onHeaderClick}
