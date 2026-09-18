@@ -24,10 +24,10 @@ export const about = stylex.create({
   },
   portrait: {
     position: 'relative',
-    height: 'auto',
+    aspectRatio: '1/1',
     width: {
-      default: '18rem',
-      [bp.sm]: '24rem',
+      default: '12rem',
+      [bp.sm]: '20rem',
     },
   },
   heading: {
