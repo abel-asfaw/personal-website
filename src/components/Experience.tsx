@@ -1,7 +1,10 @@
+import * as stylex from '@stylexjs/stylex';
+
 import type { ContentfulData } from '../contentful';
 import { Accordion } from './ui/Accordion';
 import { PillButton } from './ui/Button';
 import { Section } from './ui/Section';
+import { experience } from './Experience.styles';
 
 interface ExperienceProps {
   experienceSection: ContentfulData['experienceSection'];
@@ -27,7 +30,7 @@ export function Experience({ experienceSection }: ExperienceProps) {
     <Section
       id="experience"
       title={experienceSection.title}
-      className="gap-4"
+      style={experience.list}
       as="ul"
     >
       {experienceSection?.experiences.map(exp => {
@@ -42,9 +45,11 @@ export function Experience({ experienceSection }: ExperienceProps) {
         const formattedEndDate = endDate ? formatDate(endDate) : 'Present';
 
         const headerContent = (
-          <div className="flex flex-1 flex-col items-start sm:flex-row sm:justify-between">
-            <span className="font-medium">{`${jobTitle} @ ${company}`}</span>
-            <span className="text-neutral-400 sm:text-right">
+          <div {...stylex.props(experience.itemHeader)}>
+            <span
+              {...stylex.props(experience.jobTitle)}
+            >{`${jobTitle} @ ${company}`}</span>
+            <span {...stylex.props(experience.dates)}>
               {formattedStartDate} – {formattedEndDate}
             </span>
           </div>
@@ -52,14 +57,12 @@ export function Experience({ experienceSection }: ExperienceProps) {
 
         const bodyContent = (
           <>
-            <p className="leading-relaxed text-neutral-300">{description}</p>
+            <p {...stylex.props(experience.description)}>{description}</p>
             {skills.length > 0 ? (
-              <ul className="flex list-none flex-wrap gap-2 pt-2">
+              <ul {...stylex.props(experience.skills)}>
                 {skills.map(skill => (
                   <li key={skill}>
-                    <PillButton className="font-roboto hover:scale-107 duration-400 bg-indigo-600 text-white ease-in-out">
-                      {skill}
-                    </PillButton>
+                    <PillButton>{skill}</PillButton>
                   </li>
                 ))}
               </ul>
@@ -68,7 +71,10 @@ export function Experience({ experienceSection }: ExperienceProps) {
         );
 
         return (
-          <li key={`${jobTitle} @ ${company}`} className="w-full list-none">
+          <li
+            key={`${jobTitle} @ ${company}`}
+            {...stylex.props(experience.item)}
+          >
             <Accordion
               headerContent={headerContent}
               bodyContent={bodyContent}

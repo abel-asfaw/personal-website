@@ -1,8 +1,10 @@
+import * as stylex from '@stylexjs/stylex';
 import { ReactNode, useState } from 'react';
 import { ChevronDown, ExternalLink } from 'lucide-react';
 
 import { LinkButton, PillButton } from '../Button';
 import { motion } from 'motion/react';
+import { overlayCard } from './OverlayCard.styles';
 
 interface CardLink {
   href: string;
@@ -33,33 +35,33 @@ export default function OverlayCard({
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="drop-shadow-md/25 max-w-sm overflow-hidden rounded-lg border-[.5px] border-zinc-800 bg-zinc-900">
+    <div {...stylex.props(overlayCard.root)}>
       <a
         href={link}
-        className="relative flex h-1/2 overflow-hidden"
         target="_blank"
         rel="noopener noreferrer"
+        {...stylex.props(overlayCard.imageLink)}
       >
         <img
-          className="h-auto w-full"
           src={`${imageUrl}?w=800&q=80`}
           alt={title}
           width={800}
           height={500}
           loading="lazy"
+          {...stylex.props(overlayCard.image)}
         />
-        <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-zinc-900 opacity-0 transition duration-300 ease-in hover:opacity-80">
+        <div {...stylex.props(overlayCard.overlay)}>
           <ExternalLink />
         </div>
       </a>
-      <div className="flex flex-col gap-3 px-6 py-4">
-        <h3 className="text-lg font-medium">{title}</h3>
-        <div className="flex justify-between">
-          <div className="flex gap-3">
+      <div {...stylex.props(overlayCard.body)}>
+        <h3 {...stylex.props(overlayCard.title)}>{title}</h3>
+        <div {...stylex.props(overlayCard.actions)}>
+          <div {...stylex.props(overlayCard.links)}>
             {links?.map(({ href, icon }) => (
               <LinkButton
                 key={href}
-                className="inline-flex text-left text-neutral-400 hover:text-white"
+                style={overlayCard.link}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -74,9 +76,9 @@ export default function OverlayCard({
             ))}
           </div>
           <button
-            className="text-right hover:cursor-pointer"
             onClick={() => setShowMore(!showMore)}
             aria-label={showMore ? 'Show less' : 'Show more'}
+            {...stylex.props(overlayCard.toggle)}
           >
             <motion.div
               animate={{ rotate: showMore ? 180 : 0 }}
@@ -89,17 +91,15 @@ export default function OverlayCard({
         <motion.div
           initial={false}
           animate={{ height: showMore ? 'auto' : '3.5rem' }}
-          className={showMore ? '' : 'overflow-hidden'}
           transition={animationDuration}
+          {...stylex.props(!showMore && overlayCard.collapsed)}
         >
-          <p className="leading-relaxed">{description}</p>
+          <p {...stylex.props(overlayCard.description)}>{description}</p>
           {tags && (
-            <ul className="flex list-none flex-wrap gap-2 pt-3">
+            <ul {...stylex.props(overlayCard.tags)}>
               {tags.map(tag => (
                 <li key={tag}>
-                  <PillButton className="font-roboto hover:scale-107 duration-400 bg-indigo-600 text-white ease-in-out">
-                    {tag}
-                  </PillButton>
+                  <PillButton>{tag}</PillButton>
                 </li>
               ))}
             </ul>

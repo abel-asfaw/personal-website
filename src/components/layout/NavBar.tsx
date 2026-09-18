@@ -1,5 +1,8 @@
+import * as stylex from '@stylexjs/stylex';
+
 import { LinkButton } from '../ui/Button';
 import { Underline } from '../ui/Effects';
+import { navBar } from './NavBar.styles';
 
 interface NavItem {
   label: string;
@@ -15,17 +18,14 @@ export function Navbar() {
   ];
 
   return (
-    <header
-      className={
-        'full-bleed drop-shadow-md/30 sticky top-0 z-10 bg-gray-800/20 py-4 shadow-sm backdrop-blur'
-      }
-    >
-      <nav className="flex flex-wrap justify-center gap-6 font-semibold sm:gap-20">
+    <header {...stylex.props(navBar.root)}>
+      <nav {...stylex.props(navBar.nav)}>
         {navItems.map(item => (
           <LinkButton
             key={item.label}
             href={item.href}
-            className="group text-neutral-100"
+            // The marker lets <Underline /> react to this link being hovered.
+            style={[navBar.link, stylex.defaultMarker()]}
             navButton
           >
             {item.label}

@@ -1,8 +1,9 @@
-import classNames from 'classnames';
+import * as stylex from '@stylexjs/stylex';
 
 import type { ContentfulData } from '../contentful';
 import { TileCard } from './ui/Card';
 import { Section } from './ui/Section';
+import { skills } from './Skills.styles';
 
 interface SkillsProps {
   skillsSection: ContentfulData['skillsSection'];
@@ -14,7 +15,12 @@ export function Skills({ skillsSection }: SkillsProps) {
   }
 
   return (
-    <Section id="skills" title={skillsSection.title} className="gap-4" as="ul">
+    <Section
+      id="skills"
+      title={skillsSection.title}
+      style={skills.list}
+      as="ul"
+    >
       {skillsSection.skills.map(skill => {
         if (!skill) {
           return null;
@@ -23,14 +29,13 @@ export function Skills({ skillsSection }: SkillsProps) {
         const { label, iconClass } = skill.fields;
 
         return (
-          <li key={label} className="list-none">
-            <TileCard className="font-roboto">
-              <i
-                className={classNames('text-green-400', iconClass)}
-                style={{
-                  fontSize: 24,
-                }}
-              />
+          <li key={label}>
+            <TileCard style={skills.tile}>
+              {/* The devicon class comes from the CMS, so it stays on a bare
+                  <i>; color and font-size are inherited from the wrapper. */}
+              <span {...stylex.props(skills.icon)}>
+                <i className={iconClass} />
+              </span>
               <span>{label}</span>
             </TileCard>
           </li>

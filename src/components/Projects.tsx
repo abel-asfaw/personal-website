@@ -1,8 +1,10 @@
+import * as stylex from '@stylexjs/stylex';
 import { Github } from 'lucide-react';
 
 import type { ContentfulData } from '../contentful';
 import { OverlayCard } from './ui/Card';
 import { Section } from './ui/Section';
+import { projects } from './Projects.styles';
 
 interface ProjectsProps {
   projectsSection: ContentfulData['projectsSection'];
@@ -17,7 +19,7 @@ export function Projects({ projectsSection }: ProjectsProps) {
     <Section
       id="projects"
       title={projectsSection.title}
-      className="gap-4"
+      style={projects.list}
       as="ul"
     >
       {projectsSection.projects?.map(project => {
@@ -31,7 +33,7 @@ export function Projects({ projectsSection }: ProjectsProps) {
         const imageUrl = image?.fields.file?.url;
 
         return (
-          <li key={projectLink} className="list-none">
+          <li key={projectLink}>
             <OverlayCard
               tags={skills}
               title={title}

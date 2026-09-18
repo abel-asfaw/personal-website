@@ -1,31 +1,26 @@
-import classNames from 'classnames';
+import * as stylex from '@stylexjs/stylex';
+import type { StyleXStyles } from '@stylexjs/stylex';
 import { ElementType, PropsWithChildren } from 'react';
+import { section } from './Section.styles';
 
 interface SectionProps extends PropsWithChildren {
   id: string;
   title: string;
-  className?: string;
+  style?: StyleXStyles;
   as?: ElementType;
 }
 
 export default function Section({
   id,
   title,
-  className,
+  style,
   children,
   as: Wrapper = 'div',
 }: SectionProps) {
-  const classes = classNames(
-    'flex flex-wrap justify-center items-center',
-    className,
-  );
-
   return (
-    <section id={id} className="flex flex-col gap-6">
-      <h2 className="text-center text-3xl font-semibold text-neutral-100">
-        {title}
-      </h2>
-      <Wrapper className={classes}>{children}</Wrapper>
+    <section id={id} {...stylex.props(section.root)}>
+      <h2 {...stylex.props(section.title)}>{title}</h2>
+      <Wrapper {...stylex.props(section.content, style)}>{children}</Wrapper>
     </section>
   );
 }

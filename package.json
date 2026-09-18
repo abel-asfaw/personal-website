@@ -9,9 +9,8 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.1.6",
-    "@tailwindcss/vite": "^4.1.13",
+    "@stylexjs/stylex": "^0.19.1",
     "@tanstack/react-query": "^5.87.1",
-    "classnames": "^2.3.2",
     "contentful": "^11.7.15",
     "lucide-react": "^0.475.0",
     "motion": "^12.0.0",
@@ -19,14 +18,14 @@
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
+    "@stylexjs/unplugin": "^0.19.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.0.2",
     "contentful-management": "^11.74.0",
     "prettier": "3.0.2",
-    "prettier-plugin-tailwindcss": "^0.5.3",
-    "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
+    "unplugin": "^2.3.11",
     "vite": "^7.1.5"
   }
 }

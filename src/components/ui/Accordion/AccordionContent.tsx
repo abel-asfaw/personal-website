@@ -1,5 +1,7 @@
+import * as stylex from '@stylexjs/stylex';
 import { motion } from 'motion/react';
 import { PropsWithChildren } from 'react';
+import { accordionContent } from './Accordion.styles';
 
 interface AccordionContentProps extends PropsWithChildren {
   id: string;
@@ -18,7 +20,7 @@ export default function AccordionContent({
       aria-labelledby={ariaLabelledby}
       variants={{ collapsed: { scale: 0.8 }, expanded: { scale: 1 } }}
       transition={{ duration: 0.4 }}
-      className="flex h-full flex-col flex-wrap rounded border-[1px] border-zinc-800 bg-zinc-950 p-4"
+      {...stylex.props(accordionContent.root)}
     >
       {children}
     </motion.div>

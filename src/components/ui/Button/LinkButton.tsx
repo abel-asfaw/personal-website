@@ -1,32 +1,36 @@
-import classNames from 'classnames';
+import * as stylex from '@stylexjs/stylex';
+import type { StyleXStyles } from '@stylexjs/stylex';
 import { PropsWithChildren } from 'react';
+import { linkButton } from './LinkButton.styles';
 
 interface LinkButtonProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  extends Omit<
+      React.AnchorHTMLAttributes<HTMLAnchorElement>,
+      'className' | 'style'
+    >,
     PropsWithChildren {
   navButton?: boolean;
   promptButton?: boolean;
-  className?: string;
+  style?: StyleXStyles;
 }
 
 export default function LinkButton({
   children,
   navButton,
   promptButton,
-  className,
+  style,
   ...props
 }: LinkButtonProps) {
-  const transition = 'duration-300 ease-in';
-
-  const classes = classNames(
-    transition,
-    navButton && 'p-1',
-    promptButton && 'flex items-center gap-2 rounded py-2.5 px-4',
-    className,
-  );
-
   return (
-    <a className={classes} {...props}>
+    <a
+      {...props}
+      {...stylex.props(
+        linkButton.root,
+        navButton && linkButton.nav,
+        promptButton && linkButton.prompt,
+        style,
+      )}
+    >
       {children}
     </a>
   );

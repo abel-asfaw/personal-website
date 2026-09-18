@@ -1,7 +1,9 @@
+import * as stylex from '@stylexjs/stylex';
 import { ChevronsDown, Mail } from 'lucide-react';
 
 import type { ContentfulData } from '../contentful';
 import { LinkButton } from './ui/Button';
+import { about } from './About.styles';
 
 interface AboutProps {
   aboutMe: ContentfulData['aboutMe'];
@@ -16,11 +18,8 @@ export function About({ aboutMe }: AboutProps) {
   const imageUrl = rawImageUrl ? `${rawImageUrl}?fm=webp` : undefined;
 
   return (
-    <section
-      id="about"
-      className="flex flex-col items-center justify-center gap-6 text-center"
-    >
-      <div className="relative h-auto w-72 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-20 after:bg-gradient-to-t after:to-transparent after:content-[''] sm:w-96">
+    <section id="about" {...stylex.props(about.root)}>
+      <div {...stylex.props(about.portrait)}>
         <img
           src={imageUrl}
           alt="Portrait of Abel"
@@ -29,34 +28,25 @@ export function About({ aboutMe }: AboutProps) {
           fetchPriority="high"
         />
       </div>
-      <h1 className="-mb-1 text-3xl font-semibold text-neutral-100 sm:text-4xl">
+      <h1 {...stylex.props(about.heading)}>
         {aboutMe.intro}{' '}
-        <span className="animate-wave bg-gradient-to-r from-teal-300 via-purple-500 to-orange-500 bg-clip-text text-transparent">
-          {aboutMe.tagLine}
-        </span>
+        <span {...stylex.props(about.tagline)}>{aboutMe.tagLine}</span>
       </h1>
-      <p className="w-full leading-relaxed sm:w-10/12">{aboutMe.bio}</p>
-      <div className="flex gap-4 text-center font-semibold transition-all">
-        <LinkButton
-          href="#projects"
-          className="drop-shadow-md/25 bg-green-650 text-white hover:bg-green-700"
-          promptButton
-        >
+      <p {...stylex.props(about.bio)}>{aboutMe.bio}</p>
+      <div {...stylex.props(about.ctaRow)}>
+        <LinkButton href="#projects" style={about.primaryCta} promptButton>
           See my work
-          <ChevronsDown
-            className="animate-bouncy shrink-0 will-change-transform"
-            size={16}
-          />
+          <ChevronsDown size={16} {...stylex.props(about.chevron)} />
         </LinkButton>
         <LinkButton
           href="mailto:contact@abelasfaw.com"
-          className="drop-shadow-md/25 border-[.5px] border-zinc-800 bg-zinc-900 hover:bg-zinc-800 hover:text-white"
+          style={about.secondaryCta}
           promptButton
           target="_blank"
           rel="noopener noreferrer"
         >
           Reach out
-          <Mail className="shrink-0" size={16} />
+          <Mail size={16} {...stylex.props(about.mailIcon)} />
         </LinkButton>
       </div>
     </section>

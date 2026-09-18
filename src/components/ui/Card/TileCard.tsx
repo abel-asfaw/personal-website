@@ -1,16 +1,12 @@
-import classNames from 'classnames';
+import * as stylex from '@stylexjs/stylex';
+import type { StyleXStyles } from '@stylexjs/stylex';
 import { PropsWithChildren } from 'react';
+import { tileCard } from './TileCard.styles';
 
 interface TileCardProps extends PropsWithChildren {
-  className?: string;
+  style?: StyleXStyles;
 }
 
-export default function TileCard({ className, children }: TileCardProps) {
-  const classes = classNames(
-    'flex h-full w-full flex-col items-center gap-2 rounded bg-zinc-900 p-3 xs:w-40 border-zinc-800 border-[0.5px]',
-    'cursor-default duration-500 will-change-transform hover:scale-[1.08] hover:bg-zinc-800 drop-shadow-md/25',
-    className,
-  );
-
-  return <div className={classes}>{children}</div>;
+export default function TileCard({ style, children }: TileCardProps) {
+  return <div {...stylex.props(tileCard.root, style)}>{children}</div>;
 }

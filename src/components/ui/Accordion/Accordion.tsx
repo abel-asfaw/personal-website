@@ -1,7 +1,9 @@
+import * as stylex from '@stylexjs/stylex';
 import { AnimatePresence, motion } from 'motion/react';
 import { useId, useState } from 'react';
 
 import { AccordionContent, AccordionHeader } from './';
+import { accordion } from './Accordion.styles';
 
 interface AccordionProps {
   headerContent: React.ReactNode;
@@ -50,9 +52,9 @@ export default function Accordion({
             exit="collapsed"
             variants={accordionVariants}
             transition={accordionTransition}
-            className="overflow-hidden"
+            {...stylex.props(accordion.panel)}
           >
-            <motion.div className="pt-4">
+            <motion.div {...stylex.props(accordion.panelBody)}>
               <AccordionContent id={contentId} aria-labelledby={headerId}>
                 {bodyContent}
               </AccordionContent>

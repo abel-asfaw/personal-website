@@ -1,21 +1,24 @@
-import classNames from 'classnames';
+import * as stylex from '@stylexjs/stylex';
+import type { StyleXStyles } from '@stylexjs/stylex';
 import { PropsWithChildren } from 'react';
+import { pillButton } from './PillButton.styles';
 
 interface PillButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends Omit<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      'className' | 'style'
+    >,
     PropsWithChildren {
-  className?: string;
+  style?: StyleXStyles;
 }
 
 export default function PillButton({
   children,
-  className,
+  style,
   ...props
 }: PillButtonProps) {
-  const classes = classNames('rounded-full px-3 py-1.5 text-sm', className);
-
   return (
-    <button {...props} role="button" className={classes}>
+    <button {...props} role="button" {...stylex.props(pillButton.root, style)}>
       {children}
     </button>
   );

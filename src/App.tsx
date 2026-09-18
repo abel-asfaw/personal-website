@@ -1,3 +1,5 @@
+import * as stylex from '@stylexjs/stylex';
+
 import { About } from './components/About';
 import { Experience } from './components/Experience';
 import { Footer } from './components/layout/Footer';
@@ -5,6 +7,7 @@ import { Navbar } from './components/layout/NavBar';
 import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { useContentfulData } from './contentful';
+import { app } from './App.styles';
 
 export default function App() {
   const {
@@ -13,11 +16,11 @@ export default function App() {
   } = useContentfulData();
 
   return (
-    <div className="font-google-sans grid min-h-screen grid-rows-[auto_1fr_auto] gap-12 text-neutral-200 sm:gap-16">
+    <div {...stylex.props(app.root)}>
       <Navbar />
-      <main className="wrapper gap-20 sm:gap-32">
+      <main {...stylex.props(app.main)}>
         {isPending ? (
-          <div className="place-self-center">Loading...</div>
+          <div {...stylex.props(app.loading)}>Loading...</div>
         ) : (
           <>
             <About aboutMe={aboutMe} />
