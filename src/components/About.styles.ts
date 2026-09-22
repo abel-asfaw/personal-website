@@ -27,7 +27,7 @@ export const about = stylex.create({
     aspectRatio: '1/1',
     width: {
       default: '12rem',
-      [bp.sm]: '20rem',
+      [bp.sm]: '16rem',
     },
   },
   heading: {
