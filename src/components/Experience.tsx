@@ -21,6 +21,12 @@ function formatDate(date: string) {
   return formattedDate;
 }
 
+// Non-breaking spaces keep multi-word skills ("React Native") on one line
+// and each separator attached to the skill before it.
+function formatSkills(skills: string[]) {
+  return skills.map(skill => skill.replaceAll(' ', '\u00A0')).join('\u00A0· ');
+}
+
 const panelVariants = {
   hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0 },
@@ -140,7 +146,7 @@ export function Experience({ experienceSection }: ExperienceProps) {
             </h3>
             <p {...stylex.props(experience.description)}>{description}</p>
             {skills.length > 0 ? (
-              <p {...stylex.props(experience.skills)}>{skills.join(' · ')}</p>
+              <p {...stylex.props(experience.skills)}>{formatSkills(skills)}</p>
             ) : null}
           </motion.article>
         </AnimatePresence>
