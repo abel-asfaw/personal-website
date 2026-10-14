@@ -6,6 +6,9 @@ export const app = stylex.create({
   root: {
     fontFamily: fonts.sans,
     display: 'grid',
+    // A zero minimum lets the column shrink below wide content (like the
+    // scrollable timeline) instead of stretching the page past the viewport.
+    gridTemplateColumns: 'minmax(0, 1fr)',
     minHeight: '100vh',
     gridTemplateRows: 'auto 1fr auto',
     gap: {
