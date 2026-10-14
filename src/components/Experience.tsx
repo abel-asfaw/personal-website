@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
-import { AnimatePresence, motion } from 'motion/react';
-import { useId, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { useId, useLayoutEffect, useRef, useState } from 'react';
 
 import type { ContentfulData } from '../contentful';
 import { Section } from './ui/Section';
@@ -48,6 +48,60 @@ export function Experience({ experienceSection }: ExperienceProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const panelId = useId();
   const indicatorId = useId();
+  const stopsRef = useRef<HTMLOListElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const [hasMoreBefore, setHasMoreBefore] = useState(false);
+  const [hasMoreAfter, setHasMoreAfter] = useState(false);
+
+  useLayoutEffect(() => {
+    const stops = stopsRef.current;
+    if (!stops) {
+      return undefined;
+    }
+
+    const updateEdges = () => {
+      const maxScroll = stops.scrollWidth - stops.clientWidth;
+      // A 1px allowance absorbs subpixel scroll positions.
+      setHasMoreBefore(stops.scrollLeft > 1);
+      setHasMoreAfter(stops.scrollLeft < maxScroll - 1);
+    };
+
+    // The most recent role is selected on load and sits at the far end of
+    // the timeline, so start the (possibly scrollable) row scrolled to the end.
+    stops.scrollLeft = stops.scrollWidth;
+    updateEdges();
+
+    stops.addEventListener('scroll', updateEdges, { passive: true });
+    const observer = new ResizeObserver(updateEdges);
+    observer.observe(stops);
+    return () => {
+      stops.removeEventListener('scroll', updateEdges);
+      observer.disconnect();
+    };
+  }, []);
+
+  // Scrolls only the row, never the page, and keeps the stop clear of the
+  // row's padding so its shadow isn't clipped.
+  const revealStop = (stop: HTMLElement) => {
+    const row = stopsRef.current;
+    if (!row) {
+      return;
+    }
+    const { paddingLeft, paddingRight } = getComputedStyle(row);
+    const rowRect = row.getBoundingClientRect();
+    const visibleLeft = rowRect.left + parseFloat(paddingLeft);
+    const visibleRight = rowRect.right - parseFloat(paddingRight);
+    const stopRect = stop.getBoundingClientRect();
+    const offset =
+      stopRect.left < visibleLeft
+        ? stopRect.left - visibleLeft
+        : Math.max(0, stopRect.right - visibleRight);
+    row.scrollBy({
+      left: offset,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    });
+  };
 
   if (!experienceSection) {
     return null;
@@ -78,7 +132,18 @@ export function Experience({ experienceSection }: ExperienceProps) {
       title={experienceSection.title}
       style={experience.content}
     >
-      <ol {...stylex.props(experience.stops)}>
+      {/* `layoutScroll` lets the indicator animation account for the row's
+          horizontal scroll position. */}
+      <motion.ol
+        ref={stopsRef}
+        layoutScroll
+        {...stylex.props(
+          experience.stops,
+          hasMoreBefore && hasMoreAfter && experience.stopsFadeBoth,
+          hasMoreBefore && !hasMoreAfter && experience.stopsFadeStart,
+          !hasMoreBefore && hasMoreAfter && experience.stopsFadeEnd,
+        )}
+      >
         {roles.map((role, index) => {
           const isSelected = index === activeIndex;
 
@@ -91,7 +156,10 @@ export function Experience({ experienceSection }: ExperienceProps) {
                 type="button"
                 aria-pressed={isSelected}
                 aria-controls={panelId}
-                onClick={() => setSelectedIndex(index)}
+                onClick={event => {
+                  setSelectedIndex(index);
+                  revealStop(event.currentTarget);
+                }}
                 {...stylex.props(
                   experience.stop,
                   isSelected && experience.stopSelected,
@@ -123,7 +191,7 @@ export function Experience({ experienceSection }: ExperienceProps) {
             </li>
           );
         })}
-      </ol>
+      </motion.ol>
 
       <div id={panelId} aria-live="polite" {...stylex.props(experience.panel)}>
         <AnimatePresence mode="wait" initial={false}>

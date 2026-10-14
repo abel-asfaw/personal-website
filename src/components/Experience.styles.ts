@@ -11,11 +11,30 @@ export const experience = stylex.create({
   },
   stops: {
     display: 'grid',
-    gridTemplateColumns: {
-      default: 'repeat(2, minmax(0, 1fr))',
-      [bp.sm]: 'repeat(auto-fit, minmax(8rem, 1fr))',
-    },
+    gridAutoFlow: 'column',
+    gridAutoColumns: 'minmax(8.5rem, 1fr)',
     gap: '0.5rem',
+    overflowX: 'auto',
+    overscrollBehaviorX: 'contain',
+    scrollbarWidth: 'thin',
+    scrollbarColor: `${colors.border} transparent`,
+    // Room for the hover lift and the selected stop's shadow, which the
+    // scroll container would otherwise clip. The negative inline margin keeps
+    // the stops lined up with the panel below.
+    paddingTop: '0.25rem',
+    paddingBottom: '0.5rem',
+    paddingInline: '0.5rem',
+    marginInline: '-0.5rem',
+  },
+  stopsFadeStart: {
+    maskImage: 'linear-gradient(to right, transparent, #000 3rem)',
+  },
+  stopsFadeEnd: {
+    maskImage: 'linear-gradient(to left, transparent, #000 3rem)',
+  },
+  stopsFadeBoth: {
+    maskImage:
+      'linear-gradient(to right, transparent, #000 3rem, #000 calc(100% - 3rem), transparent)',
   },
   // Each stop is its own stacking context (it sets `translate`), so the
   // selected one is lifted to keep the sliding indicator above its siblings.
