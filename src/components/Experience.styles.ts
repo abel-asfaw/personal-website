@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
-import { bp, colors, easing, fonts } from '../styles/tokens.stylex';
+import { bp, colors, easing, fonts, shadows } from '../styles/tokens.stylex';
 
 export const experience = stylex.create({
   content: {
@@ -47,6 +47,7 @@ export const experience = stylex.create({
   },
   stopSelected: {
     backgroundColor: colors.surface,
+    filter: shadows.drop25,
   },
   bar: {
     position: 'relative',
@@ -90,6 +91,7 @@ export const experience = stylex.create({
     borderStyle: 'solid',
     borderColor: colors.border,
     backgroundColor: colors.surface,
+    filter: shadows.drop25,
     padding: {
       default: '1.25rem',
       [bp.sm]: '2rem',
