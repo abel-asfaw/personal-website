@@ -55,6 +55,11 @@ export function SkillMarquee({
               >
                 <Button
                   tabIndex={isCopy ? -1 : undefined}
+                  // Copies are hidden from screen readers, so a click on one
+                  // mustn't move focus there.
+                  onMouseDown={
+                    isCopy ? (event) => event.preventDefault() : undefined
+                  }
                   aria-pressed={isPicked}
                   aria-label={
                     count > 0 ? `${skill}, ${plural(count, 'stop')}` : undefined

@@ -27,9 +27,11 @@ export function RouteStopCard({ stops, tour }: RouteStopCardProps) {
 
   const status = tour.playing
     ? 'Touring… next stop in a moment'
-    : tour.atEnd
+    : stop.isCurrent
       ? `Arrived · ${stop.dates}`
-      : 'Paused · press play or tap a stop';
+      : tour.atEnd
+        ? `Last stop · ${stop.dates}`
+        : 'Paused · press play or tap a stop';
 
   return (
     <article {...stylex.props(routeStopCard.root)}>

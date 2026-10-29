@@ -1,18 +1,15 @@
-import { useCallback, useSyncExternalStore } from 'react';
+import { useCallback, useMemo, useSyncExternalStore } from 'react';
 
 export function useMediaQuery(query: string) {
-  // Stable per query, so React keeps one listener instead of re-subscribing
-  // on every render.
+  // One MediaQueryList per query: renders read `.matches` from it, and React
+  // keeps one listener instead of re-subscribing on every render.
+  const list = useMemo(() => window.matchMedia(query), [query]);
   const subscribe = useCallback(
     (onChange: () => void) => {
-      const list = window.matchMedia(query);
       list.addEventListener('change', onChange);
       return () => list.removeEventListener('change', onChange);
     },
-    [query],
+    [list],
   );
-  return useSyncExternalStore(
-    subscribe,
-    () => window.matchMedia(query).matches,
-  );
+  return useSyncExternalStore(subscribe, () => list.matches);
 }

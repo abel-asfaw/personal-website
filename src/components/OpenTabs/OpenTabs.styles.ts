@@ -172,6 +172,12 @@ export const projectWindow = stylex.create({
     },
     display: 'flex',
     flexDirection: 'column',
+    // Undo the button's centered pill layout.
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
+    gap: 0,
+    minHeight: 0,
+    whiteSpace: 'normal',
     overflow: 'hidden',
     padding: 0,
     borderRadius: 14,

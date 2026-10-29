@@ -6,6 +6,8 @@ export interface Stop {
   n: string;
   company: string;
   jobTitle: string;
+  /** True for the role I'm in now. */
+  isCurrent: boolean;
   /** Map label year: the start year, or "now" for the current role. */
   year: string;
   dates: string;
@@ -117,6 +119,7 @@ export function toStops(
       n: pad(index + 1),
       company: role.company,
       jobTitle: role.jobTitle,
+      isCurrent: endDate === undefined,
       year: endDate ? String(new Date(role.startDate).getUTCFullYear()) : 'now',
       dates: `${formatDate(role.startDate)} – ${
         endDate ? formatDate(endDate) : 'Present'
@@ -140,22 +143,27 @@ function hostOf(link: string) {
 export function toProjects(
   projectsSection: ContentfulData['projectsSection'],
 ): Project[] {
-  return (projectsSection?.projects ?? [])
-    .flatMap((project) => (project ? [project.fields] : []))
-    .map((project, index) => {
-      const imageUrl = project.image?.fields.file?.url;
-      return {
-        key: project.projectLink,
-        n: pad(index + 1),
-        title: project.title,
-        description: project.description,
-        skills: project.skills ?? [],
-        link: project.projectLink,
-        host: hostOf(project.projectLink),
-        githubLink: project.githubLink,
-        imageUrl: imageUrl ? `${imageUrl}?w=1400&fm=webp&q=80` : undefined,
-      };
-    });
+  return (
+    (projectsSection?.projects ?? [])
+      // The entry ID is the stable key; links can repeat or be left empty.
+      .flatMap((project) =>
+        project ? [{ id: project.sys.id, ...project.fields }] : [],
+      )
+      .map((project, index) => {
+        const imageUrl = project.image?.fields.file?.url;
+        return {
+          key: project.id,
+          n: pad(index + 1),
+          title: project.title,
+          description: project.description,
+          skills: project.skills ?? [],
+          link: project.projectLink,
+          host: hostOf(project.projectLink),
+          githubLink: project.githubLink,
+          imageUrl: imageUrl ? `${imageUrl}?w=1400&fm=webp&q=80` : undefined,
+        };
+      })
+  );
 }
 
 export function toSkills(skillsSection: ContentfulData['skillsSection']) {

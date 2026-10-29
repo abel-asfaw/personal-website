@@ -38,15 +38,17 @@ export function RouteMap({
   // MotionConfig's reducedMotion only covers transforms, not left/top.
   const reduceMotion = useReducedMotion();
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const hasScrolled = useRef(false);
+  // The stop last centered, so only a real move scrolls smoothly (StrictMode's
+  // repeated effect run re-centers the same stop and stays instant).
+  const centeredStop = useRef<number | null>(null);
+  const currentX = stops[tour.stop]?.x;
 
   // Keeps the current stop in view when the map scrolls sideways: on load
   // (the latest stop, at the far end), as the tour or a jump moves on, and
   // when a resize or rotation changes how much of the map fits.
   useEffect(() => {
     const scroller = scrollerRef.current;
-    const stop = stops[tour.stop];
-    if (!scroller || !stop) {
+    if (!scroller || currentX === undefined) {
       return undefined;
     }
 
@@ -55,13 +57,16 @@ export function RouteMap({
         return;
       }
       scroller.scrollTo({
-        left: (scroller.scrollWidth * stop.x) / 100 - scroller.clientWidth / 2,
+        left:
+          (scroller.scrollWidth * currentX) / 100 - scroller.clientWidth / 2,
         behavior: isSmooth ? 'smooth' : 'auto',
       });
     };
 
-    center(hasScrolled.current && !reduceMotion);
-    hasScrolled.current = true;
+    const isMove =
+      centeredStop.current !== null && centeredStop.current !== tour.stop;
+    center(isMove && !reduceMotion);
+    centeredStop.current = tour.stop;
 
     // The observer also fires once on observe; only a real width change
     // re-centers, so it doesn't cut the smooth scroll above short.
@@ -74,7 +79,9 @@ export function RouteMap({
     });
     observer.observe(scroller);
     return () => observer.disconnect();
-  }, [stops, tour.stop, reduceMotion]);
+    // Keyed on the stop and its position rather than the `stops` array, so a
+    // refetch doesn't snap back a map the visitor scrolled themselves.
+  }, [currentX, tour.stop, reduceMotion]);
 
   // The lit badge only makes sense when some stop actually lights up.
   const hasLitStops =
@@ -179,21 +186,21 @@ export function RouteMap({
 
             return (
               <div key={stop.key}>
-                <button
-                  type="button"
+                <Button
+                  variant="text"
                   onClick={() => tour.goTo(index)}
                   aria-label={`Stop ${index + 1}: ${stop.company}, ${stop.dates}`}
                   aria-current={isCurrent ? 'step' : undefined}
-                  {...stylex.props(
+                  style={[
                     routeMap.stop,
                     isReached && routeMap.stopReached,
                     isCurrent && routeMap.stopCurrent,
                     isLit && routeMap.stopLit,
                     at,
-                  )}
+                  ]}
                 >
                   {stop.n}
-                </button>
+                </Button>
                 <span
                   aria-hidden="true"
                   {...stylex.props(
@@ -218,7 +225,7 @@ export function RouteMap({
             >
               <span {...stylex.props(routeMap.markerPulse)} />
               <div {...stylex.props(routeMap.markerPin)}>
-                {tour.atEnd ? (
+                {current.isCurrent ? (
                   <span {...stylex.props(routeMap.here)}>you are here</span>
                 ) : null}
                 <span {...stylex.props(routeMap.pin)} />

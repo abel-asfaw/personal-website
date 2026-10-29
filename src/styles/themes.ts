@@ -2,9 +2,11 @@ import * as stylex from '@stylexjs/stylex';
 
 import { dayColors, nightColors, themeColors } from './tokens.stylex';
 
-// Applied only once the visitor picks Day or Night; until then the
-// `themeColors` defaults follow `prefers-color-scheme`.
-export const dayTheme = stylex.createTheme(themeColors, {
+// Each theme names every palette key: createTheme accepts a partial theme,
+// and a missing key would quietly fall back to the system color scheme.
+type Palette = Record<keyof typeof dayColors, string>;
+
+const DAY: Palette = {
   bg: dayColors.bg,
   headerBg: dayColors.headerBg,
   panel: dayColors.panel,
@@ -23,9 +25,9 @@ export const dayTheme = stylex.createTheme(themeColors, {
   routeSoft: dayColors.routeSoft,
   litRing: dayColors.litRing,
   litHalo: dayColors.litHalo,
-});
+};
 
-export const nightTheme = stylex.createTheme(themeColors, {
+const NIGHT: Palette = {
   bg: nightColors.bg,
   headerBg: nightColors.headerBg,
   panel: nightColors.panel,
@@ -44,4 +46,10 @@ export const nightTheme = stylex.createTheme(themeColors, {
   routeSoft: nightColors.routeSoft,
   litRing: nightColors.litRing,
   litHalo: nightColors.litHalo,
-});
+};
+
+// Applied only once the visitor picks Day or Night; until then the
+// `themeColors` defaults follow `prefers-color-scheme`.
+export const dayTheme = stylex.createTheme(themeColors, DAY);
+
+export const nightTheme = stylex.createTheme(themeColors, NIGHT);

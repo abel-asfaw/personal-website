@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 
 import type { Project } from '../../content/route';
 
+import { Button } from '../ui/Button';
 import { projectWindow } from './OpenTabs.styles';
 
 /** Where a window sits in the fan: in front, or one of the two behind it. */
@@ -22,18 +23,20 @@ export function ProjectWindow({
 
   // The project tabs and the details card are the keyboard and screen reader
   // route; clicking a window behind is a mouse shortcut, so the windows stay
-  // out of tab order and the accessibility tree.
+  // out of tab order and the accessibility tree, and a click doesn't move
+  // focus onto them.
   return (
-    <button
-      type="button"
+    <Button
+      variant="text"
       tabIndex={-1}
       aria-hidden="true"
+      onMouseDown={(event) => event.preventDefault()}
       onClick={isFront ? undefined : onBringForward}
-      {...stylex.props(
+      style={[
         projectWindow.root,
         isFront ? projectWindow.front : projectWindow.behind,
         !isFront && projectWindow[spot],
-      )}
+      ]}
     >
       <span {...stylex.props(projectWindow.bar)}>
         <span {...stylex.props(projectWindow.dot)} />
@@ -50,7 +53,7 @@ export function ProjectWindow({
           {...stylex.props(projectWindow.screen)}
         />
       ) : null}
-    </button>
+    </Button>
   );
 }
 

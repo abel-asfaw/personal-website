@@ -68,8 +68,10 @@ export function useRouteTour(stopCount: number) {
         return moveTo(s, current >= last ? 0 : current + 1, true);
       }),
     pause: () => setState((s) => ({ ...s, playing: false })),
-    prev: () => goTo(stop - 1),
-    next: () => goTo(stop + 1),
+    // From the latest state, so a click in the same frame as a tour step
+    // isn't lost.
+    prev: () => setState((s) => moveTo(s, currentOf(s) - 1, false)),
+    next: () => setState((s) => moveTo(s, currentOf(s) + 1, false)),
   };
 }
 
