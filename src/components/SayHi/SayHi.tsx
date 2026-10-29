@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
+import { LinkButton } from '../ui/Button';
 import { sayHi } from './SayHi.styles';
 
 const EMAIL = 'contact@abelasfaw.com';
@@ -20,33 +21,35 @@ export function SayHi() {
   return (
     <footer id="say-hi" {...stylex.props(sayHi.root)}>
       <span {...stylex.props(sayHi.eyebrow)}>End of the route — for now</span>
-      <a
+      <LinkButton
         href={`mailto:${EMAIL}`}
-        {...stylex.props(sayHi.mail, stylex.defaultMarker())}
+        variant="text"
+        style={[sayHi.mail, stylex.defaultMarker()]}
       >
         <span {...stylex.props(sayHi.say)}>Say hi</span>
         <span aria-hidden="true" {...stylex.props(sayHi.arrow)}>
           →
         </span>
-      </a>
+      </LinkButton>
       <div {...stylex.props(sayHi.meta)}>
         <span>
           {EMAIL} · © {year} Abel Asfaw
         </span>
         <div {...stylex.props(sayHi.links)}>
           {LINKS.map(({ href, label, external }) => (
-            <a
+            <LinkButton
               key={href}
               href={href}
               {...(external && {
                 target: '_blank',
                 rel: 'noopener noreferrer',
               })}
-              {...stylex.props(sayHi.link, stylex.defaultMarker())}
+              variant="text"
+              style={[sayHi.link, stylex.defaultMarker()]}
             >
               {label}
               <span aria-hidden="true" {...stylex.props(sayHi.underline)} />
-            </a>
+            </LinkButton>
           ))}
         </div>
       </div>

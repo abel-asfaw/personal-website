@@ -5,7 +5,7 @@ import type { Theme } from '../../hooks/useTheme';
 import { PinIcon } from '../ui/Icons';
 import { header } from './Header.styles';
 import { ThemeToggle } from './ThemeToggle';
-import { waypoints } from './waypoints';
+import { WAYPOINTS } from './waypoints';
 
 interface HeaderProps {
   theme: Theme;
@@ -23,7 +23,7 @@ export function Header({ theme, onToggleTheme, activeWaypoint }: HeaderProps) {
           Abel Asfaw
         </a>
         <nav aria-label="Primary" {...stylex.props(header.nav)}>
-          {waypoints.map(({ href, label }) => {
+          {WAYPOINTS.map(({ href, label }) => {
             const isCurrent = href === activeWaypoint;
             return (
               <a

@@ -28,7 +28,9 @@ export function OpenTabs({
   onBringForward,
   isTouch,
 }: OpenTabsProps) {
-  const project = projects[front];
+  // A refetch can return fewer projects than the index the visitor picked.
+  const frontIndex = Math.min(front, projects.length - 1);
+  const project = projects[frontIndex];
   if (!project) {
     return null;
   }
@@ -53,9 +55,9 @@ export function OpenTabs({
               <Button
                 key={p.key}
                 variant="quiet"
-                aria-pressed={index === front}
+                aria-pressed={index === frontIndex}
                 onClick={() => onBringForward(index)}
-                style={index === front && openTabs.tabPicked}
+                style={index === frontIndex && openTabs.tabPicked}
               >
                 {p.n} · {p.title}
               </Button>
@@ -69,7 +71,7 @@ export function OpenTabs({
           {hasMany ? null : <GhostWindow />}
           {projects.map((p, index) => {
             const spot =
-              SPOTS[(index - front + projects.length) % projects.length];
+              SPOTS[(index - frontIndex + projects.length) % projects.length];
             return spot ? (
               <ProjectWindow
                 key={p.key}

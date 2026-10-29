@@ -33,7 +33,7 @@ export function Toolbox({
   onJumpToProject,
   isTouch,
 }: ToolboxProps) {
-  const [paused, setPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const counts = useMemo(
     () =>
       new Map(
@@ -53,7 +53,7 @@ export function Toolbox({
   const togglePick = (skill: string) => onPick(picked === skill ? null : skill);
   // A picked skill holds the rows still so it stays where it was tapped, so
   // the button shows them stopped and can't resume them until it's cleared.
-  const isStopped = paused || picked !== null;
+  const isStopped = isPaused || picked !== null;
 
   return (
     <section
@@ -73,9 +73,8 @@ export function Toolbox({
           </span>
           <Button
             variant="quiet"
-            aria-pressed={isStopped}
             disabled={picked !== null}
-            onClick={() => setPaused((p) => !p)}
+            onClick={() => setIsPaused((p) => !p)}
           >
             <span aria-hidden="true">{isStopped ? '▶' : '❚❚'}</span>
             {isStopped ? 'Play' : 'Pause'}
@@ -87,15 +86,15 @@ export function Toolbox({
         counts={counts}
         picked={picked}
         onPick={togglePick}
-        paused={isStopped}
+        isPaused={isStopped}
       />
       <SkillMarquee
         skills={skills.slice(half)}
         counts={counts}
         picked={picked}
         onPick={togglePick}
-        paused={isStopped}
-        reverse
+        isPaused={isStopped}
+        isReversed
       />
       <div aria-live="polite" {...stylex.props(toolbox.detail)}>
         <SkillDetail

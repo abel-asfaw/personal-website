@@ -84,9 +84,25 @@ export const routeMap = stylex.create({
     borderStyle: 'solid',
     borderColor: themeColors.line,
     backgroundColor: themeColors.map,
+  },
+  // Scrolls the land sideways when the screen is too narrow for the stops;
+  // the key, scale and lit badge stay put on the root above it.
+  scroller: {
+    position: 'absolute',
+    inset: 0,
+    overflowX: 'auto',
+    overflowY: 'hidden',
+    overscrollBehaviorX: 'contain',
+    scrollbarWidth: 'none',
+  },
+  // Everything that scrolls: terrain, route, stops and the marker.
+  land: {
+    position: 'relative',
+    height: '100%',
     backgroundImage: `linear-gradient(${themeColors.grid} 1px, transparent 1px), linear-gradient(90deg, ${themeColors.grid} 1px, transparent 1px)`,
     backgroundSize: '12.5% 25%',
   },
+  landWidth: (minWidth: number) => ({ minWidth }),
   terrain: {
     position: 'absolute',
     inset: 0,

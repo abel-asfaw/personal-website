@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
 import { dock } from './Dock.styles';
-import { waypoints } from './waypoints';
+import { WAYPOINTS } from './waypoints';
 
 interface DockProps {
   /** `href` of the section on screen, from `useActiveWaypoint`. */
@@ -12,8 +12,8 @@ interface DockProps {
 export function Dock({ activeWaypoint }: DockProps) {
   return (
     <nav aria-label="Waypoints" {...stylex.props(dock.root)}>
-      {waypoints.map(({ href, short }, index) => {
-        const isCta = index === waypoints.length - 1;
+      {WAYPOINTS.map(({ href, short }, index) => {
+        const isCta = index === WAYPOINTS.length - 1;
         const isCurrent = href === activeWaypoint;
         return (
           <a
