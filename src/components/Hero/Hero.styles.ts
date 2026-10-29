@@ -34,7 +34,7 @@ export const hero = stylex.create({
     paddingBlock: 'clamp(40px, 7vw, 96px)',
     paddingInline: 'clamp(24px, 5vw, 64px)',
     // Sideways drags steer the map (see usePointerTracking).
-    touchAction: 'pan-y',
+    touchAction: 'pan-y pinch-zoom',
   },
   contours: {
     position: 'absolute',
@@ -154,21 +154,24 @@ export const heroPointer = stylex.create({
     right: 0,
     height: 1,
   },
-  // Shared by the glow and both hairs. Only a mouse gets the trailing glide:
-  // under a finger it's restarted every frame, which Safari draws as doubled,
-  // jittery lines, and the finger is already where the lines are.
+  // Shared by the glow and both hairs.
   tracking: {
     opacity: 0,
-    transitionProperty: {
-      default: 'opacity',
-      [bp.fineHover]: 'transform, opacity',
-    },
+    transitionProperty: 'transform, opacity',
     transitionDuration: {
-      default: '0.4s',
-      [bp.fineHover]: '0.18s, 0.4s',
+      default: '0.18s, 0.4s',
       [bp.reducedMotion]: '0s',
     },
     transitionTimingFunction: 'ease-out',
+  },
+  // No trailing glide under a finger: it's restarted every frame, which
+  // Safari draws as doubled, jittery lines, and the finger is already there.
+  touching: {
+    transitionProperty: 'opacity',
+    transitionDuration: {
+      default: '0.4s',
+      [bp.reducedMotion]: '0s',
+    },
   },
   visible: {
     opacity: 1,
