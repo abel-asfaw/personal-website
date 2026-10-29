@@ -7,7 +7,9 @@ export const themeToggle = stylex.create({
     display: 'flex',
     gap: 2,
     minHeight: 40,
-    padding: 4,
+    // Longhands: Button's paddingBlock/paddingInline would beat `padding`.
+    paddingBlock: 4,
+    paddingInline: 4,
     borderRadius: 999,
     borderWidth: 1,
     borderStyle: 'solid',

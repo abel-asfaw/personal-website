@@ -41,25 +41,30 @@ export function useContentfulData() {
           }),
       },
     ],
-    combine: (result) => ({
-      data: {
-        aboutMe: result[0].data?.items[0]?.fields,
-        experienceSection: result[1].data?.items[0]?.fields,
-        projectsSection: result[2].data?.items[0]?.fields,
-        skillsSection: result[3].data?.items[0]?.fields,
-      },
-      isPending: result.some((query) => query.isPending),
-      isError: result.some((query) => query.isError),
-      isRetrying: result.some((query) => query.isError && query.isFetching),
-      /** Refetches only the queries that failed. */
-      retry: () => {
-        for (const query of result) {
-          if (query.isError) {
+    combine: (result) => {
+      // A failed background refetch keeps its cached data; only a query
+      // with nothing to show counts as failed.
+      const failed = result.filter(
+        (query) => query.isError && query.data === undefined,
+      );
+      return {
+        data: {
+          aboutMe: result[0].data?.items[0]?.fields,
+          experienceSection: result[1].data?.items[0]?.fields,
+          projectsSection: result[2].data?.items[0]?.fields,
+          skillsSection: result[3].data?.items[0]?.fields,
+        },
+        isPending: result.some((query) => query.isPending),
+        isError: failed.length > 0,
+        isRetrying: failed.some((query) => query.isFetching),
+        /** Refetches only the queries that failed. */
+        retry: () => {
+          for (const query of failed) {
             void query.refetch();
           }
-        }
-      },
-    }),
+        },
+      };
+    },
   });
 }
 

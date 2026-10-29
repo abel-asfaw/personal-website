@@ -12,8 +12,8 @@ export function useActiveWaypoint(hrefs: readonly string[]) {
   const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
-    // A handful of rect reads per scroll event; React skips the re-render
-    // while the answer stays the same.
+    // A handful of rect reads per frame; React skips the re-render while the
+    // answer stays the same.
     const update = () => {
       const line = window.innerHeight * READ_LINE;
       const { scrollHeight } = document.documentElement;
@@ -37,16 +37,29 @@ export function useActiveWaypoint(hrefs: readonly string[]) {
       setActive(current);
     };
 
+    // Scroll and resize fire many times a frame; measure at most once per
+    // frame.
+    let frame = 0;
+    const schedule = () => {
+      if (!frame) {
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          update();
+        });
+      }
+    };
+
     update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
     // Sections mount after the Contentful data loads and can change height.
-    const observer = new ResizeObserver(update);
+    const observer = new ResizeObserver(schedule);
     observer.observe(document.body);
 
     return () => {
-      window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
       observer.disconnect();
     };
   }, [hrefs]);
