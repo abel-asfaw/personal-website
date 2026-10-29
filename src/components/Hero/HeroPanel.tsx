@@ -21,7 +21,7 @@ export function HeroPanel({ isTouch, children }: HeroPanelProps) {
 
   const coords = pointer.active
     ? `${((1 - pointer.ratioY) * 90).toFixed(2)}° N · ${(pointer.ratioX * 180).toFixed(2)}° E`
-    : `${isTouch ? 'Drag across' : 'Move around'} — the map follows you`;
+    : `${isTouch ? 'Drag sideways' : 'Move around'} — the map follows you`;
 
   return (
     <div ref={panelRef} {...handlers} {...stylex.props(hero.panel)}>
