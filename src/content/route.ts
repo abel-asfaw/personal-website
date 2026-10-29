@@ -39,7 +39,8 @@ export interface SkillUsage {
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
-const plural = (count: number, unit: string) =>
+/** "1 stop", "3 stops". */
+export const plural = (count: number, unit: string) =>
   `${count} ${unit}${count === 1 ? '' : 's'}`;
 
 // Contentful dates are calendar dates, so format them in UTC to keep the
@@ -168,6 +169,11 @@ export function toSkills(skillsSection: ContentfulData['skillsSection']) {
 // "AWS" matches "AWS S3" and "CSS" matches "Tailwind CSS".
 function projectUses(projectSkill: string, skill: string) {
   return projectSkill === skill || projectSkill.split(/\s+/).includes(skill);
+}
+
+/** How many stops on the route list `skill`. */
+export function stopCount(skill: string, stops: Stop[]) {
+  return stops.filter((stop) => stop.skills.includes(skill)).length;
 }
 
 export function skillUsage(

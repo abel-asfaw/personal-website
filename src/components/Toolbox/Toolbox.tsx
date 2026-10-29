@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 
 import type { Project, Stop } from '../../content/route';
 
-import { skillUsage } from '../../content/route';
+import { skillUsage, stopCount } from '../../content/route';
 import { Button } from '../ui/Button';
 import { SectionHeading } from '../ui/SectionHeading';
 import { SkillDetail } from './SkillDetail';
@@ -35,13 +35,7 @@ export function Toolbox({
 }: ToolboxProps) {
   const [isPaused, setIsPaused] = useState(false);
   const counts = useMemo(
-    () =>
-      new Map(
-        skills.map((skill) => [
-          skill,
-          skillUsage(skill, stops, []).stops.length,
-        ]),
-      ),
+    () => new Map(skills.map((skill) => [skill, stopCount(skill, stops)])),
     [skills, stops],
   );
 
