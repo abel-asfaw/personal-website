@@ -6,6 +6,7 @@ import { Hero, HeroSkeleton } from './components/Hero';
 import { Dock } from './components/layout/Dock';
 import { Header } from './components/layout/Header';
 import { WAYPOINT_HREFS } from './components/layout/waypoints';
+import { LoadError } from './components/LoadError';
 import { OpenTabs } from './components/OpenTabs';
 import { RouteSection } from './components/Route';
 import { SayHi } from './components/SayHi';
@@ -23,6 +24,9 @@ export default function App() {
   const {
     data: { aboutMe, experienceSection, projectsSection, skillsSection },
     isPending,
+    isError,
+    isRetrying,
+    retry,
   } = useContentfulData();
   const { theme, picked, toggle } = useTheme();
   const isTouch = useIsTouch();
@@ -65,7 +69,10 @@ export default function App() {
           <HeroSkeleton />
         ) : (
           <>
-            <Hero about={about} isTouch={isTouch} onStartTour={tour.play} />
+            {isError ? (
+              <LoadError isRetrying={isRetrying} onRetry={retry} />
+            ) : null}
+            <Hero about={about} isTouch={isTouch} onStartTour={tour.start} />
             <RouteSection
               title={experienceSection?.title ?? ''}
               stops={stops}

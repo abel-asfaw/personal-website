@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 
 import type { Project, SkillUsage, Stop } from '../../content/route';
 
+import { plural } from '../../content/route';
 import { Button, LinkButton } from '../ui/Button';
 import { skillDetail } from './Toolbox.styles';
 
@@ -39,9 +40,9 @@ export function SkillDetail({
   const projectCount = usage.projects.length;
   const hasPlaces = stopCount + projectCount > 0;
   const reach = stopCount
-    ? `${stopCount} ${stopCount === 1 ? 'stop' : 'stops'} on the route`
+    ? `${plural(stopCount, 'stop')} on the route`
     : projectCount
-      ? `${projectCount} ${projectCount === 1 ? 'project' : 'projects'} in my open tabs`
+      ? `${plural(projectCount, 'project')} in my open tabs`
       : 'used everywhere';
 
   return (

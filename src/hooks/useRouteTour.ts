@@ -59,6 +59,8 @@ export function useRouteTour(stopCount: number) {
     atStart: stop === 0,
     atEnd: stop >= last,
     goTo,
+    /** Starts the tour over from the first stop. */
+    start: () => setState((s) => moveTo(s, 0, true)),
     /** Plays on from the next stop, or replays from the first at the end. */
     play: () =>
       setState((s) => {

@@ -49,6 +49,16 @@ export function useContentfulData() {
         skillsSection: result[3].data?.items[0]?.fields,
       },
       isPending: result.some((query) => query.isPending),
+      isError: result.some((query) => query.isError),
+      isRetrying: result.some((query) => query.isError && query.isFetching),
+      /** Refetches only the queries that failed. */
+      retry: () => {
+        for (const query of result) {
+          if (query.isError) {
+            void query.refetch();
+          }
+        }
+      },
     }),
   });
 }

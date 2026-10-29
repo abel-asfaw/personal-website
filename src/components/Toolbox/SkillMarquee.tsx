@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
+import { plural } from '../../content/route';
 import { Button } from '../ui/Button';
 import { skillMarquee } from './Toolbox.styles';
 
@@ -56,9 +57,7 @@ export function SkillMarquee({
                   tabIndex={isCopy ? -1 : undefined}
                   aria-pressed={isPicked}
                   aria-label={
-                    count > 0
-                      ? `${skill}, ${count} ${count === 1 ? 'stop' : 'stops'}`
-                      : undefined
+                    count > 0 ? `${skill}, ${plural(count, 'stop')}` : undefined
                   }
                   onClick={() => onPick(skill)}
                   style={[

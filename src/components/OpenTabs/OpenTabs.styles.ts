@@ -145,9 +145,14 @@ export const openTabs = stylex.create({
   },
 });
 
-const fan = {
+// Motion's reducedMotion doesn't reach CSS transitions, so this one
+// switches itself off.
+const FAN = {
   transitionProperty: 'left, top, transform, filter, box-shadow',
-  transitionDuration: '0.45s',
+  transitionDuration: {
+    default: '0.45s',
+    [bp.reducedMotion]: '0s',
+  },
   transitionTimingFunction: easing.spring,
 } as const;
 
@@ -175,7 +180,7 @@ export const projectWindow = stylex.create({
     borderColor: themeColors.line,
     backgroundColor: colors.screen,
     textAlign: 'left',
-    ...fan,
+    ...FAN,
   },
   front: {
     zIndex: 3,

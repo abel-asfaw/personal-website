@@ -41,19 +41,44 @@ export function RouteMap({
   const hasScrolled = useRef(false);
 
   // Keeps the current stop in view when the map scrolls sideways: on load
-  // (the latest stop, at the far end) and as the tour or a jump moves on.
+  // (the latest stop, at the far end), as the tour or a jump moves on, and
+  // when a resize or rotation changes how much of the map fits.
   useEffect(() => {
     const scroller = scrollerRef.current;
     const stop = stops[tour.stop];
-    if (!scroller || !stop || scroller.scrollWidth <= scroller.clientWidth) {
-      return;
+    if (!scroller || !stop) {
+      return undefined;
     }
-    scroller.scrollTo({
-      left: (scroller.scrollWidth * stop.x) / 100 - scroller.clientWidth / 2,
-      behavior: hasScrolled.current && !reduceMotion ? 'smooth' : 'auto',
-    });
+
+    const center = (isSmooth: boolean) => {
+      if (scroller.scrollWidth <= scroller.clientWidth) {
+        return;
+      }
+      scroller.scrollTo({
+        left: (scroller.scrollWidth * stop.x) / 100 - scroller.clientWidth / 2,
+        behavior: isSmooth ? 'smooth' : 'auto',
+      });
+    };
+
+    center(hasScrolled.current && !reduceMotion);
     hasScrolled.current = true;
+
+    // The observer also fires once on observe; only a real width change
+    // re-centers, so it doesn't cut the smooth scroll above short.
+    let width = scroller.clientWidth;
+    const observer = new ResizeObserver(() => {
+      if (scroller.clientWidth !== width) {
+        width = scroller.clientWidth;
+        center(false);
+      }
+    });
+    observer.observe(scroller);
+    return () => observer.disconnect();
   }, [stops, tour.stop, reduceMotion]);
+
+  // The lit badge only makes sense when some stop actually lights up.
+  const hasLitStops =
+    litSkill !== null && stops.some((stop) => stop.skills.includes(litSkill));
 
   return (
     <div {...stylex.props(routeMap.root)}>
@@ -219,7 +244,7 @@ export function RouteMap({
         </span>
       </div>
 
-      {litSkill ? (
+      {hasLitStops ? (
         <div {...stylex.props(routeMap.lit)}>
           <span>Lit: where I used {litSkill}</span>
           <Button
