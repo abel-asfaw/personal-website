@@ -25,6 +25,7 @@ const DAY: Palette = {
   routeSoft: dayColors.routeSoft,
   litRing: dayColors.litRing,
   litHalo: dayColors.litHalo,
+  pinRing: dayColors.pinRing,
 };
 
 const NIGHT: Palette = {
@@ -46,6 +47,7 @@ const NIGHT: Palette = {
   routeSoft: nightColors.routeSoft,
   litRing: nightColors.litRing,
   litHalo: nightColors.litHalo,
+  pinRing: nightColors.pinRing,
 };
 
 // Applied only once the visitor picks Day or Night; until then the
