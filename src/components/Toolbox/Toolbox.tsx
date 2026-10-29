@@ -93,7 +93,7 @@ export function Toolbox({
       <div aria-live="polite" {...stylex.props(toolbox.detail)}>
         <SkillDetail
           skill={picked}
-          usage={picked ? skillUsage(picked, stops, projects) : null}
+          usage={picked ? skillUsage(picked, skills, stops, projects) : null}
           stops={stops}
           projects={projects}
           isTouch={isTouch}

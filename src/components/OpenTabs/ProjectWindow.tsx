@@ -42,7 +42,9 @@ export function ProjectWindow({
         <span {...stylex.props(projectWindow.dot)} />
         <span {...stylex.props(projectWindow.dot)} />
         <span {...stylex.props(projectWindow.dot)} />
-        <span {...stylex.props(projectWindow.address)}>{project.host}</span>
+        <span {...stylex.props(projectWindow.address)}>
+          {project.host ?? project.title}
+        </span>
       </span>
       {project.imageUrl ? (
         <img

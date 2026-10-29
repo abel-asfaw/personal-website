@@ -26,8 +26,8 @@ export interface Project {
   title: string;
   description: string;
   skills: string[];
-  link: string;
-  host: string;
+  link?: string;
+  host?: string;
   githubLink?: string;
   imageUrl?: string;
 }
@@ -132,7 +132,10 @@ export function toStops(
   });
 }
 
-function hostOf(link: string) {
+function hostOf(link: string | undefined) {
+  if (!link) {
+    return undefined;
+  }
   try {
     return new URL(link).hostname.replace(/^www\./, '');
   } catch {
@@ -151,14 +154,15 @@ export function toProjects(
       )
       .map((project, index) => {
         const imageUrl = project.image?.fields.file?.url;
+        const link = project.projectLink?.trim() || undefined;
         return {
           key: project.id,
           n: pad(index + 1),
           title: project.title,
           description: project.description,
           skills: project.skills ?? [],
-          link: project.projectLink,
-          host: hostOf(project.projectLink),
+          link,
+          host: hostOf(link),
           githubLink: project.githubLink,
           imageUrl: imageUrl ? `${imageUrl}?w=1400&fm=webp&q=80` : undefined,
         };
@@ -172,11 +176,16 @@ export function toSkills(skillsSection: ContentfulData['skillsSection']) {
   );
 }
 
-// Roles list skills exactly ("React" must not match "React Native"), but
-// project stacks name specific flavors, so a whole-word match counts there:
-// "AWS" matches "AWS S3" and "CSS" matches "Tailwind CSS".
-function projectUses(projectSkill: string, skill: string) {
-  return projectSkill === skill || projectSkill.split(/\s+/).includes(skill);
+// Roles list skills exactly, but project stacks name specific flavors, so a
+// whole-word match counts there: "AWS" matches "AWS S3" and "CSS" matches
+// "Tailwind CSS". A stack entry that is a toolbox skill of its own is never a
+// flavor, so "React" doesn't match "React Native".
+function projectUses(projectSkill: string, skill: string, skills: string[]) {
+  return (
+    projectSkill === skill ||
+    (!skills.includes(projectSkill) &&
+      projectSkill.split(/\s+/).includes(skill))
+  );
 }
 
 /** How many stops on the route list `skill`. */
@@ -186,6 +195,7 @@ export function stopCount(skill: string, stops: Stop[]) {
 
 export function skillUsage(
   skill: string,
+  skills: string[],
   stops: Stop[],
   projects: Project[],
 ): SkillUsage {
@@ -194,7 +204,9 @@ export function skillUsage(
       stop.skills.includes(skill) ? [index] : [],
     ),
     projects: projects.flatMap((project, index) =>
-      project.skills.some((projectSkill) => projectUses(projectSkill, skill))
+      project.skills.some((projectSkill) =>
+        projectUses(projectSkill, skill, skills),
+      )
         ? [index]
         : [],
     ),
