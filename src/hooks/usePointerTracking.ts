@@ -10,6 +10,8 @@ export interface PointerState {
   ratioY: number;
   /** Compass needle angle in degrees. */
   heading: number;
+  /** Whether a finger is steering, which turns off the trailing glide. */
+  isTouch: boolean;
 }
 
 const RESTING_HEADING = 35;
@@ -43,43 +45,48 @@ export function usePointerTracking() {
     ratioX: 0.5,
     ratioY: 0.5,
     heading: RESTING_HEADING,
+    isTouch: false,
   });
 
   useEffect(() => () => cancelAnimationFrame(frame.current), []);
 
   // Batches pointer updates into one render per frame.
-  const track = useCallback((clientX: number, clientY: number) => {
-    cancelAnimationFrame(frame.current);
-    frame.current = requestAnimationFrame(() => {
-      const panel = panelRef.current;
-      if (!panel) {
-        return;
-      }
-      const rect = panel.getBoundingClientRect();
-      const x = clientX - rect.left;
-      const y = clientY - rect.top;
-      const compass = compassRef.current?.getBoundingClientRect();
-      // The compass is hidden on phones; its needle then stays at rest.
-      const target =
-        compass && compass.width > 0
-          ? (Math.atan2(
-              clientY - (compass.top + compass.height / 2),
-              clientX - (compass.left + compass.width / 2),
-            ) *
-              180) /
-              Math.PI +
-            90
-          : RESTING_HEADING;
-      setPointer((p) => ({
-        active: true,
-        x,
-        y,
-        ratioX: x / rect.width,
-        ratioY: y / rect.height,
-        heading: turnTo(p.heading, target),
-      }));
-    });
-  }, []);
+  const track = useCallback(
+    (clientX: number, clientY: number, isTouch: boolean) => {
+      cancelAnimationFrame(frame.current);
+      frame.current = requestAnimationFrame(() => {
+        const panel = panelRef.current;
+        if (!panel) {
+          return;
+        }
+        const rect = panel.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        const compass = compassRef.current?.getBoundingClientRect();
+        // The compass is hidden on phones; its needle then stays at rest.
+        const target =
+          compass && compass.width > 0
+            ? (Math.atan2(
+                clientY - (compass.top + compass.height / 2),
+                clientX - (compass.left + compass.width / 2),
+              ) *
+                180) /
+                Math.PI +
+              90
+            : RESTING_HEADING;
+        setPointer((p) => ({
+          active: true,
+          x,
+          y,
+          ratioX: x / rect.width,
+          ratioY: y / rect.height,
+          heading: turnTo(p.heading, target),
+          isTouch,
+        }));
+      });
+    },
+    [],
+  );
 
   const leave = useCallback(() => {
     cancelAnimationFrame(frame.current);
@@ -99,6 +106,10 @@ export function usePointerTracking() {
     }
 
     const onTouchStart = (event: TouchEvent) => {
+      // A second finger turns a map drag into a scroll or pinch.
+      if (gesture.current?.mode === 'map') {
+        leave();
+      }
       const touch = event.touches[0];
       gesture.current =
         touch && event.touches.length === 1
@@ -126,7 +137,7 @@ export function usePointerTracking() {
       }
       if (current.mode === 'map') {
         event.preventDefault();
-        track(touch.clientX, touch.clientY);
+        track(touch.clientX, touch.clientY, true);
       }
     };
 
@@ -153,7 +164,7 @@ export function usePointerTracking() {
     // Touch is handled by the native touch listeners above.
     onPointerMove: (event: React.PointerEvent) => {
       if (event.pointerType !== 'touch') {
-        track(event.clientX, event.clientY);
+        track(event.clientX, event.clientY, false);
       }
     },
     onPointerLeave: (event: React.PointerEvent) => {
