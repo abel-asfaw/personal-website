@@ -24,6 +24,8 @@ export const dayColors = stylex.defineConsts({
   routeSoft: '#A3B0A0',
   litRing: 'rgba(232, 140, 0, 0.9)',
   litHalo: 'rgba(232, 140, 0, 0.22)',
+  // Outline around the map's position pin.
+  pinRing: '#F9FBF7',
 });
 
 export const nightColors = stylex.defineConsts({
@@ -45,6 +47,8 @@ export const nightColors = stylex.defineConsts({
   routeSoft: '#3A4D43',
   litRing: 'rgba(255, 200, 87, 0.95)',
   litHalo: 'rgba(255, 200, 87, 0.25)',
+  // The ahead-stop gray, so the pin doesn't sink into the dark map.
+  pinRing: '#3A4D43',
 });
 
 // Day values by default, night values when the system prefers dark.
@@ -67,6 +71,7 @@ export const themeColors = stylex.defineVars({
   routeSoft: { default: dayColors.routeSoft, [DARK]: nightColors.routeSoft },
   litRing: { default: dayColors.litRing, [DARK]: nightColors.litRing },
   litHalo: { default: dayColors.litHalo, [DARK]: nightColors.litHalo },
+  pinRing: { default: dayColors.pinRing, [DARK]: nightColors.pinRing },
 });
 
 export const colors = stylex.defineConsts({

@@ -285,7 +285,7 @@ export const routeMap = stylex.create({
     transform: 'rotate(-45deg)',
     borderWidth: 3,
     borderStyle: 'solid',
-    borderColor: themeColors.panel,
+    borderColor: themeColors.pinRing,
     backgroundColor: themeColors.accent,
   },
   key: {
