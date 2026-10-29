@@ -10,8 +10,8 @@ export interface PointerState {
   ratioY: number;
   /** Compass needle angle in degrees. */
   heading: number;
-  /** Whether a finger is steering, which turns off the trailing glide. */
-  isTouch: boolean;
+  /** Whether a finger is dragging, which turns off the trailing glide. */
+  isFingerDrag: boolean;
 }
 
 const RESTING_HEADING = 35;
@@ -45,14 +45,14 @@ export function usePointerTracking() {
     ratioX: 0.5,
     ratioY: 0.5,
     heading: RESTING_HEADING,
-    isTouch: false,
+    isFingerDrag: false,
   });
 
   useEffect(() => () => cancelAnimationFrame(frame.current), []);
 
   // Batches pointer updates into one render per frame.
   const track = useCallback(
-    (clientX: number, clientY: number, isTouch: boolean) => {
+    (clientX: number, clientY: number, isFingerDrag: boolean) => {
       cancelAnimationFrame(frame.current);
       frame.current = requestAnimationFrame(() => {
         const panel = panelRef.current;
@@ -81,7 +81,7 @@ export function usePointerTracking() {
           ratioX: x / rect.width,
           ratioY: y / rect.height,
           heading: turnTo(p.heading, target),
-          isTouch,
+          isFingerDrag,
         }));
       });
     },
@@ -93,6 +93,7 @@ export function usePointerTracking() {
     setPointer((p) => ({
       ...p,
       active: false,
+      isFingerDrag: false,
       heading: turnTo(p.heading, RESTING_HEADING),
     }));
   }, []);
@@ -161,14 +162,15 @@ export function usePointerTracking() {
   }, [track, leave]);
 
   const handlers = {
-    // Touch is handled by the native touch listeners above.
+    // Only a mouse: fingers, and an Apple Pencil (which also fires touch
+    // events), go through the native touch listeners above.
     onPointerMove: (event: React.PointerEvent) => {
-      if (event.pointerType !== 'touch') {
+      if (event.pointerType === 'mouse') {
         track(event.clientX, event.clientY, false);
       }
     },
     onPointerLeave: (event: React.PointerEvent) => {
-      if (event.pointerType !== 'touch') {
+      if (event.pointerType === 'mouse') {
         leave();
       }
     },
