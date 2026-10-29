@@ -81,6 +81,7 @@ export function Toolbox({
         picked={picked}
         onPick={togglePick}
         isPaused={isStopped}
+        isScrollable={isPaused}
       />
       <SkillMarquee
         skills={skills.slice(half)}
@@ -88,6 +89,7 @@ export function Toolbox({
         picked={picked}
         onPick={togglePick}
         isPaused={isStopped}
+        isScrollable={isPaused}
         isReversed
       />
       <div aria-live="polite" {...stylex.props(toolbox.detail)}>

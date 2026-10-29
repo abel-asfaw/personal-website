@@ -103,6 +103,22 @@ export const skillMarquee = stylex.create({
   paused: {
     animationPlayState: 'paused',
   },
+  // A paused row hands its position over to native sideways scrolling.
+  scrollable: {
+    overflowX: 'auto',
+    overscrollBehaviorX: 'contain',
+    scrollbarWidth: 'none',
+    '::-webkit-scrollbar': {
+      display: 'none',
+    },
+  },
+  still: {
+    animationName: 'none',
+  },
+  // Resumes the loop from wherever the row was scrolled to.
+  resumeAt: (delay: string) => ({
+    animationDelay: delay,
+  }),
   skill: {
     display: 'flex',
     alignItems: 'center',
