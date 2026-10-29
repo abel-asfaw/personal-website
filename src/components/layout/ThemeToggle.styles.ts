@@ -5,6 +5,9 @@ import { bp, fonts, themeColors } from '../../styles/tokens.stylex';
 export const themeToggle = stylex.create({
   root: {
     display: 'flex',
+    // Stretch the segments to fill the pill so their corners sit evenly
+    // inside its curve, rather than centering short ones in it.
+    alignItems: 'stretch',
     gap: 2,
     minHeight: 40,
     // Longhands: Button's paddingBlock/paddingInline would beat `padding`.
