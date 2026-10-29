@@ -1,0 +1,1 @@
+export { SayHi } from './SayHi';
