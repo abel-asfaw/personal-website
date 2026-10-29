@@ -1,0 +1,124 @@
+import * as stylex from '@stylexjs/stylex';
+
+import type { Project } from '../../content/route';
+
+import { Button, LinkButton } from '../ui/Button';
+import { SectionHeading } from '../ui/SectionHeading';
+import { TagList } from '../ui/TagList';
+import { openTabs } from './OpenTabs.styles';
+import { GhostWindow, ProjectWindow, type WindowSpot } from './ProjectWindow';
+
+interface OpenTabsProps {
+  title: string;
+  projects: Project[];
+  /** Index of the project window in front. */
+  front: number;
+  onBringForward: (index: number) => void;
+  isTouch: boolean;
+}
+
+// Fan positions by distance from the front window; any further back stay
+// hidden until their tab brings them forward.
+const SPOTS: WindowSpot[] = ['front', 'behindLeft', 'behindRight'];
+
+export function OpenTabs({
+  title,
+  projects,
+  front,
+  onBringForward,
+  isTouch,
+}: OpenTabsProps) {
+  const project = projects[front];
+  if (!project) {
+    return null;
+  }
+
+  const hasMany = projects.length > 1;
+
+  return (
+    <section
+      id="projects"
+      aria-labelledby="projects-heading"
+      {...stylex.props(openTabs.root)}
+    >
+      <div {...stylex.props(openTabs.header)}>
+        <SectionHeading
+          id="projects-heading"
+          eyebrow={`Waypoint 02 · ${title}`}
+          title="Open tabs"
+        />
+        {hasMany ? (
+          <div {...stylex.props(openTabs.tabs)}>
+            {projects.map((p, index) => (
+              <Button
+                key={p.key}
+                variant="quiet"
+                aria-pressed={index === front}
+                onClick={() => onBringForward(index)}
+                style={index === front && openTabs.tabPicked}
+              >
+                {p.n} · {p.title}
+              </Button>
+            ))}
+          </div>
+        ) : null}
+      </div>
+
+      <div {...stylex.props(openTabs.body)}>
+        <div {...stylex.props(openTabs.desk)}>
+          {hasMany ? null : <GhostWindow />}
+          {projects.map((p, index) => {
+            const spot =
+              SPOTS[(index - front + projects.length) % projects.length];
+            return spot ? (
+              <ProjectWindow
+                key={p.key}
+                project={p}
+                spot={spot}
+                onBringForward={() => onBringForward(index)}
+              />
+            ) : null;
+          })}
+          {hasMany ? (
+            <span aria-hidden="true" {...stylex.props(openTabs.hint)}>
+              {isTouch ? 'tap' : 'click'} a window to bring it forward
+            </span>
+          ) : null}
+        </div>
+
+        <article aria-live="polite" {...stylex.props(openTabs.card)}>
+          {/* Re-keyed per project so the details replay their entrance. */}
+          <div key={project.key} {...stylex.props(openTabs.details)}>
+            <span {...stylex.props(openTabs.meta)}>
+              Tab {project.n} · {project.host}
+            </span>
+            <h3 {...stylex.props(openTabs.title)}>{project.title}</h3>
+            <p {...stylex.props(openTabs.description)}>{project.description}</p>
+            <TagList tags={project.skills} />
+            <div {...stylex.props(openTabs.links)}>
+              <LinkButton
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="solid"
+                style={openTabs.link}
+              >
+                Visit live site ↗
+              </LinkButton>
+              {project.githubLink ? (
+                <LinkButton
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={openTabs.link}
+                >
+                  Source code
+                </LinkButton>
+              ) : null}
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}

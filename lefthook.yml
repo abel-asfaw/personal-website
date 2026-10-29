@@ -1,0 +1,17 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: lint
+      glob: '*.{js,jsx,ts,tsx,mjs,cjs}'
+      run: npx oxlint --deny-warnings {staged_files}
+    - name: format
+      run: npx oxfmt --check --no-error-on-unmatched-pattern {staged_files}
+    - name: typecheck
+      glob: '*.{ts,tsx}'
+      run: npm run typecheck
+
+pre-push:
+  jobs:
+    - name: review
+      run: .claude/skills/pre-push-review/run.sh
+      use_stdin: true

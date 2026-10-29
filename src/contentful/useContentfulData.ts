@@ -1,12 +1,13 @@
 import { useQueries } from '@tanstack/react-query';
 
-import { client } from './contentful.client';
 import type {
   TypeAboutMeSkeleton,
   TypeExperienceSectionSkeleton,
   TypeProjectsSectionSkeleton,
   TypeSkillsSkeleton,
 } from './contentful.types';
+
+import { client } from './contentful.client';
 
 export function useContentfulData() {
   return useQueries({
@@ -40,14 +41,14 @@ export function useContentfulData() {
           }),
       },
     ],
-    combine: result => ({
+    combine: (result) => ({
       data: {
         aboutMe: result[0].data?.items[0]?.fields,
         experienceSection: result[1].data?.items[0]?.fields,
         projectsSection: result[2].data?.items[0]?.fields,
         skillsSection: result[3].data?.items[0]?.fields,
       },
-      isPending: result.some(query => query.isPending),
+      isPending: result.some((query) => query.isPending),
     }),
   });
 }

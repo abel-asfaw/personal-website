@@ -1,45 +1,105 @@
 import * as stylex from '@stylexjs/stylex';
 
+const DARK = '@media (prefers-color-scheme: dark)';
+
+// The one place the theme palette is written down. `themeColors` follows the
+// system color scheme; `dayTheme` / `nightTheme` in `themes.ts` pin one when
+// the visitor picks. main.css repeats the page background and focus colors.
+export const dayColors = stylex.defineConsts({
+  bg: '#EDF0EA',
+  headerBg: 'rgba(237, 240, 234, 0.85)',
+  panel: '#F9FBF7',
+  ink: '#12201A',
+  muted: '#4D5C53',
+  line: '#D2D9CE',
+  lineSoft: '#E1E6DD',
+  grid: 'rgba(18, 32, 26, 0.05)',
+  glow: 'rgba(37, 87, 245, 0.15)',
+  xhair: 'rgba(37, 87, 245, 0.22)',
+  accent: '#2557F5',
+  accentText: '#1D45C4',
+  onAccent: '#FFFFFF',
+  map: '#E3E9DF',
+  contour: '#C9D3C4',
+  routeSoft: '#A3B0A0',
+  litRing: 'rgba(232, 140, 0, 0.9)',
+  litHalo: 'rgba(232, 140, 0, 0.22)',
+});
+
+export const nightColors = stylex.defineConsts({
+  bg: '#0B110E',
+  headerBg: 'rgba(11, 17, 14, 0.82)',
+  panel: '#111A15',
+  ink: '#E4EEE7',
+  muted: '#97AA9E',
+  line: '#26342C',
+  lineSoft: '#1B2620',
+  grid: 'rgba(228, 238, 231, 0.045)',
+  glow: 'rgba(110, 155, 255, 0.22)',
+  xhair: 'rgba(143, 178, 255, 0.28)',
+  accent: '#6E9BFF',
+  accentText: '#8FB2FF',
+  onAccent: '#06102A',
+  map: '#0E1612',
+  contour: '#1E2B24',
+  routeSoft: '#3A4D43',
+  litRing: 'rgba(255, 200, 87, 0.95)',
+  litHalo: 'rgba(255, 200, 87, 0.25)',
+});
+
+// Day values by default, night values when the system prefers dark.
+export const themeColors = stylex.defineVars({
+  bg: { default: dayColors.bg, [DARK]: nightColors.bg },
+  headerBg: { default: dayColors.headerBg, [DARK]: nightColors.headerBg },
+  panel: { default: dayColors.panel, [DARK]: nightColors.panel },
+  ink: { default: dayColors.ink, [DARK]: nightColors.ink },
+  muted: { default: dayColors.muted, [DARK]: nightColors.muted },
+  line: { default: dayColors.line, [DARK]: nightColors.line },
+  lineSoft: { default: dayColors.lineSoft, [DARK]: nightColors.lineSoft },
+  grid: { default: dayColors.grid, [DARK]: nightColors.grid },
+  glow: { default: dayColors.glow, [DARK]: nightColors.glow },
+  xhair: { default: dayColors.xhair, [DARK]: nightColors.xhair },
+  accent: { default: dayColors.accent, [DARK]: nightColors.accent },
+  accentText: { default: dayColors.accentText, [DARK]: nightColors.accentText },
+  onAccent: { default: dayColors.onAccent, [DARK]: nightColors.onAccent },
+  map: { default: dayColors.map, [DARK]: nightColors.map },
+  contour: { default: dayColors.contour, [DARK]: nightColors.contour },
+  routeSoft: { default: dayColors.routeSoft, [DARK]: nightColors.routeSoft },
+  litRing: { default: dayColors.litRing, [DARK]: nightColors.litRing },
+  litHalo: { default: dayColors.litHalo, [DARK]: nightColors.litHalo },
+});
+
 export const colors = stylex.defineConsts({
-  page: '#09090b',
-  surface: '#18181b',
-  surfaceHover: '#27272a',
-  border: '#27272a',
-  borderSubtle: '#1f1f22',
-  borderBright: '#e4e4e7',
-  textStrong: '#f5f5f5',
-  text: '#e5e5e5',
-  textSoft: '#d4d4d4',
-  textMuted: '#a1a1a1',
-  white: '#ffffff',
-  navGlass: '#1e293933',
-  accent: '#009231',
-  accentHover: 'oklch(52.7% 0.154 150.069)',
-  iconAccent: '#05df72',
-  pill: '#4f39f6',
-  gradientA: '#46ecd5',
-  gradientB: 'oklch(62.7% 0.265 303.9)',
-  gradientC: 'oklch(70.5% 0.213 47.604)',
+  online: '#22A35A',
+  // Letterbox behind project screenshots, in both themes.
+  screen: '#0B0B10',
 });
 
 export const fonts = stylex.defineConsts({
-  sans: "'GoogleSans', sans-serif",
-  mono: "'Roboto', sans-serif",
+  sans: "'Space Grotesk', system-ui, sans-serif",
+  mono: "'DM Mono', ui-monospace, monospace",
 });
 
 export const shadows = stylex.defineConsts({
-  drop25: 'drop-shadow(0 3px 3px rgb(0 0 0 / 0.25))',
-  drop30: 'drop-shadow(0 3px 3px rgb(0 0 0 / 0.3))',
-  sm: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+  lift: '0 10px 24px -14px rgba(0, 0, 0, 0.5)',
+  float: '0 10px 24px -12px rgba(0, 0, 0, 0.5)',
+  stop: '0 4px 14px -6px rgba(0, 0, 0, 0.4)',
+  dock: '0 14px 40px -12px rgba(0, 0, 0, 0.5)',
+  window: '0 24px 48px -18px rgba(0, 0, 0, 0.55)',
 });
 
 export const easing = stylex.defineConsts({
-  in: 'cubic-bezier(0.4, 0, 1, 1)',
   out: 'cubic-bezier(0, 0, 0.2, 1)',
   inOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  // Quick settle used for cards, chips and the compass needle; mirrored as
+  // SPRING_EASE in motion.ts for Motion.
+  spring: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
 });
 
 export const bp = stylex.defineConsts({
-  xs: '@media (min-width: 376px)',
-  sm: '@media (min-width: 640px)',
+  // Above the design's 700px phone layout.
+  wide: '@media (min-width: 701px)',
+  fineHover: '@media (hover: hover) and (pointer: fine)',
+  noHover: '@media (hover: none)',
+  reducedMotion: '@media (prefers-reduced-motion: reduce)',
 });
