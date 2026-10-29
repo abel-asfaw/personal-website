@@ -2,13 +2,17 @@ import * as stylex from '@stylexjs/stylex';
 
 const DARK = '@media (prefers-color-scheme: dark)';
 
+// Colors that serve as more than one token below.
+const DAY_PANEL = '#F9FBF7';
+const NIGHT_ROUTE_SOFT = '#3A4D43';
+
 // The one place the theme palette is written down. `themeColors` follows the
 // system color scheme; `dayTheme` / `nightTheme` in `themes.ts` pin one when
 // the visitor picks. main.css repeats the page background and focus colors.
 export const dayColors = stylex.defineConsts({
   bg: '#EDF0EA',
   headerBg: 'rgba(237, 240, 234, 0.85)',
-  panel: '#F9FBF7',
+  panel: DAY_PANEL,
   ink: '#12201A',
   muted: '#4D5C53',
   line: '#D2D9CE',
@@ -25,7 +29,7 @@ export const dayColors = stylex.defineConsts({
   litRing: 'rgba(232, 140, 0, 0.9)',
   litHalo: 'rgba(232, 140, 0, 0.22)',
   // Outline around the map's position pin.
-  pinRing: '#F9FBF7',
+  pinRing: DAY_PANEL,
 });
 
 export const nightColors = stylex.defineConsts({
@@ -44,11 +48,11 @@ export const nightColors = stylex.defineConsts({
   onAccent: '#06102A',
   map: '#0E1612',
   contour: '#1E2B24',
-  routeSoft: '#3A4D43',
+  routeSoft: NIGHT_ROUTE_SOFT,
   litRing: 'rgba(255, 200, 87, 0.95)',
   litHalo: 'rgba(255, 200, 87, 0.25)',
   // The ahead-stop gray, so the pin doesn't sink into the dark map.
-  pinRing: '#3A4D43',
+  pinRing: NIGHT_ROUTE_SOFT,
 });
 
 // Day values by default, night values when the system prefers dark.

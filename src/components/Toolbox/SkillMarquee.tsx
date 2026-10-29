@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { plural } from '../../content/route';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { Button } from '../ui/Button';
 import { skillMarquee } from './Toolbox.styles';
 
@@ -19,9 +20,13 @@ interface SkillMarqueeProps {
 }
 
 // The track is two identical halves for a seamless loop, and each half
-// holds the list twice to fill wide screens. Only the very first copy is
-// focusable and announced; the rest are visual filler.
-const COPIES = 4;
+// holds the list three times, enough to fill wide screens and to give a
+// paused row room to scroll. Only the very first copy is focusable and
+// announced; the rest are visual filler.
+const COPIES = 6;
+
+// Safari before 26 has no scrollend, so it waits for scroll events to pause.
+const HAS_SCROLL_END = 'onscrollend' in window;
 
 /** Distance from the first item to the same item `copies` lists later. */
 function copyWidth(track: HTMLElement, count: number, copies: number) {
@@ -32,21 +37,16 @@ function copyWidth(track: HTMLElement, count: number, copies: number) {
 }
 
 /**
- * Keeps a scroll offset within the middle of the track, a list away from
- * either end, so the row can keep scrolling both ways without running out.
+ * Moves a scroll offset by whole lists into the middle of the scroll range,
+ * so the row can keep scrolling both ways without running out.
  */
-function wrapOffset(offset: number, unit: number) {
-  return ((((offset - unit / 2) % unit) + unit) % unit) + unit / 2;
+function wrapOffset(offset: number, unit: number, center: number) {
+  const start = center - unit / 2;
+  return ((((offset - start) % unit) + unit) % unit) + start;
 }
 
-/** The animation delay that picks the loop back up at this scroll offset. */
-function resumeDelay(track: HTMLElement, count: number, offset: number) {
-  const style = getComputedStyle(track);
-  const period = copyWidth(track, count, COPIES / 2);
-  const progress = (offset % period) / period;
-  const elapsed =
-    style.animationDirection === 'reverse' ? 1 - progress : progress;
-  return `${-elapsed * parseFloat(style.animationDuration)}s`;
+function isFocusWithin(element: HTMLElement) {
+  return element.contains(document.activeElement);
 }
 
 export function SkillMarquee({
@@ -60,29 +60,38 @@ export function SkillMarquee({
 }: SkillMarqueeProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
+  // Reduced motion lays the rows out as still, wrapped lists already.
+  const prefersReducedMotion = useMediaQuery(
+    '(prefers-reduced-motion: reduce)',
+  );
+  const canScroll = isScrollable && !prefersReducedMotion;
   // Where scrolling took over from the animation; null while it animates.
   const [scrollFrom, setScrollFrom] = useState<number | null>(null);
-  const [delay, setDelay] = useState<string | null>(null);
+  // The scroll offset the animation picks back up from once it restarts.
+  const resumeFrom = useRef<number | null>(null);
+  const settleTimer = useRef<number | undefined>(undefined);
   const isScrolling = scrollFrom !== null;
   const listLength = skills.length;
 
   // Swap between the animation and scrolling before paint, so the row
-  // never jumps: the frozen transform becomes the scroll offset, and the
-  // scroll offset becomes the delay the animation resumes from.
+  // never jumps: the loop's progress becomes the scroll offset, and back.
   useLayoutEffect(() => {
     const root = rootRef.current;
     const track = trackRef.current;
     if (!root || !track) {
       return;
     }
-    if (isScrollable && !isScrolling) {
-      setScrollFrom(-new DOMMatrix(getComputedStyle(track).transform).m41);
-    } else if (!isScrollable && isScrolling) {
-      setDelay(resumeDelay(track, listLength, root.scrollLeft));
-      setScrollFrom(null);
+    if (canScroll && !isScrolling) {
+      // No animation when keyboard focus has parked the row at its start.
+      const timing = track.getAnimations()[0]?.effect?.getComputedTiming();
+      const progress = timing?.progress ?? 0;
+      setScrollFrom(progress * copyWidth(track, listLength, COPIES / 2));
+    } else if (!canScroll && isScrolling) {
+      resumeFrom.current = root.scrollLeft;
       root.scrollLeft = 0;
+      setScrollFrom(null);
     }
-  }, [isScrollable, isScrolling, listLength]);
+  }, [canScroll, isScrolling, listLength]);
 
   useLayoutEffect(() => {
     const root = rootRef.current;
@@ -90,21 +99,60 @@ export function SkillMarquee({
     if (scrollFrom === null || !root || !track) {
       return;
     }
-    root.scrollLeft = wrapOffset(scrollFrom, copyWidth(track, listLength, 1));
+    // Leave a focused first copy where it is, on screen.
+    root.scrollLeft = isFocusWithin(root)
+      ? scrollFrom
+      : wrapOffset(
+          scrollFrom,
+          copyWidth(track, listLength, 1),
+          (root.scrollWidth - root.clientWidth) / 2,
+        );
   }, [scrollFrom, listLength]);
 
-  const handleScroll = () => {
+  useLayoutEffect(() => {
+    const track = trackRef.current;
+    const offset = resumeFrom.current;
+    if (isScrolling || offset === null || !track) {
+      return;
+    }
+    resumeFrom.current = null;
+    const animation = track.getAnimations()[0];
+    if (!animation?.effect) {
+      return;
+    }
+    const period = copyWidth(track, listLength, COPIES / 2);
+    const progress = (offset % period) / period;
+    const { direction, duration } = animation.effect.getComputedTiming();
+    const elapsed = direction === 'reverse' ? 1 - progress : progress;
+    animation.currentTime = elapsed * Number(duration);
+  }, [isScrolling, listLength]);
+
+  useEffect(() => () => window.clearTimeout(settleTimer.current), []);
+
+  const wrapScroll = () => {
     const root = rootRef.current;
     const track = trackRef.current;
-    if (!root || !track) {
+    // Jumping would carry a focused first copy off screen.
+    if (!root || !track || isFocusWithin(root)) {
       return;
     }
     const unit = copyWidth(track, listLength, 1);
-    const next = wrapOffset(root.scrollLeft, unit);
+    const center = (root.scrollWidth - root.clientWidth) / 2;
+    const next = wrapOffset(root.scrollLeft, unit, center);
     // Only jump by whole lists, never nudge on rounding.
     if (Math.abs(next - root.scrollLeft) >= unit / 2) {
       root.scrollLeft = next;
     }
+  };
+
+  // Jumping mid-fling can cut the fling short, so the wrap waits for
+  // scrolling to settle: on scrollend, or a short pause where it's missing.
+  const handleScroll = () => {
+    if (HAS_SCROLL_END) {
+      return;
+    }
+    window.clearTimeout(settleTimer.current);
+    settleTimer.current = window.setTimeout(wrapScroll, 150);
   };
 
   if (listLength === 0) {
@@ -115,6 +163,7 @@ export function SkillMarquee({
     <div
       ref={rootRef}
       onScroll={isScrolling ? handleScroll : undefined}
+      onScrollEnd={isScrolling ? wrapScroll : undefined}
       {...stylex.props(
         skillMarquee.root,
         isScrolling && skillMarquee.scrollable,
@@ -128,7 +177,6 @@ export function SkillMarquee({
           isReversed && skillMarquee.reverse,
           isPaused && skillMarquee.paused,
           isScrolling && skillMarquee.still,
-          delay !== null && skillMarquee.resumeAt(delay),
         )}
       >
         {Array.from({ length: COPIES }, (_, copy) =>
