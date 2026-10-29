@@ -115,10 +115,6 @@ export const skillMarquee = stylex.create({
   still: {
     animationName: 'none',
   },
-  // Resumes the loop from wherever the row was scrolled to.
-  resumeAt: (delay: string) => ({
-    animationDelay: delay,
-  }),
   skill: {
     display: 'flex',
     alignItems: 'center',
