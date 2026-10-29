@@ -13,7 +13,7 @@ This is a read-only review: report findings, don't edit files.
 
 ## Steps
 
-1. Run the `code-review` skill at `high` effort on that diff, for correctness bugs.
+1. Run the `code-review` skill at `medium` effort on that diff, for correctness bugs.
 2. Apply the `consistency-review` skill to the same diff. Skip its Automated Checks step: the pre-commit hook already ran lint, format and typecheck on every commit.
 3. Drop findings the two reviews share, keeping the more specific one.
 
