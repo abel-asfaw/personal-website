@@ -137,6 +137,7 @@ export const skillMarquee = stylex.create({
         ':active': 'scale(0.96)',
       },
     },
+    boxShadow: null,
     transitionProperty: 'transform, background-color, color, border-color',
     transitionDuration: {
       default: '0.25s',

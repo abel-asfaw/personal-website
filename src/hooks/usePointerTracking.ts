@@ -14,6 +14,12 @@ export interface PointerState {
 
 const RESTING_HEADING = 35;
 
+// Moves the needle the short way round: the angle keeps counting past 360°
+// instead of jumping from 270° to -90°, which the transition would spin.
+function turnTo(from: number, to: number) {
+  return from + ((((to - from) % 360) + 540) % 360) - 180;
+}
+
 /**
  * Tracks the pointer (or a dragging finger) across a panel, and points a
  * compass inside it at the pointer. Spread `handlers` on the panel.
@@ -46,7 +52,7 @@ export function usePointerTracking() {
       const y = clientY - rect.top;
       const compass = compassRef.current?.getBoundingClientRect();
       // The compass is hidden on phones; its needle then stays at rest.
-      const heading =
+      const target =
         compass && compass.width > 0
           ? (Math.atan2(
               clientY - (compass.top + compass.height / 2),
@@ -56,20 +62,24 @@ export function usePointerTracking() {
               Math.PI +
             90
           : RESTING_HEADING;
-      setPointer({
+      setPointer((p) => ({
         active: true,
         x,
         y,
         ratioX: x / rect.width,
         ratioY: y / rect.height,
-        heading,
-      });
+        heading: turnTo(p.heading, target),
+      }));
     });
   };
 
   const leave = () => {
     cancelAnimationFrame(frame.current);
-    setPointer((p) => ({ ...p, active: false, heading: RESTING_HEADING }));
+    setPointer((p) => ({
+      ...p,
+      active: false,
+      heading: turnTo(p.heading, RESTING_HEADING),
+    }));
   };
 
   const handlers = {

@@ -82,6 +82,16 @@ function routePoint(index: number, count: number) {
   return { x, y: ROUTE_HEIGHTS[index % ROUTE_HEIGHTS.length] };
 }
 
+/**
+ * The narrowest map, in px, that keeps `gap` px between neighbouring stops.
+ * Narrower screens scroll the map sideways instead of crowding the stops.
+ */
+export function routeMinWidth(count: number, gap: number) {
+  return count < 2
+    ? 0
+    : Math.ceil((gap * (count - 1) * 100) / (ROUTE_END - ROUTE_START));
+}
+
 export function toStops(
   experienceSection: ContentfulData['experienceSection'],
 ): Stop[] {

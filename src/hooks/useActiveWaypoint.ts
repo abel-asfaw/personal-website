@@ -16,9 +16,12 @@ export function useActiveWaypoint(hrefs: readonly string[]) {
     // while the answer stays the same.
     const update = () => {
       const line = window.innerHeight * READ_LINE;
+      const { scrollHeight } = document.documentElement;
+      // A page too short to scroll (say, while content loads) isn't "at the
+      // bottom" of anything.
       const atBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 2;
+        scrollHeight > window.innerHeight &&
+        window.innerHeight + window.scrollY >= scrollHeight - 2;
 
       let current: string | null = null;
       if (atBottom) {

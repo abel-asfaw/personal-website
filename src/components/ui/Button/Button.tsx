@@ -5,7 +5,13 @@ import { PropsWithChildren } from 'react';
 
 import { button } from './Button.styles';
 
-export type ButtonVariant = 'solid' | 'outline' | 'ink' | 'quiet' | 'round';
+export type ButtonVariant =
+  | 'solid'
+  | 'outline'
+  | 'ink'
+  | 'quiet'
+  | 'round'
+  | 'text';
 
 interface ButtonProps
   extends

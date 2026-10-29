@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 
+import { Button } from '../ui/Button';
 import { skillMarquee } from './Toolbox.styles';
 
 interface SkillMarqueeProps {
@@ -8,9 +9,9 @@ interface SkillMarqueeProps {
   counts: Map<string, number>;
   picked: string | null;
   onPick: (skill: string) => void;
-  paused: boolean;
+  isPaused: boolean;
   /** The second row scrolls the other way in the outlined accent look. */
-  reverse?: boolean;
+  isReversed?: boolean;
 }
 
 // The track is two identical halves for a seamless loop, and each half
@@ -23,8 +24,8 @@ export function SkillMarquee({
   counts,
   picked,
   onPick,
-  paused,
-  reverse = false,
+  isPaused,
+  isReversed = false,
 }: SkillMarqueeProps) {
   if (skills.length === 0) {
     return null;
@@ -35,8 +36,8 @@ export function SkillMarquee({
       <ul
         {...stylex.props(
           skillMarquee.track,
-          reverse && skillMarquee.reverse,
-          paused && skillMarquee.paused,
+          isReversed && skillMarquee.reverse,
+          isPaused && skillMarquee.paused,
         )}
       >
         {Array.from({ length: COPIES }, (_, copy) =>
@@ -51,8 +52,7 @@ export function SkillMarquee({
                 aria-hidden={isCopy || undefined}
                 {...stylex.props(isCopy && skillMarquee.duplicate)}
               >
-                <button
-                  type="button"
+                <Button
                   tabIndex={isCopy ? -1 : undefined}
                   aria-pressed={isPicked}
                   aria-label={
@@ -61,12 +61,12 @@ export function SkillMarquee({
                       : undefined
                   }
                   onClick={() => onPick(skill)}
-                  {...stylex.props(
+                  style={[
                     stylex.defaultMarker(),
                     skillMarquee.skill,
-                    reverse && skillMarquee.skillAccent,
+                    isReversed && skillMarquee.skillAccent,
                     isPicked && skillMarquee.skillPicked,
-                  )}
+                  ]}
                 >
                   {skill}
                   {count > 0 ? (
@@ -74,14 +74,14 @@ export function SkillMarquee({
                       aria-hidden="true"
                       {...stylex.props(
                         skillMarquee.count,
-                        reverse && skillMarquee.countAccent,
+                        isReversed && skillMarquee.countAccent,
                         isPicked && skillMarquee.countPicked,
                       )}
                     >
                       {count}
                     </span>
                   ) : null}
-                </button>
+                </Button>
               </li>
             );
           }),

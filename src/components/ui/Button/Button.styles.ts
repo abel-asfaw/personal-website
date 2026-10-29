@@ -79,6 +79,17 @@ export const button = stylex.create({
     fontSize: 13,
     fontWeight: 400,
   },
+  // A bare text link with no pill, e.g. the footer's links. Callers add
+  // their own hover treatment.
+  text: {
+    minHeight: 44,
+    paddingInline: 0,
+    borderWidth: 0,
+    borderRadius: 0,
+    fontWeight: 'inherit',
+    transform: 'none',
+    boxShadow: 'none',
+  },
   // Square-ish icon button, e.g. the route's previous/next arrows.
   round: {
     width: 48,

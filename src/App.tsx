@@ -5,7 +5,7 @@ import { app } from './App.styles';
 import { Hero, HeroSkeleton } from './components/Hero';
 import { Dock } from './components/layout/Dock';
 import { Header } from './components/layout/Header';
-import { waypointHrefs } from './components/layout/waypoints';
+import { WAYPOINT_HREFS } from './components/layout/waypoints';
 import { OpenTabs } from './components/OpenTabs';
 import { RouteSection } from './components/Route';
 import { SayHi } from './components/SayHi';
@@ -26,7 +26,7 @@ export default function App() {
   } = useContentfulData();
   const { theme, picked, toggle } = useTheme();
   const isTouch = useIsTouch();
-  const activeWaypoint = useActiveWaypoint(waypointHrefs);
+  const activeWaypoint = useActiveWaypoint(WAYPOINT_HREFS);
 
   // Mapped once per load rather than on every tour step or scroll update.
   const about = useMemo(() => toAbout(aboutMe), [aboutMe]);
@@ -45,7 +45,10 @@ export default function App() {
   const [frontProject, setFrontProject] = useState(0);
 
   return (
+    // `#top` sits on the root, above the sticky header, so "Back to start"
+    // lands at the very top of the page.
     <div
+      id="top"
       {...stylex.props(
         app.root,
         picked === 'day' && dayTheme,
@@ -57,12 +60,12 @@ export default function App() {
         onToggleTheme={toggle}
         activeWaypoint={activeWaypoint}
       />
-      <main id="top">
+      <main>
         {isPending ? (
           <HeroSkeleton />
         ) : (
           <>
-            <Hero about={about} />
+            <Hero about={about} isTouch={isTouch} onStartTour={tour.play} />
             <RouteSection
               title={experienceSection?.title ?? ''}
               stops={stops}
