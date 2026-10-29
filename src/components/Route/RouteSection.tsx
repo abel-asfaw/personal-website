@@ -38,7 +38,7 @@ export function RouteSection({
         <SectionHeading
           id="route-heading"
           eyebrow={`Waypoint 01 · ${title}`}
-          title="The route so far"
+          title="The journey so far"
         />
         <RouteControls tour={tour} />
       </div>
