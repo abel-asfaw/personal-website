@@ -124,6 +124,15 @@ export function usePointerTracking() {
       if (!touch || !current) {
         return;
       }
+      // Same for a second finger that landed outside the panel, where
+      // onTouchStart never saw it.
+      if (event.touches.length > 1) {
+        if (current.mode === 'map') {
+          leave();
+        }
+        gesture.current = { mode: 'scroll' };
+        return;
+      }
       // Decided on the first move: once the browser starts scrolling, it
       // ignores preventDefault for the rest of the touch (`cancelable` is
       // false), and the map would track a page scrolling under it.
@@ -161,16 +170,22 @@ export function usePointerTracking() {
     };
   }, [track, leave]);
 
+  // Fingers go through the native touch listeners above. So does an Apple
+  // Pencil on the screen, which fires touch events as well as pen ones, so a
+  // pen only counts here outside a touch gesture: hovering, or a pen that
+  // never fires touch events.
+  const isPointerTracked = (event: React.PointerEvent) =>
+    event.pointerType === 'mouse' ||
+    (event.pointerType === 'pen' && gesture.current === null);
+
   const handlers = {
-    // Only a mouse: fingers, and an Apple Pencil (which also fires touch
-    // events), go through the native touch listeners above.
     onPointerMove: (event: React.PointerEvent) => {
-      if (event.pointerType === 'mouse') {
+      if (isPointerTracked(event)) {
         track(event.clientX, event.clientY, false);
       }
     },
     onPointerLeave: (event: React.PointerEvent) => {
-      if (event.pointerType === 'mouse') {
+      if (isPointerTracked(event)) {
         leave();
       }
     },
