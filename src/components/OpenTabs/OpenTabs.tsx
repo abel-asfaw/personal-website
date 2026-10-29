@@ -92,21 +92,24 @@ export function OpenTabs({
           {/* Re-keyed per project so the details replay their entrance. */}
           <div key={project.key} {...stylex.props(openTabs.details)}>
             <span {...stylex.props(openTabs.meta)}>
-              Tab {project.n} · {project.host}
+              Tab {project.n}
+              {project.host ? ` · ${project.host}` : null}
             </span>
             <h3 {...stylex.props(openTabs.title)}>{project.title}</h3>
             <p {...stylex.props(openTabs.description)}>{project.description}</p>
             <TagList tags={project.skills} />
             <div {...stylex.props(openTabs.links)}>
-              <LinkButton
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="solid"
-                style={openTabs.link}
-              >
-                Visit live site ↗
-              </LinkButton>
+              {project.link ? (
+                <LinkButton
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="solid"
+                  style={openTabs.link}
+                >
+                  Visit live site ↗
+                </LinkButton>
+              ) : null}
               {project.githubLink ? (
                 <LinkButton
                   href={project.githubLink}

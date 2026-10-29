@@ -12,7 +12,7 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "check": "npm run typecheck && npm run lint && npm run format:check",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install || true"
   },
   "dependencies": {
     "@stylexjs/stylex": "^0.19.1",
