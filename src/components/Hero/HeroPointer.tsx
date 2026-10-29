@@ -20,10 +20,10 @@ const POINTS = [
 
 /** Glow, crosshairs and compass that follow the pointer across the hero. */
 export function HeroPointer({ pointer, compassRef }: HeroPointerProps) {
-  const { active, x, y, heading, isTouch } = pointer;
+  const { active, x, y, heading, isFingerDrag } = pointer;
   const tracking = [
     heroPointer.tracking,
-    isTouch && heroPointer.touching,
+    isFingerDrag && heroPointer.touching,
     active && heroPointer.visible,
   ];
 
