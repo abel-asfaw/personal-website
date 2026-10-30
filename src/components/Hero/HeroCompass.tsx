@@ -45,9 +45,13 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
         {photo ? (
           <button
             type="button"
-            aria-label={photo.alt}
+            aria-label={`Pin “You are here” on ${photo.alt}`}
             aria-pressed={isPinned}
-            onClick={() => setIsPinned((pinned) => !pinned)}
+            onClick={() => {
+              setIsPinned((pinned) => !pinned);
+              // Unpinning under the mouse would otherwise leave the hover on.
+              setIsHovered(false);
+            }}
             // Mouse only: a tap's enter and leave would just flash it.
             onPointerEnter={(event) =>
               setIsHovered(event.pointerType === 'mouse')

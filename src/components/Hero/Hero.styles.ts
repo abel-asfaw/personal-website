@@ -25,10 +25,11 @@ export const hero = stylex.create({
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
-    // The compass comes first: on top on phones, on the right when split.
+    // The compass follows the copy in reading order, but sits on top on
+    // phones.
     flexDirection: {
-      default: 'column',
-      [bp.split]: 'row-reverse',
+      default: 'column-reverse',
+      [bp.split]: 'row',
     },
     alignItems: {
       default: 'stretch',
@@ -154,14 +155,18 @@ export const hero = stylex.create({
     borderRadius: 16,
   },
   skeletonDial: {
-    alignSelf: 'center',
-    flexShrink: 0,
     width: {
       default: 200,
       [bp.split]: 'clamp(280px, 28vw, 360px)',
     },
     aspectRatio: 1,
     borderRadius: '50%',
+  },
+  // The heading chip under the dial.
+  skeletonChip: {
+    width: 130,
+    height: 32,
+    borderRadius: 999,
   },
   skeleton: {
     backgroundColor: themeColors.lineSoft,
