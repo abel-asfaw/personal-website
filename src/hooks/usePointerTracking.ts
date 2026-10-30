@@ -10,11 +10,16 @@ export interface PointerState {
   ratioY: number;
   /** Compass needle angle in degrees. */
   heading: number;
+  /** Pointer offset from the compass center, -1 to 1 across the panel. */
+  tiltX: number;
+  tiltY: number;
   /** Whether a finger is dragging, which turns off the trailing glide. */
   isFingerDrag: boolean;
 }
 
 const RESTING_HEADING = 35;
+
+const clamp = (value: number) => Math.max(-1, Math.min(1, value));
 
 type Gesture =
   | { mode: 'pending'; startX: number; startY: number }
@@ -45,6 +50,8 @@ export function usePointerTracking() {
     ratioX: 0.5,
     ratioY: 0.5,
     heading: RESTING_HEADING,
+    tiltX: 0,
+    tiltY: 0,
     isFingerDrag: false,
   });
 
@@ -63,16 +70,12 @@ export function usePointerTracking() {
         const x = clientX - rect.left;
         const y = clientY - rect.top;
         const compass = compassRef.current?.getBoundingClientRect();
-        // The compass is hidden on phones; its needle then stays at rest.
+        // Pointed from the compass center; at rest if it isn't laid out.
+        const dx = compass ? clientX - (compass.left + compass.width / 2) : 0;
+        const dy = compass ? clientY - (compass.top + compass.height / 2) : 0;
         const target =
           compass && compass.width > 0
-            ? (Math.atan2(
-                clientY - (compass.top + compass.height / 2),
-                clientX - (compass.left + compass.width / 2),
-              ) *
-                180) /
-                Math.PI +
-              90
+            ? (Math.atan2(dy, dx) * 180) / Math.PI + 90
             : RESTING_HEADING;
         setPointer((p) => ({
           active: true,
@@ -81,6 +84,8 @@ export function usePointerTracking() {
           ratioX: x / rect.width,
           ratioY: y / rect.height,
           heading: turnTo(p.heading, target),
+          tiltX: clamp(dx / (rect.width / 2)),
+          tiltY: clamp(dy / (rect.height / 2)),
           isFingerDrag,
         }));
       });
@@ -95,6 +100,8 @@ export function usePointerTracking() {
       active: false,
       isFingerDrag: false,
       heading: turnTo(p.heading, RESTING_HEADING),
+      tiltX: 0,
+      tiltY: 0,
     }));
   }, []);
 
