@@ -22,10 +22,8 @@ export function toAbout(aboutMe: ContentfulData['aboutMe']): About | null {
     photo: photoUrl
       ? {
           url: toImageUrl(photoUrl, 600),
-          alt:
-            aboutMe.photo?.fields.description ||
-            aboutMe.photo?.fields.title ||
-            '',
+          // The title is often just the upload's file name.
+          alt: aboutMe.photo?.fields.description ?? '',
         }
       : undefined,
   };
