@@ -11,8 +11,8 @@ export interface PointerState {
   /** Compass needle angle in degrees. */
   heading: number;
   /**
-   * Pointer offset from the compass center: -1 at the panel's left (top)
-   * edge, 1 at its right (bottom) edge, 0 over the center or at rest.
+   * Pointer offset from the compass center, -1 to 1: ±1 at the panel's
+   * farther edge on that axis, 0 over the center or at rest.
    */
   tiltX: number;
   tiltY: number;
@@ -24,13 +24,11 @@ const RESTING_HEADING = 35;
 
 const clamp = (value: number) => Math.max(-1, Math.min(1, value));
 
-// An offset from the compass as a share of the room on its side of it, so
-// -1 and 1 land on the panel's edges however off-center the compass sits.
+// An offset from the compass as a share of the room on its roomier side, so
+// the far edge reads as ±1 and both sides lean at the same rate however
+// off-center the compass sits.
 function reach(offset: number, before: number, after: number) {
-  if (offset === 0) {
-    return 0;
-  }
-  return clamp(offset / (offset > 0 ? after : before));
+  return clamp(offset / Math.max(before, after, 1));
 }
 
 type Gesture =
