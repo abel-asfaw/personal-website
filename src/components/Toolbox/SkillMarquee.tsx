@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
-import { useReducedMotion } from 'motion/react';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { plural } from '../../content/route';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { Button } from '../ui/Button';
 import { skillMarquee } from './Toolbox.styles';
 
@@ -77,7 +77,9 @@ export function SkillMarquee({
   const rootRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
   // Reduced motion lays the rows out as still, wrapped lists already.
-  const reduceMotion = useReducedMotion();
+  // motion's useReducedMotion only reads the setting once, and the CSS
+  // follows it live, so this does too.
+  const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const canScroll = isScrollable && !reduceMotion;
   // The scroll offset that takes over from the animation; null while it
   // animates.
