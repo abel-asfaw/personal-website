@@ -7,7 +7,8 @@ import type { About } from '../../content/about';
 import type { PointerState } from '../../hooks/usePointerTracking';
 
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { hero, heroCompass, heroPointer } from './Hero.styles';
+import { Button } from '../ui/Button';
+import { hero, heroCompass } from './Hero.styles';
 import { HeroCompassFace } from './HeroCompassFace';
 
 interface HeroCompassProps {
@@ -49,8 +50,8 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
       <div ref={compassRef} {...stylex.props(heroCompass.dial)}>
         <HeroCompassFace />
         {photo ? (
-          <button
-            type="button"
+          <Button
+            variant="text"
             aria-label={
               photo.alt
                 ? `Pin “You are here” on ${photo.alt}`
@@ -67,11 +68,11 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
               setIsHovered(event.pointerType === 'mouse')
             }
             onPointerLeave={() => setIsHovered(false)}
-            {...stylex.props(
+            style={[
               heroCompass.portrait,
               isFingerDrag && heroCompass.touching,
-              heroPointer.at(tilt),
-            )}
+              heroCompass.at(tilt),
+            ]}
           >
             <img
               src={photo.url}
@@ -80,13 +81,14 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
               height={300}
               {...stylex.props(heroCompass.photo)}
             />
-          </button>
+          </Button>
         ) : null}
         <div
           aria-hidden="true"
           {...stylex.props(
             heroCompass.needle,
-            heroPointer.at(`rotate(${heading}deg)`),
+            isFingerDrag && heroCompass.touching,
+            heroCompass.at(`rotate(${heading}deg)`),
           )}
         >
           <svg viewBox="0 0 360 360" {...stylex.props(heroCompass.face)}>

@@ -150,11 +150,11 @@ export const hero = stylex.create({
     minHeight: 50,
   },
   // Loading placeholder in the shape of the heading.
-  // One heading line, less the group's gap.
+  // One heading line, less its share of the group's two gaps.
   skeletonLine: {
     height: {
-      default: 'calc(clamp(44px, 8vw, 96px) * 0.92 - 10px)',
-      [bp.split]: 'calc(clamp(56px, 6vw, 88px) * 0.92 - 10px)',
+      default: 'calc(clamp(44px, 8vw, 96px) * 0.92 - 20px / 3)',
+      [bp.split]: 'calc(clamp(56px, 6vw, 88px) * 0.92 - 20px / 3)',
     },
     borderRadius: 16,
   },
@@ -267,7 +267,6 @@ export const heroPointer = stylex.create({
   visible: {
     opacity: 1,
   },
-  // Also places the compass's portrait and needle.
   at: (transform: string) => ({ transform }),
 });
 
@@ -325,11 +324,14 @@ export const heroCompass = stylex.create({
   portrait: {
     position: 'absolute',
     inset: '15%',
-    padding: {
+    paddingBlock: {
       default: 6,
       [bp.split]: 8,
     },
-    borderWidth: 0,
+    paddingInline: {
+      default: 6,
+      [bp.split]: 8,
+    },
     borderRadius: '50%',
     backgroundColor: themeColors.lineSoft,
     boxShadow: shadows.portrait,
@@ -342,7 +344,8 @@ export const heroCompass = stylex.create({
     cursor: 'pointer',
     WebkitTapHighlightColor: 'transparent',
   },
-  // No trailing glide under a finger, as with the crosshairs.
+  // No trailing glide under a finger, as with the crosshairs: on the portrait
+  // and the needle alike.
   touching: {
     transitionDuration: '0s',
   },
@@ -383,4 +386,5 @@ export const heroCompass = stylex.create({
     display: 'inline-block',
     width: '2ch',
   },
+  at: (transform: string) => ({ transform }),
 });
