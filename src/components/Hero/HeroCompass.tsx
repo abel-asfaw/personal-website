@@ -68,19 +68,24 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
               setIsHovered(event.pointerType === 'mouse')
             }
             onPointerLeave={() => setIsHovered(false)}
-            style={[
-              heroCompass.portrait,
-              isFingerDrag && heroCompass.touching,
-              heroCompass.at(tilt),
-            ]}
+            style={heroCompass.portrait}
           >
-            <img
-              src={photo.url}
-              alt=""
-              width={300}
-              height={300}
-              {...stylex.props(heroCompass.photo)}
-            />
+            {/* Leans inside the button, so a press can still scale it. */}
+            <span
+              {...stylex.props(
+                heroCompass.frame,
+                isFingerDrag && heroCompass.touching,
+                heroCompass.at(tilt),
+              )}
+            >
+              <img
+                src={photo.url}
+                alt=""
+                width={300}
+                height={300}
+                {...stylex.props(heroCompass.photo)}
+              />
+            </span>
           </Button>
         ) : null}
         <div

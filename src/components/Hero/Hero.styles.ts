@@ -289,7 +289,6 @@ export const heroCompass = stylex.create({
       [bp.split]: 'clamp(280px, 28vw, 360px)',
     },
     aspectRatio: 1,
-    perspective: 900,
   },
   face: {
     position: 'absolute',
@@ -321,9 +320,30 @@ export const heroCompass = stylex.create({
     },
     fill: themeColors.muted,
   },
+  // The tap target; its frame draws the portrait.
   portrait: {
     position: 'absolute',
     inset: '15%',
+    borderRadius: '50%',
+    perspective: 900,
+    cursor: 'pointer',
+    WebkitTapHighlightColor: 'transparent',
+    transform: {
+      default: null,
+      ':active': 'scale(0.96)',
+    },
+    transitionProperty: 'transform',
+    transitionDuration: {
+      default: '0.2s',
+      [bp.reducedMotion]: '0s',
+    },
+    transitionTimingFunction: easing.out,
+  },
+  frame: {
+    display: 'block',
+    boxSizing: 'border-box',
+    width: '100%',
+    height: '100%',
     paddingBlock: {
       default: 6,
       [bp.split]: 8,
@@ -340,9 +360,7 @@ export const heroCompass = stylex.create({
       default: '0.3s',
       [bp.reducedMotion]: '0s',
     },
-    transitionTimingFunction: 'ease-out',
-    cursor: 'pointer',
-    WebkitTapHighlightColor: 'transparent',
+    transitionTimingFunction: easing.out,
   },
   // No trailing glide under a finger, as with the crosshairs: on the portrait
   // and the needle alike.
