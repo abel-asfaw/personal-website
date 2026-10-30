@@ -57,20 +57,60 @@ export function HeroSkeleton() {
           <div
             {...stylex.props(
               hero.skeleton,
-              hero.skeletonLine,
-              hero.skeletonShort,
+              hero.skeletonChip,
+              hero.skeletonCoords,
             )}
           />
+          <div {...stylex.props(hero.skeletonGroup)}>
+            <div
+              {...stylex.props(
+                hero.skeleton,
+                hero.skeletonLine,
+                hero.skeletonShort,
+              )}
+            />
+            <div
+              {...stylex.props(
+                hero.skeleton,
+                hero.skeletonLine,
+                hero.skeletonLong,
+              )}
+            />
+            <div
+              {...stylex.props(
+                hero.skeleton,
+                hero.skeletonLine,
+                hero.skeletonShorter,
+              )}
+            />
+          </div>
+          <div {...stylex.props(hero.footer)}>
+            <div {...stylex.props(hero.skeletonGroup, hero.skeletonBio)}>
+              <div {...stylex.props(hero.skeleton, hero.skeletonText)} />
+              <div {...stylex.props(hero.skeleton, hero.skeletonText)} />
+              <div
+                {...stylex.props(
+                  hero.skeleton,
+                  hero.skeletonText,
+                  hero.skeletonShort,
+                  hero.skeletonStacked,
+                )}
+              />
+            </div>
+            <div {...stylex.props(hero.actions)}>
+              <div {...stylex.props(hero.skeleton, hero.skeletonButton)} />
+              <div {...stylex.props(hero.skeleton, hero.skeletonButton)} />
+            </div>
+          </div>
+        </div>
+        <div {...stylex.props(heroCompass.root)}>
           <div
             {...stylex.props(
+              heroCompass.dial,
               hero.skeleton,
-              hero.skeletonLine,
-              hero.skeletonLong,
+              hero.skeletonDial,
             )}
           />
-        </div>
-        <div {...stylex.props(hero.layer, heroCompass.root)}>
-          <div {...stylex.props(hero.skeleton, hero.skeletonDial)} />
           <div {...stylex.props(hero.skeleton, hero.skeletonChip)} />
         </div>
       </div>
