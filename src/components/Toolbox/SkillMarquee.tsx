@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex';
+import { useReducedMotion } from 'motion/react';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { plural } from '../../content/route';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { Button } from '../ui/Button';
 import { skillMarquee } from './Toolbox.styles';
 
@@ -28,8 +28,11 @@ const COPIES = 6;
 // Safari before 26 has no scrollend, so it waits for scroll events to pause.
 const HAS_SCROLL_END = 'onscrollend' in window;
 
+// Pixels per line or page when a wheel reports its delta in those units.
+const LINE_HEIGHT = 16;
+
 /** Distance from the first item to the same item `copies` lists later. */
-function copyWidth(track: HTMLElement, count: number, copies: number) {
+function measureCopyWidth(track: HTMLElement, count: number, copies: number) {
   const items = track.children;
   const first = items[0].getBoundingClientRect();
   const later = items[count * copies].getBoundingClientRect();
@@ -38,15 +41,24 @@ function copyWidth(track: HTMLElement, count: number, copies: number) {
 
 /**
  * Moves a scroll offset by whole lists into the middle of the scroll range,
- * so the row can keep scrolling both ways without running out.
+ * so the row can keep scrolling both ways without running out. A row too
+ * wide to hold a list either side of the middle keeps its offset.
  */
-function wrapOffset(offset: number, unit: number, center: number) {
-  const start = center - unit / 2;
+function wrapOffset(root: HTMLElement, track: HTMLElement, count: number) {
+  const offset = root.scrollLeft;
+  const unit = measureCopyWidth(track, count, 1);
+  const range = root.scrollWidth - root.clientWidth;
+  if (range < unit) {
+    return offset;
+  }
+  const start = (range - unit) / 2;
   return ((((offset - start) % unit) + unit) % unit) + start;
 }
 
-function isFocusWithin(element: HTMLElement) {
-  return element.contains(document.activeElement);
+// Keyboard focus parks the row at its start (see `skillMarquee.track`), so
+// the row stays put rather than carry the focused first copy off screen.
+function isFocusParked(root: HTMLElement) {
+  return root.querySelector(':focus-visible') !== null;
 }
 
 export function SkillMarquee({
@@ -61,11 +73,10 @@ export function SkillMarquee({
   const rootRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
   // Reduced motion lays the rows out as still, wrapped lists already.
-  const prefersReducedMotion = useMediaQuery(
-    '(prefers-reduced-motion: reduce)',
-  );
-  const canScroll = isScrollable && !prefersReducedMotion;
-  // Where scrolling took over from the animation; null while it animates.
+  const reduceMotion = useReducedMotion();
+  const canScroll = isScrollable && !reduceMotion;
+  // The scroll offset that takes over from the animation; null while it
+  // animates.
   const [scrollFrom, setScrollFrom] = useState<number | null>(null);
   // The scroll offset the animation picks back up from once it restarts.
   const resumeFrom = useRef<number | null>(null);
@@ -85,7 +96,13 @@ export function SkillMarquee({
       // No animation when keyboard focus has parked the row at its start.
       const timing = track.getAnimations()[0]?.effect?.getComputedTiming();
       const progress = timing?.progress ?? 0;
-      setScrollFrom(progress * copyWidth(track, listLength, COPIES / 2));
+      root.scrollLeft =
+        progress * measureCopyWidth(track, listLength, COPIES / 2);
+      setScrollFrom(
+        isFocusParked(root)
+          ? root.scrollLeft
+          : wrapOffset(root, track, listLength),
+      );
     } else if (!canScroll && isScrolling) {
       resumeFrom.current = root.scrollLeft;
       root.scrollLeft = 0;
@@ -93,21 +110,39 @@ export function SkillMarquee({
     }
   }, [canScroll, isScrolling, listLength]);
 
+  // Placed once, when scrolling takes over, so later renders leave a
+  // scrolled row where it is.
   useLayoutEffect(() => {
     const root = rootRef.current;
-    const track = trackRef.current;
-    if (scrollFrom === null || !root || !track) {
-      return;
+    if (scrollFrom !== null && root) {
+      root.scrollLeft = scrollFrom;
     }
-    // Leave a focused first copy where it is, on screen.
-    root.scrollLeft = isFocusWithin(root)
-      ? scrollFrom
-      : wrapOffset(
-          scrollFrom,
-          copyWidth(track, listLength, 1),
-          (root.scrollWidth - root.clientWidth) / 2,
-        );
-  }, [scrollFrom, listLength]);
+  }, [scrollFrom]);
+
+  // The scrollbar is hidden, so a plain mouse wheel steers the row
+  // sideways. React's wheel listener is passive and can't stop the page
+  // scrolling, hence the native one.
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!isScrolling || !root) {
+      return undefined;
+    }
+    const handleWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
+        return;
+      }
+      event.preventDefault();
+      const scale =
+        event.deltaMode === WheelEvent.DOM_DELTA_LINE
+          ? LINE_HEIGHT
+          : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+            ? root.clientWidth
+            : 1;
+      root.scrollLeft += event.deltaY * scale;
+    };
+    root.addEventListener('wheel', handleWheel, { passive: false });
+    return () => root.removeEventListener('wheel', handleWheel);
+  }, [isScrolling]);
 
   useLayoutEffect(() => {
     const track = trackRef.current;
@@ -120,7 +155,7 @@ export function SkillMarquee({
     if (!animation?.effect) {
       return;
     }
-    const period = copyWidth(track, listLength, COPIES / 2);
+    const period = measureCopyWidth(track, listLength, COPIES / 2);
     const progress = (offset % period) / period;
     const { direction, duration } = animation.effect.getComputedTiming();
     const elapsed = direction === 'reverse' ? 1 - progress : progress;
@@ -132,15 +167,12 @@ export function SkillMarquee({
   const wrapScroll = () => {
     const root = rootRef.current;
     const track = trackRef.current;
-    // Jumping would carry a focused first copy off screen.
-    if (!root || !track || isFocusWithin(root)) {
+    if (!root || !track || isFocusParked(root)) {
       return;
     }
-    const unit = copyWidth(track, listLength, 1);
-    const center = (root.scrollWidth - root.clientWidth) / 2;
-    const next = wrapOffset(root.scrollLeft, unit, center);
+    const next = wrapOffset(root, track, listLength);
     // Only jump by whole lists, never nudge on rounding.
-    if (Math.abs(next - root.scrollLeft) >= unit / 2) {
+    if (Math.abs(next - root.scrollLeft) >= 1) {
       root.scrollLeft = next;
     }
   };
