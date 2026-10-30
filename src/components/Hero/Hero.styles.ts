@@ -150,22 +150,33 @@ export const hero = stylex.create({
     minHeight: 50,
   },
   // Loading placeholder in the shape of the heading.
+  // One heading line, less the group's gap.
   skeletonLine: {
-    height: 'clamp(44px, 6vw, 88px)',
+    height: {
+      default: 'calc(clamp(44px, 8vw, 96px) * 0.92 - 10px)',
+      [bp.split]: 'calc(clamp(56px, 6vw, 88px) * 0.92 - 10px)',
+    },
     borderRadius: 16,
   },
   skeletonDial: {
-    width: {
-      default: 200,
-      [bp.split]: 'clamp(280px, 28vw, 360px)',
-    },
-    aspectRatio: 1,
     borderRadius: '50%',
   },
-  // The heading chip under the dial.
+  // A chip: the coords above the copy, or the heading under the dial.
   skeletonChip: {
     width: 130,
     height: 32,
+    borderRadius: 999,
+  },
+  skeletonCoords: {
+    width: 260,
+  },
+  skeletonText: {
+    height: 18,
+    borderRadius: 9,
+  },
+  skeletonButton: {
+    width: 150,
+    height: 50,
     borderRadius: 999,
   },
   skeleton: {
@@ -178,11 +189,31 @@ export const hero = stylex.create({
     animationIterationCount: 'infinite',
     animationTimingFunction: easing.inOut,
   },
+  // Lines of one block of text, packed like the text itself.
+  skeletonGroup: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 10,
+  },
+  skeletonBio: {
+    flexGrow: 1,
+    maxWidth: 500,
+  },
   skeletonShort: {
     width: '55%',
   },
   skeletonLong: {
     width: '85%',
+  },
+  skeletonShorter: {
+    width: '35%',
+  },
+  // The bio's third line, where the stacked copy wraps it.
+  skeletonStacked: {
+    display: {
+      default: 'block',
+      [bp.split]: 'none',
+    },
   },
 });
 
@@ -236,6 +267,7 @@ export const heroPointer = stylex.create({
   visible: {
     opacity: 1,
   },
+  // Also places the compass's portrait and needle.
   at: (transform: string) => ({ transform }),
 });
 
@@ -346,5 +378,9 @@ export const heroCompass = stylex.create({
   readoutLabel: {
     color: themeColors.accentText,
   },
-  at: (transform: string) => ({ transform }),
+  // Room for two letters, so the chip holds still between N and NE.
+  cardinal: {
+    display: 'inline-block',
+    width: '2ch',
+  },
 });

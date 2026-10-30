@@ -7,7 +7,7 @@ import type { About } from '../../content/about';
 import type { PointerState } from '../../hooks/usePointerTracking';
 
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { hero, heroCompass } from './Hero.styles';
+import { hero, heroCompass, heroPointer } from './Hero.styles';
 import { HeroCompassFace } from './HeroCompassFace';
 
 interface HeroCompassProps {
@@ -36,16 +36,26 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
   const isHere = isHovered || isPinned;
   const bearing = ((Math.round(heading) % 360) + 360) % 360;
   const lean = isReducedMotion ? 0 : MAX_TILT;
+  const pin = (
+    <>
+      <span {...stylex.props(heroCompass.readoutLabel)}>You are here</span>
+      <span>· say hi below</span>
+    </>
+  );
   const tilt = `rotateX(${(-tiltY * lean).toFixed(2)}deg) rotateY(${(tiltX * lean).toFixed(2)}deg) scale(${isHere ? 1.04 : 1})`;
 
   return (
-    <div {...stylex.props(hero.layer, heroCompass.root)}>
+    <div {...stylex.props(heroCompass.root)}>
       <div ref={compassRef} {...stylex.props(heroCompass.dial)}>
         <HeroCompassFace />
         {photo ? (
           <button
             type="button"
-            aria-label={`Pin “You are here” on ${photo.alt}`}
+            aria-label={
+              photo.alt
+                ? `Pin “You are here” on ${photo.alt}`
+                : 'Pin “You are here”'
+            }
             aria-pressed={isPinned}
             onClick={() => {
               setIsPinned((pinned) => !pinned);
@@ -60,7 +70,7 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
             {...stylex.props(
               heroCompass.portrait,
               isFingerDrag && heroCompass.touching,
-              heroCompass.at(tilt),
+              heroPointer.at(tilt),
             )}
           >
             <img
@@ -76,7 +86,7 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
           aria-hidden="true"
           {...stylex.props(
             heroCompass.needle,
-            heroCompass.at(`rotate(${heading}deg)`),
+            heroPointer.at(`rotate(${heading}deg)`),
           )}
         >
           <svg viewBox="0 0 360 360" {...stylex.props(heroCompass.face)}>
@@ -88,29 +98,32 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
         </div>
       </div>
       <span {...stylex.props(hero.chip)}>
-        {/* Announces the pin; the heading changes every frame, so it's
-            left out. */}
+        {/* Announces only the pin: a hover is the mouse's own feedback, and
+            the heading changes every frame. */}
         <span
           aria-live="polite"
           {...stylex.props(
             heroCompass.readout,
-            !isHere && heroCompass.readoutIdle,
+            !isPinned && heroCompass.readoutIdle,
           )}
         >
-          {isHere ? (
-            <>
-              <span {...stylex.props(heroCompass.readoutLabel)}>
-                You are here
-              </span>
-              · say hi below
-            </>
-          ) : null}
+          {isPinned ? pin : null}
         </span>
-        {isHere ? null : (
+        {isPinned ? null : (
           <span aria-hidden="true" {...stylex.props(heroCompass.readout)}>
-            <span {...stylex.props(heroCompass.readoutLabel)}>Heading</span>
-            {String(bearing).padStart(3, '0')}°{' '}
-            {CARDINALS[Math.round(bearing / 45) % 8]}
+            {isHovered ? (
+              pin
+            ) : (
+              <>
+                <span {...stylex.props(heroCompass.readoutLabel)}>Heading</span>
+                <span>
+                  {String(bearing).padStart(3, '0')}°{' '}
+                  <span {...stylex.props(heroCompass.cardinal)}>
+                    {CARDINALS[Math.round(bearing / 45) % 8]}
+                  </span>
+                </span>
+              </>
+            )}
           </span>
         )}
       </span>

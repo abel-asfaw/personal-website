@@ -81,25 +81,29 @@ export function usePointerTracking() {
         const rect = panel.getBoundingClientRect();
         const x = clientX - rect.left;
         const y = clientY - rect.top;
-        const box = compassRef.current?.getBoundingClientRect();
+        const compass = compassRef.current?.getBoundingClientRect();
         // Points from the compass center; at rest if it isn't laid out.
-        const compass = box && box.width > 0 ? box : null;
-        const cx = compass ? compass.left + compass.width / 2 : clientX;
-        const cy = compass ? compass.top + compass.height / 2 : clientY;
-        const dx = clientX - cx;
-        const dy = clientY - cy;
-        const target = compass
-          ? (Math.atan2(dy, dx) * 180) / Math.PI + 90
-          : RESTING_HEADING;
+        let aim = { heading: RESTING_HEADING, tiltX: 0, tiltY: 0 };
+        if (compass && compass.width > 0) {
+          const cx = compass.left + compass.width / 2;
+          const cy = compass.top + compass.height / 2;
+          const dx = clientX - cx;
+          const dy = clientY - cy;
+          aim = {
+            heading: (Math.atan2(dy, dx) * 180) / Math.PI + 90,
+            tiltX: reach(dx, cx - rect.left, rect.right - cx),
+            tiltY: reach(dy, cy - rect.top, rect.bottom - cy),
+          };
+        }
         setPointer((p) => ({
           active: true,
           x,
           y,
           ratioX: x / rect.width,
           ratioY: y / rect.height,
-          heading: turnTo(p.heading, target),
-          tiltX: reach(dx, cx - rect.left, rect.right - cx),
-          tiltY: reach(dy, cy - rect.top, rect.bottom - cy),
+          heading: turnTo(p.heading, aim.heading),
+          tiltX: aim.tiltX,
+          tiltY: aim.tiltY,
           isFingerDrag,
         }));
       });
