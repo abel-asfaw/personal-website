@@ -1,5 +1,7 @@
 import type { ContentfulData } from '../contentful';
 
+import { toImageUrl } from './image';
+
 export interface About {
   intro: string;
   tagLine: string;
@@ -19,7 +21,7 @@ export function toAbout(aboutMe: ContentfulData['aboutMe']): About | null {
     // Sized for the 360px dial at 2x.
     photo: photoUrl
       ? {
-          url: `${photoUrl}?w=600&fm=webp&q=80`,
+          url: toImageUrl(photoUrl, 600),
           alt: aboutMe.photo?.fields.description || 'Abel Asfaw',
         }
       : undefined,
