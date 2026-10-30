@@ -17,8 +17,9 @@ interface HeroPanelProps extends PropsWithChildren {
 
 /**
  * The hero's panel and everything that follows the pointer across it. The
- * pointer state lives here so each frame re-renders only the pointer layers;
- * `children` (the copy) are created by the parent and left alone.
+ * pointer state lives here so each frame re-renders only the pointer layers
+ * and the compass; `children` (the copy) are created by the parent and left
+ * alone.
  */
 export function HeroPanel({ photo, isTouch, children }: HeroPanelProps) {
   const { panelRef, compassRef, pointer, handlers } = usePointerTracking();
@@ -31,7 +32,6 @@ export function HeroPanel({ photo, isTouch, children }: HeroPanelProps) {
     <div ref={panelRef} {...handlers} {...stylex.props(hero.panel)}>
       <HeroContours />
       <HeroPointer pointer={pointer} />
-      <HeroCompass pointer={pointer} compassRef={compassRef} photo={photo} />
       <div {...stylex.props(hero.layer, hero.copy)}>
         <span aria-hidden="true" {...stylex.props(hero.chip, hero.coords)}>
           <span {...stylex.props(hero.online)} />
@@ -39,6 +39,7 @@ export function HeroPanel({ photo, isTouch, children }: HeroPanelProps) {
         </span>
         {children}
       </div>
+      <HeroCompass pointer={pointer} compassRef={compassRef} photo={photo} />
     </div>
   );
 }

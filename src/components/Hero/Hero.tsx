@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex';
 import type { About } from '../../content/about';
 
 import { LinkButton } from '../ui/Button';
-import { hero } from './Hero.styles';
+import { hero, heroCompass } from './Hero.styles';
 import { HeroContours } from './HeroContours';
 import { HeroPanel } from './HeroPanel';
 
@@ -53,8 +53,7 @@ export function HeroSkeleton() {
     <section aria-busy="true" aria-label="Loading" {...stylex.props(hero.root)}>
       <div {...stylex.props(hero.panel)}>
         <HeroContours />
-        <div {...stylex.props(hero.skeleton, hero.skeletonDial)} />
-        <div {...stylex.props(hero.copy)}>
+        <div {...stylex.props(hero.layer, hero.copy)}>
           <div
             {...stylex.props(
               hero.skeleton,
@@ -69,6 +68,10 @@ export function HeroSkeleton() {
               hero.skeletonLong,
             )}
           />
+        </div>
+        <div {...stylex.props(hero.layer, heroCompass.root)}>
+          <div {...stylex.props(hero.skeleton, hero.skeletonDial)} />
+          <div {...stylex.props(hero.skeleton, hero.skeletonChip)} />
         </div>
       </div>
     </section>
