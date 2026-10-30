@@ -21,12 +21,12 @@ export function Hero({ about, isTouch, onStartTour }: HeroProps) {
 
   return (
     <section aria-labelledby="hero-heading" {...stylex.props(hero.root)}>
-      <HeroPanel isTouch={isTouch}>
-        <h1 id="hero-heading" {...stylex.props(hero.layer, hero.heading)}>
+      <HeroPanel photo={about.photo} isTouch={isTouch}>
+        <h1 id="hero-heading" {...stylex.props(hero.heading)}>
           {about.intro}{' '}
           <span {...stylex.props(hero.tagline)}>{about.tagLine}</span>
         </h1>
-        <div {...stylex.props(hero.layer, hero.footer)}>
+        <div {...stylex.props(hero.footer)}>
           <p {...stylex.props(hero.bio)}>{about.bio}</p>
           <div {...stylex.props(hero.actions)}>
             <LinkButton
@@ -53,8 +53,23 @@ export function HeroSkeleton() {
     <section aria-busy="true" aria-label="Loading" {...stylex.props(hero.root)}>
       <div {...stylex.props(hero.panel)}>
         <HeroContours />
-        <div {...stylex.props(hero.skeletonLine, hero.skeletonShort)} />
-        <div {...stylex.props(hero.skeletonLine, hero.skeletonLong)} />
+        <div {...stylex.props(hero.skeleton, hero.skeletonDial)} />
+        <div {...stylex.props(hero.copy)}>
+          <div
+            {...stylex.props(
+              hero.skeleton,
+              hero.skeletonLine,
+              hero.skeletonShort,
+            )}
+          />
+          <div
+            {...stylex.props(
+              hero.skeleton,
+              hero.skeletonLine,
+              hero.skeletonLong,
+            )}
+          />
+        </div>
       </div>
     </section>
   );

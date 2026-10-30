@@ -24,8 +24,19 @@ export const hero = stylex.create({
     position: 'relative',
     overflow: 'hidden',
     display: 'flex',
-    flexDirection: 'column',
-    gap: 28,
+    // The compass comes first: on top on phones, on the right when split.
+    flexDirection: {
+      default: 'column',
+      [bp.split]: 'row-reverse',
+    },
+    alignItems: {
+      default: 'stretch',
+      [bp.split]: 'center',
+    },
+    gap: {
+      default: 28,
+      [bp.split]: 56,
+    },
     borderRadius: 28,
     borderWidth: 1,
     borderStyle: 'solid',
@@ -46,12 +57,34 @@ export const hero = stylex.create({
     stroke: themeColors.contour,
     strokeWidth: 1.2,
   },
+  contoursSplit: {
+    display: {
+      default: 'none',
+      [bp.split]: 'block',
+    },
+  },
+  contoursStacked: {
+    display: {
+      default: 'block',
+      [bp.split]: 'none',
+    },
+  },
   // Content sits above the pointer layers.
   layer: {
     position: 'relative',
   },
-  coords: {
-    alignSelf: 'flex-start',
+  copy: {
+    flexGrow: 1,
+    flexBasis: 0,
+    minWidth: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: {
+      default: 20,
+      [bp.wide]: 28,
+    },
+  },
+  chip: {
     display: 'flex',
     alignItems: 'center',
     gap: 8,
@@ -67,6 +100,9 @@ export const hero = stylex.create({
     color: themeColors.muted,
     fontVariantNumeric: 'tabular-nums',
   },
+  coords: {
+    alignSelf: 'flex-start',
+  },
   online: {
     width: 7,
     height: 7,
@@ -76,7 +112,10 @@ export const hero = stylex.create({
   },
   heading: {
     maxWidth: 1000,
-    fontSize: 'clamp(48px, 8vw, 120px)',
+    fontSize: {
+      default: 'clamp(44px, 8vw, 96px)',
+      [bp.split]: 'clamp(56px, 6vw, 88px)',
+    },
     lineHeight: 0.92,
     fontWeight: 700,
     letterSpacing: '-0.045em',
@@ -94,7 +133,10 @@ export const hero = stylex.create({
   },
   bio: {
     maxWidth: 500,
-    fontSize: 20,
+    fontSize: {
+      default: 16,
+      [bp.wide]: 20,
+    },
     color: themeColors.muted,
   },
   actions: {
@@ -107,8 +149,20 @@ export const hero = stylex.create({
   },
   // Loading placeholder in the shape of the heading.
   skeletonLine: {
-    height: 'clamp(44px, 7vw, 110px)',
+    height: 'clamp(44px, 6vw, 88px)',
     borderRadius: 16,
+  },
+  skeletonDial: {
+    alignSelf: 'center',
+    flexShrink: 0,
+    width: {
+      default: 200,
+      [bp.split]: 'clamp(280px, 28vw, 360px)',
+    },
+    aspectRatio: 1,
+    borderRadius: '50%',
+  },
+  skeleton: {
     backgroundColor: themeColors.lineSoft,
     animationName: {
       default: pulse,
@@ -177,18 +231,35 @@ export const heroPointer = stylex.create({
     opacity: 1,
   },
   at: (transform: string) => ({ transform }),
-  compass: {
-    display: {
-      default: 'none',
-      [bp.wide]: 'block',
+});
+
+export const heroCompass = stylex.create({
+  root: {
+    position: 'relative',
+    flexShrink: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: {
+      default: 14,
+      [bp.split]: 22,
     },
-    position: 'absolute',
-    right: 'clamp(24px, 4vw, 56px)',
-    top: 'clamp(24px, 4vw, 48px)',
-    width: 88,
-    height: 88,
   },
   dial: {
+    position: 'relative',
+    width: {
+      default: 200,
+      [bp.split]: 'clamp(280px, 28vw, 360px)',
+    },
+    aspectRatio: 1,
+    perspective: 900,
+  },
+  face: {
+    position: 'absolute',
+    inset: 0,
+    width: '100%',
+    height: '100%',
+    overflow: 'visible',
     fill: 'none',
   },
   ring: {
@@ -196,17 +267,61 @@ export const heroPointer = stylex.create({
     strokeWidth: 1.5,
   },
   ringInner: {
-    stroke: themeColors.lineSoft,
+    stroke: themeColors.contour,
     strokeWidth: 1,
+    strokeDasharray: '4 4',
   },
+  tick: {
+    stroke: themeColors.contour,
+    strokeWidth: 2,
+  },
+  // In dial units, so the phone's smaller dial still reads at about 10px.
   point: {
     fontFamily: fonts.mono,
-    fontSize: 9,
+    fontSize: {
+      default: 18,
+      [bp.split]: 13,
+    },
     fill: themeColors.muted,
+  },
+  portrait: {
+    position: 'absolute',
+    inset: '15%',
+    padding: {
+      default: 6,
+      [bp.split]: 8,
+    },
+    borderWidth: 0,
+    borderRadius: '50%',
+    backgroundColor: themeColors.lineSoft,
+    boxShadow: '0 24px 48px -24px rgba(18, 32, 26, 0.45)',
+    transitionProperty: 'transform',
+    transitionDuration: {
+      default: '0.3s',
+      [bp.reducedMotion]: '0s',
+    },
+    transitionTimingFunction: 'ease-out',
+  },
+  // A tap target on touch screens, where there's no hover to reveal it.
+  portraitButton: {
+    cursor: 'pointer',
+    WebkitTapHighlightColor: 'transparent',
+  },
+  // No trailing glide under a finger, as with the crosshairs.
+  touching: {
+    transitionDuration: '0s',
+  },
+  photo: {
+    display: 'block',
+    width: '100%',
+    height: '100%',
+    borderRadius: '50%',
+    objectFit: 'cover',
   },
   needle: {
     position: 'absolute',
     inset: 0,
+    pointerEvents: 'none',
     transitionProperty: 'transform',
     transitionDuration: {
       default: '0.3s',
@@ -214,13 +329,11 @@ export const heroPointer = stylex.create({
     },
     transitionTimingFunction: easing.spring,
   },
-  needleNorth: {
+  needleTip: {
     fill: themeColors.accent,
   },
-  needleSouth: {
-    fill: themeColors.routeSoft,
+  readoutLabel: {
+    color: themeColors.accentText,
   },
-  needleHub: {
-    fill: themeColors.ink,
-  },
+  at: (transform: string) => ({ transform }),
 });

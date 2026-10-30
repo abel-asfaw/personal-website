@@ -108,6 +108,8 @@ export const easing = stylex.defineConsts({
 export const bp = stylex.defineConsts({
   // Above the design's 700px phone layout.
   wide: '@media (min-width: 701px)',
+  // Room for the hero's copy and compass side by side.
+  split: '@media (min-width: 960px)',
   fineHover: '@media (hover: hover) and (pointer: fine)',
   noHover: '@media (hover: none)',
   reducedMotion: '@media (prefers-reduced-motion: reduce)',
