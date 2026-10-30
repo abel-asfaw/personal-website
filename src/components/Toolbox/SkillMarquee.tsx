@@ -28,6 +28,10 @@ const COPIES = 6;
 // Safari before 26 has no scrollend, so it waits for scroll events to pause.
 const HAS_SCROLL_END = 'onscrollend' in window;
 
+// How long scroll events must pause before the row wraps, where there's
+// no scrollend.
+const SETTLE_MS = 150;
+
 // Pixels per line or page when a wheel reports its delta in those units.
 const LINE_HEIGHT = 16;
 
@@ -128,7 +132,8 @@ export function SkillMarquee({
       return undefined;
     }
     const handleWheel = (event: WheelEvent) => {
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
+      // Ctrl+wheel, which a trackpad pinch also sends, stays a zoom.
+      if (event.ctrlKey || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
         return;
       }
       event.preventDefault();
@@ -144,6 +149,8 @@ export function SkillMarquee({
     return () => root.removeEventListener('wheel', handleWheel);
   }, [isScrolling]);
 
+  // Once the animation is back, sets it to the frame the row was scrolled
+  // to, so Play carries on from what's on screen.
   useLayoutEffect(() => {
     const track = trackRef.current;
     const offset = resumeFrom.current;
@@ -184,7 +191,7 @@ export function SkillMarquee({
       return;
     }
     window.clearTimeout(settleTimer.current);
-    settleTimer.current = window.setTimeout(wrapScroll, 150);
+    settleTimer.current = window.setTimeout(wrapScroll, SETTLE_MS);
   };
 
   if (listLength === 0) {
