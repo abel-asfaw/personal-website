@@ -1,0 +1,1 @@
+export { OpenTabs } from './OpenTabs';
