@@ -10,7 +10,10 @@ export interface PointerState {
   ratioY: number;
   /** Compass needle angle in degrees. */
   heading: number;
-  /** Pointer offset from the compass center, -1 to 1 across the panel. */
+  /**
+   * Pointer offset from the compass center: -1 at the panel's left (top)
+   * edge, 1 at its right (bottom) edge, 0 over the center or at rest.
+   */
   tiltX: number;
   tiltY: number;
   /** Whether a finger is dragging, which turns off the trailing glide. */
@@ -20,6 +23,15 @@ export interface PointerState {
 const RESTING_HEADING = 35;
 
 const clamp = (value: number) => Math.max(-1, Math.min(1, value));
+
+// An offset from the compass as a share of the room on its side of it, so
+// -1 and 1 land on the panel's edges however off-center the compass sits.
+function reach(offset: number, before: number, after: number) {
+  if (offset === 0) {
+    return 0;
+  }
+  return clamp(offset / (offset > 0 ? after : before));
+}
 
 type Gesture =
   | { mode: 'pending'; startX: number; startY: number }
@@ -69,14 +81,16 @@ export function usePointerTracking() {
         const rect = panel.getBoundingClientRect();
         const x = clientX - rect.left;
         const y = clientY - rect.top;
-        const compass = compassRef.current?.getBoundingClientRect();
-        // Pointed from the compass center; at rest if it isn't laid out.
-        const dx = compass ? clientX - (compass.left + compass.width / 2) : 0;
-        const dy = compass ? clientY - (compass.top + compass.height / 2) : 0;
-        const target =
-          compass && compass.width > 0
-            ? (Math.atan2(dy, dx) * 180) / Math.PI + 90
-            : RESTING_HEADING;
+        const box = compassRef.current?.getBoundingClientRect();
+        // Points from the compass center; at rest if it isn't laid out.
+        const compass = box && box.width > 0 ? box : null;
+        const cx = compass ? compass.left + compass.width / 2 : clientX;
+        const cy = compass ? compass.top + compass.height / 2 : clientY;
+        const dx = clientX - cx;
+        const dy = clientY - cy;
+        const target = compass
+          ? (Math.atan2(dy, dx) * 180) / Math.PI + 90
+          : RESTING_HEADING;
         setPointer((p) => ({
           active: true,
           x,
@@ -84,8 +98,8 @@ export function usePointerTracking() {
           ratioX: x / rect.width,
           ratioY: y / rect.height,
           heading: turnTo(p.heading, target),
-          tiltX: clamp(dx / (rect.width / 2)),
-          tiltY: clamp(dy / (rect.height / 2)),
+          tiltX: reach(dx, cx - rect.left, rect.right - cx),
+          tiltY: reach(dy, cy - rect.top, rect.bottom - cy),
           isFingerDrag,
         }));
       });

@@ -302,9 +302,6 @@ export const heroCompass = stylex.create({
       [bp.reducedMotion]: '0s',
     },
     transitionTimingFunction: 'ease-out',
-  },
-  // A tap target on touch screens, where there's no hover to reveal it.
-  portraitButton: {
     cursor: 'pointer',
     WebkitTapHighlightColor: 'transparent',
   },
@@ -332,6 +329,14 @@ export const heroCompass = stylex.create({
   },
   needleTip: {
     fill: themeColors.accent,
+  },
+  readout: {
+    display: 'inline-flex',
+    gap: 8,
+  },
+  // The live region stays in place while empty, but out of the chip's flow.
+  readoutIdle: {
+    position: 'absolute',
   },
   readoutLabel: {
     color: themeColors.accentText,

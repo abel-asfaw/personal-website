@@ -31,12 +31,7 @@ export function HeroPanel({ photo, isTouch, children }: HeroPanelProps) {
     <div ref={panelRef} {...handlers} {...stylex.props(hero.panel)}>
       <HeroContours />
       <HeroPointer pointer={pointer} />
-      <HeroCompass
-        pointer={pointer}
-        compassRef={compassRef}
-        photo={photo}
-        isTouch={isTouch}
-      />
+      <HeroCompass pointer={pointer} compassRef={compassRef} photo={photo} />
       <div {...stylex.props(hero.layer, hero.copy)}>
         <span aria-hidden="true" {...stylex.props(hero.chip, hero.coords)}>
           <span {...stylex.props(hero.online)} />

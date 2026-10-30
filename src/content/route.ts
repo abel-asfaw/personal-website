@@ -1,5 +1,7 @@
 import type { ContentfulData } from '../contentful';
 
+import { toImageUrl } from './image';
+
 export interface Stop {
   key: string;
   /** Two-digit stop number, e.g. "01". */
@@ -164,7 +166,7 @@ export function toProjects(
           link,
           host: hostOf(link),
           githubLink: project.githubLink,
-          imageUrl: imageUrl ? `${imageUrl}?w=1400&fm=webp&q=80` : undefined,
+          imageUrl: imageUrl ? toImageUrl(imageUrl, 1400) : undefined,
         };
       })
   );
