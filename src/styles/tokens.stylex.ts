@@ -95,6 +95,7 @@ export const shadows = stylex.defineConsts({
   stop: '0 4px 14px -6px rgba(0, 0, 0, 0.4)',
   dock: '0 14px 40px -12px rgba(0, 0, 0, 0.5)',
   window: '0 24px 48px -18px rgba(0, 0, 0, 0.55)',
+  portrait: '0 24px 48px -24px rgba(18, 32, 26, 0.45)',
 });
 
 export const easing = stylex.defineConsts({

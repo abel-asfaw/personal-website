@@ -5,6 +5,7 @@ import {
   colors,
   easing,
   fonts,
+  shadows,
   themeColors,
 } from '../../styles/tokens.stylex';
 
@@ -294,7 +295,7 @@ export const heroCompass = stylex.create({
     borderWidth: 0,
     borderRadius: '50%',
     backgroundColor: themeColors.lineSoft,
-    boxShadow: '0 24px 48px -24px rgba(18, 32, 26, 0.45)',
+    boxShadow: shadows.portrait,
     transitionProperty: 'transform',
     transitionDuration: {
       default: '0.3s',
