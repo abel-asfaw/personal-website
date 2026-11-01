@@ -2,6 +2,7 @@ import * as stylex from '@stylexjs/stylex';
 
 import {
   bp,
+  colors,
   easing,
   fonts,
   shadows,
@@ -14,9 +15,7 @@ const MAP_BASIS = 620;
 const CARD_BASIS = 340;
 const BODY_GAP = 16;
 const MAP_HEIGHT = 480;
-
-const SCROLL_SHADOW = 'rgba(0, 0, 0, 0.18)';
-const sideBySide = `@container (min-width: ${MAP_BASIS + BODY_GAP + CARD_BASIS}px)`;
+const SIDE_BY_SIDE = `@container (min-width: ${MAP_BASIS + BODY_GAP + CARD_BASIS}px)`;
 
 const pulse = stylex.keyframes({
   '0%': { transform: 'scale(0.6)', opacity: 0.6 },
@@ -394,7 +393,7 @@ export const routeStopCard = stylex.create({
     // Beside the map, it holds the map's height and scrolls a long stop.
     height: {
       default: null,
-      [sideBySide]: MAP_HEIGHT,
+      [SIDE_BY_SIDE]: MAP_HEIGHT,
     },
     display: 'flex',
     flexDirection: 'column',
@@ -454,12 +453,12 @@ export const routeStopCard = stylex.create({
   edgeAbove: {
     top: 0,
     backgroundPosition: 'top',
-    backgroundImage: `radial-gradient(farthest-side at 50% 0, ${SCROLL_SHADOW}, transparent), linear-gradient(${themeColors.panel}, transparent)`,
+    backgroundImage: `radial-gradient(farthest-side at 50% 0, ${colors.scrollShadow}, transparent), linear-gradient(${themeColors.panel}, transparent)`,
   },
   edgeBelow: {
     bottom: 0,
     backgroundPosition: 'bottom',
-    backgroundImage: `radial-gradient(farthest-side at 50% 100%, ${SCROLL_SHADOW}, transparent), linear-gradient(transparent, ${themeColors.panel})`,
+    backgroundImage: `radial-gradient(farthest-side at 50% 100%, ${colors.scrollShadow}, transparent), linear-gradient(transparent, ${themeColors.panel})`,
   },
   edgeShown: {
     opacity: 1,

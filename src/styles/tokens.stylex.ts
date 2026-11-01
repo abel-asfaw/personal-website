@@ -82,6 +82,8 @@ export const colors = stylex.defineConsts({
   online: '#22A35A',
   // Letterbox behind project screenshots, in both themes.
   screen: '#0B0B10',
+  // Along a scroller's edge with more content past it.
+  scrollShadow: 'rgba(0, 0, 0, 0.18)',
 });
 
 export const fonts = stylex.defineConsts({
