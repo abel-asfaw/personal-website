@@ -2,7 +2,6 @@ import * as stylex from '@stylexjs/stylex';
 
 import {
   bp,
-  colors,
   easing,
   fonts,
   shadows,
@@ -17,6 +16,8 @@ const MAP_BASIS = 620;
 const CARD_BASIS = 360;
 const BODY_GAP = 16;
 const MAP_HEIGHT = 480;
+// The same as openTabs.card's phone height.
+const PHONE_CARD_HEIGHT = 520;
 const SIDE_BY_SIDE = `@container (min-width: ${MAP_BASIS + BODY_GAP + CARD_BASIS}px)`;
 
 const pulse = stylex.keyframes({
@@ -391,8 +392,16 @@ export const routeStopCard = stylex.create({
     flexShrink: 1,
     flexBasis: CARD_BASIS,
     minWidth: 0,
-    // Beside the map, it holds the map's height and scrolls a long stop.
+    // On phones it holds a fixed height and scrolls a long stop; wrapped
+    // under the map on wider screens, it fits it. Beside the map, it
+    // stretches to the map's height and is capped there, so it scrolls
+    // rather than growing the row. The cap is a separate property because
+    // bp.wide also applies beside the map, and its height would win.
     height: {
+      default: PHONE_CARD_HEIGHT,
+      [bp.wide]: 'auto',
+    },
+    maxHeight: {
       default: null,
       [SIDE_BY_SIDE]: MAP_HEIGHT,
     },
@@ -415,54 +424,6 @@ export const routeStopCard = stylex.create({
     display: 'flex',
     flexDirection: 'column',
     gap: 16,
-  },
-  // Holds the description's scroller, under the pinned titles, and the edges
-  // drawn over it.
-  viewport: {
-    position: 'relative',
-    flexGrow: 1,
-    minHeight: 0,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  // Scrolls on its own, so the titles and progress bars stay in view. Past
-  // either end, the wheel carries on scrolling the page.
-  scroller: {
-    flexGrow: 1,
-    minHeight: 0,
-    overflowY: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 16,
-  },
-  // Over an edge with more text past it: the text fades into the panel, under
-  // a soft shadow along the cut.
-  edge: {
-    position: 'absolute',
-    insetInline: 0,
-    height: 40,
-    pointerEvents: 'none',
-    opacity: 0,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '100% 12px, 100% 100%',
-    transitionProperty: 'opacity',
-    transitionDuration: {
-      default: '0.2s',
-      [bp.reducedMotion]: '0s',
-    },
-  },
-  edgeAbove: {
-    top: 0,
-    backgroundPosition: 'top',
-    backgroundImage: `radial-gradient(farthest-side at 50% 0, ${colors.scrollShadow}, transparent), linear-gradient(${themeColors.panel}, transparent)`,
-  },
-  edgeBelow: {
-    bottom: 0,
-    backgroundPosition: 'bottom',
-    backgroundImage: `radial-gradient(farthest-side at 50% 100%, ${colors.scrollShadow}, transparent), linear-gradient(transparent, ${themeColors.panel})`,
-  },
-  edgeShown: {
-    opacity: 1,
   },
   meta: {
     display: 'flex',

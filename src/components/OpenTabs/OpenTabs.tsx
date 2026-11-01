@@ -3,8 +3,8 @@ import { useId } from 'react';
 
 import type { Project } from '../../content/route';
 
-import { useScrollEdges } from '../../hooks/useScrollEdges';
 import { Button, LinkButton } from '../ui/Button';
+import { ScrollArea } from '../ui/ScrollArea';
 import { SectionHeading } from '../ui/SectionHeading';
 import { TagList } from '../ui/TagList';
 import { openTabs } from './OpenTabs.styles';
@@ -30,9 +30,7 @@ export function OpenTabs({
   onBringForward,
   isTouch,
 }: OpenTabsProps) {
-  const { ref: scrollerRef, edges } = useScrollEdges();
   const titleId = useId();
-  const canScroll = edges.above || edges.below;
 
   // A refetch can return fewer projects than the index the visitor picked.
   const frontIndex = Math.min(front, projects.length - 1);
@@ -105,39 +103,12 @@ export function OpenTabs({
             <h3 id={titleId} {...stylex.props(openTabs.title)}>
               {project.title}
             </h3>
-            <div {...stylex.props(openTabs.viewport)}>
-              <section
-                ref={scrollerRef}
-                // While a long description scrolls, it takes focus so a
-                // keyboard can scroll it in Safari too, and is named as a
-                // region for it.
-                aria-labelledby={canScroll ? titleId : undefined}
-                // oxlint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                tabIndex={canScroll ? 0 : undefined}
-                {...stylex.props(openTabs.scroller)}
-              >
-                <p {...stylex.props(openTabs.description)}>
-                  {project.description}
-                </p>
-                <TagList tags={project.skills} style={openTabs.tags} />
-              </section>
-              <span
-                aria-hidden="true"
-                {...stylex.props(
-                  openTabs.edge,
-                  openTabs.edgeAbove,
-                  edges.above && openTabs.edgeShown,
-                )}
-              />
-              <span
-                aria-hidden="true"
-                {...stylex.props(
-                  openTabs.edge,
-                  openTabs.edgeBelow,
-                  edges.below && openTabs.edgeShown,
-                )}
-              />
-            </div>
+            <ScrollArea labelledBy={titleId}>
+              <p {...stylex.props(openTabs.description)}>
+                {project.description}
+              </p>
+              <TagList tags={project.skills} style={openTabs.tags} />
+            </ScrollArea>
             <div {...stylex.props(openTabs.links)}>
               {project.link ? (
                 <LinkButton

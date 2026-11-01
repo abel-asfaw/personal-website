@@ -17,6 +17,8 @@ const DESK_BASIS = 620;
 const CARD_BASIS = 360;
 const BODY_GAP = 16;
 const DESK_HEIGHT = 560;
+// The same as routeStopCard.root's phone height.
+const PHONE_CARD_HEIGHT = 520;
 const SIDE_BY_SIDE = `@container (min-width: ${DESK_BASIS + BODY_GAP + CARD_BASIS}px)`;
 
 const appear = stylex.keyframes({
@@ -102,9 +104,16 @@ export const openTabs = stylex.create({
     flexShrink: 1,
     flexBasis: CARD_BASIS,
     minWidth: 0,
-    // Beside the desk, it holds the desk's height and scrolls a long
-    // description.
+    // On phones it holds a fixed height and scrolls a long description;
+    // wrapped under the desk on wider screens, it fits it. Beside the desk,
+    // it stretches to the desk's height and is capped there, so it scrolls
+    // rather than growing the row. The cap is a separate property because
+    // bp.wide also applies beside the desk, and its height would win.
     height: {
+      default: PHONE_CARD_HEIGHT,
+      [bp.wide]: 'auto',
+    },
+    maxHeight: {
       default: null,
       [SIDE_BY_SIDE]: DESK_HEIGHT,
     },
@@ -144,54 +153,6 @@ export const openTabs = stylex.create({
     lineHeight: 1.05,
     fontWeight: 700,
     letterSpacing: '-0.03em',
-  },
-  // Holds the description's scroller, between the pinned title and links,
-  // and the edges drawn over it.
-  viewport: {
-    position: 'relative',
-    flexGrow: 1,
-    minHeight: 0,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  // Scrolls on its own, so the title and links stay in view. Past either
-  // end, the wheel carries on scrolling the page.
-  scroller: {
-    flexGrow: 1,
-    minHeight: 0,
-    overflowY: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 16,
-  },
-  // Over an edge with more text past it: the text fades into the panel, under
-  // a soft shadow along the cut.
-  edge: {
-    position: 'absolute',
-    insetInline: 0,
-    height: 40,
-    pointerEvents: 'none',
-    opacity: 0,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '100% 12px, 100% 100%',
-    transitionProperty: 'opacity',
-    transitionDuration: {
-      default: '0.2s',
-      [bp.reducedMotion]: '0s',
-    },
-  },
-  edgeAbove: {
-    top: 0,
-    backgroundPosition: 'top',
-    backgroundImage: `radial-gradient(farthest-side at 50% 0, ${colors.scrollShadow}, transparent), linear-gradient(${themeColors.panel}, transparent)`,
-  },
-  edgeBelow: {
-    bottom: 0,
-    backgroundPosition: 'bottom',
-    backgroundImage: `radial-gradient(farthest-side at 50% 100%, ${colors.scrollShadow}, transparent), linear-gradient(transparent, ${themeColors.panel})`,
-  },
-  edgeShown: {
-    opacity: 1,
   },
   description: {
     fontSize: 16,
