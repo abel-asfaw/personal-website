@@ -92,6 +92,9 @@ The rules here are the StyleX Authoring Guide as this repo applies it. Most are 
     padding: { default: 16, [bp.wide]: 0 }
 [ ] Breakpoints and media queries come from bp (bp.wide, bp.fineHover,
     bp.reducedMotion), never written inline
+    (the exception: a container query worked out from a section's own layout
+    constants stays a named constant in that .styles.ts, like SIDE_BY_SIDE
+    in Route.styles.ts)
 [ ] Parent hover uses stylex.defaultMarker() + stylex.when.ancestor(':hover')
 [ ] A variant that overrides a property with a hover condition restates the
     condition (see header.underlineCurrent), or the hover keeps winning
@@ -140,7 +143,8 @@ The rules here are the StyleX Authoring Guide as this repo applies it. Most are 
 [ ] New sections get an id, are added to waypoints.ts, and use
     scrollMarginTop: 64 so the sticky header doesn't cover them
 [ ] Copy that names an input says tap or click by isTouch, not both
-[ ] External links: target="_blank" rel="noopener noreferrer"
+[ ] External links: target="_blank" rel="noopener noreferrer"; mailto: links
+    count as external and open in a new tab too (the hero's Reach out)
 ```
 
 ### 4. Accessibility, Motion and Layout
@@ -167,7 +171,7 @@ The rules here are the StyleX Authoring Guide as this repo applies it. Most are 
 | Tour      | Stepping through the stops (`useRouteTour`)                     |
 | Open tabs | The projects section; each project is a browser window          |
 | Toolbox   | The skills section; a picked skill lights up stops and projects |
-| Dock      | The phone layout's bottom nav                                   |
+| Dock      | The phone layout's corner waypoint chip and menu                |
 
 ## Consistency Scoring
 
