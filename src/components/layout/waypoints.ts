@@ -1,9 +1,8 @@
 // Section anchors shared by the header nav and the mobile dock.
 export const WAYPOINTS = [
-  { href: '#route', label: 'Route', short: 'Route' },
-  { href: '#projects', label: 'Projects', short: 'Projects' },
-  { href: '#toolbox', label: 'Toolbox', short: 'Tools' },
-  { href: '#say-hi', label: 'Contact', short: 'Hi' },
+  { href: '#route', label: 'Route' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#toolbox', label: 'Toolbox' },
 ] as const;
 
 export const WAYPOINT_HREFS = WAYPOINTS.map(({ href }) => href);

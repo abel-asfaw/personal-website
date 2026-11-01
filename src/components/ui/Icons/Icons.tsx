@@ -57,3 +57,17 @@ export function MoonIcon({ size = 12 }: IconProps) {
     </svg>
   );
 }
+
+export function ChevronUpIcon({ size = 14 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      {...STROKE}
+    >
+      <path d="M6 15l6-6 6 6" />
+    </svg>
+  );
+}
