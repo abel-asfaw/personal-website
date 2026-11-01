@@ -116,7 +116,6 @@ export function OpenTabs({
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="solid"
-                  style={openTabs.link}
                 >
                   Visit site ↗
                 </LinkButton>
@@ -126,7 +125,7 @@ export function OpenTabs({
                   href={project.githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={openTabs.link}
+                  aria-label="Source code on GitHub"
                 >
                   Code
                 </LinkButton>

@@ -168,17 +168,6 @@ export const openTabs = stylex.create({
     flexWrap: 'wrap',
     gap: 10,
   },
-  link: {
-    minHeight: {
-      default: 44,
-      [bp.wide]: 46,
-    },
-    // Narrower on phones so both links share a row.
-    paddingInline: {
-      default: 16,
-      [bp.wide]: 20,
-    },
-  },
 });
 
 // Motion's reducedMotion doesn't reach CSS transitions, so this one

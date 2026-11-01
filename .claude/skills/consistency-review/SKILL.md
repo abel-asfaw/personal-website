@@ -43,17 +43,17 @@ This repo has no CLAUDE.md, so this file is where its conventions are written do
 [ ] Hooks are one per file in src/hooks, named use<Thing>.ts
 ```
 
-| Kind                           | Where / convention                                       | Example                              |
-| ------------------------------ | -------------------------------------------------------- | ------------------------------------ |
-| Page section                   | `src/components/<Section>/`, `index.ts` re-export        | `OpenTabs/OpenTabs.tsx`              |
-| Section helper component       | Same folder, styles share the section's `.styles.ts`     | `OpenTabs/ProjectWindow.tsx`         |
-| Header, footer, dock, nav data | `src/components/layout/`                                 | `Dock.tsx`, `waypoints.ts`           |
-| Shared UI primitive            | `src/components/ui/<Name>/`, default export + `index.ts` | `ui/Button/Button.tsx`               |
-| Hook                           | `src/hooks/use<Thing>.ts`                                | `useActiveWaypoint.ts`               |
-| Contentful client/types        | `src/contentful/`                                        | `useContentfulData.ts`               |
-| Content mapping                | `src/content/`                                           | `route.ts` (`toStops`, `skillUsage`) |
-| Tokens and themes              | `src/styles/`                                            | `tokens.stylex.ts`, `themes.ts`      |
-| Skeleton                       | `<Section>Skeleton`, exported beside the section         | `HeroSkeleton` in `Hero.tsx`         |
+| Kind                     | Where / convention                                       | Example                              |
+| ------------------------ | -------------------------------------------------------- | ------------------------------------ |
+| Page section             | `src/components/<Section>/`, `index.ts` re-export        | `OpenTabs/OpenTabs.tsx`              |
+| Section helper component | Same folder, styles share the section's `.styles.ts`     | `OpenTabs/ProjectWindow.tsx`         |
+| Header, footer, nav data | `src/components/layout/`                                 | `Header.tsx`, `waypoints.ts`         |
+| Shared UI primitive      | `src/components/ui/<Name>/`, default export + `index.ts` | `ui/Button/Button.tsx`               |
+| Hook                     | `src/hooks/use<Thing>.ts`                                | `useActiveWaypoint.ts`               |
+| Contentful client/types  | `src/contentful/`                                        | `useContentfulData.ts`               |
+| Content mapping          | `src/content/`                                           | `route.ts` (`toStops`, `skillUsage`) |
+| Tokens and themes        | `src/styles/`                                            | `tokens.stylex.ts`, `themes.ts`      |
+| Skeleton                 | `<Section>Skeleton`, exported beside the section         | `HeroSkeleton` in `Hero.tsx`         |
 
 ### 3. Types
 
@@ -94,8 +94,8 @@ The rules here are the StyleX Authoring Guide as this repo applies it. Most are 
     bp.reducedMotion), never written inline
     (the exception: a container query worked out from a section's own layout
     constants stays a named constant in that .styles.ts, like SIDE_BY_SIDE
-    in Route.styles.ts; and a runtime useMediaQuery repeats its bp value,
-    with a comment at both, like the Dock and bp.wide)
+    in Route.styles.ts; and a runtime useMediaQuery repeats its bp query,
+    like the reduced-motion checks in SkillMarquee.tsx and HeroCompass.tsx)
 [ ] Parent hover uses stylex.defaultMarker() + stylex.when.ancestor(':hover')
 [ ] A variant that overrides a property with a hover condition restates the
     condition (see header.underlineCurrent), or the hover keeps winning
@@ -168,13 +168,12 @@ The rules here are the StyleX Authoring Guide as this repo applies it. Most are 
 
 | Term      | Meaning                                                         |
 | --------- | --------------------------------------------------------------- |
-| Waypoint  | A top-level section the header nav and phone dock link to       |
+| Waypoint  | A top-level section the header nav links to                     |
 | Route     | The experience section: the map and its stops                   |
 | Stop      | One job on the route (`Stop` in `content/route.ts`)             |
 | Tour      | Stepping through the stops (`useRouteTour`)                     |
 | Open tabs | The projects section; each project is a browser window          |
 | Toolbox   | The skills section; a picked skill lights up stops and projects |
-| Dock      | The phone layout's corner waypoint chip and menu                |
 
 ## Consistency Scoring
 

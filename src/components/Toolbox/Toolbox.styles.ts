@@ -249,10 +249,6 @@ export const skillDetail = stylex.create({
   // push the pill past the card's edge.
   place: {
     maxWidth: '100%',
-    minHeight: {
-      default: 44,
-      [bp.wide]: 52,
-    },
     paddingBlock: {
       default: 6,
       [bp.wide]: 8,
@@ -314,14 +310,6 @@ export const skillDetail = stylex.create({
   },
   clear: {
     flexShrink: 0,
-    width: {
-      default: 44,
-      [bp.wide]: 52,
-    },
-    minHeight: {
-      default: 44,
-      [bp.wide]: 52,
-    },
     fontSize: {
       default: 16,
       [bp.wide]: 18,
