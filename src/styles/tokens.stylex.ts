@@ -109,7 +109,8 @@ export const easing = stylex.defineConsts({
 });
 
 export const bp = stylex.defineConsts({
-  // Above the design's 700px phone layout.
+  // Above the design's 700px phone layout. Dock.tsx repeats the query to
+  // close its list here, so the two change together.
   wide: '@media (min-width: 701px)',
   // Room for the hero's copy and compass side by side.
   split: '@media (min-width: 960px)',

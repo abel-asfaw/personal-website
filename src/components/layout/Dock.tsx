@@ -28,7 +28,8 @@ export function Dock({ activeWaypoint }: DockProps) {
   const current = WAYPOINTS[currentIndex];
 
   // The dock is hidden in the wide layout, so the list closes there rather
-  // than coming back on the way down.
+  // than coming back on the way down. The same query as bp.wide, which
+  // can't be read at runtime.
   const isWide = useMediaQuery('(min-width: 701px)');
   if (isWide && isOpen) {
     setIsOpen(false);
