@@ -94,7 +94,8 @@ The rules here are the StyleX Authoring Guide as this repo applies it. Most are 
     bp.reducedMotion), never written inline
     (the exception: a container query worked out from a section's own layout
     constants stays a named constant in that .styles.ts, like SIDE_BY_SIDE
-    in Route.styles.ts)
+    in Route.styles.ts; and a runtime useMediaQuery repeats its bp value,
+    with a comment at both, like the Dock and bp.wide)
 [ ] Parent hover uses stylex.defaultMarker() + stylex.when.ancestor(':hover')
 [ ] A variant that overrides a property with a hover condition restates the
     condition (see header.underlineCurrent), or the hover keeps winning
