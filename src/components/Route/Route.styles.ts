@@ -424,12 +424,12 @@ export const routeStopCard = stylex.create({
     display: 'flex',
     flexDirection: 'column',
   },
-  // Scrolls on its own, so the titles and progress bars stay in view.
+  // Scrolls on its own, so the titles and progress bars stay in view. Past
+  // either end, the wheel carries on scrolling the page.
   scroller: {
     flexGrow: 1,
     minHeight: 0,
     overflowY: 'auto',
-    overscrollBehavior: 'contain',
     display: 'flex',
     flexDirection: 'column',
     gap: 16,
