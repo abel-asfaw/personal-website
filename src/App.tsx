@@ -4,12 +4,12 @@ import { useMemo, useState } from 'react';
 import { app } from './App.styles';
 import { Hero, HeroSkeleton } from './components/Hero';
 import { Dock } from './components/layout/Dock';
+import { Footer } from './components/layout/Footer';
 import { Header } from './components/layout/Header';
 import { WAYPOINT_HREFS } from './components/layout/waypoints';
 import { LoadError } from './components/LoadError';
 import { OpenTabs } from './components/OpenTabs';
 import { RouteSection } from './components/Route';
-import { SayHi } from './components/SayHi';
 import { Toolbox } from './components/Toolbox';
 import { toAbout } from './content/about';
 import { toProjects, toSkills, toStops } from './content/route';
@@ -64,15 +64,19 @@ export default function App() {
         onToggleTheme={toggle}
         activeWaypoint={activeWaypoint}
       />
-      <main>
+      <main {...stylex.props(app.main)}>
         {isPending ? (
           <HeroSkeleton />
         ) : (
           <>
-            {isError ? (
-              <LoadError isRetrying={isRetrying} onRetry={retry} />
-            ) : null}
-            <Hero about={about} isTouch={isTouch} onStartTour={tour.start} />
+            {/* One block, so the error sits right on top of the hero rather
+                than a section's gap away. */}
+            <div>
+              {isError ? (
+                <LoadError isRetrying={isRetrying} onRetry={retry} />
+              ) : null}
+              <Hero about={about} isTouch={isTouch} onStartTour={tour.start} />
+            </div>
             <RouteSection
               title={experienceSection?.title ?? ''}
               stops={stops}
@@ -101,7 +105,7 @@ export default function App() {
           </>
         )}
       </main>
-      {isPending ? null : <SayHi />}
+      {isPending ? null : <Footer />}
       <Dock activeWaypoint={activeWaypoint} />
     </div>
   );

@@ -2,21 +2,22 @@ import * as stylex from '@stylexjs/stylex';
 
 import { bp, easing, fonts, themeColors } from '../../styles/tokens.stylex';
 
-export const sayHi = stylex.create({
+export const footer = stylex.create({
   root: {
     maxWidth: 1240,
     marginInline: 'auto',
+    // Less than the gap between sections: the footer closes the page rather
+    // than starting a new part of it, and its rule does the separating.
     paddingTop: {
-      default: 88,
-      [bp.wide]: 128,
+      default: 56,
+      [bp.wide]: 80,
     },
     paddingInline: 24,
     // Leaves room for the phone dock's chip in the corner.
     paddingBottom: {
-      default: 88,
-      [bp.wide]: 40,
+      default: 64,
+      [bp.wide]: 32,
     },
-    scrollMarginTop: 64,
     display: 'flex',
     flexDirection: 'column',
     gap: 20,

@@ -35,14 +35,13 @@ const appear = stylex.keyframes({
 
 export const routeSection = stylex.create({
   root: {
+    // Fills main's flex column up to maxWidth; the auto margins alone would
+    // shrink it to its content.
+    width: '100%',
     maxWidth: 1240,
     marginInline: 'auto',
-    paddingTop: {
-      default: 88,
-      [bp.wide]: 112,
-    },
     paddingInline: 24,
-    scrollMarginTop: 64,
+    scrollMarginTop: 96,
     display: 'flex',
     flexDirection: 'column',
     gap: 28,

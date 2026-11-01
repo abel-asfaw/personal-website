@@ -22,11 +22,7 @@ const column = {
 
 export const toolbox = stylex.create({
   root: {
-    paddingTop: {
-      default: 88,
-      [bp.wide]: 128,
-    },
-    scrollMarginTop: 64,
+    scrollMarginTop: 96,
     display: 'flex',
     flexDirection: 'column',
     gap: 28,

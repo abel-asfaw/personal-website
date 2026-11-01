@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 
 import { LinkButton } from '../ui/Button';
-import { sayHi } from './SayHi.styles';
+import { footer } from './Footer.styles';
 
 const LINKS = [
   { href: 'https://github.com/abel-asfaw/', label: 'GitHub ↗', external: true },
@@ -13,15 +13,15 @@ const LINKS = [
   { href: '#top', label: 'Back to start ↑', external: false },
 ];
 
-export function SayHi() {
+export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="say-hi" {...stylex.props(sayHi.root)}>
-      <span {...stylex.props(sayHi.eyebrow)}>End of the route — for now</span>
-      <div {...stylex.props(sayHi.meta)}>
+    <footer {...stylex.props(footer.root)}>
+      <span {...stylex.props(footer.eyebrow)}>End of the route — for now</span>
+      <div {...stylex.props(footer.meta)}>
         <span>© {year} Abel Asfaw</span>
-        <div {...stylex.props(sayHi.links)}>
+        <div {...stylex.props(footer.links)}>
           {LINKS.map(({ href, label, external }) => (
             <LinkButton
               key={href}
@@ -31,10 +31,10 @@ export function SayHi() {
                 rel: 'noopener noreferrer',
               })}
               variant="text"
-              style={[sayHi.link, stylex.defaultMarker()]}
+              style={[footer.link, stylex.defaultMarker()]}
             >
               {label}
-              <span aria-hidden="true" {...stylex.props(sayHi.underline)} />
+              <span aria-hidden="true" {...stylex.props(footer.underline)} />
             </LinkButton>
           ))}
         </div>
