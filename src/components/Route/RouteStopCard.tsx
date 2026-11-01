@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import type { Stop } from '../../content/route';
 import type { RouteTour } from '../../hooks/useRouteTour';
 
+import { useScrollEdges } from '../../hooks/useScrollEdges';
 import { SPRING_EASE } from '../../styles/motion';
 import { TagList } from '../ui/TagList';
 import { routeStopCard } from './Route.styles';
@@ -20,6 +21,8 @@ const ENTRANCE = {
 };
 
 export function RouteStopCard({ stops, tour }: RouteStopCardProps) {
+  const { ref: scrollerRef, edges } = useScrollEdges();
+
   const stop = stops[tour.stop];
   if (!stop) {
     return null;
@@ -35,7 +38,8 @@ export function RouteStopCard({ stops, tour }: RouteStopCardProps) {
 
   return (
     <article {...stylex.props(routeStopCard.root)}>
-      {/* Re-keyed on every move so the card replays its entrance. */}
+      {/* Re-keyed on every move so the card replays its entrance, and each
+          stop's text starts scrolled to the top. */}
       <motion.div
         key={tour.tick}
         initial={tour.tick === 0 ? false : ENTRANCE.initial}
@@ -55,8 +59,30 @@ export function RouteStopCard({ stops, tour }: RouteStopCardProps) {
             {stop.jobTitle} · {stop.length}
           </span>
         </div>
-        <p {...stylex.props(routeStopCard.description)}>{stop.description}</p>
-        <TagList tags={stop.skills} style={routeStopCard.tags} />
+        <div {...stylex.props(routeStopCard.viewport)}>
+          <div ref={scrollerRef} {...stylex.props(routeStopCard.scroller)}>
+            <p {...stylex.props(routeStopCard.description)}>
+              {stop.description}
+            </p>
+            <TagList tags={stop.skills} style={routeStopCard.tags} />
+          </div>
+          <span
+            aria-hidden="true"
+            {...stylex.props(
+              routeStopCard.edge,
+              routeStopCard.edgeAbove,
+              edges.above && routeStopCard.edgeShown,
+            )}
+          />
+          <span
+            aria-hidden="true"
+            {...stylex.props(
+              routeStopCard.edge,
+              routeStopCard.edgeBelow,
+              edges.below && routeStopCard.edgeShown,
+            )}
+          />
+        </div>
       </motion.div>
       <div {...stylex.props(routeStopCard.progress)}>
         <div aria-hidden="true" {...stylex.props(routeStopCard.bars)}>

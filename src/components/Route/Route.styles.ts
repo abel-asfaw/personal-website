@@ -8,6 +8,16 @@ import {
   themeColors,
 } from '../../styles/tokens.stylex';
 
+// The map and the card sit side by side once the body fits both flex bases
+// and the gap between them; below that, the card wraps under the map.
+const MAP_BASIS = 620;
+const CARD_BASIS = 340;
+const BODY_GAP = 16;
+const MAP_HEIGHT = 480;
+
+const SCROLL_SHADOW = 'rgba(0, 0, 0, 0.18)';
+const sideBySide = `@container (min-width: ${MAP_BASIS + BODY_GAP + CARD_BASIS}px)`;
+
 const pulse = stylex.keyframes({
   '0%': { transform: 'scale(0.6)', opacity: 0.6 },
   '100%': { transform: 'scale(2.6)', opacity: 0 },
@@ -44,9 +54,10 @@ export const routeSection = stylex.create({
     gap: 16,
   },
   body: {
+    containerType: 'inline-size',
     display: 'flex',
     flexWrap: 'wrap',
-    gap: 16,
+    gap: BODY_GAP,
   },
 });
 
@@ -72,11 +83,11 @@ export const routeMap = stylex.create({
     position: 'relative',
     flexGrow: 999,
     flexShrink: 1,
-    flexBasis: 620,
+    flexBasis: MAP_BASIS,
     minWidth: 0,
     height: {
       default: 400,
-      [bp.wide]: 480,
+      [bp.wide]: MAP_HEIGHT,
     },
     overflow: 'hidden',
     borderRadius: 28,
@@ -400,8 +411,13 @@ export const routeStopCard = stylex.create({
   root: {
     flexGrow: 1,
     flexShrink: 1,
-    flexBasis: 340,
+    flexBasis: CARD_BASIS,
     minWidth: 0,
+    // Beside the map, it holds the map's height and scrolls a long stop.
+    height: {
+      default: null,
+      [sideBySide]: MAP_HEIGHT,
+    },
     display: 'flex',
     flexDirection: 'column',
     gap: 16,
@@ -417,9 +433,58 @@ export const routeStopCard = stylex.create({
   },
   body: {
     flexGrow: 1,
+    minHeight: 0,
     display: 'flex',
     flexDirection: 'column',
     gap: 16,
+  },
+  // Holds the description's scroller, under the pinned titles, and the edges
+  // drawn over it.
+  viewport: {
+    position: 'relative',
+    flexGrow: 1,
+    minHeight: 0,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  // Scrolls on its own, so the titles and progress bars stay in view.
+  scroller: {
+    flexGrow: 1,
+    minHeight: 0,
+    overflowY: 'auto',
+    overscrollBehavior: 'contain',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 16,
+  },
+  // Over an edge with more text past it: the text fades into the panel, under
+  // a soft shadow along the cut.
+  edge: {
+    position: 'absolute',
+    insetInline: 0,
+    height: 40,
+    pointerEvents: 'none',
+    opacity: 0,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 12px, 100% 100%',
+    transitionProperty: 'opacity',
+    transitionDuration: {
+      default: '0.2s',
+      [bp.reducedMotion]: '0s',
+    },
+  },
+  edgeAbove: {
+    top: 0,
+    backgroundPosition: 'top',
+    backgroundImage: `radial-gradient(farthest-side at 50% 0, ${SCROLL_SHADOW}, transparent), linear-gradient(${themeColors.panel}, transparent)`,
+  },
+  edgeBelow: {
+    bottom: 0,
+    backgroundPosition: 'bottom',
+    backgroundImage: `radial-gradient(farthest-side at 50% 100%, ${SCROLL_SHADOW}, transparent), linear-gradient(transparent, ${themeColors.panel})`,
+  },
+  edgeShown: {
+    opacity: 1,
   },
   meta: {
     display: 'flex',
