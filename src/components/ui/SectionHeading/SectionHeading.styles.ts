@@ -10,7 +10,7 @@ export const sectionHeading = stylex.create({
   },
   eyebrow: {
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
     color: themeColors.accentText,
   },
   title: {

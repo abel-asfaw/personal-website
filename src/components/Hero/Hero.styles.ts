@@ -118,7 +118,7 @@ export const hero = stylex.create({
   heading: {
     maxWidth: 1000,
     fontSize: {
-      default: 'clamp(44px, 8vw, 96px)',
+      default: 'clamp(40px, 8vw, 96px)',
       [bp.split]: 'clamp(56px, 6vw, 88px)',
     },
     lineHeight: 0.92,
@@ -150,11 +150,9 @@ export const hero = stylex.create({
     gap: 10,
   },
   cta: {
-    minHeight: 50,
-    // Narrower on phones so both buttons share a row.
-    paddingInline: {
-      default: 16,
-      [bp.wide]: 22,
+    minHeight: {
+      default: 44,
+      [bp.wide]: 50,
     },
   },
   // Loading placeholder in the shape of the heading.

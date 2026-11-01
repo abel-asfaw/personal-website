@@ -180,7 +180,7 @@ export const routeMap = stylex.create({
     backgroundColor: themeColors.panel,
     color: themeColors.ink,
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: 500,
     boxShadow: shadows.stop,
     transform: {
@@ -286,7 +286,7 @@ export const routeMap = stylex.create({
     backgroundColor: themeColors.accent,
     color: themeColors.onAccent,
     fontFamily: fonts.mono,
-    fontSize: 11,
+    fontSize: 12,
     whiteSpace: 'nowrap',
   },
   pin: {
@@ -316,7 +316,7 @@ export const routeMap = stylex.create({
     borderStyle: 'solid',
     borderColor: themeColors.lineSoft,
     backgroundColor: themeColors.panel,
-    fontSize: 11,
+    fontSize: 12,
     ...mono,
   },
   keyTitle: {
@@ -441,14 +441,17 @@ export const routeStopCard = stylex.create({
     gap: 6,
   },
   company: {
-    fontSize: 34,
+    fontSize: {
+      default: 30,
+      [bp.wide]: 34,
+    },
     lineHeight: 1.05,
     fontWeight: 700,
     letterSpacing: '-0.03em',
   },
   role: {
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
   },
   description: {
     fontSize: 16,
@@ -483,7 +486,7 @@ export const routeStopCard = stylex.create({
   },
   status: {
     fontFamily: fonts.mono,
-    fontSize: 11,
+    fontSize: 12,
     color: themeColors.muted,
   },
 });

@@ -118,7 +118,7 @@ export const skillMarquee = stylex.create({
     backgroundColor: themeColors.panel,
     color: themeColors.ink,
     fontSize: {
-      default: 20,
+      default: 18,
       [bp.wide]: 28,
     },
     fontWeight: 700,
@@ -211,11 +211,16 @@ export const skillDetail = stylex.create({
   },
   eyebrow: {
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
     color: themeColors.accentText,
   },
   name: {
-    fontSize: 'clamp(40px, 5.5vw, 72px)',
+    // Matches the project title on phones, below the hero and section
+    // headings.
+    fontSize: {
+      default: 32,
+      [bp.wide]: 'clamp(40px, 5.5vw, 72px)',
+    },
     lineHeight: 0.95,
     fontWeight: 700,
     letterSpacing: '-0.045em',
@@ -232,7 +237,7 @@ export const skillDetail = stylex.create({
   },
   whereLabel: {
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
     color: themeColors.muted,
   },
   places: {
@@ -244,12 +249,24 @@ export const skillDetail = stylex.create({
   // push the pill past the card's edge.
   place: {
     maxWidth: '100%',
-    minHeight: 52,
-    paddingBlock: 8,
+    minHeight: {
+      default: 44,
+      [bp.wide]: 52,
+    },
+    paddingBlock: {
+      default: 6,
+      [bp.wide]: 8,
+    },
     paddingInlineStart: 8,
-    paddingInlineEnd: 18,
+    paddingInlineEnd: {
+      default: 16,
+      [bp.wide]: 18,
+    },
     gap: 12,
-    fontSize: 18,
+    fontSize: {
+      default: 16,
+      [bp.wide]: 18,
+    },
     whiteSpace: 'normal',
     textAlign: 'start',
   },
@@ -263,8 +280,14 @@ export const skillDetail = stylex.create({
   },
   placeBadge: {
     flexShrink: 0,
-    width: 36,
-    height: 36,
+    width: {
+      default: 32,
+      [bp.wide]: 36,
+    },
+    height: {
+      default: 32,
+      [bp.wide]: 36,
+    },
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -283,14 +306,26 @@ export const skillDetail = stylex.create({
     color: themeColors.accentText,
   },
   everywhere: {
-    fontSize: 18,
+    fontSize: {
+      default: 16,
+      [bp.wide]: 18,
+    },
     fontWeight: 500,
   },
   clear: {
     flexShrink: 0,
-    width: 52,
-    minHeight: 52,
-    fontSize: 18,
+    width: {
+      default: 44,
+      [bp.wide]: 52,
+    },
+    minHeight: {
+      default: 44,
+      [bp.wide]: 52,
+    },
+    fontSize: {
+      default: 16,
+      [bp.wide]: 18,
+    },
     backgroundColor: themeColors.bg,
   },
   empty: {

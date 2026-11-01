@@ -62,7 +62,7 @@ export const header = stylex.create({
       [bp.wide]: 20,
     },
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
   },
   toggle: {
     display: 'flex',
