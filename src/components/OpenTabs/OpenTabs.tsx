@@ -116,6 +116,7 @@ export function OpenTabs({
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="solid"
+                  aria-label="Visit site, live project"
                 >
                   Visit site ↗
                 </LinkButton>

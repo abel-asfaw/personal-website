@@ -30,6 +30,8 @@ export function RouteControls({ tour }: RouteControlsProps) {
       <Button
         variant="ink"
         onClick={playing ? tour.pause : tour.play}
+        // The short label reads as a bare verb to screen readers.
+        aria-label={!playing && atEnd ? 'Replay tour' : undefined}
         style={routeControls.play}
       >
         {label} <span aria-hidden="true">{glyph}</span>
