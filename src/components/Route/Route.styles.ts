@@ -10,9 +10,11 @@ import {
 } from '../../styles/tokens.stylex';
 
 // The map and the card sit side by side once the body fits both flex bases
-// and the gap between them; below that, the card wraps under the map.
+// and the gap between them; below that, the card wraps under the map. The
+// same bases as openTabs.desk and openTabs.card, so the map lines up with
+// the project windows below it.
 const MAP_BASIS = 620;
-const CARD_BASIS = 340;
+const CARD_BASIS = 360;
 const BODY_GAP = 16;
 const MAP_HEIGHT = 480;
 const SIDE_BY_SIDE = `@container (min-width: ${MAP_BASIS + BODY_GAP + CARD_BASIS}px)`;

@@ -51,7 +51,9 @@ export const openTabs = stylex.create({
     gap: 16,
   },
   // The dotted desk the windows sit on. Phones get the front window alone,
-  // in flow; wider screens fan the others out behind it.
+  // in flow; wider screens fan the others out behind it. It and the card
+  // share their bases with the route's map and card (MAP_BASIS and
+  // CARD_BASIS in Route.styles.ts), so the two sections line up.
   desk: {
     position: 'relative',
     flexGrow: 999,
