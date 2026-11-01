@@ -24,6 +24,7 @@ const ENTRANCE = {
 export function RouteStopCard({ stops, tour }: RouteStopCardProps) {
   const { ref: scrollerRef, edges } = useScrollEdges();
   const companyId = useId();
+  const canScroll = edges.above || edges.below;
 
   const stop = stops[tour.stop];
   if (!stop) {
@@ -66,10 +67,11 @@ export function RouteStopCard({ stops, tour }: RouteStopCardProps) {
         <div {...stylex.props(routeStopCard.viewport)}>
           <section
             ref={scrollerRef}
-            aria-labelledby={companyId}
-            // Focusable, so a keyboard can scroll a long stop in Safari too.
+            // While a long stop scrolls, it takes focus so a keyboard can
+            // scroll it in Safari too, and is named as a region for it.
+            aria-labelledby={canScroll ? companyId : undefined}
             // oxlint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-            tabIndex={0}
+            tabIndex={canScroll ? 0 : undefined}
             {...stylex.props(routeStopCard.scroller)}
           >
             <p {...stylex.props(routeStopCard.description)}>

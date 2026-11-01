@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex';
 import { useEffect, useId, useRef, useState } from 'react';
 
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { Button } from '../ui/Button';
 import { ChevronUpIcon } from '../ui/Icons';
 import { dock } from './Dock.styles';
@@ -26,11 +27,18 @@ export function Dock({ activeWaypoint }: DockProps) {
   );
   const current = WAYPOINTS[currentIndex];
 
-  // Closes on a tap anywhere else, or on Escape, which hands focus back to
-  // the chip so it isn't lost with the list.
+  // The dock is hidden in the wide layout, so the list closes there rather
+  // than coming back on the way down.
+  const isWide = useMediaQuery('(min-width: 701px)');
+  if (isWide && isOpen) {
+    setIsOpen(false);
+  }
+
+  // Closes on a tap or focus anywhere else, or on Escape, which hands focus
+  // back to the chip so it isn't lost with the list.
   useEffect(() => {
     if (!isOpen) return undefined;
-    const onPointerDown = ({ target }: PointerEvent) => {
+    const onOutside = ({ target }: Event) => {
       if (!(target instanceof Node && rootRef.current?.contains(target))) {
         setIsOpen(false);
       }
@@ -41,10 +49,12 @@ export function Dock({ activeWaypoint }: DockProps) {
         toggleRef.current?.focus();
       }
     };
-    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('pointerdown', onOutside);
+    document.addEventListener('focusin', onOutside);
     document.addEventListener('keydown', onKeyDown);
     return () => {
-      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('pointerdown', onOutside);
+      document.removeEventListener('focusin', onOutside);
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen]);
@@ -54,6 +64,11 @@ export function Dock({ activeWaypoint }: DockProps) {
       <Button
         ref={toggleRef}
         variant="text"
+        aria-label={
+          current
+            ? `${current.label}, ${currentIndex + 1} of ${WAYPOINTS.length}`
+            : undefined
+        }
         aria-expanded={isOpen}
         aria-controls={isOpen ? menuId : undefined}
         onClick={() => setIsOpen((open) => !open)}
