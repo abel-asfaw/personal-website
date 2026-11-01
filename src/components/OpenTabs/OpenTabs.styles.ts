@@ -301,7 +301,7 @@ export const projectWindow = stylex.create({
     borderRadius: 999,
     backgroundColor: themeColors.bg,
     fontFamily: fonts.mono,
-    fontSize: 12,
+    fontSize: 10,
     color: themeColors.muted,
   },
   screen: {

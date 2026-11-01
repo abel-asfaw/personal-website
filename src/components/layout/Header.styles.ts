@@ -32,7 +32,7 @@ export const header = stylex.create({
     alignItems: 'center',
     rowGap: 8,
     columnGap: {
-      default: 12,
+      default: 10,
       [bp.wide]: 20,
     },
   },
@@ -43,21 +43,22 @@ export const header = stylex.create({
     minHeight: 44,
     // On phones the pin alone is 22px wide; the padding makes a 44px tap
     // target and the negative margin keeps the pin on the page gutter. The
+    // start side leaves 6px to the screen edge for the focus ring, and the
     // end side stops where the first link's tap area starts.
     paddingInlineStart: {
-      default: 14,
+      default: 10,
       [bp.wide]: 0,
     },
     paddingInlineEnd: {
-      default: 8,
+      default: 12,
       [bp.wide]: 0,
     },
     marginInlineStart: {
-      default: -14,
+      default: -10,
       [bp.wide]: 0,
     },
     marginInlineEnd: {
-      default: -8,
+      default: -12,
       [bp.wide]: 0,
     },
     fontSize: 18,
@@ -75,9 +76,14 @@ export const header = stylex.create({
   // the far end; the wide layout groups them on the right. Below about
   // 290px the links scroll sideways rather than wrap. The 6px padding,
   // taken back by the margins, keeps the 3px focus ring and its 3px offset
-  // inside the scroller, and the extra 4px inline lines the first link's
-  // tap area up with the pin's.
+  // inside the scroller; the start margin puts the first link's tap area
+  // where the pin's ends. The padding overlaps the pin, so only the links
+  // take taps.
   nav: {
+    pointerEvents: {
+      default: 'none',
+      [bp.wide]: 'auto',
+    },
     flexGrow: {
       default: 1,
       [bp.wide]: 0,
@@ -101,7 +107,7 @@ export const header = stylex.create({
       [bp.wide]: 0,
     },
     marginInlineStart: {
-      default: -10,
+      default: -4,
       [bp.wide]: 'auto',
     },
     marginInlineEnd: {
@@ -136,6 +142,7 @@ export const header = stylex.create({
       default: 4,
       [bp.wide]: 0,
     },
+    pointerEvents: 'auto',
     color: themeColors.muted,
     opacity: {
       default: 1,
