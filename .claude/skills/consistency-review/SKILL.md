@@ -101,7 +101,8 @@ The rules here are the StyleX Authoring Guide as this repo applies it. Most are 
     condition (see header.underlineCurrent), or the hover keeps winning
 [ ] Colors come from themeColors (themed) or colors (the same in both
     themes); no raw hex or rgba in .styles.ts beyond masks
-[ ] Fonts, shadows and easings come from fonts, shadows, easing
+[ ] Fonts, shadows, easings and sizes shared across files come from fonts,
+    shadows, easing, sizes
 [ ] Keyframes live in the .styles.ts next to the create that uses them
 [ ] Real elements over ::before / ::after
 ```
