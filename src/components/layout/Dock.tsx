@@ -51,8 +51,30 @@ export function Dock({ activeWaypoint }: DockProps) {
 
   return (
     <nav ref={rootRef} aria-label="Waypoints" {...stylex.props(dock.root)}>
+      <Button
+        ref={toggleRef}
+        variant="text"
+        aria-expanded={isOpen}
+        aria-controls={isOpen ? menuId : undefined}
+        onClick={() => setIsOpen((open) => !open)}
+        style={[dock.frosted, dock.chip]}
+      >
+        <span
+          aria-hidden="true"
+          {...stylex.props(dock.dot, current && dock.dotLit)}
+        />
+        {current ? current.label : 'Waypoints'}
+        {current ? (
+          <span {...stylex.props(dock.position)}>
+            {currentIndex + 1}/{WAYPOINTS.length}
+          </span>
+        ) : null}
+        <span {...stylex.props(dock.chevron, isOpen && dock.chevronOpen)}>
+          <ChevronUpIcon />
+        </span>
+      </Button>
       {isOpen ? (
-        <ul id={menuId} {...stylex.props(dock.menu)}>
+        <ul id={menuId} {...stylex.props(dock.frosted, dock.menu)}>
           {WAYPOINTS.map(({ href, label }, index) => {
             const isCurrent = index === currentIndex;
             return (
@@ -73,28 +95,6 @@ export function Dock({ activeWaypoint }: DockProps) {
           })}
         </ul>
       ) : null}
-      <Button
-        ref={toggleRef}
-        variant="text"
-        aria-expanded={isOpen}
-        aria-controls={isOpen ? menuId : undefined}
-        onClick={() => setIsOpen((open) => !open)}
-        style={dock.chip}
-      >
-        <span
-          aria-hidden="true"
-          {...stylex.props(dock.dot, current && dock.dotLit)}
-        />
-        {current ? current.label : 'Waypoints'}
-        {current ? (
-          <span {...stylex.props(dock.position)}>
-            {currentIndex + 1}/{WAYPOINTS.length}
-          </span>
-        ) : null}
-        <span {...stylex.props(dock.chevron, isOpen && dock.chevronOpen)}>
-          <ChevronUpIcon />
-        </span>
-      </Button>
     </nav>
   );
 }

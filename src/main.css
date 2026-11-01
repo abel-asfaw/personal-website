@@ -118,20 +118,19 @@ button:disabled {
   cursor: default;
 }
 
-/* One focus ring for every link and button, in the theme's accent. The
-   outline follows each element's own border-radius. */
-a:focus-visible,
-button:focus-visible {
+/* One focus ring for every link, button and focusable scroller, in the
+   theme's accent. The outline follows each element's own border-radius. */
+:is(a, button, [tabindex]):focus-visible {
   outline: 3px solid #2557f5;
   outline-offset: 3px;
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme='day']) :is(a, button):focus-visible {
+  html:not([data-theme='day']) :is(a, button, [tabindex]):focus-visible {
     outline-color: #8fb2ff;
   }
 }
 
-html[data-theme='night'] :is(a, button):focus-visible {
+html[data-theme='night'] :is(a, button, [tabindex]):focus-visible {
   outline-color: #8fb2ff;
 }

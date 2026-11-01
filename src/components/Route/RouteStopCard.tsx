@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex';
 import { motion } from 'motion/react';
+import { useId } from 'react';
 
 import type { Stop } from '../../content/route';
 import type { RouteTour } from '../../hooks/useRouteTour';
@@ -22,6 +23,7 @@ const ENTRANCE = {
 
 export function RouteStopCard({ stops, tour }: RouteStopCardProps) {
   const { ref: scrollerRef, edges } = useScrollEdges();
+  const companyId = useId();
 
   const stop = stops[tour.stop];
   if (!stop) {
@@ -54,18 +56,27 @@ export function RouteStopCard({ stops, tour }: RouteStopCardProps) {
           <span {...stylex.props(routeStopCard.dates)}>{stop.dates}</span>
         </div>
         <div {...stylex.props(routeStopCard.titles)}>
-          <h3 {...stylex.props(routeStopCard.company)}>{stop.company}</h3>
+          <h3 id={companyId} {...stylex.props(routeStopCard.company)}>
+            {stop.company}
+          </h3>
           <span {...stylex.props(routeStopCard.role)}>
             {stop.jobTitle} · {stop.length}
           </span>
         </div>
         <div {...stylex.props(routeStopCard.viewport)}>
-          <div ref={scrollerRef} {...stylex.props(routeStopCard.scroller)}>
+          <section
+            ref={scrollerRef}
+            aria-labelledby={companyId}
+            // Focusable, so a keyboard can scroll a long stop in Safari too.
+            // oxlint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+            tabIndex={0}
+            {...stylex.props(routeStopCard.scroller)}
+          >
             <p {...stylex.props(routeStopCard.description)}>
               {stop.description}
             </p>
             <TagList tags={stop.skills} style={routeStopCard.tags} />
-          </div>
+          </section>
           <span
             aria-hidden="true"
             {...stylex.props(

@@ -11,9 +11,9 @@ export const sayHi = stylex.create({
       [bp.wide]: 128,
     },
     paddingInline: 24,
-    // Leaves room for the phone dock.
+    // Leaves room for the phone dock's chip in the corner.
     paddingBottom: {
-      default: 120,
+      default: 88,
       [bp.wide]: 40,
     },
     scrollMarginTop: 64,

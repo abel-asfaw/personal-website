@@ -19,7 +19,9 @@ export const dock = stylex.create({
       default: 'flex',
       [bp.wide]: 'none',
     },
-    flexDirection: 'column',
+    // The list follows the chip in the markup, so Tab goes from the chip into
+    // the links, but it stacks above it.
+    flexDirection: 'column-reverse',
     alignItems: 'flex-end',
     gap: 8,
     position: 'fixed',
@@ -29,18 +31,21 @@ export const dock = stylex.create({
     zIndex: 30,
     fontFamily: fonts.mono,
   },
-  // Frosted like the header, so it reads as part of the page chrome.
+  // The chip and the list are frosted like the header, so they read as part
+  // of the page chrome.
+  frosted: {
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: themeColors.line,
+    backgroundColor: themeColors.headerBg,
+    backdropFilter: 'blur(12px)',
+    WebkitBackdropFilter: 'blur(12px)',
+  },
   chip: {
     gap: 10,
     paddingInlineStart: 16,
     paddingInlineEnd: 14,
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: themeColors.line,
     borderRadius: 999,
-    backgroundColor: themeColors.headerBg,
-    backdropFilter: 'blur(14px)',
-    WebkitBackdropFilter: 'blur(14px)',
     color: themeColors.ink,
     fontSize: 12,
     opacity: {
@@ -54,7 +59,10 @@ export const dock = stylex.create({
     borderRadius: 999,
     backgroundColor: themeColors.routeSoft,
     transitionProperty: 'background-color, box-shadow',
-    transitionDuration: '0.2s',
+    transitionDuration: {
+      default: '0.2s',
+      [bp.reducedMotion]: '0s',
+    },
   },
   // A section is on screen.
   dotLit: {
@@ -84,13 +92,7 @@ export const dock = stylex.create({
     margin: 0,
     padding: 6,
     listStyle: 'none',
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: themeColors.line,
     borderRadius: 18,
-    backgroundColor: themeColors.headerBg,
-    backdropFilter: 'blur(14px)',
-    WebkitBackdropFilter: 'blur(14px)',
     boxShadow: shadows.dock,
     transformOrigin: 'bottom right',
     animationName: {
@@ -114,7 +116,10 @@ export const dock = stylex.create({
       ':active': 0.7,
     },
     transitionProperty: 'background-color, opacity',
-    transitionDuration: '0.2s',
+    transitionDuration: {
+      default: '0.2s',
+      [bp.reducedMotion]: '0s',
+    },
   },
   number: {
     width: 18,
