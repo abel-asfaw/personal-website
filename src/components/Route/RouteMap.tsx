@@ -264,11 +264,6 @@ export function RouteMap({
           </Button>
         </div>
       ) : null}
-
-      <div aria-hidden="true" {...stylex.props(routeMap.scale)}>
-        <span>≈ 1 year</span>
-        <span {...stylex.props(routeMap.scaleBar)} />
-      </div>
     </div>
   );
 }

@@ -97,7 +97,7 @@ export const routeMap = stylex.create({
     backgroundColor: themeColors.map,
   },
   // Scrolls the land sideways when the screen is too narrow for the stops;
-  // the key, scale and lit badge stay put on the root above it.
+  // the key and lit badge stay put on the root above it.
   scroller: {
     position: 'absolute',
     inset: 0,
@@ -350,28 +350,6 @@ export const routeMap = stylex.create({
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: themeColors.accent,
-  },
-  scale: {
-    display: {
-      default: 'none',
-      [bp.wide]: 'flex',
-    },
-    position: 'absolute',
-    right: 16,
-    bottom: 18,
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    gap: 4,
-    fontSize: 10,
-    ...mono,
-  },
-  scaleBar: {
-    width: 96,
-    height: 6,
-    borderWidth: 1.5,
-    borderTopWidth: 0,
-    borderStyle: 'solid',
-    borderColor: themeColors.muted,
   },
   lit: {
     position: 'absolute',
