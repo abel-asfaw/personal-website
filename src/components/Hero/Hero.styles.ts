@@ -151,6 +151,11 @@ export const hero = stylex.create({
   },
   cta: {
     minHeight: 50,
+    // Narrower on phones so both buttons share a row.
+    paddingInline: {
+      default: 16,
+      [bp.wide]: 22,
+    },
   },
   // Loading placeholder in the shape of the heading.
   // One heading line, less its share of the group's two gaps.
