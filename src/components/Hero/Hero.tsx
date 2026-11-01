@@ -7,6 +7,8 @@ import { hero, heroCompass } from './Hero.styles';
 import { HeroContours } from './HeroContours';
 import { HeroPanel } from './HeroPanel';
 
+const EMAIL = 'contact@abelasfaw.com';
+
 interface HeroProps {
   about: About | null;
   isTouch: boolean;
@@ -37,7 +39,12 @@ export function Hero({ about, isTouch, onStartTour }: HeroProps) {
             >
               Take the tour ↓
             </LinkButton>
-            <LinkButton href="#say-hi" style={hero.cta}>
+            <LinkButton
+              href={`mailto:${EMAIL}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={hero.cta}
+            >
               Reach out
             </LinkButton>
           </div>

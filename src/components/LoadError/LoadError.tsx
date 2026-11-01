@@ -19,7 +19,7 @@ export function LoadError({ isRetrying, onRetry }: LoadErrorProps) {
             Part of the route didn't load.
           </h2>
           <p {...stylex.props(loadError.body)}>
-            Check your connection and try again. You can still say hi below.
+            Check your connection and try again.
           </p>
         </div>
         <Button variant="solid" onClick={onRetry} disabled={isRetrying}>

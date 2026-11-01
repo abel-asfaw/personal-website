@@ -2,14 +2,6 @@ import * as stylex from '@stylexjs/stylex';
 
 import { bp, easing, fonts, themeColors } from '../../styles/tokens.stylex';
 
-// On touch screens the arrow nudges now and then, standing in for hover.
-const nudge = stylex.keyframes({
-  '0%, 60%, 100%': { transform: 'none' },
-  '75%': { transform: 'translateX(12px)' },
-});
-
-const BIG = 'clamp(44px, 8vw, 120px)';
-
 export const sayHi = stylex.create({
   root: {
     maxWidth: 1240,
@@ -34,67 +26,11 @@ export const sayHi = stylex.create({
     fontSize: 13,
     color: themeColors.accentText,
   },
-  mail: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: 24,
-    paddingBlock: 28,
-    borderBlockWidth: 2,
-    borderBlockStyle: 'solid',
-    borderBlockColor: themeColors.ink,
-    color: themeColors.ink,
-  },
-  say: {
-    fontSize: BIG,
-    lineHeight: 0.95,
-    fontWeight: 700,
-    letterSpacing: {
-      default: '-0.05em',
-      [stylex.when.ancestor(':active')]: '-0.035em',
-      [bp.fineHover]: {
-        default: '-0.05em',
-        [stylex.when.ancestor(':hover')]: '-0.035em',
-      },
-    },
-    transitionProperty: 'letter-spacing',
-    transitionDuration: {
-      default: '0.4s',
-      [bp.reducedMotion]: '0s',
-    },
-    transitionTimingFunction: easing.spring,
-  },
-  arrow: {
-    fontSize: BIG,
-    lineHeight: 1,
-    color: themeColors.accentText,
-    transform: {
-      default: null,
-      [stylex.when.ancestor(':active')]: 'translateX(18px)',
-      [bp.fineHover]: {
-        default: null,
-        [stylex.when.ancestor(':hover')]: 'translateX(18px)',
-      },
-    },
-    transitionProperty: 'transform',
-    transitionDuration: {
-      default: '0.35s',
-      [bp.reducedMotion]: '0s',
-    },
-    transitionTimingFunction: easing.spring,
-    animationName: {
-      default: null,
-      [bp.noHover]: {
-        default: nudge,
-        [bp.reducedMotion]: null,
-      },
-    },
-    animationDuration: '2.8s',
-    animationTimingFunction: 'ease-in-out',
-    animationIterationCount: 'infinite',
-  },
   meta: {
-    paddingTop: 28,
+    paddingTop: 20,
+    borderTopWidth: 1,
+    borderTopStyle: 'solid',
+    borderTopColor: themeColors.line,
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
