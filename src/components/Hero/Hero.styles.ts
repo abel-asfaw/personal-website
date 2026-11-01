@@ -16,6 +16,9 @@ const pulse = stylex.keyframes({
 
 export const hero = stylex.create({
   root: {
+    // HeroSkeleton sits right in main's flex column, where the auto margins
+    // alone would shrink it to its content.
+    width: '100%',
     maxWidth: 1240,
     marginInline: 'auto',
     paddingTop: 24,
