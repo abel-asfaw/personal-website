@@ -31,19 +31,13 @@ export function Hero({ about, isTouch, onStartTour }: HeroProps) {
         <div {...stylex.props(hero.footer)}>
           <p {...stylex.props(hero.bio)}>{about.bio}</p>
           <div {...stylex.props(hero.actions)}>
-            <LinkButton
-              href="#route"
-              variant="solid"
-              onClick={onStartTour}
-              style={hero.cta}
-            >
+            <LinkButton href="#route" variant="solid" onClick={onStartTour}>
               Tour ↓
             </LinkButton>
             <LinkButton
               href={`mailto:${EMAIL}`}
               target="_blank"
               rel="noopener noreferrer"
-              style={hero.cta}
             >
               Reach out
             </LinkButton>

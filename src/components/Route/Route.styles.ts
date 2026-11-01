@@ -68,8 +68,13 @@ export const routeControls = stylex.create({
     alignItems: 'center',
     gap: 8,
   },
+  // Fits "Continue ▶", the longest label, so the pill keeps one width as
+  // the label changes.
   play: {
-    minWidth: 156,
+    minWidth: {
+      default: 128,
+      [bp.wide]: 140,
+    },
   },
 });
 

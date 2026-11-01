@@ -27,7 +27,7 @@ export const header = stylex.create({
     alignItems: 'center',
     rowGap: 8,
     columnGap: {
-      default: 10,
+      default: 12,
       [bp.wide]: 20,
     },
   },
@@ -36,6 +36,16 @@ export const header = stylex.create({
     alignItems: 'center',
     gap: 10,
     minHeight: 44,
+    // On phones the pin alone is 22px wide; the padding makes a 44px tap
+    // target and the negative margin keeps the pin on the page gutter.
+    paddingInline: {
+      default: 11,
+      [bp.wide]: 0,
+    },
+    marginInline: {
+      default: -11,
+      [bp.wide]: 0,
+    },
     fontSize: 18,
     fontWeight: 700,
     color: themeColors.ink,
@@ -62,7 +72,11 @@ export const header = stylex.create({
       [bp.wide]: 20,
     },
     fontFamily: fonts.mono,
-    fontSize: 14,
+    // Smaller on phones so the pin, links and toggle fit one row at 320px.
+    fontSize: {
+      default: 12,
+      [bp.wide]: 14,
+    },
   },
   toggle: {
     display: 'flex',

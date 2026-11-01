@@ -149,12 +149,6 @@ export const hero = stylex.create({
     flexWrap: 'wrap',
     gap: 10,
   },
-  cta: {
-    minHeight: {
-      default: 44,
-      [bp.wide]: 50,
-    },
-  },
   // Loading placeholder in the shape of the heading.
   // One heading line, less its share of the group's two gaps.
   skeletonLine: {
