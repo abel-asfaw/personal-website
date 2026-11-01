@@ -35,18 +35,6 @@ export const toolbox = stylex.create({
     justifyContent: 'space-between',
     gap: 12,
   },
-  tools: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    rowGap: 8,
-    columnGap: 16,
-  },
-  hint: {
-    fontFamily: fonts.mono,
-    fontSize: 13,
-    color: themeColors.muted,
-  },
   detail: {
     ...column,
   },

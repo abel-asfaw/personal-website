@@ -62,19 +62,14 @@ export function Toolbox({
           eyebrow={`Waypoint 03 · ${title}`}
           title="The toolbox"
         />
-        <div {...stylex.props(toolbox.tools)}>
-          <span {...stylex.props(toolbox.hint)}>
-            {isTouch ? 'tap' : 'click'} a skill to see where I used it
-          </span>
-          <Button
-            variant="quiet"
-            disabled={picked !== null}
-            onClick={() => setIsPaused((p) => !p)}
-          >
-            <span aria-hidden="true">{isStopped ? '▶' : '❚❚'}</span>
-            {isStopped ? 'Play' : 'Pause'}
-          </Button>
-        </div>
+        <Button
+          variant="quiet"
+          disabled={picked !== null}
+          onClick={() => setIsPaused((p) => !p)}
+        >
+          <span aria-hidden="true">{isStopped ? '▶' : '❚❚'}</span>
+          {isStopped ? 'Play' : 'Pause'}
+        </Button>
       </div>
       <SkillMarquee
         skills={skills.slice(0, half)}
