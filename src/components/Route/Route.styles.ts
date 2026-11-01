@@ -5,6 +5,7 @@ import {
   easing,
   fonts,
   shadows,
+  sizes,
   themeColors,
 } from '../../styles/tokens.stylex';
 
@@ -16,8 +17,6 @@ const MAP_BASIS = 620;
 const CARD_BASIS = 360;
 const BODY_GAP = 16;
 const MAP_HEIGHT = 480;
-// The same as openTabs.card's phone height.
-const PHONE_CARD_HEIGHT = 520;
 const SIDE_BY_SIDE = `@container (min-width: ${MAP_BASIS + BODY_GAP + CARD_BASIS}px)`;
 
 const pulse = stylex.keyframes({
@@ -392,13 +391,13 @@ export const routeStopCard = stylex.create({
     flexShrink: 1,
     flexBasis: CARD_BASIS,
     minWidth: 0,
-    // On phones it holds a fixed height and scrolls a long stop; wrapped
-    // under the map on wider screens, it fits it. Beside the map, it
-    // stretches to the map's height and is capped there, so it scrolls
-    // rather than growing the row. The cap is a separate property because
-    // bp.wide also applies beside the map, and its height would win.
-    height: {
-      default: PHONE_CARD_HEIGHT,
+    // On phones it stands at least the phone card height, scrolling a long
+    // stop and growing past it only when the rest of the card needs the
+    // room; wrapped under the map on wider screens, it fits it. Beside the
+    // map, it stretches to the map's height and is capped there, so it
+    // scrolls rather than growing the row.
+    minHeight: {
+      default: sizes.phoneCard,
       [bp.wide]: 'auto',
     },
     maxHeight: {
@@ -420,6 +419,10 @@ export const routeStopCard = stylex.create({
   },
   body: {
     flexGrow: 1,
+    flexBasis: {
+      default: 0,
+      [bp.wide]: 'auto',
+    },
     minHeight: 0,
     display: 'flex',
     flexDirection: 'column',

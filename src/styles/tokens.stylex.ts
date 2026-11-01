@@ -108,6 +108,12 @@ export const easing = stylex.defineConsts({
   spring: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
 });
 
+export const sizes = stylex.defineConsts({
+  // The least a route stop or open tabs card stands on a phone; both match,
+  // so the two sections read as one set.
+  phoneCard: '520px',
+});
+
 export const bp = stylex.defineConsts({
   // Above the design's 700px phone layout. Dock.tsx repeats the query to
   // close its list here, so the two change together.

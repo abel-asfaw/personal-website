@@ -6,6 +6,7 @@ import {
   easing,
   fonts,
   shadows,
+  sizes,
   themeColors,
 } from '../../styles/tokens.stylex';
 
@@ -17,8 +18,6 @@ const DESK_BASIS = 620;
 const CARD_BASIS = 360;
 const BODY_GAP = 16;
 const DESK_HEIGHT = 560;
-// The same as routeStopCard.root's phone height.
-const PHONE_CARD_HEIGHT = 520;
 const SIDE_BY_SIDE = `@container (min-width: ${DESK_BASIS + BODY_GAP + CARD_BASIS}px)`;
 
 const appear = stylex.keyframes({
@@ -104,13 +103,13 @@ export const openTabs = stylex.create({
     flexShrink: 1,
     flexBasis: CARD_BASIS,
     minWidth: 0,
-    // On phones it holds a fixed height and scrolls a long description;
-    // wrapped under the desk on wider screens, it fits it. Beside the desk,
-    // it stretches to the desk's height and is capped there, so it scrolls
-    // rather than growing the row. The cap is a separate property because
-    // bp.wide also applies beside the desk, and its height would win.
-    height: {
-      default: PHONE_CARD_HEIGHT,
+    // On phones it stands at least the phone card height, scrolling a long
+    // description and growing past it only when the rest of the card needs the
+    // room; wrapped under the desk on wider screens, it fits it. Beside the
+    // desk, it stretches to the desk's height and is capped there, so it
+    // scrolls rather than growing the row.
+    minHeight: {
+      default: sizes.phoneCard,
       [bp.wide]: 'auto',
     },
     maxHeight: {

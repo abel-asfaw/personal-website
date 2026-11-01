@@ -4,11 +4,17 @@ import { bp, colors, themeColors } from '../../../styles/tokens.stylex';
 
 export const scrollArea = stylex.create({
   // Takes the height left in its flex column, and holds the scroller and the
-  // edges drawn over it.
+  // edges drawn over it. On phones it starts from nothing, so a long
+  // description scrolls in the card's set height rather than growing it;
+  // wider, it starts from its content. It never shrinks past a few lines.
   root: {
     position: 'relative',
     flexGrow: 1,
-    minHeight: 0,
+    flexBasis: {
+      default: 0,
+      [bp.wide]: 'auto',
+    },
+    minHeight: 96,
     display: 'flex',
     flexDirection: 'column',
   },
