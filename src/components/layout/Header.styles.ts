@@ -37,13 +37,22 @@ export const header = stylex.create({
     gap: 10,
     minHeight: 44,
     // On phones the pin alone is 22px wide; the padding makes a 44px tap
-    // target and the negative margin keeps the pin on the page gutter.
-    paddingInline: {
-      default: 11,
+    // target and the negative margin keeps the pin on the page gutter. The
+    // end side stops where the first link's tap area starts.
+    paddingInlineStart: {
+      default: 14,
       [bp.wide]: 0,
     },
-    marginInline: {
-      default: -11,
+    paddingInlineEnd: {
+      default: 8,
+      [bp.wide]: 0,
+    },
+    marginInlineStart: {
+      default: -14,
+      [bp.wide]: 0,
+    },
+    marginInlineEnd: {
+      default: -8,
       [bp.wide]: 0,
     },
     fontSize: 18,
@@ -85,11 +94,21 @@ export const header = stylex.create({
       [bp.wide]: 0,
     },
   },
+  // On phones each link's tap area reaches 4px past its text on both sides,
+  // into the gaps, so even "Route" is 44px wide without moving the row.
   link: {
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
     minHeight: 44,
+    paddingInline: {
+      default: 4,
+      [bp.wide]: 0,
+    },
+    marginInline: {
+      default: -4,
+      [bp.wide]: 0,
+    },
     color: themeColors.muted,
     opacity: {
       default: 1,
@@ -100,7 +119,11 @@ export const header = stylex.create({
   },
   underline: {
     position: 'absolute',
-    insetInline: 0,
+    // Under the text, not the link's phone padding.
+    insetInline: {
+      default: 4,
+      [bp.wide]: 0,
+    },
     bottom: 10,
     height: 1,
     backgroundColor: 'currentColor',

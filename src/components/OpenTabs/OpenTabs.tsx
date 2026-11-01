@@ -125,7 +125,7 @@ export function OpenTabs({
                   href={project.githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Source code on GitHub"
+                  aria-label="Code on GitHub"
                 >
                   Code
                 </LinkButton>
