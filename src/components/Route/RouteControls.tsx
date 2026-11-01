@@ -14,7 +14,7 @@ export function RouteControls({ tour }: RouteControlsProps) {
   const [label, glyph] = playing
     ? ['Pause', '❚❚']
     : atEnd
-      ? ['Replay tour', '▶']
+      ? ['Replay', '▶']
       : ['Continue', '▶'];
 
   return (

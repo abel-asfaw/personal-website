@@ -118,7 +118,7 @@ export function OpenTabs({
                   variant="solid"
                   style={openTabs.link}
                 >
-                  Visit live site ↗
+                  Visit site ↗
                 </LinkButton>
               ) : null}
               {project.githubLink ? (
@@ -128,7 +128,7 @@ export function OpenTabs({
                   rel="noopener noreferrer"
                   style={openTabs.link}
                 >
-                  Source code
+                  Code
                 </LinkButton>
               ) : null}
             </div>

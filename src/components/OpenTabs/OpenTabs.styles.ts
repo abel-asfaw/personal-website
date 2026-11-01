@@ -167,7 +167,11 @@ export const openTabs = stylex.create({
   },
   link: {
     minHeight: 46,
-    paddingInline: 20,
+    // Narrower on phones so both links share a row.
+    paddingInline: {
+      default: 16,
+      [bp.wide]: 20,
+    },
   },
 });
 

@@ -12,7 +12,7 @@ const EMAIL = 'contact@abelasfaw.com';
 interface HeroProps {
   about: About | null;
   isTouch: boolean;
-  /** Starts the route tour; the "Take the tour" button also scrolls there. */
+  /** Starts the route tour; the "Tour" button also scrolls there. */
   onStartTour: () => void;
 }
 
@@ -37,7 +37,7 @@ export function Hero({ about, isTouch, onStartTour }: HeroProps) {
               onClick={onStartTour}
               style={hero.cta}
             >
-              Take the tour ↓
+              Tour ↓
             </LinkButton>
             <LinkButton
               href={`mailto:${EMAIL}`}
