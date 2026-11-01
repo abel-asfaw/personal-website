@@ -12,9 +12,8 @@ interface SkillMarqueeProps {
   counts: Map<string, number>;
   picked: string | null;
   onPick: (skill: string) => void;
+  /** Holds the animation, and lets the row be scrolled sideways instead. */
   isPaused: boolean;
-  /** Lets the row be scrolled sideways while the animation is held. */
-  isScrollable: boolean;
   /** The second row scrolls the other way in the outlined accent look. */
   isReversed?: boolean;
 }
@@ -71,7 +70,6 @@ export function SkillMarquee({
   picked,
   onPick,
   isPaused,
-  isScrollable,
   isReversed = false,
 }: SkillMarqueeProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -80,7 +78,7 @@ export function SkillMarquee({
   // motion's useReducedMotion only reads the setting once, and the CSS
   // follows it live, so this does too.
   const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
-  const canScroll = isScrollable && !reduceMotion;
+  const canScroll = isPaused && !reduceMotion;
   // The scroll offset that takes over from the animation; null while it
   // animates.
   const [scrollFrom, setScrollFrom] = useState<number | null>(null);

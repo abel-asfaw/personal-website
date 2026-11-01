@@ -47,6 +47,7 @@ export function Toolbox({
   const togglePick = (skill: string) => onPick(picked === skill ? null : skill);
   // A picked skill holds the rows still so it stays where it was tapped, so
   // the button shows them stopped and can't resume them until it's cleared.
+  // Held either way, the rows scroll by hand.
   const isStopped = isPaused || picked !== null;
 
   return (
@@ -81,7 +82,6 @@ export function Toolbox({
         picked={picked}
         onPick={togglePick}
         isPaused={isStopped}
-        isScrollable={isPaused}
       />
       <SkillMarquee
         skills={skills.slice(half)}
@@ -89,7 +89,6 @@ export function Toolbox({
         picked={picked}
         onPick={togglePick}
         isPaused={isStopped}
-        isScrollable={isPaused}
         isReversed
       />
       <div aria-live="polite" {...stylex.props(toolbox.detail)}>
