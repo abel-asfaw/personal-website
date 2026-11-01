@@ -1,7 +1,7 @@
 import type { RefObject } from 'react';
 
 import * as stylex from '@stylexjs/stylex';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import type { About } from '../../content/about';
 import type { PointerState } from '../../hooks/usePointerTracking';
@@ -22,28 +22,30 @@ const MAX_TILT = 12;
 
 const CARDINALS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
 
+// The rebound after a press: from the pressed scale (heroCompass.portrait's
+// :active), an overshoot that settles back to rest. Each step eases on its
+// own, so the peaks land in full.
+const BOUNCE: Keyframe[] = [
+  { transform: 'scale(0.96)', easing: 'ease-out' },
+  { transform: 'scale(1.08)', offset: 0.4, easing: 'ease-in-out' },
+  { transform: 'scale(0.98)', offset: 0.7, easing: 'ease-in-out' },
+  { transform: 'scale(1)' },
+];
+
 /**
- * The portrait in a compass whose needle points at the pointer. Hovering the
- * portrait swaps the heading for a pin; pressing it (the only way on touch
- * screens and keyboards) keeps the pin until it's pressed again.
+ * The portrait in a compass whose needle points at the pointer. Pressing the
+ * portrait bounces it.
  */
 export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isPinned, setIsPinned] = useState(false);
+  const portraitRef = useRef<HTMLButtonElement>(null);
   // The needle still turns, but the portrait doesn't lean after the pointer.
   const isReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const { heading, tiltX, tiltY, isFingerDrag } = pointer;
 
-  const isHere = isHovered || isPinned;
   const bearing = ((Math.round(heading) % 360) + 360) % 360;
   const lean = isReducedMotion ? 0 : MAX_TILT;
-  const pin = (
-    <>
-      <span {...stylex.props(heroCompass.readoutLabel)}>You are here</span>
-      <span>· say hi below</span>
-    </>
-  );
-  const tilt = `rotateX(${(-tiltY * lean).toFixed(2)}deg) rotateY(${(tiltX * lean).toFixed(2)}deg) scale(${isHere ? 1.04 : 1})`;
+  const tilt = `rotateX(${(-tiltY * lean).toFixed(2)}deg) rotateY(${(tiltX * lean).toFixed(2)}deg) scale(${isHovered ? 1.04 : 1})`;
 
   return (
     <div {...stylex.props(heroCompass.root)}>
@@ -51,17 +53,14 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
         <HeroCompassFace />
         {photo ? (
           <Button
+            ref={portraitRef}
             variant="text"
-            aria-label={
-              photo.alt
-                ? `Pin “You are here” on ${photo.alt}`
-                : 'Pin “You are here”'
-            }
-            aria-pressed={isPinned}
+            aria-label={photo.alt || 'Portrait'}
             onClick={() => {
-              setIsPinned((pinned) => !pinned);
-              // Unpinning under the mouse would otherwise leave the hover on.
-              setIsHovered(false);
+              if (!isReducedMotion) {
+                // Restarts on every press, mid-bounce included.
+                portraitRef.current?.animate(BOUNCE, 450);
+              }
             }}
             // Mouse only: a tap's enter and leave would just flash it.
             onPointerEnter={(event) =>
@@ -105,34 +104,16 @@ export function HeroCompass({ pointer, compassRef, photo }: HeroCompassProps) {
         </div>
       </div>
       <span {...stylex.props(hero.chip)}>
-        {/* Announces only the pin: a hover is the mouse's own feedback, and
-            the heading changes every frame. */}
-        <span
-          aria-live="polite"
-          {...stylex.props(
-            heroCompass.readout,
-            !isPinned && heroCompass.readoutIdle,
-          )}
-        >
-          {isPinned ? pin : null}
-        </span>
-        {isPinned ? null : (
-          <span aria-hidden="true" {...stylex.props(heroCompass.readout)}>
-            {isHovered ? (
-              pin
-            ) : (
-              <>
-                <span {...stylex.props(heroCompass.readoutLabel)}>Heading</span>
-                <span>
-                  {String(bearing).padStart(3, '0')}°{' '}
-                  <span {...stylex.props(heroCompass.cardinal)}>
-                    {CARDINALS[Math.round(bearing / 45) % 8]}
-                  </span>
-                </span>
-              </>
-            )}
+        {/* Hidden: the heading changes every frame. */}
+        <span aria-hidden="true" {...stylex.props(heroCompass.readout)}>
+          <span {...stylex.props(heroCompass.readoutLabel)}>Heading</span>
+          <span>
+            {String(bearing).padStart(3, '0')}°{' '}
+            <span {...stylex.props(heroCompass.cardinal)}>
+              {CARDINALS[Math.round(bearing / 45) % 8]}
+            </span>
           </span>
-        )}
+        </span>
       </span>
     </div>
   );

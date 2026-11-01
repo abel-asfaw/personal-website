@@ -1,5 +1,5 @@
 import type { StyleXStyles } from '@stylexjs/stylex';
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, Ref } from 'react';
 
 import * as stylex from '@stylexjs/stylex';
 
@@ -17,6 +17,7 @@ interface ButtonProps
   extends
     Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'className' | 'style'>,
     PropsWithChildren {
+  ref?: Ref<HTMLButtonElement>;
   variant?: ButtonVariant;
   style?: StyleXStyles;
 }

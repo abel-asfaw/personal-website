@@ -392,10 +392,6 @@ export const heroCompass = stylex.create({
     display: 'inline-flex',
     gap: 8,
   },
-  // The live region stays in place while empty, but out of the chip's flow.
-  readoutIdle: {
-    position: 'absolute',
-  },
   readoutLabel: {
     color: themeColors.accentText,
   },
