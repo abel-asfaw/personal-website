@@ -8,7 +8,11 @@ export const themeToggle = stylex.create({
     // Stretch the segments to fill the pill so their corners sit evenly
     // inside its curve, rather than centering short ones in it.
     alignItems: 'stretch',
-    gap: 2,
+    // None on phones, to pay for the round segments' padding.
+    gap: {
+      default: 0,
+      [bp.wide]: 2,
+    },
     minHeight: 40,
     // Longhands: Button's paddingBlock/paddingInline would beat `padding`.
     paddingBlock: 4,
@@ -24,7 +28,12 @@ export const themeToggle = stylex.create({
     alignItems: 'center',
     gap: 6,
     paddingBlock: 4,
-    paddingInline: 12,
+    // Icon-only on phones: 9 + 12px icon + 9 matches the 30px height, so the
+    // lit segment is a circle.
+    paddingInline: {
+      default: 9,
+      [bp.wide]: 12,
+    },
     borderRadius: 999,
     fontFamily: fonts.mono,
     fontSize: 12,

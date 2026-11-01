@@ -18,13 +18,18 @@ export const header = stylex.create({
     maxWidth: 1240,
     marginInline: 'auto',
     paddingBlock: 10,
-    paddingInline: 24,
+    paddingInline: {
+      default: 16,
+      [bp.wide]: 24,
+    },
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'space-between',
     rowGap: 8,
-    columnGap: 16,
+    columnGap: {
+      default: 10,
+      [bp.wide]: 20,
+    },
   },
   brand: {
     display: 'flex',
@@ -35,21 +40,40 @@ export const header = stylex.create({
     fontWeight: 700,
     color: themeColors.ink,
   },
+  // Phones keep just the pin, so the waypoints fit beside it.
+  name: {
+    display: {
+      default: 'none',
+      [bp.wide]: 'inline',
+    },
+  },
+  // Phones put the waypoints beside the pin and push the toggle to the far
+  // end; the wide layout groups them on the right.
   nav: {
+    marginInlineStart: {
+      default: 0,
+      [bp.wide]: 'auto',
+    },
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    columnGap: 20,
+    columnGap: {
+      default: 8,
+      [bp.wide]: 20,
+    },
     fontFamily: fonts.mono,
     fontSize: 13,
   },
-  // The phone layout swaps these for the bottom dock.
+  toggle: {
+    display: 'flex',
+    marginInlineStart: {
+      default: 'auto',
+      [bp.wide]: 0,
+    },
+  },
   link: {
     position: 'relative',
-    display: {
-      default: 'none',
-      [bp.wide]: 'flex',
-    },
+    display: 'flex',
     alignItems: 'center',
     minHeight: 44,
     color: themeColors.muted,

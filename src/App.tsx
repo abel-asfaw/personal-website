@@ -3,7 +3,6 @@ import { useMemo, useState } from 'react';
 
 import { app } from './App.styles';
 import { Hero, HeroSkeleton } from './components/Hero';
-import { Dock } from './components/layout/Dock';
 import { Footer } from './components/layout/Footer';
 import { Header } from './components/layout/Header';
 import { WAYPOINT_HREFS } from './components/layout/waypoints';
@@ -106,7 +105,6 @@ export default function App() {
         )}
       </main>
       {isPending ? null : <Footer />}
-      <Dock activeWaypoint={activeWaypoint} />
     </div>
   );
 }
