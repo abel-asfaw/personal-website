@@ -1,4 +1,4 @@
-// Section anchors shared by the header nav and the mobile dock.
+// Section anchors for the header nav and useActiveWaypoint.
 export const WAYPOINTS = [
   { href: '#route', label: 'Route' },
   { href: '#projects', label: 'Projects' },

@@ -95,7 +95,6 @@ export const shadows = stylex.defineConsts({
   lift: '0 10px 24px -14px rgba(0, 0, 0, 0.5)',
   float: '0 10px 24px -12px rgba(0, 0, 0, 0.5)',
   stop: '0 4px 14px -6px rgba(0, 0, 0, 0.4)',
-  dock: '0 14px 40px -12px rgba(0, 0, 0, 0.5)',
   window: '0 24px 48px -18px rgba(0, 0, 0, 0.55)',
   portrait: '0 24px 48px -24px rgba(18, 32, 26, 0.45)',
 });
@@ -115,8 +114,7 @@ export const sizes = stylex.defineConsts({
 });
 
 export const bp = stylex.defineConsts({
-  // Above the design's 700px phone layout. Dock.tsx repeats the query to
-  // close its list here, so the two change together.
+  // Above the design's 700px phone layout.
   wide: '@media (min-width: 701px)',
   // Room for the hero's copy and compass side by side.
   split: '@media (min-width: 960px)',

@@ -18,9 +18,9 @@ export function Header({ theme, onToggleTheme, activeWaypoint }: HeaderProps) {
   return (
     <header {...stylex.props(header.root)}>
       <div {...stylex.props(header.bar)}>
-        <a href="#top" {...stylex.props(header.brand)}>
+        <a href="#top" aria-label="Abel Asfaw" {...stylex.props(header.brand)}>
           <PinIcon />
-          Abel Asfaw
+          <span {...stylex.props(header.name)}>Abel Asfaw</span>
         </a>
         <nav aria-label="Primary" {...stylex.props(header.nav)}>
           {WAYPOINTS.map(({ href, label }) => {
@@ -48,8 +48,10 @@ export function Header({ theme, onToggleTheme, activeWaypoint }: HeaderProps) {
               </a>
             );
           })}
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
         </nav>
+        <div {...stylex.props(header.toggle)}>
+          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+        </div>
       </div>
     </header>
   );

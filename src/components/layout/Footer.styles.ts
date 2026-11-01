@@ -13,11 +13,7 @@ export const footer = stylex.create({
       [bp.wide]: 80,
     },
     paddingInline: 24,
-    // Leaves room for the phone dock's chip in the corner.
-    paddingBottom: {
-      default: 64,
-      [bp.wide]: 32,
-    },
+    paddingBottom: 32,
     display: 'flex',
     flexDirection: 'column',
     gap: 20,
