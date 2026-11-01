@@ -9,6 +9,16 @@ import {
   themeColors,
 } from '../../styles/tokens.stylex';
 
+// The desk and the card sit side by side once the body fits both flex bases
+// and the gap between them; below that, the card wraps under the desk. The
+// same bases as routeMap.root and routeStopCard.root, so the desk lines up
+// with the map above it.
+const DESK_BASIS = 620;
+const CARD_BASIS = 360;
+const BODY_GAP = 16;
+const DESK_HEIGHT = 560;
+const SIDE_BY_SIDE = `@container (min-width: ${DESK_BASIS + BODY_GAP + CARD_BASIS}px)`;
+
 const appear = stylex.keyframes({
   from: { opacity: 0, transform: 'translateY(12px)' },
   to: { opacity: 1, transform: 'none' },
@@ -45,24 +55,22 @@ export const openTabs = stylex.create({
     color: themeColors.onAccent,
   },
   body: {
+    containerType: 'inline-size',
     display: 'flex',
     flexWrap: 'wrap',
-    gap: 16,
+    gap: BODY_GAP,
   },
   // The dotted desk the windows sit on. Phones get the front window alone,
-  // in flow; wider screens fan the others out behind it. It and the card
-  // share their bases with the route's map and card (MAP_BASIS and
-  // CARD_BASIS in Route.styles.ts), so the two sections line up.
+  // in flow; wider screens fan the others out behind it.
   desk: {
     position: 'relative',
     flexGrow: 999,
     flexShrink: 1,
-    flexBasis: 620,
+    flexBasis: DESK_BASIS,
     minWidth: 0,
-    // Grows with the details card when the description runs long.
-    minHeight: {
+    height: {
       default: null,
-      [bp.wide]: 560,
+      [bp.wide]: DESK_HEIGHT,
     },
     padding: {
       default: 16,
@@ -92,8 +100,14 @@ export const openTabs = stylex.create({
   card: {
     flexGrow: 1,
     flexShrink: 1,
-    flexBasis: 360,
+    flexBasis: CARD_BASIS,
     minWidth: 0,
+    // Beside the desk, it holds the desk's height and scrolls a long
+    // description.
+    height: {
+      default: null,
+      [SIDE_BY_SIDE]: DESK_HEIGHT,
+    },
     display: 'flex',
     flexDirection: 'column',
     gap: 16,
@@ -109,6 +123,7 @@ export const openTabs = stylex.create({
   },
   details: {
     flexGrow: 1,
+    minHeight: 0,
     display: 'flex',
     flexDirection: 'column',
     gap: 16,
@@ -130,12 +145,62 @@ export const openTabs = stylex.create({
     fontWeight: 700,
     letterSpacing: '-0.03em',
   },
+  // Holds the description's scroller, between the pinned title and links,
+  // and the edges drawn over it.
+  viewport: {
+    position: 'relative',
+    flexGrow: 1,
+    minHeight: 0,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  // Scrolls on its own, so the title and links stay in view. Past either
+  // end, the wheel carries on scrolling the page.
+  scroller: {
+    flexGrow: 1,
+    minHeight: 0,
+    overflowY: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 16,
+  },
+  // Over an edge with more text past it: the text fades into the panel, under
+  // a soft shadow along the cut.
+  edge: {
+    position: 'absolute',
+    insetInline: 0,
+    height: 40,
+    pointerEvents: 'none',
+    opacity: 0,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 12px, 100% 100%',
+    transitionProperty: 'opacity',
+    transitionDuration: {
+      default: '0.2s',
+      [bp.reducedMotion]: '0s',
+    },
+  },
+  edgeAbove: {
+    top: 0,
+    backgroundPosition: 'top',
+    backgroundImage: `radial-gradient(farthest-side at 50% 0, ${colors.scrollShadow}, transparent), linear-gradient(${themeColors.panel}, transparent)`,
+  },
+  edgeBelow: {
+    bottom: 0,
+    backgroundPosition: 'bottom',
+    backgroundImage: `radial-gradient(farthest-side at 50% 100%, ${colors.scrollShadow}, transparent), linear-gradient(transparent, ${themeColors.panel})`,
+  },
+  edgeShown: {
+    opacity: 1,
+  },
   description: {
     fontSize: 16,
     color: themeColors.muted,
   },
-  links: {
+  tags: {
     marginTop: 'auto',
+  },
+  links: {
     display: 'flex',
     flexWrap: 'wrap',
     gap: 10,
