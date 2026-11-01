@@ -68,12 +68,13 @@ export const routeControls = stylex.create({
     alignItems: 'center',
     gap: 8,
   },
-  // Fits "Continue ▶", the longest label, so the pill keeps one width as
-  // the label changes.
+  // Fits "Continue ▶", the longest label (125px on phones, 137px wide),
+  // with room for a wider fallback font, so the pill keeps one width as the
+  // label changes.
   play: {
     minWidth: {
-      default: 128,
-      [bp.wide]: 140,
+      default: 136,
+      [bp.wide]: 148,
     },
   },
 });
@@ -291,7 +292,7 @@ export const routeMap = stylex.create({
     backgroundColor: themeColors.accent,
     color: themeColors.onAccent,
     fontFamily: fonts.mono,
-    fontSize: 12,
+    fontSize: 10,
     whiteSpace: 'nowrap',
   },
   pin: {

@@ -23,7 +23,12 @@ export const header = stylex.create({
       [bp.wide]: 24,
     },
     display: 'flex',
-    flexWrap: 'wrap',
+    // Phones keep one row, so the header stays shorter than the sections'
+    // scroll margin.
+    flexWrap: {
+      default: 'nowrap',
+      [bp.wide]: 'wrap',
+    },
     alignItems: 'center',
     rowGap: 8,
     columnGap: {
@@ -66,18 +71,51 @@ export const header = stylex.create({
       [bp.wide]: 'inline',
     },
   },
-  // Phones put the waypoints beside the pin and push the toggle to the far
-  // end; the wide layout groups them on the right.
+  // Phones put the waypoints beside the pin and grow to push the toggle to
+  // the far end; the wide layout groups them on the right. Below about
+  // 290px the links scroll sideways rather than wrap. The 6px padding,
+  // taken back by the margins, keeps the 3px focus ring and its 3px offset
+  // inside the scroller, and the extra 4px inline lines the first link's
+  // tap area up with the pin's.
   nav: {
+    flexGrow: {
+      default: 1,
+      [bp.wide]: 0,
+    },
+    minWidth: 0,
+    overflowX: {
+      default: 'auto',
+      [bp.wide]: 'visible',
+    },
+    scrollbarWidth: 'none',
+    paddingBlock: {
+      default: 6,
+      [bp.wide]: 0,
+    },
+    marginBlock: {
+      default: -6,
+      [bp.wide]: 0,
+    },
+    paddingInline: {
+      default: 6,
+      [bp.wide]: 0,
+    },
     marginInlineStart: {
-      default: 0,
+      default: -10,
       [bp.wide]: 'auto',
     },
+    marginInlineEnd: {
+      default: -10,
+      [bp.wide]: 0,
+    },
     display: 'flex',
-    flexWrap: 'wrap',
+    flexWrap: {
+      default: 'nowrap',
+      [bp.wide]: 'wrap',
+    },
     alignItems: 'center',
     columnGap: {
-      default: 8,
+      default: 0,
       [bp.wide]: 20,
     },
     fontFamily: fonts.mono,
@@ -87,15 +125,8 @@ export const header = stylex.create({
       [bp.wide]: 14,
     },
   },
-  toggle: {
-    display: 'flex',
-    marginInlineStart: {
-      default: 'auto',
-      [bp.wide]: 0,
-    },
-  },
   // On phones each link's tap area reaches 4px past its text on both sides,
-  // into the gaps, so even "Route" is 44px wide without moving the row.
+  // so even "Route" is 44px wide; the padding is the gap between links.
   link: {
     position: 'relative',
     display: 'flex',
@@ -103,10 +134,6 @@ export const header = stylex.create({
     minHeight: 44,
     paddingInline: {
       default: 4,
-      [bp.wide]: 0,
-    },
-    marginInline: {
-      default: -4,
       [bp.wide]: 0,
     },
     color: themeColors.muted,

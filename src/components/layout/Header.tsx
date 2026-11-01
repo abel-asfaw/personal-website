@@ -49,9 +49,7 @@ export function Header({ theme, onToggleTheme, activeWaypoint }: HeaderProps) {
             );
           })}
         </nav>
-        <div {...stylex.props(header.toggle)}>
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-        </div>
+        <ThemeToggle theme={theme} onToggle={onToggleTheme} />
       </div>
     </header>
   );
