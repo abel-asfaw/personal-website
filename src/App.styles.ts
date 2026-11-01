@@ -8,7 +8,7 @@ export const app = stylex.create({
     backgroundColor: themeColors.bg,
     color: themeColors.ink,
     fontFamily: fonts.sans,
-    fontSize: 17,
+    fontSize: 16,
     lineHeight: 1.55,
     transitionProperty: 'background-color, color',
     transitionDuration: '0.5s',

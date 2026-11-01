@@ -95,7 +95,7 @@ export const openTabs = stylex.create({
     left: 20,
     bottom: 16,
     fontFamily: fonts.mono,
-    fontSize: 11,
+    fontSize: 12,
     color: themeColors.muted,
   },
   card: {
@@ -148,7 +148,10 @@ export const openTabs = stylex.create({
     color: themeColors.muted,
   },
   title: {
-    fontSize: 36,
+    fontSize: {
+      default: 32,
+      [bp.wide]: 36,
+    },
     lineHeight: 1.05,
     fontWeight: 700,
     letterSpacing: '-0.03em',
@@ -166,7 +169,10 @@ export const openTabs = stylex.create({
     gap: 10,
   },
   link: {
-    minHeight: 46,
+    minHeight: {
+      default: 44,
+      [bp.wide]: 46,
+    },
     // Narrower on phones so both links share a row.
     paddingInline: {
       default: 16,
@@ -275,7 +281,7 @@ export const projectWindow = stylex.create({
     borderColor: themeColors.routeSoft,
     transform: 'rotate(-5deg)',
     fontFamily: fonts.mono,
-    fontSize: 11,
+    fontSize: 12,
     color: themeColors.muted,
   },
   bar: {
@@ -306,7 +312,7 @@ export const projectWindow = stylex.create({
     borderRadius: 999,
     backgroundColor: themeColors.bg,
     fontFamily: fonts.mono,
-    fontSize: 11,
+    fontSize: 12,
     color: themeColors.muted,
   },
   screen: {

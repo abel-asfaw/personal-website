@@ -20,7 +20,7 @@ export const footer = stylex.create({
   },
   eyebrow: {
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
     color: themeColors.accentText,
   },
   meta: {
@@ -34,7 +34,7 @@ export const footer = stylex.create({
     alignItems: 'center',
     gap: 16,
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
     color: themeColors.muted,
   },
   links: {

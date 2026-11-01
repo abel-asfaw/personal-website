@@ -15,9 +15,16 @@ export const button = stylex.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    minHeight: 48,
+    // Phones stop at 44px, the smallest comfortable tap target.
+    minHeight: {
+      default: 44,
+      [bp.wide]: 48,
+    },
     paddingBlock: 0,
-    paddingInline: 22,
+    paddingInline: {
+      default: 16,
+      [bp.wide]: 22,
+    },
     borderRadius: 999,
     borderWidth: 1,
     borderStyle: 'solid',
@@ -76,7 +83,7 @@ export const button = stylex.create({
     backgroundColor: themeColors.panel,
     color: themeColors.ink,
     fontFamily: fonts.mono,
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: 400,
   },
   // A bare text link with no pill, e.g. the footer's links. Callers add
@@ -92,7 +99,10 @@ export const button = stylex.create({
   },
   // Square-ish icon button, e.g. the route's previous/next arrows.
   round: {
-    width: 48,
+    width: {
+      default: 44,
+      [bp.wide]: 48,
+    },
     paddingInline: 0,
     borderColor: themeColors.line,
     backgroundColor: themeColors.panel,
