@@ -419,10 +419,6 @@ export const routeStopCard = stylex.create({
   },
   body: {
     flexGrow: 1,
-    flexBasis: {
-      default: 0,
-      [bp.wide]: 'auto',
-    },
     minHeight: 0,
     display: 'flex',
     flexDirection: 'column',
