@@ -121,6 +121,5 @@ export const bp = stylex.defineConsts({
   // Room for the hero's copy and compass side by side.
   split: '@media (min-width: 960px)',
   fineHover: '@media (hover: hover) and (pointer: fine)',
-  noHover: '@media (hover: none)',
   reducedMotion: '@media (prefers-reduced-motion: reduce)',
 });
