@@ -463,9 +463,6 @@ export const routeStopCard = stylex.create({
     fontSize: 16,
     color: themeColors.muted,
   },
-  tags: {
-    marginTop: 'auto',
-  },
   progress: {
     display: 'flex',
     flexDirection: 'column',

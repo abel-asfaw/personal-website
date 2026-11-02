@@ -64,7 +64,7 @@ export function RouteStopCard({ stops, tour }: RouteStopCardProps) {
         </div>
         <ScrollArea labelledBy={companyId}>
           <p {...stylex.props(routeStopCard.description)}>{stop.description}</p>
-          <TagList tags={stop.skills} style={routeStopCard.tags} />
+          <TagList tags={stop.skills} />
         </ScrollArea>
       </motion.div>
       <div {...stylex.props(routeStopCard.progress)}>
